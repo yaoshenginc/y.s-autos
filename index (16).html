@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y.S. AUTOS | 耀笙國際汽車 - 用心經營 值得信賴</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --secondary-black: #1a1a1a;
+            --gold: #d4a948;
+            --gold-dark: #b8923e;
+            --gold-light: #e5c05d;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --text-light-gray: #d0d0d0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans TC', sans-serif; background: var(--primary-black); color: var(--text-white); overflow-x: hidden; line-height: 1.6; }
+
+        /* 背景流沙牆 */
+        .bg-carousel-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            opacity: 0.65;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-row {
+            display: flex;
+            white-space: nowrap;
+            width: fit-content;
+        }
+
+        .marquee-row.left { animation: marquee 120s linear infinite; }
+        .marquee-row.right { animation: marquee 150s linear infinite reverse; }
+
+        .bg-photo-item {
+            width: 280px; 
+            height: 190px;
+            margin: 0 10px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 169, 72, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, 
+                rgba(10,10,10,0.6) 0%, 
+                rgba(10,10,10,0.1) 50%, 
+                rgba(10,10,10,0.7) 100%);
+            z-index: 2;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .philosophy-card.active:nth-child(1) { transition-delay: 0.05s; }
+        .philosophy-card.active:nth-child(2) { transition-delay: 0.10s; }
+        .philosophy-card.active:nth-child(3) { transition-delay: 0.15s; }
+        .philosophy-card.active:nth-child(4) { transition-delay: 0.20s; }
+        .philosophy-card.active:nth-child(5) { transition-delay: 0.25s; }
+        .philosophy-card.active:nth-child(6) { transition-delay: 0.30s; }
+
+        /* 導航列 */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; z-index: 1000;
+            background: transparent;
+            border-bottom: 1px solid rgba(212, 169, 72, 0);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(0px);
+        }
+
+        nav.nav-scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 169, 72, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container { 
+            max-width: 1600px; 
+            margin: 0 auto; 
+            padding: 20px 60px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            transition: all 0.4s ease;
+        }
+
+        nav.nav-scrolled .nav-container {
+            padding: 15px 60px;
+        }
+
+        .nav-left { display: flex; align-items: center; gap: 40px; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-img { height: 45px; width: auto; object-fit: contain; }
+        .logo-text .zh { font-size: 22px; font-weight: 600; color: #fff; letter-spacing: 2px; }
+        .logo-text .en { font-family: 'Playfair Display'; font-size: 11px; color: var(--gold); letter-spacing: 2px; }
+        .logo-text .since { font-size: 9px; color: var(--text-gray); letter-spacing: 1px; margin-top: 2px; }
+        .nav-links { display: flex; gap: 35px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-light-gray); font-size: 13px; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .nav-social-top a { color: var(--text-gray); font-size: 18px; margin-left: 15px; transition: 0.3s; }
+        .nav-social-top a:hover { color: var(--gold); }
+        .nav-cta { padding: 12px 30px; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .nav-cta:hover { background: var(--gold); color: #000; }
+
+        /* 手機版選單 */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-white);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--secondary-black);
+            z-index: 9999;
+            transition: right 0.3s ease;
+            padding: 80px 30px 30px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-white);
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu-links li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-menu-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            display: block;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .mobile-menu-links a:hover {
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.7);
+            z-index: 9998;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+
+        /* Hero */
+        .hero {
+            height: 110vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a1a;
+            overflow: hidden;
+            padding-top: 200px;
+        }
+        
+        .hero-content { 
+            position: relative; z-index: 3; text-align: center; max-width: 1200px; padding: 0 60px; 
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        .hero-title { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 75px; 
+            font-weight: 700; 
+            line-height: 1.2; 
+            margin-bottom: 30px; 
+        }
+        
+        .hero-subtitle {
+            font-size: 26px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .hero-description { 
+            font-size: 18px; 
+            color: var(--text-light-gray); 
+            max-width: 800px; 
+            margin: 0 auto 50px; 
+            line-height: 1.8;
+        }
+        
+        .cta-primary { 
+            background: var(--gold); 
+            color: var(--primary-black); 
+            padding: 18px 45px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            margin-right: 20px; 
+            display: inline-block; 
+            transition: 0.3s; 
+        }
+        
+        .cta-secondary { 
+            border: 1px solid #fff; 
+            color: #fff; 
+            padding: 18px 45px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            display: inline-block; 
+            transition: 0.3s; 
+        }
+        
+        .cta-primary:hover { background: var(--gold-light); transform: translateY(-3px); }
+        .cta-secondary:hover { background: #fff; color: #000; transform: translateY(-3px); }
+
+        section { padding: 120px 60px; }
+        .section-tag { 
+            font-size: 12px; 
+            letter-spacing: 3px; 
+            color: var(--gold); 
+            margin-bottom: 20px; 
+            font-weight: 500; 
+            display: block; 
+            text-transform: uppercase; 
+        }
+        
+        .section-title { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 50px; 
+            margin-bottom: 30px; 
+        }
+        
+        .section-description {
+            font-size: 18px;
+            color: var(--text-gray);
+            max-width: 900px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+        }
+
+        /* 經營者專業背景 */
+        .owner-section {
+            background: var(--secondary-black);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .owners-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .owner-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+        
+        .owner-container:last-child {
+            margin-bottom: 0;
+        }
+        
+        .owner-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .owner-image img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 4px;
+            border: 1px solid rgba(212, 169, 72, 0.3);
+        }
+        
+        .credential-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--gold);
+            color: var(--primary-black);
+            padding: 25px 35px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 700;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        
+        .credential-badge .big {
+            font-size: 32px;
+            display: block;
+        }
+        
+        .credential-badge .small {
+            font-size: 14px;
+            display: block;
+            margin-top: 5px;
+        }
+        
+        .mascot-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--gold);
+            color: var(--primary-black);
+            padding: 20px 30px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 700;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            font-size: 18px;
+        }
+        
+        .owner-content h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .owner-content p {
+            font-size: 16px;
+            line-height: 2;
+            color: var(--text-light-gray);
+            margin-bottom: 30px;
+        }
+        
+        .credential-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .credential-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .credential-list li i {
+            color: var(--gold);
+            font-size: 20px;
+        }
+
+        /* 核心理念區塊 */
+        .philosophy-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+        }
+        
+        .philosophy-card { 
+            background: var(--secondary-black); 
+            padding: 50px 40px; 
+            border: 1px solid rgba(212,169,72,0.1); 
+            transition: 0.4s; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        
+        .philosophy-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: 0.4s;
+        }
+        
+        .philosophy-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .philosophy-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212,169,72,0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        
+        .philosophy-icon { 
+            font-size: 45px; 
+            color: var(--gold); 
+            margin-bottom: 25px; 
+            display: block; 
+        }
+        
+        .philosophy-card h3 { 
+            font-size: 22px; 
+            margin-bottom: 15px; 
+            color: #fff; 
+        }
+        
+        .philosophy-card p { 
+            font-size: 15px; 
+            color: var(--text-gray); 
+            line-height: 1.8;
+        }
+
+        /* 把關流程 */
+        .quality-control {
+            background: var(--secondary-black);
+        }
+        
+        .qc-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .qc-divider {
+            width: 2px;
+            background: linear-gradient(180deg, 
+                rgba(212,169,72,0.2) 0%, 
+                var(--gold) 50%, 
+                rgba(212,169,72,0.2) 100%);
+            height: 100%;
+            justify-self: center;
+        }
+        
+        .qc-column h3 {
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .qc-items {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .qc-item {
+            background: var(--primary-black);
+            padding: 30px 35px;
+            border: 1px solid rgba(212,169,72,0.2);
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            transition: 0.3s;
+        }
+        
+        .qc-item:hover {
+            transform: translateX(10px);
+            border-color: rgba(212,169,72,0.4);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .qc-column:last-child .qc-item:hover {
+            transform: translateX(-10px);
+        }
+        
+        .qc-item-icon {
+            font-size: 45px;
+            flex-shrink: 0;
+        }
+        
+        .qc-item-content {
+            flex: 1;
+        }
+        
+        .qc-item h4 {
+            font-size: 20px;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        
+        .qc-item p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-light-gray);
+            margin: 0;
+        }
+
+        /* 售後服務 */
+        .after-sales {
+            background: var(--primary-black);
+        }
+        
+        .after-sales-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .after-sales-card {
+            background: var(--secondary-black);
+            padding: 40px 30px;
+            border: 1px solid rgba(212,169,72,0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+        
+        .after-sales-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212,169,72,0.3);
+        }
+        
+        .after-sales-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .after-sales-card h4 {
+            font-size: 22px;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        .after-sales-card p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-light-gray);
+        }
+
+        /* 成交見證 */
+        .testimonials-section {
+            background: var(--primary-black);
+        }
+        
+        .testimonial-carousel {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 20px;
+        }
+        
+        .testimonial-item {
+            min-width: calc((100% - 40px) / 3);
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        
+        .testimonial-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        
+        .testimonial-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 顧客推薦 */
+        .reviews-section {
+            background: var(--secondary-black);
+        }
+        
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .google-rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--primary-black);
+            padding: 20px 40px;
+            border: 1px solid rgba(212,169,72,0.3);
+            margin-bottom: 60px;
+        }
+        
+        .google-rating .stars {
+            color: var(--gold);
+            font-size: 28px;
+        }
+        
+        .google-rating .score {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        
+        .google-rating .text {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto 40px;
+        }
+        
+        .review-card {
+            background: var(--primary-black);
+            padding: 35px;
+            border: 1px solid rgba(212,169,72,0.1);
+            position: relative;
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-black);
+        }
+        
+        .review-info h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .review-stars {
+            color: var(--gold);
+            font-size: 14px;
+        }
+        
+        .review-content {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-light-gray);
+        }
+        
+        .view-all-reviews {
+            text-align: center;
+        }
+        
+        .view-all-reviews a {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--primary-black);
+            padding: 18px 45px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        .view-all-reviews a:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+        }
+
+        /* 創新服務方案 */
+        .services-special {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        }
+        
+        .service-card-large {
+            background: var(--secondary-black);
+            padding: 60px;
+            border: 1px solid rgba(212,169,72,0.2);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card-large::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212,169,72,0.1) 0%, transparent 70%);
+        }
+        
+        .service-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--primary-black);
+            padding: 8px 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        
+        .service-card-large h3 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .service-card-large p {
+            font-size: 16px;
+            color: var(--text-light-gray);
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+        
+        .service-highlight {
+            background: rgba(212,169,72,0.1);
+            border-left: 4px solid var(--gold);
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .service-highlight strong {
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        /* 其他服務項目 */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 60px auto 0;
+        }
+        
+        .service-card {
+            background: var(--secondary-black);
+            padding: 45px 35px;
+            border: 1px solid rgba(212,169,72,0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212,169,72,0.3);
+        }
+        
+        .service-card .icon {
+            font-size: 50px;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+        
+        .service-card h4 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            color: var(--text-gray);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* 車輛輪播 */
+        .inventory-carousel {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 20px;
+        }
+        
+        .carousel-item {
+            min-width: calc((100% - 40px) / 3);
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        
+        .carousel-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(212,169,72,0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
+        }
+        
+        .carousel-nav:hover {
+            background: var(--gold-light);
+        }
+        
+        .carousel-nav.prev { left: 0; }
+        .carousel-nav.next { right: 0; }
+        
+        .auto-play-btn {
+            background: var(--gold);
+            color: var(--primary-black);
+            border: none;
+            padding: 15px 35px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .auto-play-btn:hover {
+            background: var(--gold-light);
+        }
+
+        /* 聯絡區塊 */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .contact-item {
+            background: var(--secondary-black);
+            padding: 45px 35px;
+            text-align: center;
+            border: 1px solid rgba(212,169,72,0.1);
+            transition: 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212,169,72,0.3);
+        }
+        
+        .contact-item h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+        
+        .contact-item p {
+            color: var(--text-light-gray);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-black);
+            padding: 80px 60px 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 60px;
+        }
+        
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(212,169,72,0.1);
+            border: 1px solid rgba(212,169,72,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .social-btn:hover {
+            background: var(--gold);
+            color: var(--primary-black);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links ul li a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--gold);
+        }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--gold);
+            color: var(--primary-black);
+            padding: 18px 35px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(212,169,72,0.4);
+            z-index: 999;
+            transition: 0.3s;
+        }
+        
+        .floating-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212,169,72,0.6);
+        }
+
+        /* 手機版RWD */
+@media (max-width: 968px) {
+    .hero {
+        min-height: 80vh;
+        height: auto;
+        padding-top: 100px;
+        padding-bottom: 60px;
+     }
+            .hero-title { font-size: 48px; }
+            .hero-subtitle { font-size: 20px; }
+            .hero-description { font-size: 16px; }
+            
+            /* 手機版按鈕重新配置 - 垂直排列 */
+            .cta-primary, .cta-secondary {
+                display: block;
+                width: 100%;
+                max-width: 300px;
+                margin: 10px auto;
+                text-align: center;
+            }
+            
+            section { padding: 120px 30px; }
+            .owners-wrapper .owner-container { grid-template-columns: 1fr; gap: 40px; }
+            .owner-image { text-align: center; }
+            .owner-image img { max-width: 100px; margin: 0 auto; }
+            .philosophy-grid { grid-template-columns: 1fr; }
+            .qc-container { 
+                grid-template-columns: 1fr 1px 1fr;
+                gap: 20px;
+            }
+            .qc-divider { width: 1px; }
+            .qc-column h3 { font-size: 20px; margin-bottom: 25px; }
+            .qc-item { 
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+                gap: 15px;
+            }
+            .qc-item-icon { font-size: 35px; }
+            .qc-item h4 { font-size: 16px; }
+            .qc-item p { font-size: 12px; }
+            .after-sales-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .testimonial-item { min-width: 100%; }
+            .carousel-item { min-width: 100%; }
+            .nav-links { display: none; }
+            .nav-social-top { display: none; }
+            .nav-cta { display: none; }
+            .mobile-menu-btn { display: block; }
+            .mobile-menu { display: block; }
+            .nav-container { padding: 20px 30px !important; }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="#" class="logo">
+                <img src="https://i.ibb.co/jvgZmVDq/logo.png" alt="Y.S. AUTOS Logo" class="logo-img">
+                <div class="logo-text">
+                    <div class="zh">耀笙國際汽車</div>
+                    <div class="en">Y.S. AUTOS</div>
+                    <div class="since">SINCE 2020</div>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#guarantee">安心保證</a></li>
+                <li><a href="#after-sales">一條龍服務</a></li>
+                <li><a href="#testimonials">成交見證</a></li>
+                <li><a href="#owner">認識我們</a></li>
+                <li><a href="#philosophy">經營理念</a></li>
+                <li><a href="import-cars.html">外匯車介紹</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="nav-social-top">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+            </div>
+            <a href="inventory.html" class="nav-cta">在庫車輛</a>
+            <a href="#contact" class="nav-cta">立即諮詢</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- 手機版選單 -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()">
+        <i class="fas fa-times"></i>
+    </button>
+    <ul class="mobile-menu-links">
+        <li><a href="#guarantee" onclick="closeMobileMenu()">安心保證</a></li>
+        <li><a href="#after-sales" onclick="closeMobileMenu()">一條龍服務</a></li>
+        <li><a href="#testimonials" onclick="closeMobileMenu()">成交見證</a></li>
+        <li><a href="#owner" onclick="closeMobileMenu()">認識我們</a></li>
+        <li><a href="#philosophy" onclick="closeMobileMenu()">經營理念</a></li>
+        <li><a href="import-cars.html" onclick="closeMobileMenu()">外匯車介紹</a></li>
+        <li><a href="inventory.html" onclick="closeMobileMenu()">在庫車輛</a></li>
+        <li><a href="#reviews" onclick="closeMobileMenu()">顧客推薦</a></li>
+        <li><a href="#contact" onclick="closeMobileMenu()">聯絡我們</a></li>
+    </ul>
+</div>
+
+<section class="hero">
+    <div class="bg-carousel-container" id="bgWall"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">用心經營<br>值得信賴</h1>
+        <p class="hero-description">
+            汽車修護乙級技術士 × 國立大學車輛工程系 × 家族保養廠50年經驗<br>
+            每一台車都經過專業把關，每一筆交易都完全透明，讓您安心購車。
+        </p>
+        <a href="#guarantee" class="cta-primary">了解更多</a>
+        <a href="#contact" class="cta-secondary">立即來電</a>
+    </div>
+</section>
+
+<section id="guarantee" class="quality-control reveal">
+    <div style="text-align: center; margin-bottom: 80px;">
+        <span class="section-tag">Quality Control</span>
+        <h2 class="section-title">安心保證</h2>
+        <p class="section-description">
+	流程層層把關<br>
+            從購車前的嚴格檢驗到交車前的完美整備，每個細節都不馬虎
+        </p>
+    </div>
+    
+    <div class="qc-container">
+        <!-- 購車前保障 -->
+        <div class="qc-column">
+            <h3>🛡️ 購車前保障</h3>
+            <div class="qc-items">
+                <div class="qc-item reveal">
+                    <span class="qc-item-icon">🔧</span>
+                    <div class="qc-item-content">
+                        <h4>鈑件檢查</h4>
+                        <p>檢查鈑件是否有更換或修復痕跡，確認車體結構完整性</p>
+                    </div>
+                </div>
+                <div class="qc-item reveal">
+                    <span class="qc-item-icon">🚗</span>
+                    <div class="qc-item-content">
+                        <h4>事故泡水檢測</h4>
+                        <p>嚴格檢查車輛是否曾發生重大事故或泡水，確保車況清白　</p>
+                    </div>
+                </div>
+                <div class="qc-item reveal">
+                    <span class="qc-item-icon">📋</span>
+                    <div class="qc-item-content">
+                        <h4>第三方認證</h4>
+                        <p>汽車公會專業認證，提供客觀車況報告，資訊完全透明　　</p>
+                    </div>
+                </div>
+                <div class="qc-item reveal">
+                    <span class="qc-item-icon">👨‍🔧</span>
+                    <div class="qc-item-content">
+                        <h4>專業技師檢查</h4>
+                        <p>全車系統檢測，包含引擎、變速箱、底盤、煞車等</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分隔線 -->
+        <div class="qc-divider"></div>
+
+        <!-- 交車前整備 -->
+        <div class="qc-column">
+            <h3>✨ 交車前整備</h3>
+            <div class="qc-items">
+                <div class="qc-item reveal">
+                    <span class="qc-item-icon">💎</span>
+                    <div class="qc-item-content">
+                        <h4>整車大美容</h4>
+                        <p>外觀漆面拋光、內裝清潔及皮革保養、引擎室清洗</p>
+                    </div>
+                </div>
+                <div class="qc-item reveal">
+                    <span class="qc-item-icon">🔩</span>
+                    <div class="qc-item-content">
+                        <h4>交車前保養</h4>
+                        <p>機油更換、機油濾心更換，專業技師檢查車況</p>
+                    </div>
+                </div>
+                <div class="qc-item reveal">
+                    <span class="qc-item-icon">🎨</span>
+                    <div class="qc-item-content">
+                        <h4>烤漆整理</h4>
+                        <p>漆面只要顧客不滿意就重新烤漆，保證顧客滿意</p>
+                    </div>
+                </div>
+                <div class="qc-item reveal">
+                    <span class="qc-item-icon">⛽</span>
+                    <div class="qc-item-content">
+                        <h4>滿油交車</h4>
+                        <p>每一台車交車前都會把油加滿，讓每一位顧客滿載而歸</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="after-sales" class="after-sales reveal">
+    <div style="text-align: center; margin-bottom: 80px;">
+        <span class="section-tag">One-Stop Service</span>
+        <h2 class="section-title">一條龍服務</h2>
+        <p class="section-description">
+            買車只是開始，完整的一條龍服務才是我們的承諾
+        </p>
+    </div>
+    
+    <div class="after-sales-grid">
+        <div class="after-sales-card reveal">
+            <span class="after-sales-icon">🔧</span>
+            <h4>車輛維護</h4>
+            <p>本店自設大型保養廠，不管是保養、維修、更換輪胎、四輪定位等等，我們皆有一條龍服務</p>
+        </div>
+        <div class="after-sales-card reveal">
+            <span class="after-sales-icon">⚙️</span>
+            <h4>車輛改裝</h4>
+            <p>配合專業改裝廠，不管是升級配備、外觀改裝、音響改裝，甚至動力提升，皆可滿足顧客需求</p>
+        </div>
+        <div class="after-sales-card reveal">
+            <span class="after-sales-icon">🛠️</span>
+            <h4>車輛周邊</h4>
+            <p>隔熱紙、行車紀錄器、避光墊等等，只要和車子相關的配件都可以找我們，連洗車都可以</p>
+        </div>
+        <div class="after-sales-card reveal">
+            <span class="after-sales-icon">🛡️</span>
+            <h4>理賠服務</h4>
+            <p>本公司為保險公司之簽約車商，顧客發生任何事故，我們會馬上聯絡保險公司，安排道路救援，後續維修理賠完全處理</p>
+        </div>
+        <div class="after-sales-card reveal">
+            <span class="after-sales-icon">🔍</span>
+            <h4>尋車服務</h4>
+            <p>想買什麼車，告訴我，我馬上找給你</p>
+        </div>
+        <div class="after-sales-card reveal">
+            <span class="after-sales-icon">💬</span>
+            <h4>24小時諮詢服務</h4>
+            <p>不管遇到什麼汽車問題，像是故障燈、異音、冷氣不冷，或功能不懂怎麼用，都可以隨時撥電話給我，馬上排解所有疑難雜症</p>
+        </div>
+        <div class="after-sales-card reveal">
+            <span class="after-sales-icon">💰</span>
+            <h4>車輛貸款</h4>
+            <p>我們配合各大銀行及融資，幫顧客評估貸款條件，始終秉持著我們的原則，就是幫顧客省錢，所以只幫顧客做最低利率，從不從中賺取傭金</p>
+        </div>
+        <div class="after-sales-card reveal">
+            <span class="after-sales-icon">🚗</span>
+            <h4>高價收購中古車</h4>
+            <p>憑藉專業判斷與50年保養廠資源，能給出市場上最合理的收購價格。誠實評估，絕不低估您的愛車價值</p>
+        </div>
+        <div class="after-sales-card reveal">
+            <span class="after-sales-icon">🤝</span>
+            <h4>完美的寄售服務</h4>
+            <p>我們獨創的完美換車服務，讓您換車比不換車還省，詳情請看創新收購方案</p>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="services-special reveal">
+    <div style="text-align: center; margin-bottom: 80px;">
+        <span class="section-tag">Our Services</span>
+        <h2 class="section-title">創新收購方案</h2>
+        <p class="section-description">
+            不只是賣車，我們提供的是一個全新的合作模式
+        </p>
+    </div>
+    
+    <div style="max-width: 1400px; margin: 0 auto;">
+        <div class="services-grid" style="margin-bottom: 40px;">
+            <div class="service-card reveal">
+                <div class="icon">🚗</div>
+                <h4>高價收購中古車</h4>
+                <p>憑藉專業判斷與50年保養廠資源，能給出市場上最合理的收購價格。誠實評估，絕不低估您的愛車價值。</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="icon">🔄</div>
+                <h4>舊車換新車</h4>
+                <p>您的舊車可以直接折抵新車款。提供最透明的換車方案，讓您清楚知道每一筆交易的細節。</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="icon">📋</div>
+                <h4>超低服務費寄賣</h4>
+                <p>想自己賣車但缺少管道？提供最低服務費的寄賣服務。若您跟我們購買新車，寄賣服務費還可以減免！</p>
+            </div>
+        </div>
+
+        <div class="service-card-large reveal">
+            <span class="service-badge">業界首創</span>
+            <h3>🤝 共同賣車方案</h3>
+            <p>
+                這是最自豪的創新服務！如果您有車想賣，不只是收購，還可以「一起賣」。
+            </p>
+            <div class="service-highlight">
+                <strong>方案說明：</strong><br>
+                假設收購價是140萬，先支付您70萬，讓我們賣一個月。賣出後的利潤直接跟您平分！<br>
+                如果一個月內沒賣出，一樣以140萬向您收購。<br><br>
+                <strong>為什麼這麼做？</strong><br>
+                因為相信透明與互信。從單純的買賣關係，變成互相合作的夥伴關係。一起承擔風險，也一起分享利潤。這才是想要的商業模式。
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 60px; padding: 50px; background: rgba(212,169,72,0.05); border: 1px solid rgba(212,169,72,0.2);">
+            <h3 style="color: var(--gold); margin-bottom: 20px; font-size: 28px;">我們的保證</h3>
+            <p style="font-size: 18px; line-height: 2; color: var(--text-light-gray); max-width: 900px; margin: 0 auto;">
+                有專業審視車子，有專業的把關，<br>
+                <strong style="color: var(--gold);">保證每個客人都可以買到最透明、車況最好的車子。</strong><br>
+                這是承諾，也是專業。
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="testimonials" class="testimonials-section reveal">
+    <div style="text-align: center; margin-bottom: 80px;">
+        <span class="section-tag">Success Stories</span>
+        <h2 class="section-title">成交見證</h2>
+        <p class="section-description">每一次交車，都是一份信任的開始</p>
+    </div>
+    <div class="testimonial-carousel">
+        <button class="carousel-nav prev" onclick="moveTestimonialCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+        <div class="testimonial-track" id="testimonialTrack">
+            <div class="testimonial-item"><img src="https://i.ibb.co/jP9c2RXJ/IMG-1114.jpg" alt="成交見證 1"></div>
+            <div class="testimonial-item"><img src="https://i.ibb.co/9kB4YWtQ/IMG-1785.jpg" alt="成交見證 2"></div>
+            <div class="testimonial-item"><img src="https://i.ibb.co/bgt7PgbF/IMG-2397.jpg" alt="成交見證 3"></div>
+            <div class="testimonial-item"><img src="https://i.ibb.co/WNmBCf8m/IMG-2409.jpg" alt="成交見證 4"></div>
+        </div>
+        <button class="carousel-nav next" onclick="moveTestimonialCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+        <button id="testimonialAutoPlayBtn" class="auto-play-btn" onclick="toggleTestimonialAutoPlay()">
+            <i class="fas fa-pause"></i> <span id="testimonialAutoPlayText">暫停自動輪播</span>
+        </button>
+    </div>
+</section>
+
+<section id="reviews" class="reviews-section reveal">
+    <div class="reviews-header">
+        <span class="section-tag">Customer Reviews</span>
+        <h2 class="section-title">顧客推薦</h2>
+        <p class="section-description">客人的滿意，是我們最大的成就</p>
+        <div class="google-rating">
+            <i class="fab fa-google" style="font-size: 32px; color: #4285F4;"></i>
+            <div>
+                <div class="stars">★★★★★</div>
+                <div class="score">5.0</div>
+                <div class="text">Google評分</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="reviews-grid">
+        <div class="review-card reveal">
+            <div class="review-header">
+                <div class="review-avatar">王</div>
+                <div class="review-info">
+                    <h4>王先生</h4>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+            </div>
+            <div class="review-content">
+                老闆非常專業又親切，完全不會有壓迫感。車況講解得很清楚，該注意的地方都會提醒，買車後有任何問題都能直接問，真的把客人當朋友在對待！
+            </div>
+        </div>
+        
+        <div class="review-card reveal">
+            <div class="review-header">
+                <div class="review-avatar">陳</div>
+                <div class="review-info">
+                    <h4>陳小姐</h4>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+            </div>
+            <div class="review-content">
+                超佛系賣車！完全沒有強迫推銷，讓我慢慢看、慢慢選。車子交車前都幫我保養好了，接手後完全沒煩惱。推薦給想買二手車的朋友！
+            </div>
+        </div>
+        
+        <div class="review-card reveal">
+            <div class="review-header">
+                <div class="review-avatar">林</div>
+                <div class="review-info">
+                    <h4>林先生</h4>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+            </div>
+            <div class="review-content">
+                價格透明，所有成本都願意讓我看，這在其他車行真的很少見。老闆的專業背景讓人很放心，買車後到現在都還會關心車況，真的很感謝！
+            </div>
+        </div>
+        
+        <div class="review-card reveal">
+            <div class="review-header">
+                <div class="review-avatar">張</div>
+                <div class="review-info">
+                    <h4>張太太</h4>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+            </div>
+            <div class="review-content">
+                老闆很年輕但非常專業，對車子的了解程度讓我很驚訝。買車過程完全沒有任何隱瞞，車況報告都給我看，讓我買得很安心。
+            </div>
+        </div>
+        
+        <div class="review-card reveal">
+            <div class="review-header">
+                <div class="review-avatar">黃</div>
+                <div class="review-info">
+                    <h4>黃先生</h4>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+            </div>
+            <div class="review-content">
+                本來很擔心買二手車會被騙，但老闆的誠實讓我很感動。貸款也幫我比價到最低利率，完全沒賺我傭金。真心推薦！
+            </div>
+        </div>
+        
+        <div class="review-card reveal">
+            <div class="review-header">
+                <div class="review-avatar">李</div>
+                <div class="review-info">
+                    <h4>李小姐</h4>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+            </div>
+            <div class="review-content">
+                CP值超高！老闆挑的車真的都很棒，而且價格很實在。買車後遇到任何問題都能問，服務超好，已經介紹好幾個朋友來了！
+            </div>
+        </div>
+    </div>
+    
+    <div class="view-all-reviews">
+        <a href="https://maps.app.goo.gl/adZzk5gSL8okM9ScA" target="_blank">
+            查看更多Google評論 <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+        </a>
+    </div>
+</section>
+
+<section id="owner" class="owner-section reveal">
+    <div style="text-align: center; margin-bottom: 80px;">
+        <span class="section-tag">Our Team</span>
+        <h2 class="section-title">認識我們</h2>
+        <p class="section-description">
+            兩個屏科大車輛系畢業的好兄弟，用專業和誠懇經營每一天
+        </p>
+    </div>
+    
+    <div class="owners-wrapper">
+        <!-- 第一位經營者 -->
+        <div class="owner-container">
+            <div class="owner-image">
+                <img src="https://i.ibb.co/Gv8TjvHY/155-C3806-02-D6-49-A2-84-E1-CB550272-B221.png" alt="經營者">
+                <div class="credential-badge">
+                    <span class="big" style="font-size: 16px;">佛系老闆</span>
+                </div>
+            </div>
+            <div class="owner-content">
+                <h3>專業背景，阿公掛保證</h3>
+                <p>
+                    我是高雄高工汽車科畢業，屏東科技大學車輛工程系畢業，擁有10年汽車維修經歷、6年汽車銷售經驗。我有多讚？問我阿公就知道！
+                </p>
+                <p>
+                    2020年，我24歲就和大學同學一起出來創業開這間店。我們是超佛系賣車，從不逼客人買車，也不強迫下訂金，想買就買、不想買就不要買。我們也不請客人留評論，每個評論都是客人自發幫我們留的。
+                </p>
+                <p>
+                    秉持著<strong style="color: var(--gold);">「我們的好，只有運氣好的人才能享受到」</strong>的理念，經營6年已經售出超過200台進口車，至今依然0負評。因為我每個顧客都是我的好朋友，而且我很龜毛，所以我賣的車子絕對都很讚。
+                </p>
+                <ul class="credential-list">
+                    <li><i class="fas fa-graduation-cap"></i> <span>高雄高工汽車科 / 屏東科技大學車輛工程系</span></li>
+                    <li><i class="fas fa-tools"></i> <span>10年汽車維修經歷</span></li>
+                    <li><i class="fas fa-car"></i> <span>6年汽車銷售經驗</span></li>
+                    <li><i class="fas fa-trophy"></i> <span>售出超過200台進口車・0負評</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 第二位經營者 -->
+        <div class="owner-container">
+            <div class="owner-image">
+                <img src="https://i.ibb.co/k2knDf2M/image.png" alt="第二位經營者">
+                <div class="mascot-badge">
+                    🎉 吉祥物
+                </div>
+            </div>
+            <div class="owner-content">
+                <h3>創業夥伴</h3>
+                <p>
+                    台南高工汽車科畢業，屏東科技大學車輛工程系畢業。
+                </p>
+                <p style="font-size: 18px; color: var(--text-light-gray); line-height: 2;">
+                    老實、誠懇、胖、吉祥物。<br>
+                    <strong style="color: var(--gold);">只要看到他，就知道我們不會騙人。</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="philosophy" class="reveal" style="background: var(--primary-black);">
+    <div style="text-align: center; margin-bottom: 80px;">
+        <span class="section-tag">Our Philosophy</span>
+        <h2 class="section-title">經營理念</h2>
+        <p class="section-description">
+            不只是賣車，更是交朋友。用專業和透明，改變二手車市場。
+        </p>
+    </div>
+    <div class="philosophy-grid">
+        <div class="philosophy-card reveal">
+            <span class="philosophy-icon">🎯</span>
+            <h3>極致CP值</h3>
+            <p>每一台車都經過專業眼光精挑細選，確保客人花的每一分錢都值得。絕不賣連自己都不想買的車。</p>
+        </div>
+        <div class="philosophy-card reveal">
+            <span class="philosophy-icon">💎</span>
+            <h3>透明誠實</h3>
+            <p>所有車況、成本、利潤完全公開透明。利潤只抓6-7%，用誠實證明二手車市場也可以正派經營。</p>
+        </div>
+        <div class="philosophy-card reveal">
+            <span class="philosophy-icon">🤝</span>
+            <h3>客戶變朋友</h3>
+            <p>不把客人當客人，而是當朋友。能來這裡買車的人都是幸運的，因為遇到的是真心想幫忙的人。</p>
+        </div>
+        <div class="philosophy-card reveal">
+            <span class="philosophy-icon">🔍</span>
+            <h3>專業把關</h3>
+            <p>每一台車都經過專業檢查，有任何問題絕不隱瞞。對每一台車都非常有信心，因為都是嚴格篩選的精品。</p>
+        </div>
+        <div class="philosophy-card reveal">
+            <span class="philosophy-icon">💰</span>
+            <h3>零貸款傭金</h3>
+            <p>貸款完全不賺傭金！會比較多家銀行，幫客人找到最低利率。這是承諾，也是對「誠實」的實踐。</p>
+        </div>
+        <div class="philosophy-card reveal">
+            <span class="philosophy-icon">📊</span>
+            <h3>成本公開</h3>
+            <p>因為賺得不多，所以敢把車子的成本直接秀給客人看。這在業界很少見，但這就是改變市場的方式。</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="contact" class="reveal" style="background: var(--primary-black);">
+    <div style="text-align: center; margin-bottom: 80px;">
+        <span class="section-tag">Contact Us</span>
+        <h2 class="section-title">聯絡我們</h2>
+        <p class="section-description">歡迎來電或來店，很樂意和您聊聊購車需求</p>
+    </div>
+    <div class="contact-grid">
+        <a href="tel:077352855" class="contact-item">
+            <span style="font-size:30px; display:block; margin-bottom:20px;">📞</span>
+            <h4>電話諮詢</h4>
+            <p>07-7352855<br>0979-226-338</p>
+        </a>
+        <a href="https://maps.google.com/?q=高雄市仁武區鳳仁路3-36號" target="_blank" class="contact-item">
+            <span style="font-size:30px; display:block; margin-bottom:20px;">📍</span>
+            <h4>展示中心</h4>
+            <p>高雄市仁武區鳳仁路 3-36 號</p>
+            <span style="color:var(--gold); font-size:12px; margin-top:10px; display:block;">點擊導航</span>
+        </a>
+        <div class="contact-item">
+            <span style="font-size:30px; display:block; margin-bottom:20px;">✉</span>
+            <h4>電子郵件</h4>
+            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="057c646a766d606b622b6c6b66456268646c692b666a68">[email&#160;protected]</a></p>
+        </div>
+        <div class="contact-item">
+            <span style="font-size:30px; display:block; margin-bottom:20px;">🕐</span>
+            <h4>營業時間</h4>
+            <p>週二至週日 10:30 - 19:00<br><span style="color:var(--gold);">週一公休</span></p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div>
+            <div class="logo-text" style="margin-bottom:25px;">
+                <div class="zh" style="color:#fff; font-size:20px;">耀笙國際汽車</div>
+                <div class="en" style="color:var(--gold); font-size:11px;">Y.S. AUTOS</div>
+                <div class="since" style="color:var(--text-gray); font-size:9px; letter-spacing:1px; margin-top:2px;">SINCE 2020</div>
+            </div>
+            <p style="color:var(--text-gray); font-size:14px; line-height:1.8;">
+                專業透明的中古車專家，用誠實改變二手車市場。每一台車都經過專業把關，每一筆交易都完全透明。
+            </p>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank" class="social-btn"><i class="fab fa-line"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4 style="color:#fff; margin-bottom:25px;">快速連結</h4>
+            <ul>
+                <li><a href="#owner">認識我們</a></li>
+                <li><a href="#philosophy">經營理念</a></li>
+                <li><a href="#services">服務項目</a></li>
+                <li><a href="#testimonials">成交見證</a></li>
+                <li><a href="#reviews">顧客推薦</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4 style="color:#fff; margin-bottom:25px;">服務項目</h4>
+            <ul>
+                <li><a href="#">CPO原廠認證車</a></li>
+                <li><a href="#">美規外匯車</a></li>
+                <li><a href="#">代辦外匯車</a></li>
+                <li><a href="#">中古車買賣</a></li>
+                <li><a href="#">代客尋車</a></li>
+                <li><a href="#">汽車貸款</a></li>
+                <li><a href="#">車輛保險</a></li>
+                <li><a href="#">愛車寄售</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4 style="color:#fff; margin-bottom:25px;">聯絡資訊</h4>
+            <p style="color:var(--text-gray); font-size:14px;">
+                電話: 07-7352855<br>
+                手機: 0979-226-338<br>
+                地址: 高雄市仁武區鳳仁路 3-36 號<br>
+                信箱: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="86ffe7e9f5eee3e8e1a8efe8e5c6e1ebe7efeaa8e5e9eb">[email&#160;protected]</a>
+            </p>
+        </div>
+    </div>
+    <div style="text-align:center; padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); color:#666; font-size:12px; margin-top:50px;">
+        © 2026 Y.S. AUTOS 耀笙國際汽車. All Rights Reserved.
+    </div>
+</footer>
+
+<a href="tel:077352855" class="floating-cta">立即來電預約</a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // 流沙背景牆
+    const bgWall = document.getElementById('bgWall');
+    const photoUrls = [
+'https://i.ibb.co/YFF5gFY8/IMG-3854.jpg',
+'https://i.ibb.co/0pWH6XKy/IMG-3821.jpg',
+'https://i.ibb.co/b5592LcX/IMG-3674.jpg',
+'https://i.ibb.co/tpSM3s9G/IMG-3663.jpg',
+'https://i.ibb.co/C344fDZD/IMG-3174.jpg',
+'https://i.ibb.co/NdKJxrgS/IMG-2786.jpg',
+'https://i.ibb.co/kP70hQq/IMG-2767.jpg',
+'https://i.ibb.co/0pMcpJmF/IMG-2711.jpg',
+'https://i.ibb.co/xqpt9j5p/IMG-2704.jpg',
+'https://i.ibb.co/S7KdyXKf/IMG-2641.jpg',
+'https://i.ibb.co/FqcZ3g4y/IMG-2422.jpg',
+'https://i.ibb.co/WNmBCf8m/IMG-2409.jpg',
+'https://i.ibb.co/bgt7PgbF/IMG-2397.jpg',
+'https://i.ibb.co/T6yxBXL/IMG-1909.jpg',
+'https://i.ibb.co/zTNKwKZX/IMG-1875.jpg',
+'https://i.ibb.co/9kB4YWtQ/IMG-1785.jpg',
+'https://i.ibb.co/N29M93CJ/IMG-1721.jpg',
+'https://i.ibb.co/Cp80dWtD/IMG-1583.jpg',
+'https://i.ibb.co/PvCX4btb/IMG-1576.jpg',
+'https://i.ibb.co/B87D1Gd/IMG-1475.jpg',
+'https://i.ibb.co/236CWNLs/IMG-1427.jpg',
+'https://i.ibb.co/gLr4tJvq/IMG-1399.jpg',
+'https://i.ibb.co/vxvgb50b/IMG-1192.jpg',
+'https://i.ibb.co/jP9c2RXJ/IMG-1114.jpg',
+'https://i.ibb.co/k6cj5MyV/IMG-3908.jpg',
+    ];
+    
+    function createRow(direction) {
+        const row = document.createElement('div');
+        row.className = `marquee-row ${direction}`;
+        const list = [...photoUrls, ...photoUrls];
+        list.forEach(url => {
+            const img = document.createElement('img');
+            img.src = url;
+            img.className = 'bg-photo-item';
+            row.appendChild(img);
+        });
+        return row;
+    }
+    
+    bgWall.appendChild(createRow('left'));
+    bgWall.appendChild(createRow('right'));
+
+    // 導航列滾動效果
+    function handleNavScroll() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('nav-scrolled');
+        } else {
+            navbar.classList.remove('nav-scrolled');
+        }
+    }
+
+    // Reveal 動畫
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            if (elementTop < windowHeight - 50) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+
+    // 車輛輪播
+    let currentIndex = 0;
+    let autoPlayInterval;
+    let isAutoPlaying = true;
+
+    function initCarousel() {
+        const track = document.getElementById('carouselTrack');
+        if (!track) return;
+        startAutoPlay();
+    }
+
+    function moveCarousel(direction) {
+        const track = document.getElementById('carouselTrack');
+        const items = track.children;
+        const itemWidth = items[0].offsetWidth + 20;
+        currentIndex += direction;
+        if (currentIndex < 0) currentIndex = items.length - 3;
+        if (currentIndex > items.length - 3) currentIndex = 0;
+        track.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+    }
+
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            moveCarousel(1);
+        }, 3000);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+
+    function toggleAutoPlay() {
+        const btn = document.getElementById('autoPlayBtn');
+        const icon = btn.querySelector('i');
+        const text = document.getElementById('autoPlayText');
+        isAutoPlaying = !isAutoPlaying;
+        if (isAutoPlaying) {
+            startAutoPlay();
+            icon.className = 'fas fa-pause';
+            text.textContent = '暫停自動輪播';
+        } else {
+            stopAutoPlay();
+            icon.className = 'fas fa-play';
+            text.textContent = '開始自動輪播';
+        }
+    }
+
+    // 成交見證輪播
+    let testimonialCurrentIndex = 0;
+    let testimonialAutoPlayInterval;
+    let isTestimonialAutoPlaying = true;
+
+    function initTestimonialCarousel() {
+        const track = document.getElementById('testimonialTrack');
+        if (!track) return;
+        startTestimonialAutoPlay();
+    }
+
+    function moveTestimonialCarousel(direction) {
+        const track = document.getElementById('testimonialTrack');
+        const items = track.children;
+        const itemWidth = items[0].offsetWidth + 20;
+        testimonialCurrentIndex += direction;
+        if (testimonialCurrentIndex < 0) testimonialCurrentIndex = items.length - 3;
+        if (testimonialCurrentIndex > items.length - 3) testimonialCurrentIndex = 0;
+        track.style.transform = `translateX(${-testimonialCurrentIndex * itemWidth}px)`;
+    }
+
+    function startTestimonialAutoPlay() {
+        testimonialAutoPlayInterval = setInterval(() => {
+            moveTestimonialCarousel(1);
+        }, 3000);
+    }
+
+    function stopTestimonialAutoPlay() {
+        clearInterval(testimonialAutoPlayInterval);
+    }
+
+    function toggleTestimonialAutoPlay() {
+        const btn = document.getElementById('testimonialAutoPlayBtn');
+        const icon = btn.querySelector('i');
+        const text = document.getElementById('testimonialAutoPlayText');
+        isTestimonialAutoPlaying = !isTestimonialAutoPlaying;
+        if (isTestimonialAutoPlaying) {
+            startTestimonialAutoPlay();
+            icon.className = 'fas fa-pause';
+            text.textContent = '暫停自動輪播';
+        } else {
+            stopTestimonialAutoPlay();
+            icon.className = 'fas fa-play';
+            text.textContent = '開始自動輪播';
+        }
+    }
+
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileMenuOverlay');
+        menu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    function closeMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileMenuOverlay');
+        menu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    window.addEventListener('scroll', function() {
+        handleNavScroll();
+        reveal();
+    });
+
+    window.addEventListener('load', function() {
+        initCarousel();
+        initTestimonialCarousel();
+        reveal();
+    });
+</script>
+</body>
+</html>
