@@ -309,7 +309,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.2); /* 透明度從 0.4 改為 0.6 */
+            background: rgba(0, 0, 0, 0.4); /* 透明度從 0.4 改為 0.6 */
             z-index: 2;
         }
 
@@ -1244,7 +1244,7 @@
         <p class="hero-description">
             <span class="highlight-main">買車，就該找專業</span><br>
             <span class="highlight-gold">屏科大車輛工程系</span> x <span class="highlight-gold">汽車修護乙級證照</span> × <span class="highlight-gold">經營40年保養廠第三代<br>
-            </span>每一台車都親自把關，車況完全透明，您只管安心購車
+            </span>售出超過200台進口車　0負評
         </p>
         <p class="sr-only">高雄外匯車、仁武外匯車、CPO原廠認證車、進口車買賣、高雄中古車收購、二手車收購、仁武鳳仁路3-36號、耀笙國際汽車 Y.S. AUTOS</p>
         <a href="#guarantee" class="cta-primary">了解更多</a>
@@ -1829,6 +1829,16 @@
     // 流沙背景牆
     const bgWall = document.getElementById('bgWall');
     const photoUrls = [
+'image/compress/1247.webp',
+'image/compress/4085.webp',
+'image/compress/4393.webp',
+'image/compress/5647.webp',
+'image/compress/6060.webp',
+'image/compress/6293.webp',
+'image/compress/6320.webp',
+'image/compress/8223.webp',
+'image/compress/8945.webp',
+'image/compress/63201.webp',
 'image/compress/0E990A8A-610E-4206-ADBC-EA89586EB682.webp',
 'image/compress/0F42780B-37E6-460B-93AA-306A67AE0EC3.webp',
 'image/compress/4A3EC415-2174-409F-ABDC-DBF5549079AB.webp',
@@ -1852,76 +1862,21 @@
 'image/compress/856E8BB7-353B-4E2D-8BEA-84119906D413.webp',
 'image/compress/944AE69B-723D-4111-B9E2-650E305B1ABA.webp',
 'image/compress/953A739E-0AFD-49F9-8C21-6CF118495CE0.webp',
-'image/compress/1247.webp',
 'image/compress/1491.webp',
 'image/compress/01972A3C-ACD4-4809-93DE-75D316FEAC80.webp',
 'image/compress/2481EF1C-2CEE-4D48-8F3C-0ABA02755E60.webp',
-'image/compress/4085.webp',
-'image/compress/4393.webp',
-'image/compress/5647.webp',
-'image/compress/6060.webp',
-'image/compress/6293.webp',
-'image/compress/6320.webp',
 'image/compress/7602AAAF-59C4-470E-856C-5E7E56DD3400.webp',
 'image/compress/8065.webp',
-'image/compress/8223.webp',
 'image/compress/8432B507-E534-4606-A6BB-B06F1FCC57C655.webp',
 'image/compress/8745F88C-62DB-4E85-97DD-0B84B9F505CB.webp',
-'image/compress/8945.webp',
 'image/compress/23687D23-FF63-4735-807B-BE49ECCAAC44.webp',
 'image/compress/27831F2A-34BB-461F-A866-89A0F8943345.webp',
-'image/compress/63201.webp',
 'image/compress/2919380E-967A-4CE7-9DEE-9B6D13C9821D.webp',
 'image/compress/11111111.webp',
 'image/compress/64619039-8A50-4BF1-BBEE-7C78480EFF37.webp',
 'image/compress/165849463_797807610852464_6408012920781809324_n.webp',
 'image/compress/173969791_809637686336123_8605031118397524654_n.webp',
 'image/compress/192688507_839588333341058_2996060440068174326_n.webp',
-'image/compress/194198090_840167539949804_7817325116808103884_n.webp',
-'image/compress/195727230_839110920055466_7221841684824920802_n.webp',
-'image/compress/201288348_849371499029408_6211810420363684557_n.webp',
-'image/compress/A1FD678C-A28C-4247-A07E-497F57377BAD.webp',
-'image/compress/B54B04C7-2C8D-4F79-8AAD-8275B8F2163F55.webp',
-'image/compress/B808117B-17D6-4620-903B-BD41172D5CDE.webp',
-'image/compress/BBC533A3-EEDA-49A1-A3FD-18643E1F828B.webp',
-'image/compress/BD09ADEA-6C43-4A7E-B8F1-763352E5C3B5.webp',
-'image/compress/DBFDF1A8-BFAC-4973-9EF4-F20A9CAA2863.webp',
-'image/compress/DF7D0595-0F27-49A9-8561-323C143A93AA.webp',
-'image/compress/E1A54573-E92A-4FEA-B24A-A9D47B7B1996.webp',
-'image/compress/E70AA06F-ED40-4E59-B072-CC1B9EDE6C4E.webp',
-'image/compress/E07406A1-E55C-4B6D-8BB8-958D9EB809EC.webp',
-'image/compress/EE56E22A-CD28-4D8F-9B00-284FD758031D.webp',
-'image/compress/EF998BEF-6459-4FD2-82EC-C964AD9BD8E6.webp',
-'image/compress/ES200.webp',
-'image/compress/F52D7C15-8033-413F-B5C4-E0A26C68CCD7.webp',
-'image/compress/F53F216C-AD29-4146-A052-B57500149C11.webp',
-'image/compress/F2181BF7-3720-4A2D-A71C-06326E863038.webp',
-'image/compress/GLC.webp',
-'image/compress/S__78913574.webp',
-'image/compress/S__79347768.webp',
-'image/compress/S__79962117.webp',
-'image/compress/S__79962119.webp',
-'image/compress/S__80764939.webp',
-'image/compress/S__80814085.webp',
-'image/compress/S__84181041.webp',
-'image/compress/S__85286940.webp',
-'image/compress/S__85286942.webp',
-'image/compress/S__88080481.webp',
-'image/compress/S__88080483.webp',
-'image/compress/S__89448451.webp',
-'image/compress/S__91488262.webp',
-'image/compress/S__92102679.webp',
-'image/compress/S__92102681.webp',
-'image/compress/S__95273149.webp',
-'image/compress/S__95273151.webp',
-'image/compress/S__96829443.webp',
-'image/compress/S__96829445.webp',
-'image/compress/S__96829446.webp',
-'image/compress/S__105365860_0.webp',
-'image/compress/S__105365862_0.webp',
-'image/compress/S__105365863_0.webp',
-'image/compress/S__105365864_0.webp',
-'image/compress/安迪C3001.webp',
     ];
     
     function createRow(direction) {
