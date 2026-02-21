@@ -1098,6 +1098,7 @@
         padding-top: 110px;
         padding-bottom: 60px;
      }
+	
 	.bg-carousel-container {
         height: 90vh !important; /* 將高度改為螢幕的 60%，可根據需求調整數值 */
     }
@@ -1149,6 +1150,32 @@
             .nav-cta { display: none; }
             .mobile-menu-btn { display: block; }
             .mobile-menu { display: block; }
+	/* 讓手機版社群連結在電腦版時隱藏 */
+.mobile-nav-social {
+    display: none;
+}
+
+@media (max-width: 968px) {
+    /* 1. 在手機版顯示社群連結 */
+    .mobile-nav-social {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* 圖示之間的間距 */
+        margin-right: 10px; /* 與三條線按鈕的距離 */
+    }
+
+    /* 2. 設定手機版社群圖示的大小與顏色 */
+    .mobile-nav-social a {
+        color: var(--gold);
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    /* 3. 調整原本右側區塊的排列方式 */
+    .nav-right {
+        gap: 5px; /* 縮小物件間的總間距，避免擠壓 */
+    }
+}
             .nav-container { padding: 20px 30px !important; }
         }
     
@@ -1219,18 +1246,26 @@
                 <li><a href="import-cars.html">外匯車介紹</a></li>
             </ul>
         </div>
-        <div class="nav-right">
-            <div class="nav-social-top">
-                <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
-            </div>
-            <a href="inventory.html" class="nav-cta">在庫車輛</a>
-            <a href="#contact" class="nav-cta">立即諮詢</a>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
+<div class="nav-right">
+    <div class="nav-social-top">
+        <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+    </div>
+
+    <div class="mobile-nav-social">
+        <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+    </div>
+
+    <a href="inventory.html" class="nav-cta">在庫車輛</a>
+    <a href="#contact" class="nav-cta">立即諮詢</a>
+    
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+</div>
     </div>
 </nav>
 
