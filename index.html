@@ -1898,22 +1898,30 @@
 'image/compress/192688507_839588333341058_2996060440068174326_n.webp',
     ];
     
-    function createRow(direction) {
-        const row = document.createElement('div');
-        row.className = `marquee-row ${direction}`;
-        const list = [...photoUrls, ...photoUrls];
-        list.forEach(url => {
-            const img = document.createElement('img');
-            img.src = url;
-            img.className = 'bg-photo-item';
-            img.alt = '高雄外匯車／進口車展示照片｜耀笙國際汽車';
-            img.loading = 'lazy';
-            img.decoding = 'async';
-            row.appendChild(img);
-        });
-        return row;
+function createRow(direction) {
+    const row = document.createElement('div');
+    row.className = `marquee-row ${direction}`;
+    
+    // 取得原始照片清單
+    let list = [...photoUrls, ...photoUrls];
+    
+    // 如果這排是向右跑 (right)，就將照片順序反轉
+    // 這樣第一排會是 1,2,3...，第二排會是 ...3,2,1
+    if (direction === 'right') {
+        list.reverse();
     }
     
+    list.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.className = 'bg-photo-item';
+        img.alt = '高雄外匯車／進口車展示照片｜耀笙國際汽車';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        row.appendChild(img);
+    });
+    return row;
+}    
     bgWall.appendChild(createRow('left'));
     bgWall.appendChild(createRow('right'));
 
