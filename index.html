@@ -6,7 +6,7 @@
     
     <meta name="description" content="耀笙國際汽車位於高雄市仁武區鳳仁路3-36號，專營外匯車、CPO原廠認證車、進口車買賣與中古車高價收購。專業透明、車況把關嚴格，提供一條龍售後服務，讓您安心購車。">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-	
+    
     <link rel="canonical" href="https://ys-autos.com/">
 
     <link rel="icon" href="image/favicon.png" sizes="144x144">
@@ -167,19 +167,6 @@
         .nav-social-top a:hover { color: var(--gold); }
         .nav-cta { padding: 12px 30px; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; }
         .nav-cta:hover { background: var(--gold); color: #000; }
-		/* 基礎設定：手機版社群列預設不顯示 */
-.mobile-nav-social {
-    display: none; 
-    align-items: center;
-    gap: 12px;
-    margin-right: 10px;
-}
-
-.mobile-nav-social a {
-    color: var(--gold);
-    font-size: 18px;
-    text-decoration: none;
-}
 
         /* 手機版選單 */
         .mobile-menu-btn {
@@ -1160,14 +1147,6 @@
             .nav-links { display: none; }
             .nav-social-top { display: none; }
             .nav-cta { display: none; }
-	.mobile-nav-social {
-        display: flex; 
-    }
-    
-    /* 同時隱藏掉手機版不需要的電腦版按鈕 */
-    .nav-cta, .nav-social-top {
-        display: none;
-    }
             .mobile-menu-btn { display: block; }
             .mobile-menu { display: block; }
             .nav-container { padding: 20px 30px !important; }
@@ -1234,26 +1213,24 @@
             <ul class="nav-links">
                 <li><a href="#guarantee">安心保證</a></li>
                 <li><a href="#after-sales">一條龍服務</a></li>
-                <li><a href="prove.html">成交見證</a></li>
+                <li><a href="#testimonials">成交見證</a></li>
                 <li><a href="#owner">認識我們</a></li>
                 <li><a href="#philosophy">經營理念</a></li>
                 <li><a href="import-cars.html">外匯車介紹</a></li>
             </ul>
         </div>
-<div class="nav-right">
-    <div class="nav-social-top">
-        <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
-    </div>
-
-    <a href="inventory.html" class="nav-cta">在庫車輛</a>
-    <a href="#contact" class="nav-cta">立即諮詢</a>
-
-    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-        <i class="fas fa-bars"></i>
-    </button>
-</div>
+        <div class="nav-right">
+            <div class="nav-social-top">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+            </div>
+            <a href="inventory.html" class="nav-cta">在庫車輛</a>
+            <a href="#contact" class="nav-cta">立即諮詢</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </div>
 </nav>
 
@@ -1266,7 +1243,7 @@
     <ul class="mobile-menu-links">
         <li><a href="#guarantee" onclick="closeMobileMenu()">安心保證</a></li>
         <li><a href="#after-sales" onclick="closeMobileMenu()">一條龍服務</a></li>
-        <li><a href="prove.html" onclick="closeMobileMenu()">成交見證</a></li>
+        <li><a href="#testimonials" onclick="closeMobileMenu()">成交見證</a></li>
         <li><a href="#owner" onclick="closeMobileMenu()">認識我們</a></li>
         <li><a href="#philosophy" onclick="closeMobileMenu()">經營理念</a></li>
         <li><a href="import-cars.html" onclick="closeMobileMenu()">外匯車介紹</a></li>
