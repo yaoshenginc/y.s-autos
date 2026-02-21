@@ -6,7 +6,7 @@
     
     <meta name="description" content="耀笙國際汽車位於高雄市仁武區鳳仁路3-36號，專營外匯車、CPO原廠認證車、進口車買賣與中古車高價收購。專業透明、車況把關嚴格，提供一條龍售後服務，讓您安心購車。">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-    
+	
     <link rel="canonical" href="https://ys-autos.com/">
 
     <link rel="icon" href="image/favicon.png" sizes="144x144">
@@ -1098,7 +1098,6 @@
         padding-top: 110px;
         padding-bottom: 60px;
      }
-	
 	.bg-carousel-container {
         height: 90vh !important; /* 將高度改為螢幕的 60%，可根據需求調整數值 */
     }
@@ -1147,16 +1146,13 @@
             .carousel-item { min-width: 100%; }
             .nav-links { display: none; }
             .nav-social-top { display: none; }
+			.mobile-nav-social {
+    			display: none;
+			}
             .nav-cta { display: none; }
             .mobile-menu-btn { display: block; }
             .mobile-menu { display: block; }
-	/* 讓手機版社群連結在電腦版時隱藏 */
-.mobile-nav-social {
-    display: none;
-}
-
-@media (max-width: 968px) {
-    /* 1. 在手機版顯示社群連結 */
+/* 1. 在手機版顯示社群連結 */
     .mobile-nav-social {
         display: flex;
         align-items: center;
@@ -1175,7 +1171,6 @@
     .nav-right {
         gap: 5px; /* 縮小物件間的總間距，避免擠壓 */
     }
-}
             .nav-container { padding: 20px 30px !important; }
         }
     
@@ -1240,13 +1235,13 @@
             <ul class="nav-links">
                 <li><a href="#guarantee">安心保證</a></li>
                 <li><a href="#after-sales">一條龍服務</a></li>
-                <li><a href="#testimonials">成交見證</a></li>
+                <li><a href="prove.html">成交見證</a></li>
                 <li><a href="#owner">認識我們</a></li>
                 <li><a href="#philosophy">經營理念</a></li>
                 <li><a href="import-cars.html">外匯車介紹</a></li>
             </ul>
         </div>
-<div class="nav-right">
+ <div class="nav-right">
     <div class="nav-social-top">
         <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -1278,7 +1273,7 @@
     <ul class="mobile-menu-links">
         <li><a href="#guarantee" onclick="closeMobileMenu()">安心保證</a></li>
         <li><a href="#after-sales" onclick="closeMobileMenu()">一條龍服務</a></li>
-        <li><a href="#testimonials" onclick="closeMobileMenu()">成交見證</a></li>
+        <li><a href="prove.html" onclick="closeMobileMenu()">成交見證</a></li>
         <li><a href="#owner" onclick="closeMobileMenu()">認識我們</a></li>
         <li><a href="#philosophy" onclick="closeMobileMenu()">經營理念</a></li>
         <li><a href="import-cars.html" onclick="closeMobileMenu()">外匯車介紹</a></li>
