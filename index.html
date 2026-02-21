@@ -165,6 +165,10 @@
         .nav-right { display: flex; align-items: center; gap: 20px; }
         .nav-social-top a { color: var(--text-gray); font-size: 18px; margin-left: 15px; transition: 0.3s; }
         .nav-social-top a:hover { color: var(--gold); }
+		/* 確保電腦版時隱藏手機專用的社群圖示 */
+.mobile-nav-social {
+    display: none !important;
+}
         .nav-cta { padding: 12px 30px; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; }
         .nav-cta:hover { background: var(--gold); color: #000; }
 
@@ -1146,9 +1150,6 @@
             .carousel-item { min-width: 100%; }
             .nav-links { display: none; }
             .nav-social-top { display: none; }
-			.mobile-nav-social {
-    			display: none;
-			}
             .nav-cta { display: none; }
             .mobile-menu-btn { display: block; }
             .mobile-menu { display: block; }
@@ -1241,14 +1242,8 @@
                 <li><a href="import-cars.html">外匯車介紹</a></li>
             </ul>
         </div>
- <div class="nav-right">
+<div class="nav-right">
     <div class="nav-social-top">
-        <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
-    </div>
-
-    <div class="mobile-nav-social">
         <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
@@ -1256,7 +1251,13 @@
 
     <a href="inventory.html" class="nav-cta">在庫車輛</a>
     <a href="#contact" class="nav-cta">立即諮詢</a>
-    
+
+    <div class="mobile-nav-social">
+        <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+    </div>
+
     <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
         <i class="fas fa-bars"></i>
     </button>
