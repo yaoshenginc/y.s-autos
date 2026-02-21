@@ -1901,6 +1901,7 @@
     function createRow(direction) {
         const row = document.createElement('div');
         row.className = `marquee-row ${direction}`;
+		photos.sort(() => Math.random() - 0.5);
         const list = [...photoUrls, ...photoUrls];
         list.forEach(url => {
             const img = document.createElement('img');
