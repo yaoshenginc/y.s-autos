@@ -121,7 +121,7 @@
         .philosophy-card.active:nth-child(4) { transition-delay: 0.20s; }
         .philosophy-card.active:nth-child(5) { transition-delay: 0.25s; }
         .philosophy-card.active:nth-child(6) { transition-delay: 0.30s; }
-
+		.mobile-social { display: none; }
         /* 導航列 */
         nav {
             position: fixed;
@@ -1092,6 +1092,10 @@
 
         /* 手機版RWD */
 @media (max-width: 968px) {
+	.mobile-social { 
+        display: flex; /* 這裡會覆蓋上面的隱藏，讓它在手機版出現 */
+        align-items: center;
+    }
     .hero {
         min-height: 80vh;
         height: auto;
@@ -1219,18 +1223,26 @@
                 <li><a href="import-cars.html">外匯車介紹</a></li>
             </ul>
         </div>
-        <div class="nav-right">
-            <div class="nav-social-top">
-                <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
-            </div>
-            <a href="inventory.html" class="nav-cta">在庫車輛</a>
-            <a href="#contact" class="nav-cta">立即諮詢</a>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
+<div class="nav-right">
+    <div class="nav-social-top">
+        <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+    </div>
+
+    <div class="mobile-social">
+        <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+    </div>
+
+    <a href="inventory.html" class="nav-cta">在庫車輛</a>
+    <a href="#contact" class="nav-cta">立即諮詢</a>
+    
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+</div>
     </div>
 </nav>
 
