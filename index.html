@@ -1902,11 +1902,12 @@ function createRow(direction) {
     const row = document.createElement('div');
     row.className = `marquee-row ${direction}`;
     
-    // 取得原始照片清單
+    // 1. 取得照片清單並打亂（這是我們剛才加的隨機功能）
     let list = [...photoUrls, ...photoUrls];
+    list.sort(() => Math.random() - 0.5); 
     
-    // 如果這排是向右跑 (right)，就將照片順序反轉
-    // 這樣第一排會是 1,2,3...，第二排會是 ...3,2,1
+    // 2. 如果是往右跑的一排 (right)，就把陣列順序倒轉 (reverse)
+    // 這樣就會變成：上面從 car1 排到 car12，下面從 car12 排到 car1
     if (direction === 'right') {
         list.reverse();
     }
@@ -1921,7 +1922,7 @@ function createRow(direction) {
         row.appendChild(img);
     });
     return row;
-}    
+}
     bgWall.appendChild(createRow('left'));
     bgWall.appendChild(createRow('right'));
 
