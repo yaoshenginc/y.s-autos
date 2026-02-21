@@ -1092,9 +1092,26 @@
 
         /* 手機版RWD */
 @media (max-width: 968px) {
-	.mobile-social { 
-        display: flex; /* 這裡會覆蓋上面的隱藏，讓它在手機版出現 */
+	/* 1. 讓右側容器內的社群圖示與三條線橫向排好 */
+    .nav-right {
+        display: flex;
         align-items: center;
+        gap: 15px; /* 設定社群圖示與三條線按鈕的間距 */
+    }
+
+    /* 2. 手機版社群圖示的具體設定 */
+    .mobile-social {
+        display: flex;
+        align-items: center;
+        gap: 12px; /* 設定圖示與圖示之間的間距，解決擠在一起的問題 */
+    }
+
+    /* 3. 設定圖示顏色與大小，解決變藍色的問題 */
+    .mobile-social a {
+        color: var(--gold); /* 強制使用金色變數 */
+        font-size: 18px;
+        text-decoration: none; /* 移除超連結底線 */
+        display: flex;
     }
     .hero {
         min-height: 80vh;
