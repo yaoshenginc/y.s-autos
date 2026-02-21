@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="耀笙國際汽車成交見證｜超過200台進口車成功交車紀錄｜高雄外匯車CPO原廠認證車｜至今0負評">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://ys-autos.com/testimonials.html">
+    <link rel="icon" href="image/favicon.png" sizes="144x144">
+    <link rel="apple-touch-icon" href="image/favicon.png">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="成交見證｜耀笙國際汽車｜高雄外匯車CPO進口車">
+    <meta property="og:description" content="超過200台進口車成功交車紀錄，至今0負評。看看每一位信任我們的客戶留下的見證。">
+    <meta property="og:image" content="image/logo.png">
+    <meta property="og:url" content="https://ys-autos.com/testimonials.html">
+    <title>成交見證｜耀笙國際汽車｜高雄外匯車・CPO原廠認證車</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --secondary-black: #1a1a1a;
+            --gold: #d4a948;
+            --gold-dark: #b8923e;
+            --gold-light: #e5c05d;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --text-light-gray: #d0d0d0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans TC', sans-serif; background: var(--primary-black); color: var(--text-white); overflow-x: hidden; line-height: 1.6; }
+
+        /* ───── NAV ───── */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 169, 72, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        .nav-container { 
+            max-width: 1600px; margin: 0 auto; padding: 15px 60px; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-left { display: flex; align-items: center; gap: 40px; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-img { height: 45px; width: auto; object-fit: contain; }
+        .logo-text .zh { font-size: 22px; font-weight: 600; color: #fff; letter-spacing: 2px; }
+        .logo-text .en { font-family: 'Playfair Display'; font-size: 11px; color: var(--gold); letter-spacing: 2px; }
+        .logo-text .since { font-size: 9px; color: var(--text-gray); letter-spacing: 1px; margin-top: 2px; }
+        .nav-links { display: flex; gap: 35px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-light-gray); font-size: 13px; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .nav-social-top a { color: var(--text-gray); font-size: 18px; margin-left: 15px; transition: 0.3s; }
+        .nav-social-top a:hover { color: var(--gold); }
+        .nav-cta { padding: 12px 30px; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .nav-cta:hover { background: var(--gold); color: #000; }
+
+        /* Mobile Menu */
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-white); font-size: 24px; cursor: pointer; padding: 10px; }
+        .mobile-menu { display: none; position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--secondary-black); z-index: 9999; transition: right 0.3s ease; padding: 80px 30px 30px; overflow-y: auto; }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: var(--text-white); font-size: 30px; cursor: pointer; padding: 10px; }
+        .mobile-menu-links { list-style: none; padding: 0; margin: 0; }
+        .mobile-menu-links li { margin-bottom: 20px; }
+        .mobile-menu-links a { color: var(--text-white); text-decoration: none; font-size: 18px; font-weight: 500; display: block; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .mobile-menu-links a:hover { color: var(--gold); padding-left: 10px; }
+        .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.7); z-index: 9998; }
+        .mobile-menu-overlay.active { display: block; }
+        .mobile-nav-social { display: none; }
+
+        /* ───── PAGE HERO ───── */
+        .page-hero {
+            padding-top: 100px;
+            background: var(--secondary-black);
+            border-bottom: 1px solid rgba(212,169,72,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(212,169,72,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .page-hero-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+        .page-hero-text {}
+        .section-tag { font-size: 12px; letter-spacing: 3px; color: var(--gold); margin-bottom: 20px; font-weight: 500; display: block; text-transform: uppercase; }
+        .page-hero h1 { font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700; line-height: 1.15; margin-bottom: 25px; }
+        .page-hero p { font-size: 17px; color: var(--text-gray); line-height: 2; max-width: 560px; }
+        .page-hero-stats { display: flex; gap: 50px; flex-shrink: 0; }
+        .stat-block { text-align: center; }
+        .stat-number { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 700; color: var(--gold); display: block; line-height: 1; }
+        .stat-label { font-size: 13px; color: var(--text-gray); margin-top: 10px; letter-spacing: 1px; }
+
+        /* ───── COUNTER STRIP ───── */
+        .counter-strip {
+            background: linear-gradient(135deg, rgba(212,169,72,0.12), rgba(212,169,72,0.04));
+            border-top: 1px solid rgba(212,169,72,0.2);
+            border-bottom: 1px solid rgba(212,169,72,0.2);
+            padding: 30px 60px;
+        }
+        .counter-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .counter-badge {
+            background: var(--gold);
+            color: var(--primary-black);
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 2px;
+            letter-spacing: 1px;
+        }
+        .counter-text {
+            font-size: 14px;
+            color: var(--text-gray);
+            letter-spacing: 1px;
+        }
+        .counter-text strong { color: var(--gold-light); }
+
+        /* ───── GALLERY ───── */
+        .gallery-section {
+            padding: 80px 60px 120px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Masonry layout via CSS columns */
+        .masonry-grid {
+            column-count: 4;
+            column-gap: 16px;
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid rgba(212,169,72,0.08);
+            cursor: pointer;
+            display: block;
+        }
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), filter 0.4s;
+            filter: brightness(0.92);
+        }
+        .masonry-item:hover img {
+            transform: scale(1.04);
+            filter: brightness(1.05);
+        }
+        .masonry-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        .masonry-item:hover .masonry-item-overlay {
+            opacity: 1;
+        }
+        .masonry-item-overlay span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold-light);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .masonry-item-overlay i {
+            font-size: 16px;
+        }
+        /* Vary column span to create interest */
+        .masonry-item.tall img { }
+
+        /* ───── LIGHTBOX ───── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox-inner {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+            border: 1px solid rgba(212,169,72,0.25);
+            box-shadow: 0 30px 100px rgba(0,0,0,0.8);
+            transition: opacity 0.25s;
+        }
+        .lightbox-close {
+            position: fixed;
+            top: 25px; right: 30px;
+            background: rgba(212,169,72,0.15);
+            border: 1px solid rgba(212,169,72,0.3);
+            color: var(--gold);
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: 0.3s;
+            z-index: 10001;
+        }
+        .lightbox-close:hover { background: var(--gold); color: #000; }
+        .lightbox-prev, .lightbox-next {
+            position: fixed;
+            top: 50%; transform: translateY(-50%);
+            background: rgba(212,169,72,0.15);
+            border: 1px solid rgba(212,169,72,0.3);
+            color: var(--gold);
+            width: 52px; height: 52px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: 0.3s;
+            z-index: 10001;
+        }
+        .lightbox-prev:hover, .lightbox-next:hover { background: var(--gold); color: #000; }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+        .lightbox-counter {
+            position: fixed;
+            bottom: 25px; left: 50%; transform: translateX(-50%);
+            color: var(--text-gray);
+            font-size: 13px;
+            letter-spacing: 2px;
+            background: rgba(0,0,0,0.6);
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+        .lightbox-counter span { color: var(--gold); }
+
+        /* ───── BOTTOM CTA ───── */
+        .bottom-cta-section {
+            background: var(--secondary-black);
+            border-top: 1px solid rgba(212,169,72,0.15);
+            padding: 100px 60px;
+            text-align: center;
+        }
+        .bottom-cta-section h2 { font-family: 'Playfair Display', serif; font-size: 44px; margin-bottom: 20px; }
+        .bottom-cta-section p { font-size: 17px; color: var(--text-gray); margin-bottom: 50px; }
+        .cta-primary { background: var(--gold); color: var(--primary-black); padding: 18px 45px; text-decoration: none; font-weight: 600; margin-right: 20px; display: inline-block; transition: 0.3s; }
+        .cta-primary:hover { background: var(--gold-light); transform: translateY(-3px); }
+        .cta-secondary { border: 1px solid #fff; color: #fff; padding: 18px 45px; text-decoration: none; font-weight: 600; display: inline-block; transition: 0.3s; }
+        .cta-secondary:hover { background: #fff; color: #000; transform: translateY(-3px); }
+
+        /* ───── FOOTER ───── */
+        footer { background: var(--secondary-black); padding: 80px 60px 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; }
+        .footer-socials { display: flex; gap: 15px; margin-top: 25px; }
+        .social-btn { width: 40px; height: 40px; background: rgba(212,169,72,0.1); border: 1px solid rgba(212,169,72,0.2); display: flex; align-items: center; justify-content: center; color: var(--gold); text-decoration: none; transition: 0.3s; }
+        .social-btn:hover { background: var(--gold); color: var(--primary-black); }
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 12px; }
+        .footer-links ul li a { color: var(--text-gray); text-decoration: none; font-size: 14px; transition: 0.3s; }
+        .footer-links ul li a:hover { color: var(--gold); }
+
+        .floating-cta { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: var(--primary-black); padding: 18px 35px; text-decoration: none; font-weight: 700; border-radius: 50px; box-shadow: 0 10px 30px rgba(212,169,72,0.4); z-index: 999; transition: 0.3s; }
+        .floating-cta:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(212,169,72,0.6); }
+
+        /* ───── REVEAL ───── */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ───── RWD ───── */
+        @media (max-width: 1200px) { .masonry-grid { column-count: 3; } }
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .nav-social-top { display: none; }
+            .nav-cta { display: none; }
+            .mobile-menu-btn { display: block; }
+            .mobile-menu { display: block; }
+            .mobile-nav-social { display: flex; align-items: center; gap: 15px; margin-right: 10px; }
+            .mobile-nav-social a { color: var(--gold); font-size: 18px; text-decoration: none; }
+            .nav-container { padding: 15px 30px !important; }
+            .page-hero-inner { flex-direction: column; padding: 60px 30px; gap: 40px; }
+            .page-hero h1 { font-size: 40px; }
+            .page-hero-stats { gap: 30px; }
+            .stat-number { font-size: 38px; }
+            .gallery-section { padding: 50px 20px 80px; }
+            .masonry-grid { column-count: 2; column-gap: 10px; }
+            .masonry-item { margin-bottom: 10px; }
+            .counter-strip { padding: 25px 30px; }
+            .counter-inner { flex-wrap: wrap; gap: 10px; justify-content: center; text-align: center; }
+            .bottom-cta-section { padding: 70px 30px; }
+            .bottom-cta-section h2 { font-size: 30px; }
+            .cta-primary, .cta-secondary { display: block; width: 100%; max-width: 300px; margin: 10px auto; text-align: center; }
+            footer { padding: 60px 30px 40px; }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .lightbox-prev { left: 5px; }
+            .lightbox-next { right: 5px; }
+        }
+        @media (max-width: 480px) {
+            .masonry-grid { column-count: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="index.html" class="logo">
+                <img src="image/logo.png" alt="Y.S. AUTOS Logo" class="logo-img">
+                <div class="logo-text">
+                    <div class="zh">耀笙國際汽車</div>
+                    <div class="en">Y.S. AUTOS</div>
+                    <div class="since">SINCE 2020</div>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#guarantee">安心保證</a></li>
+                <li><a href="index.html#after-sales">一條龍服務</a></li>
+                <li><a href="testimonials.html" class="active">成交見證</a></li>
+                <li><a href="index.html#owner">認識我們</a></li>
+                <li><a href="index.html#philosophy">經營理念</a></li>
+                <li><a href="import-cars.html">外匯車介紹</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="nav-social-top">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+            </div>
+            <div class="mobile-nav-social">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+            </div>
+            <a href="inventory.html" class="nav-cta">在庫車輛</a>
+            <a href="index.html#contact" class="nav-cta">立即諮詢</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()">
+        <i class="fas fa-times"></i>
+    </button>
+    <ul class="mobile-menu-links">
+        <li><a href="index.html#guarantee" onclick="closeMobileMenu()">安心保證</a></li>
+        <li><a href="index.html#after-sales" onclick="closeMobileMenu()">一條龍服務</a></li>
+        <li><a href="testimonials.html" onclick="closeMobileMenu()">成交見證</a></li>
+        <li><a href="index.html#owner" onclick="closeMobileMenu()">認識我們</a></li>
+        <li><a href="index.html#philosophy" onclick="closeMobileMenu()">經營理念</a></li>
+        <li><a href="import-cars.html" onclick="closeMobileMenu()">外匯車介紹</a></li>
+        <li><a href="inventory.html" onclick="closeMobileMenu()">在庫車輛</a></li>
+        <li><a href="index.html#reviews" onclick="closeMobileMenu()">顧客推薦</a></li>
+        <li><a href="index.html#contact" onclick="closeMobileMenu()">聯絡我們</a></li>
+    </ul>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="page-hero-inner">
+        <div class="page-hero-text">
+            <span class="section-tag">Success Stories</span>
+            <h1>成交見證</h1>
+            <p>每一張照片，都是一份信任的承諾。<br>從接觸到交車，我們用專業與誠信，陪伴每一位客戶找到心目中的完美愛車。</p>
+        </div>
+        <div class="page-hero-stats">
+            <div class="stat-block">
+                <span class="stat-number">200<span style="color:var(--gold-light);font-size:36px;">+</span></span>
+                <div class="stat-label">成功交車台數</div>
+            </div>
+            <div class="stat-block" style="border-left:1px solid rgba(212,169,72,0.2);padding-left:50px;">
+                <span class="stat-number">0</span>
+                <div class="stat-label">至今負評數</div>
+            </div>
+            <div class="stat-block" style="border-left:1px solid rgba(212,169,72,0.2);padding-left:50px;">
+                <span class="stat-number">5<span style="font-size:28px;color:var(--gold-light);">★</span></span>
+                <div class="stat-label">Google 評分</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COUNTER STRIP -->
+<div class="counter-strip">
+    <div class="counter-inner">
+        <span class="counter-badge">SINCE 2020</span>
+        <span class="counter-text">屏科大車輛工程系 × 汽車修護乙級證照 × 40年保養廠第三代 ——&nbsp; <strong>每一台車都親自把關，每一筆交易都完全透明</strong></span>
+    </div>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery-section">
+    <div class="masonry-grid" id="masonryGrid">
+        <!-- Items injected by JS -->
+    </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta-section reveal">
+    <span class="section-tag">Ready to Drive?</span>
+    <h2>找到您的下一台愛車</h2>
+    <p>歡迎來電或親臨展示中心，讓我們為您服務</p>
+    <a href="tel:077352855" class="cta-primary">立即來電 07-7352855</a>
+    <a href="index.html#contact" class="cta-secondary">線上諮詢</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div>
+            <div class="logo-text" style="margin-bottom:25px;">
+                <div class="zh" style="color:#fff; font-size:20px;">耀笙國際汽車</div>
+                <div class="en" style="color:var(--gold); font-size:11px;">Y.S. AUTOS</div>
+                <div class="since" style="color:var(--text-gray); font-size:9px; letter-spacing:1px; margin-top:2px;">SINCE 2020</div>
+            </div>
+            <p style="color:var(--text-gray); font-size:14px; line-height:1.8;">
+                專業透明的中古車專家，用誠實改變二手車市場。每一台車都經過專業把關，每一筆交易都完全透明。
+            </p>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank" class="social-btn"><i class="fab fa-line"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4 style="color:#fff; margin-bottom:25px;">快速連結</h4>
+            <ul>
+                <li><a href="index.html#owner">認識我們</a></li>
+                <li><a href="index.html#philosophy">經營理念</a></li>
+                <li><a href="index.html#services">服務項目</a></li>
+                <li><a href="testimonials.html">成交見證</a></li>
+                <li><a href="index.html#reviews">顧客推薦</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4 style="color:#fff; margin-bottom:25px;">服務項目</h4>
+            <ul>
+                <li><a href="#">CPO原廠認證車</a></li>
+                <li><a href="#">美規外匯車</a></li>
+                <li><a href="#">代辦外匯車</a></li>
+                <li><a href="#">中古車買賣</a></li>
+                <li><a href="#">代客尋車</a></li>
+                <li><a href="#">汽車貸款</a></li>
+                <li><a href="#">車輛保險</a></li>
+                <li><a href="#">愛車寄售</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4 style="color:#fff; margin-bottom:25px;">聯絡資訊</h4>
+            <p style="color:var(--text-gray); font-size:14px;">
+                電話: 07-7352855<br>
+                手機: 0979-226-338<br>
+                地址: 高雄市仁武區鳳仁路 3-36 號<br>
+                信箱: service@ys-autos.com
+            </p>
+        </div>
+    </div>
+    <div style="text-align:center; padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); color:#666; font-size:12px; margin-top:50px;">
+        © 2026 Y.S. AUTOS 耀笙國際汽車. All Rights Reserved.
+    </div>
+</footer>
+
+<a href="tel:077352855" class="floating-cta">立即來電預約</a>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    <button class="lightbox-prev" onclick="lightboxNav(-1)"><i class="fas fa-chevron-left"></i></button>
+    <div class="lightbox-inner">
+        <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    </div>
+    <button class="lightbox-next" onclick="lightboxNav(1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="lightbox-counter" id="lightboxCounter"><span id="lbCurrent">1</span> / <span id="lbTotal">1</span></div>
+</div>
+
+<script>
+    // ── All testimonial images ──
+    const photos = [
+        'image/6060.webp',
+        'image/6293.webp',
+        'image/6320.webp',
+        'image/7602AAAF-59C4-470E-856C-5E7E56DD3400.webp',
+        'image/8065.webp',
+        'image/8223.webp',
+        'image/8432B507-E534-4606-A6BB-B06F1FCC57C655.webp',
+        'image/8745F88C-62DB-4E85-97DD-0B84B9F505CB.webp',
+        'image/8945.webp',
+        'image/23687D23-FF63-4735-807B-BE49ECCAAC44.webp',
+        'image/27831F2A-34BB-461F-A866-89A0F8943345.webp',
+        'image/63201.webp',
+        'image/2919380E-967A-4CE7-9DEE-9B6D13C9821D.webp',
+        'image/11111111.webp',
+        'image/64619039-8A50-4BF1-BBEE-7C78480EFF37.webp',
+        'image/165849463_797807610852464_6408012920781809324_n.webp',
+        'image/173969791_809637686336123_8605031118397524654_n.webp',
+        'image/192688507_839588333341058_2996060440068174326_n.webp',
+        'image/194198090_840167539949804_7817325116808103884_n.webp',
+        'image/195727230_839110920055466_7221841684824920802_n.webp',
+        'image/201288348_849371499029408_6211810420363684557_n.webp',
+        'image/A1FD678C-A28C-4247-A07E-497F57377BAD.webp',
+        'image/B54B04C7-2C8D-4F79-8AAD-8275B8F2163F55.webp',
+        'image/B808117B-17D6-4620-903B-BD41172D5CDE.webp',
+        'image/BBC533A3-EEDA-49A1-A3FD-18643E1F828B.webp',
+        'image/BD09ADEA-6C43-4A7E-B8F1-763352E5C3B5.webp',
+        'image/DBFDF1A8-BFAC-4973-9EF4-F20A9CAA2863.webp',
+        'image/DF7D0595-0F27-49A9-8561-323C143A93AA.webp',
+        'image/E1A54573-E92A-4FEA-B24A-A9D47B7B1996.webp',
+        'image/E70AA06F-ED40-4E59-B072-CC1B9EDE6C4E.webp',
+        'image/E07406A1-E55C-4B6D-8BB8-958D9EB809EC.webp',
+        'image/EE56E22A-CD28-4D8F-9B00-284FD758031D.webp',
+        'image/EF998BEF-6459-4FD2-82EC-C964AD9BD8E6.webp',
+        'image/ES200.webp',
+        'image/F52D7C15-8033-413F-B5C4-E0A26C68CCD7.webp',
+        'image/F53F216C-AD29-4146-A052-B57500149C11.webp',
+        'image/F2181BF7-3720-4A2D-A71C-06326E863038.webp',
+        'image/GLC.webp',
+        'image/S__78913574.webp',
+        'image/S__79347768.webp',
+        'image/S__79962117.webp',
+        'image/S__79962119.webp',
+        'image/S__80764939.webp',
+        'image/S__80814085.webp',
+        'image/S__84181041.webp',
+        'image/S__85286940.webp',
+        'image/S__85286942.webp',
+        'image/S__88080481.webp',
+        'image/S__88080483.webp',
+        'image/S__89448451.webp',
+        'image/S__91488262.webp',
+        'image/S__92102679.webp',
+        'image/S__92102681.webp',
+        'image/S__95273149.webp',
+        'image/S__95273151.webp',
+        'image/S__96829443.webp',
+        'image/S__96829445.webp',
+        'image/S__96829446.webp',
+        'image/S__105365860_0.webp',
+        'image/S__105365862_0.webp',
+        'image/S__105365863_0.webp',
+        'image/S__105365864_0.webp',
+        'image/安迪C3001.webp',
+        // compress folder photos
+        'image/compress/1247.webp',
+        'image/compress/4085.webp',
+        'image/compress/4393.webp',
+        'image/compress/5647.webp',
+        'image/compress/6060.webp',
+        'image/compress/6293.webp',
+        'image/compress/6320.webp',
+        'image/compress/8223.webp',
+        'image/compress/8945.webp',
+        'image/compress/63201.webp',
+        'image/compress/0E990A8A-610E-4206-ADBC-EA89586EB682.webp',
+        'image/compress/0F42780B-37E6-460B-93AA-306A67AE0EC3.webp',
+        'image/compress/4A3EC415-2174-409F-ABDC-DBF5549079AB.webp',
+        'image/compress/4D9BDF4F-C525-4FE8-B198-0C2BFF60C11E.webp',
+        'image/compress/5C4CFBF0-D7C1-469D-A64B-7895B1E17EFD.webp',
+        'image/compress/5DB981E9-41D5-4457-88CE-3C81049AD6C755.webp',
+        'image/compress/5FD8288F-BF56-4254-8612-10BB2F2F9BFF.webp',
+        'image/compress/5FFF5953-BB4D-4275-AD9F-CFAB712F3F19.webp',
+        'image/compress/8C1FBCC8-F6AE-484E-A1CE-EAE7C63DF0B2.webp',
+        'image/compress/9B70A754-05C1-4020-8202-131CF6C5279955.webp',
+        'image/compress/9B8276BE-A425-47DA-BE16-2CF1C908BE6C.webp',
+        'image/compress/9F61D3C9-9883-4E8A-8A38-5BF01ECCC2CD.webp',
+        'image/compress/14C92520-15BC-4B4D-A679-B8BA46E5E0EF.webp',
+        'image/compress/40F7BDCC-C304-417B-8CA0-F555E9989DDF.webp',
+        'image/compress/87F09F81-910D-4B62-A898-03344F449152.webp',
+        'image/compress/88DE7D11-7395-466E-8A68-02ECD408E758.webp',
+        'image/compress/330.webp',
+        'image/compress/344DE7C3-4043-42D0-AFFA-F690A3F62B8D.webp',
+        'image/compress/441F81FE-E421-4090-B296-45A6E5926069.webp',
+        'image/compress/717FFF45-78A0-486A-AE06-8C8EE3D4DDB5.webp',
+        'image/compress/856E8BB7-353B-4E2D-8BEA-84119906D413.webp',
+        'image/compress/944AE69B-723D-4111-B9E2-650E305B1ABA.webp',
+        'image/compress/953A739E-0AFD-49F9-8C21-6CF118495CE0.webp',
+        'image/compress/1491.webp',
+        'image/compress/01972A3C-ACD4-4809-93DE-75D316FEAC80.webp',
+        'image/compress/2481EF1C-2CEE-4D48-8F3C-0ABA02755E60.webp',
+        'image/compress/7602AAAF-59C4-470E-856C-5E7E56DD3400.webp',
+        'image/compress/8065.webp',
+        'image/compress/8432B507-E534-4606-A6BB-B06F1FCC57C655.webp',
+        'image/compress/8745F88C-62DB-4E85-97DD-0B84B9F505CB.webp',
+        'image/compress/23687D23-FF63-4735-807B-BE49ECCAAC44.webp',
+        'image/compress/27831F2A-34BB-461F-A866-89A0F8943345.webp',
+        'image/compress/2919380E-967A-4CE7-9DEE-9B6D13C9821D.webp',
+        'image/compress/11111111.webp',
+        'image/compress/64619039-8A50-4BF1-BBEE-7C78480EFF37.webp',
+        'image/compress/165849463_797807610852464_6408012920781809324_n.webp',
+        'image/compress/173969791_809637686336123_8605031118397524654_n.webp',
+        'image/compress/192688507_839588333341058_2996060440068174326_n.webp',
+    ];
+
+    // Deduplicate
+    const uniquePhotos = [...new Set(photos)];
+
+    // Build masonry grid
+    const grid = document.getElementById('masonryGrid');
+    let lightboxIndex = 0;
+
+    uniquePhotos.forEach((src, i) => {
+        const item = document.createElement('div');
+        item.className = 'masonry-item';
+        item.innerHTML = `
+            <img src="${src}" alt="耀笙國際汽車成交見證 ${i+1}｜高雄外匯車CPO原廠認證進口車" loading="lazy" decoding="async">
+            <div class="masonry-item-overlay">
+                <span><i class="fas fa-expand-alt"></i> 點擊放大</span>
+            </div>
+        `;
+        item.addEventListener('click', () => openLightbox(i));
+        grid.appendChild(item);
+    });
+
+    document.getElementById('lbTotal').textContent = uniquePhotos.length;
+
+    // Lightbox
+    function openLightbox(index) {
+        lightboxIndex = index;
+        updateLightbox();
+        document.getElementById('lightbox').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    function updateLightbox() {
+        const img = document.getElementById('lightboxImg');
+        img.style.opacity = '0';
+        setTimeout(() => {
+            img.src = uniquePhotos[lightboxIndex];
+            img.alt = `耀笙國際汽車成交見證 ${lightboxIndex + 1}`;
+            img.style.opacity = '1';
+        }, 150);
+        document.getElementById('lbCurrent').textContent = lightboxIndex + 1;
+    }
+
+    function lightboxNav(dir) {
+        lightboxIndex = (lightboxIndex + dir + uniquePhotos.length) % uniquePhotos.length;
+        updateLightbox();
+    }
+
+    // Keyboard nav
+    document.addEventListener('keydown', (e) => {
+        if (!document.getElementById('lightbox').classList.contains('open')) return;
+        if (e.key === 'ArrowRight') lightboxNav(1);
+        if (e.key === 'ArrowLeft') lightboxNav(-1);
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Close on backdrop click
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeLightbox();
+    });
+
+    // Mobile menu
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileMenuOverlay');
+        menu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+    }
+    function closeMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileMenuOverlay');
+        menu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Reveal animation
+    function reveal() {
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+                el.classList.add('active');
+            }
+        });
+    }
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+</script>
+</body>
+</html>
