@@ -680,42 +680,6 @@
             color: var(--text-light-gray);
         }
 
-        /* 成交見證 */
-        .testimonials-section {
-            background: var(--primary-black);
-        }
-        
-        .testimonial-carousel {
-            position: relative;
-            max-width: 1400px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        
-        .testimonial-track {
-            display: flex;
-            transition: transform 0.5s ease;
-            gap: 20px;
-        }
-        
-        .testimonial-item {
-            min-width: calc((100% - 40px) / 3);
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-        }
-        
-        .testimonial-item img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            transition: 0.5s;
-        }
-        
-        .testimonial-item:hover img {
-            transform: scale(1.05);
-        }
-
         /* 顧客推薦 */
         .reviews-section {
             background: var(--secondary-black);
@@ -1176,7 +1140,6 @@
             .reviews-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
             .footer-content { grid-template-columns: 1fr; gap: 40px; }
-            .testimonial-item { min-width: 100%; }
             .carousel-item { min-width: 100%; }
             .nav-links { display: none; }
             .nav-social-top { display: none; }
@@ -1285,7 +1248,7 @@
     <ul class="mobile-menu-links">
         <li><a href="#guarantee" onclick="closeMobileMenu()">安心保證</a></li>
         <li><a href="#after-sales" onclick="closeMobileMenu()">一條龍服務</a></li>
-        <li><a href="#testimonials" onclick="closeMobileMenu()">成交見證</a></li>
+        <li><a href="prove.html" onclick="closeMobileMenu()">成交見證</a></li>
         <li><a href="#owner" onclick="closeMobileMenu()">認識我們</a></li>
         <li><a href="#philosophy" onclick="closeMobileMenu()">經營理念</a></li>
         <li><a href="import-cars.html" onclick="closeMobileMenu()">外匯車介紹</a></li>
@@ -1506,88 +1469,6 @@
                 這是承諾，也是專業。
             </p>
         </div>
-    </div>
-</section>
-
-<section id="testimonials" class="testimonials-section reveal">
-    <div style="text-align: center; margin-bottom: 80px;">
-        <span class="section-tag">Success Stories</span>
-        <h2 class="section-title">成交見證</h2>
-        <p class="section-description">每一次交車，都是一份信任的開始</p>
-    </div>
-    <div class="testimonial-carousel">
-        <button class="carousel-nav prev" onclick="moveTestimonialCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
-        <div class="testimonial-track" id="testimonialTrack">
-<div class="testimonial-item"><img src="image/6060.webp" alt="高雄外匯車成交見證 31｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/6293.webp" alt="高雄外匯車成交見證 32｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/6320.webp" alt="高雄外匯車成交見證 33｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/7602AAAF-59C4-470E-856C-5E7E56DD3400.webp" alt="高雄外匯車成交見證 34｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/8065.webp" alt="高雄外匯車成交見證 35｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/8223.webp" alt="高雄外匯車成交見證 36｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/8432B507-E534-4606-A6BB-B06F1FCC57C655.webp" alt="高雄外匯車成交見證 37｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/8745F88C-62DB-4E85-97DD-0B84B9F505CB.webp" alt="高雄外匯車成交見證 38｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/8945.webp" alt="高雄外匯車成交見證 39｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/23687D23-FF63-4735-807B-BE49ECCAAC44.webp" alt="高雄外匯車成交見證 40｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/27831F2A-34BB-461F-A866-89A0F8943345.webp" alt="高雄外匯車成交見證 41｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/63201.webp" alt="高雄外匯車成交見證 42｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/2919380E-967A-4CE7-9DEE-9B6D13C9821D.webp" alt="高雄外匯車成交見證 43｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/11111111.webp" alt="高雄外匯車成交見證 44｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/64619039-8A50-4BF1-BBEE-7C78480EFF37.webp" alt="高雄外匯車成交見證 45｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/165849463_797807610852464_6408012920781809324_n.webp" alt="高雄外匯車成交見證 46｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/173969791_809637686336123_8605031118397524654_n.webp" alt="高雄外匯車成交見證 47｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/192688507_839588333341058_2996060440068174326_n.webp" alt="高雄外匯車成交見證 48｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/194198090_840167539949804_7817325116808103884_n.webp" alt="高雄外匯車成交見證 49｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/195727230_839110920055466_7221841684824920802_n.webp" alt="高雄外匯車成交見證 50｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/201288348_849371499029408_6211810420363684557_n.webp" alt="高雄外匯車成交見證 51｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/A1FD678C-A28C-4247-A07E-497F57377BAD.webp" alt="高雄外匯車成交見證 52｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/B54B04C7-2C8D-4F79-8AAD-8275B8F2163F55.webp" alt="高雄外匯車成交見證 53｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/B808117B-17D6-4620-903B-BD41172D5CDE.webp" alt="高雄外匯車成交見證 54｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/BBC533A3-EEDA-49A1-A3FD-18643E1F828B.webp" alt="高雄外匯車成交見證 55｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/BD09ADEA-6C43-4A7E-B8F1-763352E5C3B5.webp" alt="高雄外匯車成交見證 56｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/DBFDF1A8-BFAC-4973-9EF4-F20A9CAA2863.webp" alt="高雄外匯車成交見證 57｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/DF7D0595-0F27-49A9-8561-323C143A93AA.webp" alt="高雄外匯車成交見證 58｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/E1A54573-E92A-4FEA-B24A-A9D47B7B1996.webp" alt="高雄外匯車成交見證 59｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/E70AA06F-ED40-4E59-B072-CC1B9EDE6C4E.webp" alt="高雄外匯車成交見證 60｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/E07406A1-E55C-4B6D-8BB8-958D9EB809EC.webp" alt="高雄外匯車成交見證 61｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/EE56E22A-CD28-4D8F-9B00-284FD758031D.webp" alt="高雄外匯車成交見證 62｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/EF998BEF-6459-4FD2-82EC-C964AD9BD8E6.webp" alt="高雄外匯車成交見證 63｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/ES200.webp" alt="高雄外匯車成交見證 64｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/F52D7C15-8033-413F-B5C4-E0A26C68CCD7.webp" alt="高雄外匯車成交見證 65｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/F53F216C-AD29-4146-A052-B57500149C11.webp" alt="高雄外匯車成交見證 66｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/F2181BF7-3720-4A2D-A71C-06326E863038.webp" alt="高雄外匯車成交見證 67｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/GLC.webp" alt="高雄外匯車成交見證 68｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__78913574.webp" alt="高雄外匯車成交見證 69｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__79347768.webp" alt="高雄外匯車成交見證 70｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__79962117.webp" alt="高雄外匯車成交見證 71｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__79962119.webp" alt="高雄外匯車成交見證 72｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__80764939.webp" alt="高雄外匯車成交見證 73｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__80814085.webp" alt="高雄外匯車成交見證 74｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__84181041.webp" alt="高雄外匯車成交見證 75｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__85286940.webp" alt="高雄外匯車成交見證 76｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__85286942.webp" alt="高雄外匯車成交見證 77｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__88080481.webp" alt="高雄外匯車成交見證 78｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__88080483.webp" alt="高雄外匯車成交見證 79｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__89448451.webp" alt="高雄外匯車成交見證 80｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__91488262.webp" alt="高雄外匯車成交見證 81｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__92102679.webp" alt="高雄外匯車成交見證 82｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__92102681.webp" alt="高雄外匯車成交見證 83｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__95273149.webp" alt="高雄外匯車成交見證 84｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__95273151.webp" alt="高雄外匯車成交見證 85｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__96829443.webp" alt="高雄外匯車成交見證 86｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__96829445.webp" alt="高雄外匯車成交見證 87｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__96829446.webp" alt="高雄外匯車成交見證 88｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__105365860_0.webp" alt="高雄外匯車成交見證 89｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__105365862_0.webp" alt="高雄外匯車成交見證 90｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__105365863_0.webp" alt="高雄外匯車成交見證 91｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/S__105365864_0.webp" alt="高雄外匯車成交見證 92｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-<div class="testimonial-item"><img src="image/安迪C3001.webp" alt="高雄外匯車成交見證 93｜CPO原廠認證進口車｜耀笙國際汽車" loading="lazy" decoding="async"></div>
-        </div>
-        <button class="carousel-nav next" onclick="moveTestimonialCarousel(1)"><i class="fas fa-chevron-right"></i></button>
-    </div>
-    <div style="text-align: center; margin-top: 30px;">
-        <button id="testimonialAutoPlayBtn" class="auto-play-btn" onclick="toggleTestimonialAutoPlay()">
-            <i class="fas fa-pause"></i> <span id="testimonialAutoPlayText">暫停自動輪播</span>
-        </button>
     </div>
 </section>
 
@@ -1868,7 +1749,7 @@
                 <li><a href="#owner">認識我們</a></li>
                 <li><a href="#philosophy">經營理念</a></li>
                 <li><a href="#services">服務項目</a></li>
-                <li><a href="#testimonials">成交見證</a></li>
+                <li><a href="prove.html">成交見證</a></li>
                 <li><a href="#reviews">顧客推薦</a></li>
             </ul>
         </div>
@@ -2053,52 +1934,6 @@ function createRow(direction) {
         }
     }
 
-    // 成交見證輪播
-    let testimonialCurrentIndex = 0;
-    let testimonialAutoPlayInterval;
-    let isTestimonialAutoPlaying = true;
-
-    function initTestimonialCarousel() {
-        const track = document.getElementById('testimonialTrack');
-        if (!track) return;
-        startTestimonialAutoPlay();
-    }
-
-    function moveTestimonialCarousel(direction) {
-        const track = document.getElementById('testimonialTrack');
-        const items = track.children;
-        const itemWidth = items[0].offsetWidth + 20;
-        testimonialCurrentIndex += direction;
-        if (testimonialCurrentIndex < 0) testimonialCurrentIndex = items.length - 3;
-        if (testimonialCurrentIndex > items.length - 3) testimonialCurrentIndex = 0;
-        track.style.transform = `translateX(${-testimonialCurrentIndex * itemWidth}px)`;
-    }
-
-    function startTestimonialAutoPlay() {
-        testimonialAutoPlayInterval = setInterval(() => {
-            moveTestimonialCarousel(1);
-        }, 3000);
-    }
-
-    function stopTestimonialAutoPlay() {
-        clearInterval(testimonialAutoPlayInterval);
-    }
-
-    function toggleTestimonialAutoPlay() {
-        const btn = document.getElementById('testimonialAutoPlayBtn');
-        const icon = btn.querySelector('i');
-        const text = document.getElementById('testimonialAutoPlayText');
-        isTestimonialAutoPlaying = !isTestimonialAutoPlaying;
-        if (isTestimonialAutoPlaying) {
-            startTestimonialAutoPlay();
-            icon.className = 'fas fa-pause';
-            text.textContent = '暫停自動輪播';
-        } else {
-            stopTestimonialAutoPlay();
-            icon.className = 'fas fa-play';
-            text.textContent = '開始自動輪播';
-        }
-    }
 
     function toggleMobileMenu() {
         const menu = document.getElementById('mobileMenu');
@@ -2123,7 +1958,6 @@ function createRow(direction) {
     });
     window.addEventListener('load', function() {
         initCarousel();
-        initTestimonialCarousel();
         reveal();
         updateActiveNav();
     });
