@@ -160,7 +160,20 @@
         .logo-text .en { font-family: 'Playfair Display'; font-size: 11px; color: var(--gold); letter-spacing: 2px; }
         .logo-text .since { font-size: 9px; color: var(--text-gray); letter-spacing: 1px; margin-top: 2px; }
         .nav-links { display: flex; gap: 35px; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-light-gray); font-size: 13px; font-weight: 500; transition: 0.3s; }
+        .nav-links a { text-decoration: none; color: var(--text-light-gray); font-size: 13px; font-weight: 500; transition: 0.3s; position: relative; padding-bottom: 3px;}
+		.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: 0.3s;
+}
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
         .nav-links a:hover { color: var(--gold); }
         .nav-right { display: flex; align-items: center; gap: 20px; }
         .nav-social-top a { color: var(--gold); font-size: 18px; margin-left: 15px; transition: 0.3s; }
