@@ -1887,54 +1887,6 @@ function createRow(direction) {
         }
     }
 
-    // 車輛輪播
-    let currentIndex = 0;
-    let autoPlayInterval;
-    let isAutoPlaying = true;
-
-    function initCarousel() {
-        const track = document.getElementById('carouselTrack');
-        if (!track) return;
-        startAutoPlay();
-    }
-
-    function moveCarousel(direction) {
-        const track = document.getElementById('carouselTrack');
-        const items = track.children;
-        const itemWidth = items[0].offsetWidth + 20;
-        currentIndex += direction;
-        if (currentIndex < 0) currentIndex = items.length - 3;
-        if (currentIndex > items.length - 3) currentIndex = 0;
-        track.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
-    }
-
-    function startAutoPlay() {
-        autoPlayInterval = setInterval(() => {
-            moveCarousel(1);
-        }, 3000);
-    }
-
-    function stopAutoPlay() {
-        clearInterval(autoPlayInterval);
-    }
-
-    function toggleAutoPlay() {
-        const btn = document.getElementById('autoPlayBtn');
-        const icon = btn.querySelector('i');
-        const text = document.getElementById('autoPlayText');
-        isAutoPlaying = !isAutoPlaying;
-        if (isAutoPlaying) {
-            startAutoPlay();
-            icon.className = 'fas fa-pause';
-            text.textContent = '暫停自動輪播';
-        } else {
-            stopAutoPlay();
-            icon.className = 'fas fa-play';
-            text.textContent = '開始自動輪播';
-        }
-    }
-
-
     function toggleMobileMenu() {
         const menu = document.getElementById('mobileMenu');
         const overlay = document.getElementById('mobileMenuOverlay');
