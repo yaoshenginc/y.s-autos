@@ -2119,13 +2119,29 @@ function createRow(direction) {
     window.addEventListener('scroll', function() {
         handleNavScroll();
         reveal();
+        updateActiveNav();
     });
-
     window.addEventListener('load', function() {
         initCarousel();
         initTestimonialCarousel();
         reveal();
+        updateActiveNav();
     });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    function updateActiveNav() {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 120) current = s.id;
+        });
+        navLinks.forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+        });
+    }
 </script>
 </body>
 </html>
