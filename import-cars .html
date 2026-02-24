@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="耀笙國際汽車｜美國外匯車介紹｜CARFAX・AutoCheck・CPO原廠認證・Manheim拍賣｜高雄仁武專業進口車商">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+    <link rel="canonical" href="https://ys-autos.com/import-cars.html">
+    <link rel="icon" href="image/favicon.png" sizes="144x144">
+    <link rel="apple-touch-icon" href="image/favicon.png">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="美國外匯車介紹｜CARFAX・CPO認證・Manheim｜耀笙國際汽車">
+    <meta property="og:description" content="為什麼要選擇美國外匯車？車況透明、保養紀錄詳細、CPO原廠認證、CARFAX歷史報告，耀笙國際汽車為您完整解析。">
+    <meta property="og:image" content="image/logo.png">
+    <meta property="og:url" content="https://ys-autos.com/import-cars.html">
+    <title>美國外匯車介紹｜CARFAX・AutoCheck・CPO・Manheim｜耀笙國際汽車</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --secondary-black: #1a1a1a;
+            --card-black: #141414;
+            --gold: #d4a948;
+            --gold-dark: #b8923e;
+            --gold-light: #e5c05d;
+            --gold-dim: rgba(212,169,72,0.12);
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --text-light-gray: #d0d0d0;
+            --usa-red: #c0392b;
+            --usa-blue: #1a3a6e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans TC', sans-serif; background: var(--primary-black); color: var(--text-white); overflow-x: hidden; line-height: 1.6; }
+
+        /* ═══════════════════════ NAV ═══════════════════════ */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: transparent;
+            border-bottom: 1px solid rgba(212,169,72,0);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(0px);
+        }
+        nav.nav-scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 169, 72, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        .nav-container { max-width: 1600px; margin: 0 auto; padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; transition: all 0.4s ease; }
+        nav.nav-scrolled .nav-container { padding: 15px 60px; }
+        .nav-left { display: flex; align-items: center; gap: 40px; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-img { height: 45px; width: auto; object-fit: contain; }
+        .logo-text .zh { font-size: 22px; font-weight: 600; color: #fff; letter-spacing: 2px; }
+        .logo-text .en { font-family: 'Playfair Display'; font-size: 11px; color: var(--gold); letter-spacing: 2px; }
+        .logo-text .since { font-size: 9px; color: var(--text-gray); letter-spacing: 1px; margin-top: 2px; }
+        .nav-links { display: flex; gap: 35px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-light-gray); font-size: 13px; font-weight: 500; transition: 0.3s; position: relative; padding-bottom: 3px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .nav-social-top a { color: var(--gold); font-size: 18px; margin-left: 15px; transition: 0.3s; }
+        .nav-social-top a:hover { color: var(--text-gray); }
+        .nav-cta { padding: 12px 30px; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; letter-spacing: 1px; }
+        .nav-cta:hover { background: var(--gold); color: #000; }
+
+        /* Mobile */
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-white); font-size: 24px; cursor: pointer; padding: 10px; }
+        .mobile-menu { display: none; position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--secondary-black); z-index: 9999; transition: right 0.3s ease; padding: 80px 30px 30px; overflow-y: auto; }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: var(--text-white); font-size: 30px; cursor: pointer; padding: 10px; }
+        .mobile-menu-links { list-style: none; padding: 0; margin: 0; }
+        .mobile-menu-links li { margin-bottom: 20px; }
+        .mobile-menu-links a { color: var(--text-white); text-decoration: none; font-size: 18px; font-weight: 500; display: block; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .mobile-menu-links a:hover { color: var(--gold); padding-left: 10px; }
+        .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.7); z-index: 9998; }
+        .mobile-menu-overlay.active { display: block; }
+        .mobile-social { display: none; }
+
+        /* ═══════════════════════ HERO ═══════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: 
+                linear-gradient(135deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.92) 100%),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(212,169,72,0.03) 80px,
+                    rgba(212,169,72,0.03) 81px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(212,169,72,0.03) 80px,
+                    rgba(212,169,72,0.03) 81px
+                );
+        }
+        /* USA flag stripe accents */
+        .hero-stripe-red {
+            position: absolute; top: 0; right: 0;
+            width: 6px; height: 100%;
+            background: var(--usa-red);
+            opacity: 0.6;
+        }
+        .hero-stripe-blue {
+            position: absolute; top: 0; right: 14px;
+            width: 6px; height: 100%;
+            background: var(--usa-blue);
+            opacity: 0.5;
+        }
+        .hero-stripe-gold {
+            position: absolute; top: 0; right: 28px;
+            width: 3px; height: 100%;
+            background: var(--gold);
+            opacity: 0.4;
+        }
+        .hero-glow {
+            position: absolute; top: 30%; left: -15%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(212,169,72,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-inner {
+            position: relative; z-index: 2;
+            max-width: 1400px; margin: 0 auto;
+            padding: 160px 60px 120px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .hero-eyebrow {
+            display: flex; align-items: center; gap: 15px;
+            margin-bottom: 30px;
+        }
+        .eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
+        .eyebrow-text { font-size: 11px; letter-spacing: 4px; color: var(--gold); font-weight: 500; text-transform: uppercase; }
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 68px; font-weight: 700; line-height: 1.1;
+            margin-bottom: 30px;
+        }
+        .hero-title em { font-style: italic; color: var(--gold); }
+        .hero-desc {
+            font-size: 17px; color: var(--text-gray); line-height: 2;
+            margin-bottom: 50px;
+            border-left: 2px solid var(--gold);
+            padding-left: 25px;
+        }
+        .hero-desc strong { color: var(--text-light-gray); }
+        .hero-cta-group { display: flex; gap: 20px; flex-wrap: wrap; }
+        .btn-gold { background: var(--gold); color: #000; padding: 16px 40px; text-decoration: none; font-weight: 700; font-size: 13px; letter-spacing: 1px; transition: 0.3s; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-gold:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212,169,72,0.3); }
+        .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 16px 40px; text-decoration: none; font-weight: 500; font-size: 13px; letter-spacing: 1px; transition: 0.3s; display: inline-flex; align-items: center; gap: 10px; }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* Hero right - USA card */
+        .hero-usa-card {
+            background: var(--secondary-black);
+            border: 1px solid rgba(212,169,72,0.2);
+            padding: 50px;
+            position: relative;
+        }
+        .usa-card-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(212,169,72,0.15);
+        }
+        .hero-usa-flag {
+            width: 58px; height: 38px;
+            object-fit: cover;
+            border: 1px solid rgba(212,169,72,0.3);
+            display: block;
+            flex-shrink: 0;
+        }
+        .usa-card-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 13px; letter-spacing: 4px; color: var(--gold);
+            margin-bottom: 0; margin-top: 0;
+            text-transform: uppercase;
+        }
+        .usa-reason-list { list-style: none; }
+        .usa-reason-list li {
+            display: flex; align-items: flex-start; gap: 15px;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 15px; line-height: 1.7;
+        }
+        .usa-reason-list li:last-child { border-bottom: none; }
+        .usa-reason-list li .icon {
+            width: 36px; height: 36px;
+            background: var(--gold-dim);
+            border: 1px solid rgba(212,169,72,0.2);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gold); font-size: 14px;
+            flex-shrink: 0; margin-top: 2px;
+        }
+        .usa-reason-list li .txt strong { color: var(--gold-light); display: block; font-size: 14px; margin-bottom: 3px; }
+        .usa-reason-list li .txt span { color: var(--text-gray); font-size: 13px; }
+
+        /* ═══════════════════════ REPORT SECTIONS ═══════════════════════ */
+        .section-inner { max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+        .section-tag { font-size: 11px; letter-spacing: 4px; color: var(--gold); margin-bottom: 20px; font-weight: 500; display: block; text-transform: uppercase; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 50px; margin-bottom: 20px; line-height: 1.2; }
+        .section-subtitle { font-size: 17px; color: var(--text-gray); max-width: 700px; line-height: 2; margin-bottom: 70px; }
+        .report-section {
+            padding: 140px 60px;
+            position: relative;
+            overflow: hidden;
+            background: var(--secondary-black);
+        }
+        .report-section.alt { background: var(--primary-black); }
+
+        .report-grid {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 80px; align-items: center;
+        }
+        .report-grid.reverse { }
+        .report-grid.reverse .report-content { order: 2; }
+        .report-grid.reverse .report-visual { order: 1; }
+
+        .report-content {}
+        .report-badge {
+            display: inline-flex; align-items: center; gap: 12px;
+            margin-bottom: 30px;
+        }
+        .badge-logo {
+            height: 38px; width: auto;
+            background: #fff;
+            padding: 6px 12px;
+            border-radius: 3px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .badge-logo span {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px; font-weight: 600;
+            letter-spacing: 2px;
+        }
+        .brand-logo-img {
+            height: 26px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+        .badge-logo.carfax span { color: #e8111a; }
+        .badge-logo.autocheck span { color: #0057b8; }
+        .badge-logo.cpo span { color: #1a1a1a; }
+        .badge-logo.manheim span { color: #005dab; }
+        .badge-sub { font-size: 11px; letter-spacing: 3px; color: var(--gold); font-weight: 500; text-transform: uppercase; }
+
+        .report-title { font-family: 'Playfair Display', serif; font-size: 42px; line-height: 1.2; margin-bottom: 25px; }
+        .report-desc { font-size: 15px; color: var(--text-gray); line-height: 2.1; margin-bottom: 35px; }
+        .report-features { list-style: none; margin-bottom: 40px; }
+        .report-features li {
+            display: flex; align-items: flex-start; gap: 15px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 14px; color: var(--text-light-gray);
+            line-height: 1.7;
+        }
+        .report-features li .feat-icon {
+            width: 28px; height: 28px;
+            background: var(--gold-dim);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gold); font-size: 11px;
+            flex-shrink: 0; margin-top: 2px;
+        }
+        .report-features li strong { color: #fff; display: block; margin-bottom: 2px; }
+
+        /* Report visual / screenshot placeholder */
+        .report-visual {
+            position: relative;
+        }
+        .screenshot-placeholder {
+            background: var(--card-black);
+            border: 1px solid rgba(212,169,72,0.2);
+            border-radius: 4px;
+            aspect-ratio: 4/3;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .screenshot-placeholder:hover { border-color: rgba(212,169,72,0.5); }
+        .screenshot-placeholder::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 30px,
+                    rgba(212,169,72,0.03) 30px,
+                    rgba(212,169,72,0.03) 31px
+                );
+        }
+        .placeholder-icon { font-size: 52px; opacity: 0.3; position: relative; z-index: 1; }
+        .placeholder-text { font-size: 13px; color: var(--text-gray); letter-spacing: 2px; text-transform: uppercase; position: relative; z-index: 1; }
+        .placeholder-sub { font-size: 11px; color: rgba(160,160,160,0.5); position: relative; z-index: 1; }
+        .visual-tag {
+            position: absolute;
+            top: -12px; right: 30px;
+            background: var(--gold);
+            color: #000; font-size: 10px; font-weight: 700;
+            padding: 5px 14px; letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .visual-decoration {
+            position: absolute;
+            bottom: -15px; left: -15px;
+            width: 80px; height: 80px;
+            border: 1px solid rgba(212,169,72,0.2);
+            pointer-events: none;
+        }
+
+        /* ═══════════════════════ CPO SECTION ═══════════════════════ */
+        .cpo-section {
+            padding: 140px 60px;
+            background: var(--secondary-black);
+            position: relative;
+            overflow: hidden;
+        }
+        .cpo-section::before {
+            content: 'CPO';
+            position: absolute; right: -30px; bottom: -40px;
+            font-family: 'Oswald', sans-serif; font-size: 250px; font-weight: 600;
+            color: rgba(212,169,72,0.03); letter-spacing: -10px;
+            pointer-events: none;
+        }
+
+        .cpo-inner { max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+
+        /* ① 左文右截圖：文字佔 55%，截圖佔 40% */
+        .cpo-header {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 70px;
+        }
+        .cpo-header-text {}
+
+        /* CPO logo */
+        .cpo-logo-wrap {
+            margin-bottom: 20px;
+            display: flex; align-items: center;
+        }
+        .cpo-logo-img {
+            height: 50px; width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* CPO report screenshot */
+        .cpo-report-visual {
+            position: relative;
+        }
+        .cpo-report-visual .visual-tag {
+            position: absolute;
+            top: -12px; right: 20px;
+        }
+
+        /* 下方：四步驟橫排 */
+        .cpo-steps-row {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            background: rgba(212,169,72,0.08);
+            margin-bottom: 60px;
+        }
+        .cpo-step-card {
+            background: var(--card-black);
+            padding: 40px 30px;
+            transition: 0.3s;
+        }
+        .cpo-step-card:hover { background: #181818; }
+        .cpo-step-card i { font-size: 26px; color: var(--gold); margin-bottom: 16px; display: block; }
+        .cpo-step-card .cpo-card-step {
+            font-family: 'Oswald', sans-serif;
+            font-size: 11px; letter-spacing: 3px; color: var(--gold);
+            margin-bottom: 10px; text-transform: uppercase;
+        }
+        .cpo-step-card h4 { font-size: 16px; margin-bottom: 10px; }
+        .cpo-step-card p { font-size: 13px; color: var(--text-gray); line-height: 1.8; }
+        .cpo-criteria-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            background: rgba(212,169,72,0.08);
+        }
+        .cpo-card {
+            background: var(--card-black);
+            padding: 35px 30px;
+            transition: 0.3s;
+        }
+        .cpo-card:hover { background: #181818; }
+        .cpo-card-step {
+            font-family: 'Oswald', sans-serif;
+            font-size: 11px; letter-spacing: 3px; color: var(--gold);
+            margin-bottom: 12px; text-transform: uppercase;
+        }
+        .cpo-card h4 { font-size: 17px; margin-bottom: 10px; }
+        .cpo-card p { font-size: 13px; color: var(--text-gray); line-height: 1.8; }
+        .cpo-card i { font-size: 22px; color: var(--gold); margin-bottom: 15px; display: block; }
+
+        .cpo-banner {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+            padding: 50px 60px;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 40px;
+            position: relative; overflow: hidden;
+        }
+        .cpo-banner::before {
+            content: '';
+            position: absolute; right: -60px; top: -60px;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+        .cpo-banner-text h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: #000; margin-bottom: 8px; }
+        .cpo-banner-text p { font-size: 14px; color: rgba(0,0,0,0.65); }
+        .cpo-banner-num { text-align: center; }
+        .cpo-banner-num span { font-family: 'Oswald', sans-serif; font-size: 60px; font-weight: 600; color: #000; line-height: 1; display: block; }
+        .cpo-banner-num small { font-size: 13px; color: rgba(0,0,0,0.55); }
+
+        /* ═══════════════════════ MANHEIM SECTION ═══════════════════════ */
+        .manheim-logo-wrap {
+            margin-bottom: 18px;
+            display: flex; align-items: center;
+        }
+        .manheim-logo-img {
+            height: 40px; width: auto;
+            object-fit: contain;
+            display: block;
+            /* Manheim logo 通常為藍底白字，若背景色不搭可加 background: #fff; padding: 6px 12px; border-radius: 3px; */
+        }
+        .manheim-section {
+            padding: 140px 60px;
+            background: var(--primary-black);
+        }
+        .manheim-inner { max-width: 1400px; margin: 0 auto; }
+
+        .manheim-intro {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 80px; align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .manheim-member-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(212,169,72,0.1);
+            border: 1px solid rgba(212,169,72,0.3);
+            padding: 12px 24px; margin-top: 30px;
+            font-size: 13px; color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════ PROCESS SECTION ═══════════════════════ */
+        .process-section {
+            padding: 120px 60px;
+            background: var(--secondary-black);
+        }
+        .process-inner { max-width: 1400px; margin: 0 auto; }
+        .process-steps {
+            display: grid; grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            margin-top: 70px;
+            position: relative;
+        }
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 36px; left: 60px; right: 60px;
+            height: 1px; background: rgba(212,169,72,0.2);
+            z-index: 0;
+        }
+        .process-step {
+            padding: 0 20px;
+            text-align: center;
+            position: relative; z-index: 1;
+        }
+        .step-circle {
+            width: 72px; height: 72px; margin: 0 auto 25px;
+            background: var(--card-black);
+            border: 1px solid rgba(212,169,72,0.3);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px; font-weight: 600; color: var(--gold);
+            transition: 0.3s;
+        }
+        .process-step:hover .step-circle {
+            background: var(--gold-dim);
+            border-color: var(--gold);
+        }
+        .step-title { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .step-desc { font-size: 12px; color: var(--text-gray); line-height: 1.8; }
+
+        /* ═══════════════════════ BOTTOM CTA ═══════════════════════ */
+        .bottom-cta {
+            padding: 120px 60px;
+            background: var(--primary-black);
+            text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .bottom-cta::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(212,169,72,0.08), transparent 70%);
+        }
+        .bottom-cta-inner { position: relative; z-index: 1; }
+        .bottom-cta h2 { font-family: 'Playfair Display', serif; font-size: 50px; margin-bottom: 20px; }
+        .bottom-cta p { font-size: 17px; color: var(--text-gray); margin-bottom: 50px; }
+        .cta-group { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+
+        /* ═══════════════════════ FOOTER ═══════════════════════ */
+        footer { background: var(--secondary-black); padding: 80px 60px 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; }
+        .footer-socials { display: flex; gap: 15px; margin-top: 25px; }
+        .social-btn { width: 40px; height: 40px; background: rgba(212,169,72,0.1); border: 1px solid rgba(212,169,72,0.2); display: flex; align-items: center; justify-content: center; color: var(--gold); text-decoration: none; transition: 0.3s; }
+        .social-btn:hover { background: var(--gold); color: var(--primary-black); }
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 12px; }
+        .footer-links ul li a { color: var(--text-gray); text-decoration: none; font-size: 14px; transition: 0.3s; }
+        .footer-links ul li a:hover { color: var(--gold); }
+
+        .floating-cta { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: var(--primary-black); padding: 18px 35px; text-decoration: none; font-weight: 700; border-radius: 50px; box-shadow: 0 10px 30px rgba(212,169,72,0.4); z-index: 999; transition: 0.3s; font-size: 14px; }
+        .floating-cta:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(212,169,72,0.6); }
+
+        /* ═══════════════════════ CPO VS MANHEIM ═══════════════════════ */
+        .cpo-vs-manheim-section {
+            padding: 140px 60px;
+            background: #1c1c1c;
+            position: relative;
+            overflow: hidden;
+        }
+        .versus-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid rgba(212,169,72,0.2);
+            margin-top: 60px;
+            overflow: hidden;
+        }
+        .versus-col {
+            padding: 60px 50px;
+        }
+        .versus-col.cpo { background: var(--primary-black); border-right: 1px solid rgba(212,169,72,0.15); }
+        .versus-col.manheim-vs { background: #272727; }
+        .versus-badge {
+            display: inline-block;
+            padding: 6px 18px; font-size: 11px; font-weight: 700; letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+        .versus-badge.badge-cpo { background: var(--gold); color: #000; }
+        .versus-badge.badge-manheim-vs { background: transparent; border: 1px solid var(--text-gray); color: var(--text-gray); }
+        .versus-col h3 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 20px; }
+        .versus-col.cpo h3 { color: var(--gold); }
+        .versus-col.manheim-vs h3 { color: var(--text-light-gray); }
+        .versus-list { list-style: none; margin-top: 20px; }
+        .versus-list li {
+            font-size: 14px; padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex; gap: 12px; align-items: flex-start;
+            color: var(--text-light-gray);
+            line-height: 1.7;
+        }
+        .versus-list li .v-check { color: var(--gold); font-size: 13px; margin-top: 2px; flex-shrink: 0; }
+        .versus-list li .v-x { color: #666; font-size: 13px; margin-top: 2px; flex-shrink: 0; }
+        .versus-note {
+            margin-top: 28px;
+            padding: 22px;
+            background: rgba(212,169,72,0.08);
+            border-left: 3px solid var(--gold);
+            font-size: 14px; color: var(--text-light-gray);
+            line-height: 1.8;
+        }
+        .versus-note strong { color: var(--gold); }
+
+        /* ═══════════════════════ SPEC COMPARISON SECTION - PODIUM STYLE ═══════════════════════ */
+        .spec-compare-section {
+            padding: 140px 60px;
+            background: #000000;
+            position: relative;
+            overflow: hidden;
+        }
+        .spec-compare-section::before {
+            content: 'USA';
+            position: absolute; right: -20px; bottom: -60px;
+            font-family: 'Oswald', sans-serif; font-size: 220px; font-weight: 600;
+            color: rgba(212,169,72,0.03); letter-spacing: -5px;
+            pointer-events: none;
+        }
+        .spec-compare-inner { max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+        .spec-compare-header {
+            text-align: center; margin-bottom: 80px;
+        }
+
+        /* Podium container */
+        .spec-cards {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 0;
+            position: relative;
+        }
+
+        /* Side cards (CA / EU) */
+        .spec-card {
+            position: relative;
+            flex: 0 0 360px;
+        }
+        .spec-card.ca {
+            background: #0e0e0e;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-right: none;
+            padding: 38px 30px 38px;
+            align-self: center;
+        }
+        .spec-card.eu {
+            background: #0e0e0e;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-left: none;
+            padding: 38px 30px 38px;
+            align-self: center;
+        }
+
+        /* Center USA card - larger (podium champion) */
+        .spec-card.usa {
+            flex: 0 0 420px;
+            background: linear-gradient(160deg, #161408 0%, #1c1c0f 100%);
+            border: 3px solid var(--gold);
+            padding: 55px 40px 55px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 60px rgba(212,169,72,0.18), 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .spec-card.usa::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(212,169,72,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        /* Gold crown accent on top of USA card */
+        .spec-card.usa::after {
+            content: '★ RECOMMENDED';
+            position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+            background: var(--gold);
+            color: #000; font-size: 9px; font-weight: 700;
+            padding: 5px 16px; letter-spacing: 2px; white-space: nowrap;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .spec-card-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 10px; font-weight: 700; letter-spacing: 3px;
+            padding: 6px 14px; margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+        .spec-card.ca .spec-card-badge { background: rgba(255,255,255,0.06); color: #888; border: 1px solid rgba(255,255,255,0.1); }
+        .spec-card.eu .spec-card-badge { background: rgba(255,255,255,0.06); color: #888; border: 1px solid rgba(255,255,255,0.1); }
+        .spec-card.usa .spec-card-badge { background: var(--gold); color: #000; }
+
+        .spec-card-title {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 6px;
+        }
+        .spec-card.ca .spec-card-title,
+        .spec-card.eu .spec-card-title { color: var(--text-light-gray); font-size: 22px; }
+        .spec-card.usa .spec-card-title { color: var(--gold); font-size: 30px; }
+
+        .spec-card-subtitle {
+            font-size: 11px; color: var(--text-gray); letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .spec-card.ca .spec-card-subtitle,
+        .spec-card.eu .spec-card-subtitle { margin-bottom: 22px; }
+        .spec-card.usa .spec-card-subtitle { margin-bottom: 30px; }
+
+        .spec-item {
+            display: flex; gap: 12px; align-items: flex-start;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            line-height: 1.75;
+        }
+        .spec-card.ca .spec-item,
+        .spec-card.eu .spec-item { padding: 12px 0; font-size: 12px; }
+        .spec-card.usa .spec-item { padding: 14px 0; font-size: 13px; }
+
+        .spec-item:last-child { border-bottom: none; }
+        .spec-item .sicon {
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            margin-top: 1px;
+        }
+        .spec-card.ca .sicon,
+        .spec-card.eu .sicon { width: 26px; height: 26px; background: rgba(255,255,255,0.04); color: #666; font-size: 11px; }
+        .spec-card.usa .sicon { width: 34px; height: 34px; background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(212,169,72,0.2); font-size: 14px; }
+
+        .spec-item .stxt strong { display: block; margin-bottom: 2px; }
+        .spec-card.ca .stxt strong,
+        .spec-card.eu .stxt strong { color: #aaa; font-size: 12px; }
+        .spec-card.usa .stxt strong { color: var(--gold-light); font-size: 14px; }
+        .spec-item .stxt span { color: var(--text-gray); }
+        .spec-card.ca .stxt span,
+        .spec-card.eu .stxt span { font-size: 11px; }
+        .spec-card.usa .stxt span { font-size: 12px; color: #aaa; }
+
+        .spec-footer {
+            margin-top: 22px;
+            padding: 16px;
+            font-size: 12px; line-height: 1.8;
+        }
+        .spec-card.ca .spec-footer,
+        .spec-card.eu .spec-footer { background: rgba(255,255,255,0.03); color: #777; border-left: 2px solid #333; }
+        .spec-card.usa .spec-footer { background: rgba(212,169,72,0.08); color: var(--text-light-gray); border-left: 3px solid var(--gold); font-size: 13px; padding: 20px; }
+
+        .spec-recommend-banner {
+            margin-top: 60px;
+            background: linear-gradient(135deg, rgba(212,169,72,0.12) 0%, rgba(212,169,72,0.05) 100%);
+            border: 1px solid rgba(212,169,72,0.25);
+            padding: 40px 50px;
+            display: flex; align-items: center; gap: 40px;
+        }
+        .spec-recommend-banner i { font-size: 40px; color: var(--gold); flex-shrink: 0; }
+        .spec-recommend-banner h4 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--gold); margin-bottom: 8px; }
+        .spec-recommend-banner p { font-size: 14px; color: var(--text-gray); line-height: 1.9; }
+
+        @media (max-width: 968px) {
+            .spec-compare-section { padding: 80px 25px; }
+            .spec-cards { flex-direction: column; align-items: stretch; }
+            .spec-card { flex: unset; width: 100%; }
+            .spec-card.ca { border-right: 1px solid rgba(255,255,255,0.08); border-bottom: none; }
+            .spec-card.eu { border-left: 1px solid rgba(255,255,255,0.08); border-top: none; }
+            .spec-card.usa { border: 3px solid var(--gold); box-shadow: none; }
+            .spec-recommend-banner { flex-direction: column; text-align: center; padding: 30px 25px; }
+        }
+
+        /* ═══════════════════════ REVEAL ═══════════════════════ */
+        .reveal { opacity: 0; transform: translateY(35px); transition: all 0.65s cubic-bezier(0.4,0,0.2,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* ═══════════════════════ RWD ═══════════════════════ */
+        @media (max-width: 1200px) {
+            .process-steps { grid-template-columns: repeat(3, 1fr); gap: 30px; }
+            .process-steps::before { display: none; }
+            .cpo-steps-row { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 968px) {
+            .nav-links, .nav-social-top, .nav-cta { display: none; }
+            .mobile-menu-btn { display: block; }
+            .mobile-menu { display: block; }
+            .mobile-social { display: flex; align-items: center; gap: 15px; margin-right: 10px; }
+            .mobile-social a { color: var(--gold); font-size: 18px; text-decoration: none; }
+            .nav-container { padding: 15px 25px !important; }
+            .hero-inner { grid-template-columns: 1fr; padding: 130px 30px 80px; gap: 50px; }
+            .hero-title { font-size: 44px; }
+            .why-section, .report-section, .cpo-section, .manheim-section, .process-section, .bottom-cta { padding: 80px 25px; }
+            .report-grid { grid-template-columns: 1fr; gap: 50px; }
+            .report-grid.reverse .report-content { order: 0; }
+            .report-grid.reverse .report-visual { order: 0; }
+            .cpo-header { grid-template-columns: 1fr; gap: 50px; }
+            .cpo-steps-row { grid-template-columns: repeat(2, 1fr); }
+            .cpo-steps-row { grid-template-columns: 1fr; }
+            .manheim-intro { grid-template-columns: 1fr; gap: 50px; }
+            .versus-grid { grid-template-columns: 1fr; }
+            .versus-col.cpo { border-right: none; border-bottom: 1px solid rgba(212,169,72,0.15); }
+            .cpo-vs-manheim-section { padding: 80px 25px; }
+            .process-steps { grid-template-columns: 1fr; }
+            .section-title { font-size: 34px; }
+            .report-title { font-size: 30px; }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .hero-stripe-red, .hero-stripe-blue, .hero-stripe-gold { display: none; }
+            .cpo-banner { flex-direction: column; text-align: center; padding: 40px 30px; }
+            .bottom-cta h2 { font-size: 32px; }
+            .cta-group a { width: 100%; max-width: 300px; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="index.html" class="logo">
+                <img src="image/logo.png" alt="Y.S. AUTOS Logo" class="logo-img">
+                <div class="logo-text">
+                    <div class="zh">耀笙國際汽車</div>
+                    <div class="en">Y.S. AUTOS</div>
+                    <div class="since">SINCE 2020</div>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="#carfax">CARFAX</a></li>
+                <li><a href="#autocheck">AutoCheck</a></li>
+                <li><a href="#cpo">CPO原廠認證</a></li>
+                <li><a href="#manheim">Manheim</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="nav-social-top">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+            </div>
+            <div class="mobile-social">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+            </div>
+            <a href="inventory.html" class="nav-cta">在庫車輛</a>
+            <a href="index.html#contact" class="nav-cta">立即諮詢</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()"><i class="fas fa-times"></i></button>
+    <ul class="mobile-menu-links">
+        <li><a href="index.html" onclick="closeMobileMenu()">首頁</a></li>
+        <li><a href="#carfax" onclick="closeMobileMenu()">CARFAX</a></li>
+        <li><a href="#autocheck" onclick="closeMobileMenu()">AutoCheck</a></li>
+        <li><a href="#cpo" onclick="closeMobileMenu()">CPO原廠認證</a></li>
+        <li><a href="#manheim" onclick="closeMobileMenu()">Manheim</a></li>
+        <li><a href="inventory.html" onclick="closeMobileMenu()">在庫車輛</a></li>
+        <li><a href="testimonials.html" onclick="closeMobileMenu()">成交見證</a></li>
+        <li><a href="index.html#contact" onclick="closeMobileMenu()">聯絡我們</a></li>
+    </ul>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+    <div class="hero-bg"></div>
+
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+        <div class="hero-text">
+            <div class="hero-eyebrow">
+                <div class="eyebrow-line"></div>
+                <span class="eyebrow-text">American Import Vehicles</span>
+            </div>
+            <h1 class="hero-title">
+                為什麼要選<br><em>美國外匯車</em>？
+            </h1>
+            <p class="hero-desc">
+                <strong>車況透明、保養紀錄完整、日照充足不生鏽</strong>——美國的汽車文化成熟，每台車從出廠到換手都有完整數位紀錄，讓您買得安心、開得放心。<br><br>我們只從美國引進車輛，從來不碰雪地車，因為我的原則就是：<strong>只賣車況好的車。</strong>
+            </p>
+            <div class="hero-cta-group">
+                <a href="#cpo" class="btn-gold"><i class="fas fa-certificate"></i> 了解CPO認證</a>
+                <a href="index.html#contact" class="btn-outline"><i class="fas fa-phone"></i> 立即諮詢</a>
+            </div>
+        </div>
+        <div class="hero-usa-card">
+            <div class="usa-card-header">
+                <!-- ★ 請將下方 src 換成美國國旗圖片連結 -->
+                <img src="YOUR_USA_FLAG_IMAGE_URL" alt="美國國旗" class="hero-usa-flag">
+                <div class="usa-card-title">選擇美國外匯的五大理由</div>
+            </div>
+            <ul class="usa-reason-list">
+                <li>
+                    <div class="icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="txt"><strong>完整車輛歷史報告</strong><span>CARFAX & AutoCheck 完整事故、保養、里程紀錄</span></div>
+                </li>
+                <li>
+                    <div class="icon"><i class="fas fa-sun"></i></div>
+                    <div class="txt"><strong>低緯度 · 少銹蝕</strong><span>美國南部諸州陽光充足，車身底盤保存狀態遠優於加拿大</span></div>
+                </li>
+                <li>
+                    <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="txt"><strong>CPO 原廠認證機制</strong><span>原廠技師多點檢驗，品質有出廠背書保障</span></div>
+                </li>
+                <li>
+                    <div class="icon"><i class="fas fa-car"></i></div>
+                    <div class="txt"><strong>豐富車款選擇</strong><span>全球最大汽車市場，各品牌、年式、配備應有盡有</span></div>
+                </li>
+                <li>
+                    <div class="icon"><i class="fas fa-tools"></i></div>
+                    <div class="txt"><strong>一條龍售後服務</strong><span>自有保養廠，任何狀況直接疑難排解，不用擔心被坑</span></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CARFAX ══ -->
+<section class="report-section" id="carfax">
+    <div class="report-grid reveal">
+        <div class="report-content">
+            <div class="report-badge">
+                <div class="badge-logo carfax">
+                    <!-- ★ 請將下方 src 換成 CARFAX logo 圖片網址 -->
+                    <img src="YOUR_CARFAX_LOGO_URL" alt="CARFAX" class="brand-logo-img">
+                </div>
+                <span class="badge-sub">車輛歷史報告</span>
+            </div>
+            <h2 class="report-title">買車前，先看<br>CARFAX 報告</h2>
+            <p class="report-desc">
+                CARFAX 是北美最被廣泛信賴的車輛歷史報告服務，蒐集來自保險公司、各州政府機關、4S 店、碰撞修復廠等超過 10 萬個資料來源，完整呈現每一台車的過去。
+            </p>
+            <ul class="report-features">
+                <li><div class="feat-icon"><i class="fas fa-car-crash"></i></div><div><strong>事故紀錄</strong>是否有過碰撞事故、氣囊是否展開、損傷程度如何，一目了然。</div></li>
+                <li><div class="feat-icon"><i class="fas fa-tachometer-alt"></i></div><div><strong>里程驗證</strong>每次過戶與保養時記錄里程，有效防範里程表竄改。</div></li>
+                <li><div class="feat-icon"><i class="fas fa-wrench"></i></div><div><strong>保養紀錄</strong>定期保養是否確實執行，讓您評估車輛維護狀況。</div></li>
+                <li><div class="feat-icon"><i class="fas fa-user"></i></div><div><strong>車主數量</strong>此車歷經幾手，是否有租賃、租車公司、商用等特殊使用紀錄。</div></li>
+                <li><div class="feat-icon"><i class="fas fa-water"></i></div><div><strong>泡水 / 火災紀錄</strong>重大損毀記錄無所遁形，保護您遠離問題車。</div></li>
+            </ul>
+        </div>
+        <div class="report-visual">
+            <span class="visual-tag">報告示意</span>
+            <div class="screenshot-placeholder">
+                <div class="placeholder-icon">📋</div>
+                <div class="placeholder-text">CARFAX 報告截圖</div>
+                <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+            </div>
+            <div class="visual-decoration"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ AUTOCHECK ══ -->
+<section class="report-section alt" id="autocheck">
+    <div class="report-grid reverse reveal">
+        <div class="report-content">
+            <div class="report-badge">
+                <div class="badge-logo autocheck">
+                    <!-- ★ 請將下方 src 換成 AutoCheck logo 圖片網址 -->
+                    <img src="YOUR_AUTOCHECK_LOGO_URL" alt="AutoCheck" class="brand-logo-img">
+                </div>
+                <span class="badge-sub">車輛評分報告</span>
+            </div>
+            <h2 class="report-title">AutoCheck<br>更精準的評分系統</h2>
+            <p class="report-desc">
+                AutoCheck 由 Experian 旗下機構出具，與 CARFAX 並列為美國最受認可的兩大車輛歷史報告。其獨有的 <strong style="color:var(--gold-light)">AutoCheck Score</strong> 評分系統，將車輛歷史轉化為一個直觀分數，讓您快速評估車況優劣。
+            </p>
+            <ul class="report-features">
+                <li><div class="feat-icon"><i class="fas fa-star-half-alt"></i></div><div><strong>AutoCheck Score</strong>整合事故、里程、車主數等因素，給出同類車輛的相對評分，高分代表更佳的車輛狀態。</div></li>
+                <li><div class="feat-icon"><i class="fas fa-search"></i></div><div><strong>拍賣歷史追蹤</strong>詳細記錄車輛在各大拍賣場（包含 Manheim）的交易紀錄與成交金額。</div></li>
+                <li><div class="feat-icon"><i class="fas fa-history"></i></div><div><strong>時間軸呈現</strong>以時間軸方式呈現車輛完整生命歷程，脈絡清晰易讀。</div></li>
+                <li><div class="feat-icon"><i class="fas fa-lock"></i></div><div><strong>竊盜 / 召回紀錄</strong>美國政府官方召回資料同步整合，確保車輛合法合規。</div></li>
+            </ul>
+        </div>
+        <div class="report-visual">
+            <span class="visual-tag">報告示意</span>
+            <div class="screenshot-placeholder">
+                <div class="placeholder-icon">📊</div>
+                <div class="placeholder-text">AutoCheck 報告截圖</div>
+                <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+            </div>
+            <div class="visual-decoration"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CPO ══ -->
+<section class="cpo-section" id="cpo">
+    <div class="cpo-inner">
+
+        <!-- ① 左文右截圖 -->
+        <div class="cpo-header reveal">
+            <div class="cpo-header-text">
+                <!-- ★ CPO Logo：請將 src 換成 CPO logo 圖片網址 -->
+                <div class="cpo-logo-wrap">
+                    <img src="YOUR_CPO_LOGO_URL" alt="CPO Certified Pre-Owned" class="cpo-logo-img">
+                </div>
+                <span class="section-tag">Certified Pre-Owned</span>
+                <h2 class="section-title">CPO 原廠認證車<br>品質有出廠背書</h2>
+                <p class="section-subtitle" style="margin-bottom:30px;">
+                    耀笙以 CPO 原廠認證車為主力商品。這代表每一台車在出售前，都經過品牌原廠設定的嚴格標準重新認證，消費者等於從原廠手上接過一台「近乎全新」的二手車。
+                </p>
+                <div class="manheim-member-badge" style="margin-top:0;">
+                    <i class="fas fa-certificate" style="color:var(--gold);"></i>
+                    我們以 CPO 原廠認證車為大宗，大部分車輛皆為美國原廠認證
+                </div>
+            </div>
+            <!-- ★ CPO 報告截圖：將 screenshot-placeholder div 整個換成 <img src="你的截圖" style="width:100%;display:block;"> -->
+            <div class="cpo-report-visual">
+                <span class="visual-tag">CPO 認證報告</span>
+                <div class="screenshot-placeholder" style="aspect-ratio: 4/5;">
+                    <div class="placeholder-icon">📄</div>
+                    <div class="placeholder-text">CPO 認證報告截圖</div>
+                    <div class="placeholder-sub">（此處替換為實際截圖）</div>
+                </div>
+                <div class="visual-decoration"></div>
+            </div>
+        </div>
+
+        <!-- ② 四步驟橫排 -->
+        <div class="cpo-steps-row reveal">
+            <div class="cpo-step-card">
+                <i class="fas fa-clipboard-check"></i>
+                <div class="cpo-card-step">Step 01</div>
+                <h4>嚴格年份與里程門檻</h4>
+                <p>各品牌 CPO 計畫設有年份與里程上限，僅允許條件良好的車輛進入認證流程。</p>
+            </div>
+            <div class="cpo-step-card">
+                <i class="fas fa-search-dollar"></i>
+                <div class="cpo-card-step">Step 02</div>
+                <h4>原廠技師多點檢驗</h4>
+                <p>由品牌授權技師依原廠清單逐項檢驗，通常超過 100 至 150 個檢驗點。</p>
+            </div>
+            <div class="cpo-step-card">
+                <i class="fas fa-tools"></i>
+                <div class="cpo-card-step">Step 03</div>
+                <h4>整備至原廠標準</h4>
+                <p>不符合標準的零件一律更換為原廠零件，整備完成才掛上 CPO 認證標誌。</p>
+            </div>
+            <div class="cpo-step-card">
+                <i class="fas fa-shield-alt"></i>
+                <div class="cpo-card-step">Step 04</div>
+                <h4>原廠延長保固</h4>
+                <p>多數 CPO 計畫附帶原廠延長保固及道路救援服務，為您提供額外保障。</p>
+            </div>
+        </div>
+
+        <!-- ③ 底部 Banner -->
+        <div class="cpo-banner reveal">
+            <div class="cpo-banner-text">
+                <h3>為什麼 CPO 是最值得信賴的選擇？</h3>
+                <p>原廠不會讓自己品牌的名字背書一台問題車——這就是 CPO 最大的價值所在。每一台 CPO 車輛的背後，是品牌信譽的全力保證。</p>
+            </div>
+            <div class="cpo-banner-num">
+                <span>100+</span>
+                <small>原廠檢驗點</small>
+            </div>
+            <div class="cpo-banner-num">
+                <span>0</span>
+                <small>妥協的標準</small>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══ MANHEIM ══ -->
+<section class="manheim-section" id="manheim">
+    <div class="manheim-inner">
+        <div class="manheim-intro">
+            <div class="reveal">
+                <span class="section-tag">Manheim Marketplace</span>
+                <!-- ★ 請將下方 src 換成 Manheim logo 圖片網址 -->
+                <div class="manheim-logo-wrap">
+                    <img src="YOUR_MANHEIM_LOGO_URL" alt="Manheim" class="manheim-logo-img">
+                </div>
+                <h2 class="section-title">Manheim<br>美國最大汽車拍賣場</h2>
+                <p style="font-size:15px; color:var(--text-gray); line-height:2.1; margin-bottom:20px;">
+                    Manheim 是全球規模最大的汽車批發拍賣平台，每年交易超過 700 萬台車輛，遍及美國各地超過 100 個拍賣場地。<strong style="color:var(--text-light-gray)">這裡是美國當地車商的進貨來源</strong>，不對一般消費者開放。
+                </p>
+                <p style="font-size:15px; color:var(--text-gray); line-height:2.1; margin-bottom:25px;">
+                    與 CPO 或一般車商整理好再銷售的車輛不同，Manheim 的車輛是以現況拍賣，由當地車商買回整理後再出售——和台灣的拍賣場機制相同。<strong style="color:var(--gold-light)">而耀笙擁有 Manheim 的會員資格</strong>，能夠直接從拍賣場精選車輛，省去中間層層加價。
+                </p>
+                <div class="manheim-member-badge">
+                    <i class="fas fa-id-card"></i>
+                    耀笙國際汽車 · Manheim 正式會員
+                </div>
+            </div>
+            <div class="report-visual reveal">
+                <span class="visual-tag">Manheim 車況報告</span>
+                <div class="screenshot-placeholder" style="aspect-ratio: 1/1.1;">
+                    <div class="placeholder-icon">🏭</div>
+                    <div class="placeholder-text">Manheim 車況報告示意</div>
+                    <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ══ CPO VS MANHEIM ══ -->
+<section id="cpo-vs-manheim" class="cpo-vs-manheim-section">
+    <div class="section-inner">
+        <div class="reveal" style="text-align:center; max-width:700px; margin:0 auto;">
+            <span class="section-tag">Our Philosophy</span>
+            <h2 class="section-title" style="text-align:center;">CPO 原廠認證<br><span style="color:var(--gold); font-size:36px;">vs</span><br>Manheim 拍賣場</h2>
+            <p class="section-subtitle" style="text-align:center; margin:0 auto 0;">我們的選擇背後，是對車況與顧客口碑的堅持</p>
+        </div>
+        <div class="versus-grid reveal">
+            <div class="versus-col cpo">
+                <div class="versus-badge badge-cpo">✦ 我們主力進口</div>
+                <h3>CPO 原廠認證車</h3>
+                <ul class="versus-list">
+                    <li><span class="v-check">✔</span> 175 項原廠逐點檢驗，品質有依據</li>
+                    <li><span class="v-check">✔</span> 消耗品已更換，輪胎 7 成以上保證</li>
+                    <li><span class="v-check">✔</span> 原廠鈑件保證，無不明修復</li>
+                    <li><span class="v-check">✔</span> 回台洗車即可銷售，不需額外等待整備</li>
+                    <li><span class="v-check">✔</span> 顧客放心、故障率低、口碑有保障</li>
+                    <li><span class="v-check">✔</span> 雖然成本較高，但長期省下大量麻煩</li>
+                </ul>
+                <div class="versus-note">
+                    <strong>我們的理念：</strong><br>
+                    CPO 的成本雖高，但顧客的評價對我們來說才是最重要的資產。少賺一點利潤，換來客戶的安心與信任，值得。
+                </div>
+            </div>
+            <div class="versus-col manheim-vs">
+                <div class="versus-badge badge-manheim-vs">多數車商選擇</div>
+                <h3>Manheim 拍賣場</h3>
+                <ul class="versus-list">
+                    <li><span class="v-x">–</span> 車輛以現況出售，未經原廠整備</li>
+                    <li><span class="v-x">–</span> 需回台後才能仔細檢查，不確定性高</li>
+                    <li><span class="v-x">–</span> 整備期可能長達一個月以上</li>
+                    <li><span class="v-x">–</span> 車況差異大，需仰賴車商整備能力</li>
+                    <li><span class="v-check">✔</span> 成本相對較低</li>
+                    <li><span class="v-check">✔</span> 車源量大，車型選擇多元</li>
+                </ul>
+                <div class="versus-note">
+                    市面上大部分外匯車商都是從拍賣場購車，整理後再販售。並非不好，但品質的穩定性與透明度，相對較難掌控。
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ SPEC COMPARISON ══ -->
+<section class="spec-compare-section" id="spec-compare">
+    <div class="spec-compare-inner">
+        <div class="spec-compare-header reveal">
+            <span class="section-tag">Region Comparison</span>
+            <h2 class="section-title">美規 · 加規 · 歐規<br>差異一目了然</h2>
+            <p class="section-subtitle" style="margin: 0 auto;">同一款車，因產地與市場不同，車況與價值差距天壤之別。這就是為什麼我們只選美規。</p>
+        </div>
+
+        <div class="spec-cards reveal">
+            <!-- 加規 -->
+            <div class="spec-card ca">
+                <div class="spec-card-badge">🍁 加規</div>
+                <div class="spec-card-title">加拿大規格</div>
+                <div class="spec-card-subtitle">Canadian Spec</div>
+                <div class="spec-item">
+                    <div class="sicon"><i class="fas fa-snowflake"></i></div>
+                    <div class="stxt"><strong>雪地車 · 底盤易鏽</strong><span>加拿大冬季漫長，路面大量撒鹽，鹽份直接腐蝕底盤與懸吊，鏽蝕問題難以避免。</span></div>
+                </div>
+                <div class="spec-item">
+                    <div class="sicon"><i class="fas fa-tint"></i></div>
+                    <div class="stxt"><strong>車況普遍偏差</strong><span>長期低溫、積雪、化雪鹽的複合影響，車輛壽命與整體車況明顯劣於南方州車輛。</span></div>
+                </div>
+                <div class="spec-item">
+                    <div class="sicon"><i class="fas fa-tools"></i></div>
+                    <div class="stxt"><strong>維修成本偏高</strong><span>底盤鏽蝕後零件更換費用驚人，進口後整備成本往往出乎預料。</span></div>
+                </div>
+                <div class="spec-item">
+                    <div class="sicon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="stxt"><strong>隱性問題多</strong><span>鏽蝕從底部向上蔓延，外觀看似正常，實際結構已受損，不易察覺。</span></div>
+                </div>
+                <div class="spec-footer">
+                    我們從不碰加規車。雪地車的代價不應由您來承擔。
+                </div>
+            </div>
+
+            <!-- 美規 highlight -->
+            <div class="spec-card usa">
+                <div class="spec-card-badge">✦ 推薦首選</div>
+                <div class="spec-card-title">美規車</div>
+                <div class="spec-card-subtitle">U.S. Specification · 我們的選擇</div>
+                <div class="spec-item">
+                    <div class="sicon"><i class="fas fa-sliders-h"></i></div>
+                    <div class="stxt"><strong>配備自由選配</strong><span>美國市場車型選擇極為多元，不需要天窗就買沒天窗的，不需要跟車系統就不付這筆錢——您為真正需要的配備付費。</span></div>
+                </div>
+                <div class="spec-item">
+                    <div class="sicon"><i class="fas fa-sun"></i></div>
+                    <div class="stxt"><strong>日照充足 · 底盤無鏽</strong><span>美國南部各州氣候乾燥溫暖，車身底盤保存狀態絕佳，進口後無需擔心鏽蝕整備問題。</span></div>
+                </div>
+                <div class="spec-item">
+                    <div class="sicon"><i class="fas fa-road"></i></div>
+                    <div class="stxt"><strong>高速巡航 · 積碳少</strong><span>美國地廣路直，出門動輒高速巡航，相當於台灣每次都跑長途。引擎持續在最佳工作區間運轉，積碳少、磨損均勻、引擎健康。</span></div>
+                </div>
+                <div class="spec-item">
+                    <div class="sicon"><i class="fas fa-file-alt"></i></div>
+                    <div class="stxt"><strong>車歷透明 · 紀錄完整</strong><span>CARFAX / AutoCheck 完整追蹤每台車的事故、保養、里程，資料透明無死角。</span></div>
+                </div>
+                <div class="spec-item">
+                    <div class="sicon"><i class="fas fa-certificate"></i></div>
+                    <div class="stxt"><strong>CPO 原廠認證可選</strong><span>只有美規車才有完整的 CPO 原廠認證體系，品質由原廠背書，其他規格根本沒有同等機制。</span></div>
+                </div>
+                <div class="spec-footer">
+                    美規是我們唯一的選擇。配備自由、車況透明、引擎健康——這三點，其他規格做不到。
+                </div>
+            </div>
+
+            <!-- 歐規 -->
+            <div class="spec-card eu">
+                <div class="spec-card-badge">🇪🇺 歐規（台灣總代理）</div>
+                <div class="spec-card-title">歐洲規格</div>
+                <div class="spec-card-subtitle">EU / Taiwan Spec</div>
+                <div class="spec-item">
+                    <div class="sicon"><i class="fas fa-lock"></i></div>
+                    <div class="stxt"><strong>配備固定無法選擇</strong><span>台灣市場小，總代理向原廠分配到的配備組合是固定的，不管您需不需要，天窗、跟車都直接幫您選好了。</span></div>
+                </div>
+                <div class="spec-item">
+                    <div class="sicon"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="stxt"><strong>被迫付不需要的錢</strong><span>買了一堆用不到的配備，每項配備都要加錢，最終售價往往遠超您實際的需求。</span></div>
+                </div>
+                <div class="spec-item">
+                    <div class="sicon"><i class="fas fa-store"></i></div>
+                    <div class="stxt"><strong>台灣市場分配量有限</strong><span>總代理配額有限，熱門車型常常要等，選擇彈性遠不如美規市場。</span></div>
+                </div>
+                <div class="spec-item">
+                    <div class="sicon"><i class="fas fa-info-circle"></i></div>
+                    <div class="stxt"><strong>無車輛歷史報告機制</strong><span>台灣本地無 CARFAX 等第三方報告系統，車輛過去難以完整追蹤。</span></div>
+                </div>
+                <div class="spec-footer">
+                    歐規並非不好，但台灣總代理的配備策略讓您失去選擇的自由，還多花了不少冤枉錢。
+                </div>
+            </div>
+        </div>
+
+        <div class="spec-recommend-banner reveal">
+            <i class="fas fa-flag-usa"></i>
+            <div>
+                <h4>為什麼耀笙只進美規車？</h4>
+                <p>美規車在配備自由度、車況透明度、引擎健康程度上全面領先。我們只賣自己有把握的車，這是對客戶負責，也是對自己口碑負責。每一台來自美國的車，都經過 CARFAX 核查與 CPO 認證篩選，讓您買得安心、開得放心。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ PROCESS ══ -->
+<section class="process-section reveal">
+    <div class="process-inner">
+        <div style="text-align:center; margin-bottom:0;">
+            <span class="section-tag">Our Process</span>
+            <h2 class="section-title" style="text-align:center;">從美國到您手中<br>每一步都透明</h2>
+            <p class="section-subtitle" style="text-align:center; margin:0 auto 0;">我們全程參與，讓您放心</p>
+        </div>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-circle">01</div>
+                <div class="step-title">精選車源</div>
+                <div class="step-desc">透過 Manheim 拍賣或 CPO 認證管道，搭配 CARFAX / AutoCheck 報告，逐車篩選</div>
+            </div>
+            <div class="process-step">
+                <div class="step-circle">02</div>
+                <div class="step-title">現況確認</div>
+                <div class="step-desc">拍攝完整實況照片，Manheim 車況報告同步提供，車況透明無隱瞞</div>
+            </div>
+            <div class="process-step">
+                <div class="step-circle">03</div>
+                <div class="step-title">報關進口</div>
+                <div class="step-desc">專業報關流程，從裝船、海運、清關，一條龍處理，輕鬆等待</div>
+            </div>
+            <div class="process-step">
+                <div class="step-circle">04</div>
+                <div class="step-title">檢驗整備</div>
+                <div class="step-desc">抵台後由我們自有保養廠全面檢驗整備，確保交車狀態完美</div>
+            </div>
+            <div class="process-step">
+                <div class="step-circle">05</div>
+                <div class="step-title">安心交車</div>
+                <div class="step-desc">完整交車說明，售後有我專業支援，任何問題直接疑難排解</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ BOTTOM CTA ══ -->
+<section class="bottom-cta">
+    <div class="bottom-cta-inner reveal">
+        <span class="section-tag">Ready?</span>
+        <h2>找到您理想中的外匯車</h2>
+        <p>屏科大車輛工程 × 汽車修護乙級 × 40年保養廠第三代——讓專業的人幫您選車</p>
+        <div class="cta-group">
+            <a href="inventory.html" class="btn-gold"><i class="fas fa-car"></i> 查看在庫車輛</a>
+            <a href="tel:077352855" class="btn-outline"><i class="fas fa-phone"></i> 07-7352855</a>
+            <a href="testimonials.html" class="btn-outline"><i class="fas fa-images"></i> 成交見證</a>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+    <div class="footer-content">
+        <div>
+            <div class="logo-text" style="margin-bottom:25px;">
+                <div class="zh" style="color:#fff; font-size:20px;">耀笙國際汽車</div>
+                <div class="en" style="color:var(--gold); font-size:11px;">Y.S. AUTOS</div>
+                <div class="since" style="color:var(--text-gray); font-size:9px; letter-spacing:1px; margin-top:2px;">SINCE 2020</div>
+            </div>
+            <p style="color:var(--text-gray); font-size:14px; line-height:1.8;">專業透明的中古車專家，用誠實改變二手車市場。每一台車都經過專業把關，每一筆交易都完全透明。</p>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank" class="social-btn"><i class="fab fa-line"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4 style="color:#fff; margin-bottom:25px;">快速連結</h4>
+            <ul>
+                <li><a href="index.html#owner">認識我們</a></li>
+                <li><a href="index.html#philosophy">經營理念</a></li>
+                <li><a href="index.html#services">服務項目</a></li>
+                <li><a href="index.html#reviews">顧客推薦</a></li>
+                <li><a href="prove.html">成交見證</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4 style="color:#fff; margin-bottom:25px;">服務項目</h4>
+            <ul>
+                <li><a href="#">CPO原廠認證車</a></li>
+                <li><a href="#">美規外匯車</a></li>
+                <li><a href="#">代辦外匯車</a></li>
+                <li><a href="#">中古車買賣</a></li>
+                <li><a href="#">代客尋車</a></li>
+                <li><a href="#">汽車貸款</a></li>
+                <li><a href="#">車輛保險</a></li>
+                <li><a href="#">愛車寄售</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4 style="color:#fff; margin-bottom:25px;">聯絡資訊</h4>
+            <p style="color:var(--text-gray); font-size:14px;">
+                電話: 07-7352855<br>
+                手機: 0979-226-338<br>
+                地址: 高雄市仁武區鳳仁路 3-36 號<br>
+                信箱: <a href="/cdn-cgi/l/email-protection#9ce5effde9e8f3efaeacaeacdcfbf1fdf5f0b2fff3f1"><span class="__cf_email__" data-cfemail="aed7ddcfdbdac1dd9c9e9c9eeec9c3cfc7c280cdc1c3">[email&#160;protected]</span></a>
+            </p>
+        </div>
+    </div>
+    <div style="text-align:center; padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); color:#666; font-size:12px; margin-top:50px;">
+        © 2026 Y.S. AUTOS 耀笙國際汽車. All Rights Reserved.
+    </div>
+</footer>
+
+<a href="tel:077352855" class="floating-cta">立即來電預約</a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileMenuOverlay');
+        menu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+    }
+    function closeMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileMenuOverlay');
+        menu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // 導航列滾動效果（與主頁一致）
+    function handleNavScroll() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('nav-scrolled');
+        } else {
+            navbar.classList.remove('nav-scrolled');
+        }
+    }
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    function updateActiveNav() {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 120) current = s.id;
+        });
+        navLinks.forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+        });
+    }
+
+    // Reveal
+    function reveal() {
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 60) {
+                el.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', () => {
+        handleNavScroll();
+        updateActiveNav();
+        reveal();
+    });
+
+    window.addEventListener('load', () => {
+        reveal();
+    });
+</script>
+</body>
+</html>
