@@ -378,7 +378,7 @@
         /* 修改您 CSS 中的這個區塊 */
 .cpo-report-visual {
     position: relative;
-    max-width: 80%;    /* 將寬度限制為父層的 80%，您可以改為 400px 等固定數值 */
+    max-width: 400px;    /* 將寬度限制為父層的 80%，您可以改為 400px 等固定數值 */
     margin: 0 auto;    /* 關鍵：這會讓整個區塊左右置中 */
 }
 
@@ -386,7 +386,9 @@
 .cpo-report-visual img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* 確保圖片比例不變形，完整顯示在方塊內 */
+    object-fit: contain; /* 自動適應方塊 */
+    padding: 30px;      /* 透過內距讓圖片在視覺上縮小，四周會留白 */
+    box-sizing: border-box; /* 確保 padding 不會撐開方塊 */
 }
 
         /* 下方：四步驟橫排 */
