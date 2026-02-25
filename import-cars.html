@@ -244,24 +244,39 @@
             display: inline-flex; align-items: center; gap: 12px;
             margin-bottom: 30px;
         }
+/* 統一所有 Logo 外框的高度與間距 */
 .badge-logo {
-    /* 1. 放大 Logo：增加高度 (原本 38px) */
-    height: 80px; 
-    width: auto;
-
-    /* 2. 移除白色背景：改為透明 */
-    background: transparent;
-    
-    /* 保持原有的佈局設定 */
-    padding: 8px 16px; /* 稍微增加間距讓比例更好看 */
-    border-radius: 8px; /* 圓角可以稍微調大一點較顯精緻 */
-    display: inline-flex; /* 建議改為 inline-flex，寬度會隨內容伸縮 */
+    height: 80px;           /* 增加高度，對齊 CPO 圖片的大小 */
+    padding: 0 25px;        /* 增加左右內距讓長度更協調 */
+    background: transparent; /* 移除白色背景 */
+    border: 2px solid #D4AF37; 
+    border-radius: 12px; 
+    display: inline-flex; 
     align-items: center; 
     justify-content: center;
-    transition: all 0.3s ease; /* 增加轉場動畫，滑鼠經過時較自然 */
+    gap: 12px;              /* 增加圖標與文字之間的間距 */
+    text-decoration: none;
 }
 
-        }
+/* 針對 CARFAX 文字與圖標放大 */
+.badge-logo.carfax i {
+    font-size: 36px;        /* 放大左側的狗狗圖標 */
+    color: #e8111a;
+}
+
+.badge-logo.carfax span {
+    font-size: 28px;        /* 放大 CARFAX 文字 */
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #e8111a;
+}
+
+/* 確保 CPO 圖片填滿容器高度 */
+.badge-logo img {
+    height: 65%;            /* 讓圖片縮放至框格內合適大小 */
+    width: auto;
+    object-fit: contain;
+}
         .badge-logo span {
             font-family: 'Oswald', sans-serif;
             font-size: 18px; font-weight: 600;
