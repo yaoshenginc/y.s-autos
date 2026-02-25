@@ -321,12 +321,12 @@
         .placeholder-text { font-size: 13px; color: var(--text-gray); letter-spacing: 2px; text-transform: uppercase; position: relative; z-index: 1; }
         .placeholder-sub { font-size: 11px; color: rgba(160,160,160,0.5); position: relative; z-index: 1; }
         .visual-tag {
-            position: absolute;
-            top: -12px; right: 30px;
+            display: inline-block;
             background: var(--gold);
             color: #000; font-size: 10px; font-weight: 700;
             padding: 5px 14px; letter-spacing: 2px;
             text-transform: uppercase;
+            margin-bottom: 10px;
         }
         .visual-decoration {
             position: absolute;
@@ -377,10 +377,6 @@
         /* CPO report screenshot */
         .cpo-report-visual {
             position: relative;
-        }
-        .cpo-report-visual .visual-tag {
-            position: absolute;
-            top: -12px; right: 20px;
         }
 
         /* 下方：四步驟橫排 */
@@ -551,25 +547,24 @@
             border: 1px solid rgba(212,169,72,0.2);
             border-radius: 4px;
             overflow: hidden;
-            aspect-ratio: 2/3;
+            /* height unified by JS */
         }
-        .img-slider.ratio-45 { aspect-ratio: 2/3; }
-        .img-slider.ratio-11 { aspect-ratio: 2/3; }
+        .img-slider.ratio-45 { /* aspect handled by JS */ }
+        .img-slider.ratio-11 { /* aspect handled by JS */ }
         .slider-track {
             display: flex;
             width: 100%;
-            height: 100%;
             transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
         }
         .slider-slide {
             min-width: 100%;
-            height: 100%;
             flex-shrink: 0;
         }
         .slider-slide img {
-            width: 100%; height: 100%;
-            object-fit: cover;
+            width: 100%;
+            height: auto;
             display: block;
+            object-fit: contain;
         }
         .slider-btn {
             position: absolute;
@@ -1520,33 +1515,64 @@
 
     // ═══ Image Slider ═══
     const sliderState = {};
+    const SLIDER_IDS = ['carfax','autocheck','cpo','manheim'];
 
-    function initSlider(id) {
-        sliderState[id] = 0;
-    }
+    function initSlider(id) { sliderState[id] = 0; }
 
     function slideTo(id, index) {
-        const track = document.getElementById('track-' + id);
-        const dots = document.getElementById('dots-' + id);
+        const track   = document.getElementById('track-' + id);
+        const dots    = document.getElementById('dots-' + id);
         const counter = document.getElementById('counter-' + id);
         if (!track) return;
         const total = track.children.length;
         index = (index + total) % total;
         sliderState[id] = index;
         track.style.transform = 'translateX(-' + (index * 100) + '%)';
-        if (dots) {
-            Array.from(dots.children).forEach((d, i) => d.classList.toggle('active', i === index));
-        }
+        if (dots) Array.from(dots.children).forEach((d,i) => d.classList.toggle('active', i === index));
         if (counter) counter.textContent = (index + 1) + ' / ' + total;
     }
 
-    function slideMove(id, dir) {
-        slideTo(id, (sliderState[id] || 0) + dir);
+    function slideMove(id, dir) { slideTo(id, (sliderState[id] || 0) + dir); }
+
+    // 偵測所有 slider 圖片的原始比例，統一設成最高的那個
+    function unifySliderHeights() {
+        const sliders = SLIDER_IDS.map(id => document.getElementById('slider-' + id)).filter(Boolean);
+        let maxRatio = 0;
+        sliders.forEach(slider => {
+            slider.querySelectorAll('.slider-slide img').forEach(img => {
+                if (img.naturalWidth > 0) {
+                    const r = img.naturalHeight / img.naturalWidth;
+                    if (r > maxRatio) maxRatio = r;
+                }
+            });
+        });
+        if (maxRatio === 0) return;
+        sliders.forEach(slider => {
+            const h = Math.round(slider.offsetWidth * maxRatio);
+            slider.style.height = h + 'px';
+            slider.querySelectorAll('.slider-slide').forEach(slide => {
+                slide.style.height = h + 'px';
+            });
+            slider.querySelectorAll('.slider-slide img').forEach(img => {
+                img.style.height = h + 'px';
+                img.style.objectFit = 'contain';
+            });
+        });
     }
 
     window.addEventListener('load', () => {
         reveal();
-        ['carfax','autocheck','cpo','manheim'].forEach(initSlider);
+        SLIDER_IDS.forEach(initSlider);
+
+        const allImgs = document.querySelectorAll('.img-slider img');
+        let loaded = 0;
+        function onLoad() { if (++loaded >= allImgs.length) unifySliderHeights(); }
+        allImgs.forEach(img => {
+            if (img.complete && img.naturalWidth > 0) onLoad();
+            else { img.addEventListener('load', onLoad); img.addEventListener('error', onLoad); }
+        });
+
+        window.addEventListener('resize', unifySliderHeights);
     });
 </script>
 </body>
