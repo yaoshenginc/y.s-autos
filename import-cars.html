@@ -547,6 +547,105 @@
         .floating-cta { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: var(--primary-black); padding: 18px 35px; text-decoration: none; font-weight: 700; border-radius: 50px; box-shadow: 0 10px 30px rgba(212,169,72,0.4); z-index: 999; transition: 0.3s; font-size: 14px; }
         .floating-cta:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(212,169,72,0.6); }
 
+        /* ═══════════════════════ REPORT CAROUSEL ═══════════════════════ */
+        .report-carousel {
+            position: relative;
+            background: var(--card-black);
+            border: 1px solid rgba(212,169,72,0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .report-carousel:hover { border-color: rgba(212,169,72,0.5); }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+            background: var(--card-black);
+        }
+        .carousel-slide::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 30px,
+                    rgba(212,169,72,0.03) 30px,
+                    rgba(212,169,72,0.03) 31px
+                );
+            pointer-events: none;
+        }
+        /* Slide inner – shows placeholder (no image yet) */
+        .carousel-slide-inner {
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 20px;
+            padding: 50px 20px;
+        }
+        .carousel-slide img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* Placeholder styling inside carousel */
+        .carousel-slide .placeholder-icon { font-size: 52px; opacity: 0.3; position: relative; z-index: 1; }
+        .carousel-slide .placeholder-text { font-size: 13px; color: var(--text-gray); letter-spacing: 2px; text-transform: uppercase; position: relative; z-index: 1; }
+        .carousel-slide .placeholder-sub { font-size: 11px; color: rgba(160,160,160,0.5); position: relative; z-index: 1; }
+
+        /* Prev / Next buttons */
+        .carousel-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 44px; height: 44px;
+            background: rgba(10,10,10,0.75);
+            border: 1px solid rgba(212,169,72,0.35);
+            color: var(--gold);
+            font-size: 16px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 10;
+            transition: background 0.25s, border-color 0.25s;
+            backdrop-filter: blur(6px);
+        }
+        .carousel-btn:hover { background: var(--gold); color: #000; border-color: var(--gold); }
+        .carousel-btn.prev { left: 12px; }
+        .carousel-btn.next { right: 12px; }
+        .carousel-btn.disabled { opacity: 0.3; cursor: default; pointer-events: none; }
+
+        /* Dots */
+        .carousel-dots {
+            position: absolute; bottom: 14px; left: 0; right: 0;
+            display: flex; justify-content: center; gap: 8px;
+            z-index: 10;
+        }
+        .carousel-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: rgba(212,169,72,0.35);
+            border: 1px solid rgba(212,169,72,0.2);
+            cursor: pointer;
+            transition: background 0.25s, transform 0.25s;
+        }
+        .carousel-dot.active {
+            background: var(--gold);
+            transform: scale(1.25);
+        }
+
+        /* Page counter badge */
+        .carousel-counter {
+            position: absolute; top: 14px; right: 14px;
+            background: rgba(10,10,10,0.75);
+            border: 1px solid rgba(212,169,72,0.25);
+            color: var(--gold); font-size: 11px; font-weight: 600;
+            padding: 4px 11px; letter-spacing: 1px;
+            backdrop-filter: blur(6px);
+            z-index: 10;
+        }
+
         /* ═══════════════════════ CPO VS MANHEIM ═══════════════════════ */
         .cpo-vs-manheim-section {
             padding: 140px 60px;
@@ -934,10 +1033,34 @@
         </div>
         <div class="report-visual">
             <span class="visual-tag">報告示意</span>
-            <div class="screenshot-placeholder">
-                <div class="placeholder-icon">📋</div>
-                <div class="placeholder-text">CARFAX 報告截圖</div>
-                <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+            <div class="report-carousel" id="carousel-carfax" style="aspect-ratio: 4/3;">
+                <div class="carousel-track" id="track-carfax">
+                    <div class="carousel-slide">
+                        <div class="carousel-slide-inner">
+                            <div class="placeholder-icon">📋</div>
+                            <div class="placeholder-text">CARFAX 報告截圖 – 第 1 頁</div>
+                            <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="carousel-slide-inner">
+                            <div class="placeholder-icon">📋</div>
+                            <div class="placeholder-text">CARFAX 報告截圖 – 第 2 頁</div>
+                            <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="carousel-slide-inner">
+                            <div class="placeholder-icon">📋</div>
+                            <div class="placeholder-text">CARFAX 報告截圖 – 第 3 頁</div>
+                            <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn prev disabled" onclick="carouselMove('carfax',-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next" onclick="carouselMove('carfax',1)"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-dots" id="dots-carfax"></div>
+                <div class="carousel-counter" id="counter-carfax">1 / 3</div>
             </div>
             <div class="visual-decoration"></div>
         </div>
@@ -968,10 +1091,34 @@
         </div>
         <div class="report-visual">
             <span class="visual-tag">報告示意</span>
-            <div class="screenshot-placeholder">
-                <div class="placeholder-icon">📊</div>
-                <div class="placeholder-text">AutoCheck 報告截圖</div>
-                <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+            <div class="report-carousel" id="carousel-autocheck" style="aspect-ratio: 4/3;">
+                <div class="carousel-track" id="track-autocheck">
+                    <div class="carousel-slide">
+                        <div class="carousel-slide-inner">
+                            <div class="placeholder-icon">📊</div>
+                            <div class="placeholder-text">AutoCheck 報告截圖 – 第 1 頁</div>
+                            <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="carousel-slide-inner">
+                            <div class="placeholder-icon">📊</div>
+                            <div class="placeholder-text">AutoCheck 報告截圖 – 第 2 頁</div>
+                            <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="carousel-slide-inner">
+                            <div class="placeholder-icon">📊</div>
+                            <div class="placeholder-text">AutoCheck 報告截圖 – 第 3 頁</div>
+                            <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn prev disabled" onclick="carouselMove('autocheck',-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next" onclick="carouselMove('autocheck',1)"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-dots" id="dots-autocheck"></div>
+                <div class="carousel-counter" id="counter-autocheck">1 / 3</div>
             </div>
             <div class="visual-decoration"></div>
         </div>
@@ -1002,10 +1149,34 @@
             <!-- ★ CPO 報告截圖：將 screenshot-placeholder div 整個換成 <img src="你的截圖" style="width:100%;display:block;"> -->
             <div class="cpo-report-visual">
                 <span class="visual-tag">CPO 認證報告</span>
-                <div class="screenshot-placeholder" style="aspect-ratio: 4/5;">
-                    <div class="placeholder-icon">📄</div>
-                    <div class="placeholder-text">CPO 認證報告截圖</div>
-                    <div class="placeholder-sub">（此處替換為實際截圖）</div>
+                <div class="report-carousel" id="carousel-cpo" style="aspect-ratio: 4/5;">
+                    <div class="carousel-track" id="track-cpo">
+                        <div class="carousel-slide">
+                            <div class="carousel-slide-inner">
+                                <div class="placeholder-icon">📄</div>
+                                <div class="placeholder-text">CPO 認證報告截圖 – 第 1 頁</div>
+                                <div class="placeholder-sub">（此處替換為實際截圖）</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-slide-inner">
+                                <div class="placeholder-icon">📄</div>
+                                <div class="placeholder-text">CPO 認證報告截圖 – 第 2 頁</div>
+                                <div class="placeholder-sub">（此處替換為實際截圖）</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-slide-inner">
+                                <div class="placeholder-icon">📄</div>
+                                <div class="placeholder-text">CPO 認證報告截圖 – 第 3 頁</div>
+                                <div class="placeholder-sub">（此處替換為實際截圖）</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn prev disabled" onclick="carouselMove('cpo',-1)"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn next" onclick="carouselMove('cpo',1)"><i class="fas fa-chevron-right"></i></button>
+                    <div class="carousel-dots" id="dots-cpo"></div>
+                    <div class="carousel-counter" id="counter-cpo">1 / 3</div>
                 </div>
                 <div class="visual-decoration"></div>
             </div>
@@ -1082,10 +1253,34 @@
             </div>
             <div class="report-visual reveal">
                 <span class="visual-tag">Manheim 車況報告</span>
-                <div class="screenshot-placeholder" style="aspect-ratio: 1/1.1;">
-                    <div class="placeholder-icon">🏭</div>
-                    <div class="placeholder-text">Manheim 車況報告示意</div>
-                    <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+                <div class="report-carousel" id="carousel-manheim" style="aspect-ratio: 1/1.1;">
+                    <div class="carousel-track" id="track-manheim">
+                        <div class="carousel-slide">
+                            <div class="carousel-slide-inner">
+                                <div class="placeholder-icon">🏭</div>
+                                <div class="placeholder-text">Manheim 車況報告示意 – 第 1 頁</div>
+                                <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-slide-inner">
+                                <div class="placeholder-icon">🏭</div>
+                                <div class="placeholder-text">Manheim 車況報告示意 – 第 2 頁</div>
+                                <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-slide-inner">
+                                <div class="placeholder-icon">🏭</div>
+                                <div class="placeholder-text">Manheim 車況報告示意 – 第 3 頁</div>
+                                <div class="placeholder-sub">（此處將替換為實際報告截圖）</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn prev disabled" onclick="carouselMove('manheim',-1)"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn next" onclick="carouselMove('manheim',1)"><i class="fas fa-chevron-right"></i></button>
+                    <div class="carousel-dots" id="dots-manheim"></div>
+                    <div class="carousel-counter" id="counter-manheim">1 / 3</div>
                 </div>
             </div>
         </div>
@@ -1405,6 +1600,70 @@
 
     window.addEventListener('load', () => {
         reveal();
+    });
+</script>
+<script>
+    /* ── Carousel Engine ── */
+    const carousels = {};
+
+    function initCarousel(id, total) {
+        carousels[id] = { current: 0, total: total };
+
+        // Build dots
+        const dotsEl = document.getElementById('dots-' + id);
+        for (let i = 0; i < total; i++) {
+            const d = document.createElement('div');
+            d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            d.onclick = () => carouselGoTo(id, i);
+            dotsEl.appendChild(d);
+        }
+        updateCarousel(id);
+    }
+
+    function carouselMove(id, dir) {
+        const c = carousels[id];
+        const next = c.current + dir;
+        if (next < 0 || next >= c.total) return;
+        c.current = next;
+        updateCarousel(id);
+    }
+
+    function carouselGoTo(id, idx) {
+        carousels[id].current = idx;
+        updateCarousel(id);
+    }
+
+    function updateCarousel(id) {
+        const c = carousels[id];
+        // Move track
+        document.getElementById('track-' + id).style.transform = `translateX(-${c.current * 100}%)`;
+        // Counter
+        document.getElementById('counter-' + id).textContent = `${c.current + 1} / ${c.total}`;
+        // Dots
+        const dots = document.querySelectorAll('#dots-' + id + ' .carousel-dot');
+        dots.forEach((d, i) => d.classList.toggle('active', i === c.current));
+        // Prev / Next buttons
+        const carousel = document.getElementById('carousel-' + id);
+        carousel.querySelector('.carousel-btn.prev').classList.toggle('disabled', c.current === 0);
+        carousel.querySelector('.carousel-btn.next').classList.toggle('disabled', c.current === c.total - 1);
+    }
+
+    // Touch / swipe support
+    function addSwipe(id) {
+        const el = document.getElementById('carousel-' + id);
+        let startX = 0;
+        el.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+        el.addEventListener('touchend', e => {
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) carouselMove(id, diff > 0 ? 1 : -1);
+        }, { passive: true });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        ['carfax', 'autocheck', 'cpo', 'manheim'].forEach(id => {
+            initCarousel(id, 3);
+            addSwipe(id);
+        });
     });
 </script>
 </body>
