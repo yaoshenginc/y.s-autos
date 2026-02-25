@@ -244,12 +244,31 @@
             display: inline-flex; align-items: center; gap: 12px;
             margin-bottom: 30px;
         }
-        .badge-logo {
-            height: 38px; width: auto;
-            background: #fff;
-            padding: 6px 12px;
-            border-radius: 3px;
-            display: flex; align-items: center; justify-content: center;
+.badge-logo {
+    /* 1. 放大 Logo：增加高度 (原本 38px) */
+    height: 60px; 
+    width: auto;
+
+    /* 2. 移除白色背景：改為透明 */
+    background: transparent;
+
+    /* 3. 設定金色外框 */
+    border: 2px solid #D4AF37; /* 經典金色色碼 */
+    
+    /* 保持原有的佈局設定 */
+    padding: 8px 16px; /* 稍微增加間距讓比例更好看 */
+    border-radius: 8px; /* 圓角可以稍微調大一點較顯精緻 */
+    display: inline-flex; /* 建議改為 inline-flex，寬度會隨內容伸縮 */
+    align-items: center; 
+    justify-content: center;
+    transition: all 0.3s ease; /* 增加轉場動畫，滑鼠經過時較自然 */
+}
+
+/* 如果想讓金色外框更有質感，可以增加一點陰影 */
+.badge-logo:hover {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    transform: scale(1.05);
+}
         }
         .badge-logo span {
             font-family: 'Oswald', sans-serif;
