@@ -246,16 +246,16 @@
         }
 /* 統一所有 Logo 外框的高度與間距 */
 .badge-logo {
-    height: 80px;           /* 增加高度，對齊 CPO 圖片的大小 */
-    padding: 0 25px;        /* 增加左右內距讓長度更協調 */
-    background: transparent; /* 移除白色背景 */
-    border: 2px solid #D4AF37; 
+    height: 70px;           /* 設定與 CPO Logo 容器相同的高度 */
+    width: auto;
+    background: transparent; /* 移除白色背景方塊 */
+    border: 2px solid #D4AF37; /* 保留金色邊框（若完全不要邊框，改為 border: none） */
+    padding: 10px 25px;      /* 增加內距，讓 Logo 在框內呼吸 */
     border-radius: 12px; 
     display: inline-flex; 
     align-items: center; 
     justify-content: center;
-    gap: 12px;              /* 增加圖標與文字之間的間距 */
-    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 /* 針對 CARFAX 文字與圖標放大 */
@@ -264,32 +264,14 @@
     color: #e8111a;
 }
 
-.badge-logo.carfax span {
-    font-size: 28px;        /* 放大 CARFAX 文字 */
-    font-weight: 900;
-    letter-spacing: 1px;
-    color: #e8111a;
-}
-
 /* 確保 CPO 圖片填滿容器高度 */
 .badge-logo img {
-    height: 65%;            /* 讓圖片縮放至框格內合適大小 */
-    width: auto;
+    height: 100%;            /* 強制圖片填滿容器高度 */
+    width: auto;             /* 寬度自動，保持比例不變形 */
+    max-height: 50px;        /* 限制最大圖片高度，避免太靠近邊框 */
     object-fit: contain;
 }
-        .badge-logo span {
-            font-family: 'Oswald', sans-serif;
-            font-size: 18px; font-weight: 600;
-            letter-spacing: 2px;
-        }
-        .brand-logo-img {
-            height: 26px;
-            width: auto;
-            display: block;
-            object-fit: contain;
-        }
-        .badge-logo.carfax span { color: #e8111a; }
-        .badge-logo.autocheck span { color: #0057b8; }
+
         .badge-logo.cpo span { color: #1a1a1a; }
         .badge-logo.manheim span { color: #005dab; }
         .badge-sub { font-size: 11px; letter-spacing: 3px; color: var(--gold); font-weight: 500; text-transform: uppercase; }
