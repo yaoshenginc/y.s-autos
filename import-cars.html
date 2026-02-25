@@ -375,9 +375,19 @@
         }
 
         /* CPO report screenshot */
-        .cpo-report-visual {
-            position: relative;
-        }
+        /* 修改您 CSS 中的這個區塊 */
+.cpo-report-visual {
+    position: relative;
+    max-width: 80%;    /* 將寬度限制為父層的 80%，您可以改為 400px 等固定數值 */
+    margin: 0 auto;    /* 關鍵：這會讓整個區塊左右置中 */
+}
+
+/* 確保裡面的圖片能自動適應這個縮小的方塊 */
+.cpo-report-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 確保圖片比例不變形，完整顯示在方塊內 */
+}
 
         /* 下方：四步驟橫排 */
         .cpo-steps-row {
@@ -980,7 +990,7 @@
             <div class="report-badge">
                 <div class="badge-logo carfax">
                     <!-- ★ 請將下方 src 換成 CARFAX logo 圖片網址 -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/CARFAX_Logo.svg/128px-CARFAX_Logo.svg" alt="CARFAX" class="brand-logo-img">
+                    <img src="https://static.carfax.com/chp/images/logo-square-svg.svg" alt="CARFAX" class="brand-logo-img">
                 </div>
                 <span class="badge-sub">車輛歷史報告</span>
             </div>
