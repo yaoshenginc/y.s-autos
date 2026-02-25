@@ -356,7 +356,7 @@
         /* ① 左文右截圖：文字佔 55%，截圖佔 40% */
         .cpo-header {
             display: grid;
-            grid-template-columns: 1fr 420px;
+            grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: center;
             margin-bottom: 70px;
@@ -375,21 +375,9 @@
         }
 
         /* CPO report screenshot */
-        /* 修改您 CSS 中的這個區塊 */
-.cpo-report-visual {
-    position: relative;
-    max-width: 400px;    /* 將寬度限制為父層的 80%，您可以改為 400px 等固定數值 */
-    margin: 0 auto;    /* 關鍵：這會讓整個區塊左右置中 */
-}
-
-/* 確保裡面的圖片能自動適應這個縮小的方塊 */
-.cpo-report-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* 自動適應方塊 */
-    padding: 30px;      /* 透過內距讓圖片在視覺上縮小，四周會留白 */
-    box-sizing: border-box; /* 確保 padding 不會撐開方塊 */
-}
+        .cpo-report-visual {
+            position: relative;
+        }
 
         /* 下方：四步驟橫排 */
         .cpo-steps-row {
@@ -559,21 +547,28 @@
             border: 1px solid rgba(212,169,72,0.2);
             border-radius: 4px;
             overflow: hidden;
-            /* height unified by JS */
+            /* height set by JS to unify all sliders */
         }
-        .img-slider.ratio-45 { /* aspect handled by JS */ }
-        .img-slider.ratio-11 { /* aspect handled by JS */ }
+        .img-slider.ratio-45, .img-slider.ratio-11 { /* handled by JS */ }
         .slider-track {
             display: flex;
             width: 100%;
+            height: 100%;
             transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
         }
         .slider-slide {
             min-width: 100%;
+            height: 100%;
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-black);
         }
         .slider-slide img {
-            width: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
             height: auto;
             display: block;
             object-fit: contain;
@@ -861,8 +856,12 @@
             .cpo-steps-row { grid-template-columns: repeat(2, 1fr); }
             .cpo-steps-row { grid-template-columns: 1fr; }
             .manheim-intro { grid-template-columns: 1fr; gap: 50px; }
-            .versus-grid { grid-template-columns: 1fr; }
-            .versus-col.cpo { border-right: none; border-bottom: 1px solid rgba(212,169,72,0.15); }
+            .versus-grid { grid-template-columns: 1fr 1fr; }
+            .versus-col { padding: 30px 20px; }
+            .versus-col.cpo { border-right: 1px solid rgba(212,169,72,0.15); border-bottom: none; }
+            .versus-col h3 { font-size: 18px; }
+            .versus-list li { font-size: 12px; padding: 9px 0; }
+            .versus-note { font-size: 12px; padding: 14px; }
             .cpo-vs-manheim-section { padding: 80px 25px; }
             .process-steps { grid-template-columns: 1fr; }
             .section-title { font-size: 34px; }
@@ -992,7 +991,7 @@
             <div class="report-badge">
                 <div class="badge-logo carfax">
                     <!-- ★ 請將下方 src 換成 CARFAX logo 圖片網址 -->
-                    <img src="https://static.carfax.com/chp/images/logo-square-svg.svg" alt="CARFAX" class="brand-logo-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/CARFAX_Logo.svg/128px-CARFAX_Logo.svg" alt="CARFAX" class="brand-logo-img">
                 </div>
                 <span class="badge-sub">車輛歷史報告</span>
             </div>
@@ -1039,7 +1038,7 @@
             <div class="report-badge">
                 <div class="badge-logo autocheck">
                     <!-- ★ 請將下方 src 換成 AutoCheck logo 圖片網址 -->
-                    <img src="https://www.autocheck.com/members/images/autocheck-a-part-of-experian-logo-white-337x100.png" alt="AutoCheck" class="brand-logo-img">
+                    <img src="YOUR_AUTOCHECK_LOGO_URL" alt="AutoCheck" class="brand-logo-img">
                 </div>
                 <span class="badge-sub">車輛評分報告</span>
             </div>
@@ -1085,7 +1084,7 @@
             <div class="cpo-header-text">
                 <!-- ★ CPO Logo：請將 src 換成 CPO logo 圖片網址 -->
                 <div class="cpo-logo-wrap">
-                    <img src="https://pictures.dealer.com/h/hendricknorthlakemercedesbenz/1198/23af77f7711606a68cb60ccecc7836a7x.jpg" alt="CPO Certified Pre-Owned" class="cpo-logo-img">
+                    <img src="YOUR_CPO_LOGO_URL" alt="CPO Certified Pre-Owned" class="cpo-logo-img">
                 </div>
                 <span class="section-tag">Certified Pre-Owned</span>
                 <h2 class="section-title">CPO 原廠認證車<br>品質有出廠背書</h2>
@@ -1178,7 +1177,7 @@
                 <span class="section-tag">Manheim Marketplace</span>
                 <!-- ★ 請將下方 src 換成 Manheim logo 圖片網址 -->
                 <div class="manheim-logo-wrap">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/a/ac/Manheim_Auctions.svg" alt="Manheim" class="manheim-logo-img">
+                    <img src="YOUR_MANHEIM_LOGO_URL" alt="Manheim" class="manheim-logo-img">
                 </div>
                 <h2 class="section-title">Manheim<br>美國最大汽車拍賣場</h2>
                 <p style="font-size:15px; color:var(--text-gray); line-height:2.1; margin-bottom:20px;">
@@ -1546,9 +1545,9 @@
 
     function slideMove(id, dir) { slideTo(id, (sliderState[id] || 0) + dir); }
 
-    // 偵測所有 slider 圖片的原始比例，統一設成最高的那個
     function unifySliderHeights() {
         const sliders = SLIDER_IDS.map(id => document.getElementById('slider-' + id)).filter(Boolean);
+        // 找出所有圖片中最大的高寬比（最直的圖）
         let maxRatio = 0;
         sliders.forEach(slider => {
             slider.querySelectorAll('.slider-slide img').forEach(img => {
@@ -1559,15 +1558,13 @@
             });
         });
         if (maxRatio === 0) return;
+        // 以最窄的 slider 寬度為準，避免各 slider 寬度不同造成高度差異
+        const minW = Math.min(...sliders.map(s => s.offsetWidth));
+        const unifiedH = Math.round(minW * maxRatio);
         sliders.forEach(slider => {
-            const h = Math.round(slider.offsetWidth * maxRatio);
-            slider.style.height = h + 'px';
+            slider.style.height = unifiedH + 'px';
             slider.querySelectorAll('.slider-slide').forEach(slide => {
-                slide.style.height = h + 'px';
-            });
-            slider.querySelectorAll('.slider-slide img').forEach(img => {
-                img.style.height = h + 'px';
-                img.style.objectFit = 'contain';
+                slide.style.height = unifiedH + 'px';
             });
         });
     }
