@@ -676,7 +676,7 @@
     // 例如現在有 car1~car3，就填 [1, 2, 3]
     // 移除車輛：從陣列中刪掉對應數字即可
     // ════════════════════════════════════════════════════════════════
-    const CAR_IDS = [1, 2, 3];   // ← 只需修改這裡
+    const CAR_IDS = [1, 2, 3, 4];   // ← 新增車輛只需修改這裡
 
     // ════════════════════════════════════════════════════════════════
     // info.txt 解析器
@@ -973,7 +973,7 @@
     async function loadInventory() {
         const grid = document.getElementById('carGrid');
         const emptyState = document.getElementById('emptyState');
-        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--text-gray);font-size:14px;letter-spacing:2px;">載入中...</div>';
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--text-gray);font-size:14px;letter-spacing:2px;">車輛載入中，修但幾勒...</div>';
 
         const loaded = [];
 
