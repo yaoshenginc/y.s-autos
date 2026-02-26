@@ -1139,7 +1139,33 @@
             .qc-item-icon { font-size: 35px; }
             .qc-item h4 { font-size: 16px; }
             .qc-item p { font-size: 12px; }
-            .after-sales-grid { grid-template-columns: 1fr; }
+            /* 1. 設定一條龍服務手機板顯示為一排兩個 */
+    .after-sales-grid {
+        grid-template-columns: 1fr 1fr; /* 關鍵：讓它變左右兩邊 */
+        gap: 15px;
+    }
+
+    /* 2. 調整內部的卡片樣式，確保空間足夠 */
+    .after-sales-card {
+        padding: 20px 15px; 
+    }
+
+    /* 3. 調整圖示大小 */
+    .after-sales-icon {
+        font-size: 30px; 
+        margin-bottom: 10px;
+    }
+
+    /* 4. 調整標題大小 */
+    .after-sales-card h4 {
+        font-size: 15px; 
+    }
+
+    /* 5. 調整描述文字大小 */
+    .after-sales-card p {
+        font-size: 12px; 
+        line-height: 1.5;
+    }
             .services-grid { grid-template-columns: 1fr; }
             .reviews-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
