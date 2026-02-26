@@ -1174,7 +1174,7 @@
             .nav-links { display: none; }
             .nav-social-top { display: none; }
             .nav-cta { display: none; }
-            .mobile-menu-btn { display: block; }
+            .mobile-menu-btn { display: none; }
             .mobile-menu { display: block; }
             .nav-container { padding: 20px 30px !important; }
         }
@@ -1191,6 +1191,30 @@
             white-space: nowrap !important;
             border: 0 !important;
         }
+
+
+        /* ═══ 懸浮導覽選單 FAB（僅手機版）═══ */
+        @media (max-width: 968px) {
+            .floating-cta { bottom: 24px; right: 20px; font-size: 13px; padding: 14px 24px; z-index: 998; }
+        }
+        .fab-wrapper { display: none; position: fixed; bottom: 86px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
+        @media (max-width: 968px) { .fab-wrapper { display: flex; } }
+        .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; }
+        .fab-item { opacity: 0; transform: translateX(14px); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; margin-bottom: 5px; }
+        .fab-item.visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
+        .fab-item:nth-child(6){transition-delay:.03s} .fab-item:nth-child(5){transition-delay:.07s}
+        .fab-item:nth-child(4){transition-delay:.11s} .fab-item:nth-child(3){transition-delay:.15s}
+        .fab-item:nth-child(2){transition-delay:.19s} .fab-item:nth-child(1){transition-delay:.23s}
+        .fab-item a { display: flex; align-items: center; gap: 10px; background: rgba(12,12,12,.97); border: 1px solid rgba(212,169,72,.4); color: var(--text-light-gray); text-decoration: none; padding: 11px 16px 11px 13px; font-size: 13px; font-weight: 500; font-family: 'Noto Sans TC',sans-serif; letter-spacing: .5px; white-space: nowrap; box-shadow: 0 4px 18px rgba(0,0,0,.45); backdrop-filter: blur(10px); transition: background .18s, color .18s, border-color .18s; }
+        .fab-item a:hover, .fab-item a:active { background: rgba(212,169,72,.12); border-color: var(--gold); color: var(--gold); }
+        .fab-item a i { color: var(--gold); font-size: 12px; width: 14px; text-align: center; flex-shrink: 0; }
+        .fab-trigger { width: 46px; height: 46px; background: rgba(12,12,12,.97); border: 1px solid var(--gold); border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 11px; letter-spacing: 1.5px; font-family: 'Noto Sans TC',sans-serif; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.55); position: relative; overflow: visible; transition: background .2s, color .2s; }
+        .fab-trigger:active { transform: scale(.95); }
+        .fab-trigger.open { background: var(--gold); color: #000; }
+        .fab-trigger::before, .fab-trigger::after { content: ''; position: absolute; inset: -1px; border: 1px solid var(--gold); animation: fab-ripple 2.6s ease-out infinite; opacity: 0; }
+        .fab-trigger::after { animation-delay: 1.3s; }
+        .fab-trigger.open::before, .fab-trigger.open::after { display: none; }
+        @keyframes fab-ripple { 0%{transform:scale(1);opacity:.65} 100%{transform:scale(2);opacity:0} }
 
 </style>
 
@@ -1810,9 +1834,43 @@
     </div>
 </footer>
 
+<!-- 懸浮導覽選單（手機版） -->
+<div class="fab-wrapper" id="fabWrapper">
+    <div class="fab-menu" id="fabMenu">
+        <div class="fab-item"><a href="import-cars"><i class="fas fa-car"></i>外匯車介紹</a></div>
+        <div class="fab-item"><a href="inventory"><i class="fas fa-th-large"></i>在庫車輛</a></div>
+        <div class="fab-item"><a href="#guarantee" onclick="closeFab()"><i class="fas fa-shield-alt"></i>安心保證</a></div>
+        <div class="fab-item"><a href="#reviews" onclick="closeFab()"><i class="fas fa-star"></i>顧客推薦</a></div>
+        <div class="fab-item"><a href="prove"><i class="fas fa-check-circle"></i>成交見證</a></div>
+        <div class="fab-item"><a href="#owner" onclick="closeFab()"><i class="fas fa-user"></i>認識我們</a></div>
+    </div>
+    <button class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="開啟選單">選單</button>
+</div>
+
 <a href="tel:0979226338" class="floating-cta">立即來電預約</a>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // ── FAB 懸浮選單控制 ──
+    var fabOpen = false;
+    function toggleFab() {
+        fabOpen = !fabOpen;
+        var trigger = document.getElementById('fabTrigger');
+        var items = document.querySelectorAll('.fab-item');
+        trigger.classList.toggle('open', fabOpen);
+        items.forEach(function(item) { item.classList.toggle('visible', fabOpen); });
+    }
+    function closeFab() {
+        fabOpen = false;
+        var trigger = document.getElementById('fabTrigger');
+        var items = document.querySelectorAll('.fab-item');
+        if (trigger) trigger.classList.remove('open');
+        items.forEach(function(item) { item.classList.remove('visible'); });
+    }
+    document.addEventListener('click', function(e) {
+        var wrapper = document.getElementById('fabWrapper');
+        if (wrapper && !wrapper.contains(e.target)) { closeFab(); }
+    });
+
     // 流沙背景牆
     const bgWall = document.getElementById('bgWall');
     const photoUrls = [
@@ -1948,15 +2006,20 @@ function createRow(direction) {
     const navLinks = document.querySelectorAll('.nav-links a');
 
     function updateActiveNav() {
-        let current = '';
-        sections.forEach(s => {
-            if (window.scrollY >= s.offsetTop - 120) current = s.id;
+        var current = '';
+        sections.forEach(function(section) {
+            if (window.scrollY >= section.offsetTop - 150) {
+                current = section.getAttribute('id');
+            }
         });
-        navLinks.forEach(a => {
-            a.classList.remove('active');
-            if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+        navLinks.forEach(function(link) {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
         });
     }
+
 </script>
 </body>
 </html>
