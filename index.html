@@ -342,27 +342,31 @@
             color: var(--gold);
             font-weight: 700;
         }
-        
-        .cta-primary { 
-            background: var(--gold); 
-            color: var(--primary-black); 
-            padding: 18px 45px; 
-            text-decoration: none; 
-            font-weight: 600; 
-            margin-right: 20px; 
-            display: inline-block; 
-            transition: 0.3s; 
-        }
-        
-        .cta-secondary { 
-            border: 1px solid #fff; 
-            color: #fff; 
-            padding: 18px 45px; 
-            text-decoration: none; 
-            font-weight: 600; 
-            display: inline-block; 
-            transition: 0.3s; 
-        }
+        /* 修改後的hero按鈕樣式 */
+.cta-primary { 
+    background: var(--gold); 
+    color: var(--primary-black); 
+    padding: 18px 0;           /* 將原本左右 45px 改為 0 */
+    width: 200px;              /* 設定固定寬度 */
+    text-align: center;         /* 文字置中 */
+    text-decoration: none; 
+    font-weight: 600; 
+    margin-right: 20px; 
+    display: inline-block; 
+    transition: 0.3s; 
+}
+
+.cta-secondary { 
+    border: 1px solid #fff; 
+    color: #fff; 
+    padding: 18px 0;           /* 將原本左右 45px 改為 0 */
+    width: 200px;              /* 設定固定寬度，與 primary 一致 */
+    text-align: center;         /* 文字置中 */
+    text-decoration: none; 
+    font-weight: 600; 
+    display: inline-block; 
+    transition: 0.3s; 
+}
         
         .cta-primary:hover { background: var(--gold-light); transform: translateY(-3px); }
         .cta-secondary:hover { background: #fff; color: #000; transform: translateY(-3px); }
@@ -1107,14 +1111,14 @@
             .hero-description { font-size: 16px; }
             
             /* 手機版按鈕重新配置 - 垂直排列 */
-            .cta-primary, .cta-secondary {
-                display: block;
-                width: 100%;
-                max-width: 300px;
-                margin: 10px auto;
-                text-align: center;
-            }
-            
+		.cta-primary, .cta-secondary {
+        display: block;
+        width: 100%;       /* 手機版設定為 100% 寬度 */
+        max-width: 280px;  /* 限制最大寬度，避免太長 */
+        margin: 10px auto;
+        text-align: center;
+        padding: 15px 0;   /* 稍微縮小手機版的高度 */
+		}
             section { padding: 120px 30px; }
             .owners-wrapper .owner-container { grid-template-columns: 1fr; gap: 40px; }
             .owner-image { text-align: center; }
