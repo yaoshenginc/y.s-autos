@@ -398,7 +398,7 @@
 
         /* 經營者專業背景 */
         .owner-section {
-            background: var(--secondary-black);
+            background: var(--primary-black);
             position: relative;
             overflow: hidden;
         }
@@ -1123,7 +1123,11 @@
             .owners-wrapper .owner-container { grid-template-columns: 1fr; gap: 40px; }
             .owner-image { text-align: center; }
             .owner-image img { max-width: 100px; margin: 0 auto; }
-            .philosophy-grid { grid-template-columns: 1fr; }
+            .philosophy-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .philosophy-card { padding: 25px 18px; }
+            .philosophy-icon { font-size: 30px; margin-bottom: 12px; }
+            .philosophy-card h3 { font-size: 15px; margin-bottom: 8px; }
+            .philosophy-card p { font-size: 12px; line-height: 1.6; }
             .qc-container { 
                 grid-template-columns: 1fr 1px 1fr;
                 gap: 20px;
@@ -1328,7 +1332,7 @@
     </div>
 </section>
 
-<section id="guarantee" class="quality-control reveal">
+<section id="guarantee" class="quality-control reveal" style="background: var(--secondary-black);">
     <div style="text-align: center; margin-bottom: 80px;">
         <span class="section-tag">Quality Control</span>
         <h2 class="section-title">安心保證</h2>
@@ -1472,58 +1476,6 @@
     </div>
 </section>
 
-<section id="services" class="services-special reveal">
-    <div style="text-align: center; margin-bottom: 80px;">
-        <span class="section-tag">Our Services</span>
-        <h2 class="section-title">創新收購方案</h2>
-        <p class="section-description">
-            不只是賣車，我們提供的是一個全新的合作模式
-        </p>
-    </div>
-    
-    <div style="max-width: 1400px; margin: 0 auto;">
-        <div class="services-grid" style="margin-bottom: 40px;">
-            <div class="service-card reveal">
-                <div class="icon">🚗</div>
-                <h4>高價收購中古車</h4>
-                <p>憑藉專業判斷與外匯車行情比較，能給出市場上最合理的收購價格。誠實評估，絕不低估您的愛車價值。</p>
-            </div>
-            <div class="service-card reveal">
-                <div class="icon">🔄</div>
-                <h4>舊車換新車</h4>
-                <p>您的舊車可以直接折抵新車款。提供最透明的換車方案，讓您清楚知道每一筆交易的細節。</p>
-            </div>
-            <div class="service-card reveal">
-                <div class="icon">📋</div>
-                <h4>超低服務費寄賣</h4>
-                <p>想自己賣車但缺少管道？提供最低服務費的寄賣服務。若您跟我們購買新車，寄賣服務費還可以減免！</p>
-            </div>
-        </div>
-
-        <div class="service-card-large reveal">
-            <span class="service-badge">業界首創</span>
-            <h3>🤝 顧客穩賺收購方案</h3>
-            <p>
-                我們想出來的創新收購方式！如果您想賣車，了解看看，保證不吃虧。
-            </p>
-            <div class="service-highlight">
-                <strong>方案說明：</strong><br>
-                歡迎來電了解詳情，怕寫出來被學去🤣<br><br>
-                <strong>「顧客to夥伴」才是我們追求的商業模式</strong><br><br>
-				<a href="tel:0979226338" class="cta-primary">立即來電</a><br>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 60px; padding: 50px; background: rgba(212,169,72,0.05); border: 1px solid rgba(212,169,72,0.2);">
-            <h3 style="color: var(--gold); margin-bottom: 20px; font-size: 28px;">我們的保證</h3>
-            <p style="font-size: 18px; line-height: 2; color: var(--text-light-gray); max-width: 900px; margin: 0 auto;">
-                有專業審視車子，有專業的把關，<br>
-                <strong style="color: var(--gold);">保證每個客人都可以買到最透明、車況最好的車子。</strong><br>
-                這是承諾，也是專業。
-            </p>
-        </div>
-    </div>
-</section>
 
 <section id="reviews" class="reviews-section reveal">
     <div class="reviews-header">
@@ -1705,7 +1657,7 @@
     </div>
 </section>
 
-<section id="philosophy" class="reveal" style="background: var(--primary-black);">
+<section id="philosophy" class="reveal" style="background: var(--secondary-black);">
     <div style="text-align: center; margin-bottom: 80px;">
         <span class="section-tag">Our Philosophy</span>
         <h2 class="section-title">經營理念</h2>
@@ -1747,8 +1699,62 @@
     </div>
 </section>
 
+<section id="services" class="services-special reveal" style="background: var(--primary-black);">
+    <div style="text-align: center; margin-bottom: 80px;">
+        <span class="section-tag">Our Services</span>
+        <h2 class="section-title">創新收購方案</h2>
+        <p class="section-description">
+            不只是賣車，我們提供的是一個全新的合作模式
+        </p>
+    </div>
+    
+    <div style="max-width: 1400px; margin: 0 auto;">
+        <div class="services-grid" style="margin-bottom: 40px;">
+            <div class="service-card reveal">
+                <div class="icon">🚗</div>
+                <h4>高價收購中古車</h4>
+                <p>憑藉專業判斷與外匯車行情比較，能給出市場上最合理的收購價格。誠實評估，絕不低估您的愛車價值。</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="icon">🔄</div>
+                <h4>舊車換新車</h4>
+                <p>您的舊車可以直接折抵新車款。提供最透明的換車方案，讓您清楚知道每一筆交易的細節。</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="icon">📋</div>
+                <h4>超低服務費寄賣</h4>
+                <p>想自己賣車但缺少管道？提供最低服務費的寄賣服務。若您跟我們購買新車，寄賣服務費還可以減免！</p>
+            </div>
+        </div>
 
-<section id="contact" class="reveal" style="background: var(--primary-black);">
+        <div class="service-card-large reveal">
+            <span class="service-badge">業界首創</span>
+            <h3>🤝 顧客穩賺收購方案</h3>
+            <p>
+                我們想出來的創新收購方式！如果您想賣車，了解看看，保證不吃虧。
+            </p>
+            <div class="service-highlight">
+                <strong>方案說明：</strong><br>
+                歡迎來電了解詳情，怕寫出來被學去🤣<br><br>
+                <strong>「顧客to夥伴」才是我們追求的商業模式</strong><br><br>
+				<a href="tel:0979226338" class="cta-primary">立即來電</a><br>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 60px; padding: 50px; background: rgba(212,169,72,0.05); border: 1px solid rgba(212,169,72,0.2);">
+            <h3 style="color: var(--gold); margin-bottom: 20px; font-size: 28px;">我們的保證</h3>
+            <p style="font-size: 18px; line-height: 2; color: var(--text-light-gray); max-width: 900px; margin: 0 auto;">
+                有專業審視車子，有專業的把關，<br>
+                <strong style="color: var(--gold);">保證每個客人都可以買到最透明、車況最好的車子。</strong><br>
+                這是承諾，也是專業。
+            </p>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="contact" class="reveal" style="background: var(--secondary-black);">
     <div style="text-align: center; margin-bottom: 80px;">
         <span class="section-tag">Contact Us</span>
         <h2 class="section-title">聯絡我們</h2>
