@@ -1566,20 +1566,41 @@
         });
     }
 
-    window.addEventListener('load', () => {
-        reveal();
-        SLIDER_IDS.forEach(initSlider);
+window.addEventListener('load', () => {
+    reveal();
+    SLIDER_IDS.forEach(initSlider);
 
-        const allImgs = document.querySelectorAll('.img-slider img');
-        let loaded = 0;
-        function onLoad() { if (++loaded >= allImgs.length) unifySliderHeights(); }
+    const allImgs = document.querySelectorAll('.img-slider img');
+    let loadedCount = 0;
+
+    function checkAndUnify() {
+        loadedCount++;
+        // 當所有圖片都載入完成，或是單張圖片載入後，都重新計算一次高度
+        unifySliderHeights();
+    }
+
+    if (allImgs.length === 0) {
+        unifySliderHeights();
+    } else {
         allImgs.forEach(img => {
-            if (img.complete && img.naturalWidth > 0) onLoad();
-            else { img.addEventListener('load', onLoad); img.addEventListener('error', onLoad); }
+            if (img.complete) {
+                checkAndUnify();
+            } else {
+                img.addEventListener('load', checkAndUnify);
+                img.addEventListener('error', checkAndUnify); // 即使出錯也要計算，避免卡死
+            }
         });
+    }
 
-        window.addEventListener('resize', unifySliderHeights);
-    });
+    // 關鍵修正：手機版網速可能較慢，在 500ms 後強制再計算一次，確保版面歸位
+    setTimeout(unifySliderHeights, 500);
+    setTimeout(unifySliderHeights, 1500); 
+});
+
+// 同時確保視窗縮放時也會自動修正
+window.addEventListener('resize', unifySliderHeights);
+
+
 </script>
 </body>
 </html>
