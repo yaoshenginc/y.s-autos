@@ -67,7 +67,7 @@
         .nav-right { display: flex; align-items: center; gap: 20px; }
         .nav-social-top a { color: var(--gold); font-size: 18px; margin-left: 15px; transition: 0.3s; }
         .nav-social-top a:hover { color: var(--text-gray); }
-        .nav-cta { padding: 12px 30px; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; letter-spacing: 1px; }
+        .nav-cta { padding: 12px 0px; width: 100px; display: inline-block; text-align: center; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; letter-spacing: 1px; }
         .nav-cta:hover { background: var(--gold); color: #000; }
 
         /* Mobile */
@@ -874,7 +874,7 @@
         }
     
         /* ═══ 懸浮導覽選單 FAB（僅手機版）═══ */
-        .fab-wrapper { display: none; position: fixed; bottom: 86px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
+        .fab-wrapper { display: none; position: fixed; bottom: 136px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
         @media (max-width: 968px) {
             .fab-wrapper { display: flex; }
             .floating-cta { bottom: 24px; right: 20px; font-size: 13px; padding: 14px 24px; z-index: 998; }
@@ -882,9 +882,9 @@
         .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; }
         .fab-item { opacity: 0; transform: translateX(14px); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; margin-bottom: 5px; }
         .fab-item.visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
-        .fab-item:nth-child(6){transition-delay:.03s} .fab-item:nth-child(5){transition-delay:.07s}
-        .fab-item:nth-child(4){transition-delay:.11s} .fab-item:nth-child(3){transition-delay:.15s}
-        .fab-item:nth-child(2){transition-delay:.19s} .fab-item:nth-child(1){transition-delay:.23s}
+        .fab-item:nth-child(5){transition-delay:.03s} .fab-item:nth-child(4){transition-delay:.07s}
+        .fab-item:nth-child(3){transition-delay:.11s} .fab-item:nth-child(2){transition-delay:.15s}
+        .fab-item:nth-child(1){transition-delay:.19s}
         .fab-item a { display: flex; align-items: center; gap: 10px; background: rgba(12,12,12,.97); border: 1px solid rgba(212,169,72,.4); color: var(--text-light-gray); text-decoration: none; padding: 11px 16px 11px 13px; font-size: 13px; font-weight: 500; font-family: 'Noto Sans TC',sans-serif; letter-spacing: .5px; white-space: nowrap; box-shadow: 0 4px 18px rgba(0,0,0,.45); backdrop-filter: blur(10px); transition: background .18s, color .18s, border-color .18s; }
         .fab-item a:hover, .fab-item a:active { background: rgba(212,169,72,.12); border-color: var(--gold); color: var(--gold); }
         .fab-item a i { color: var(--gold); font-size: 12px; width: 14px; text-align: center; flex-shrink: 0; }
@@ -895,6 +895,29 @@
         .fab-trigger::after { animation-delay: 1.3s; }
         .fab-trigger.open::before, .fab-trigger.open::after { display: none; }
         @keyframes fab-ripple { 0%{transform:scale(1);opacity:.65} 100%{transform:scale(2);opacity:0} }
+
+        /* 在庫車輛獨立懸浮按鈕 */
+        .floating-inventory {
+            display: none;
+            position: fixed;
+            bottom: 86px; right: 20px;
+            z-index: 999;
+            width: 46px; height: 46px;
+            background: var(--gold);
+            border: 1px solid var(--gold-dark);
+            color: var(--primary-black);
+            text-decoration: none;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 10px; font-weight: 700; letter-spacing: 1px;
+            text-align: center;
+            flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+            box-shadow: 0 4px 20px rgba(212,169,72,0.35);
+            transition: background 0.2s, transform 0.2s;
+            cursor: pointer;
+        }
+        .floating-inventory i { font-size: 16px; display: block; margin-bottom: 1px; }
+        .floating-inventory:hover, .floating-inventory:active { background: var(--gold-light); transform: scale(1.05); color: var(--primary-black); }
+        @media (max-width: 968px) { .floating-inventory { display: flex; } }
 
 </style>
 </head>
@@ -934,11 +957,8 @@
                 <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
             </div>
 
-            <a href="inventory.html" class="nav-cta">在庫車輛</a>
+            <a href="inventory" class="nav-cta">在庫車輛</a>
             <a href="index.html#contact" class="nav-cta">立即諮詢</a>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
     </div>
 </nav>
@@ -1492,19 +1512,23 @@
 <div class="fab-wrapper" id="fabWrapper">
     <div class="fab-menu" id="fabMenu">
         <div class="fab-item"><a href="index.html"><i class="fas fa-home"></i>首頁</a></div>
-        <div class="fab-item"><a href="#cpo"><i class="fas fa-certificate"></i>CPO原廠認證</a></div>
-        <div class="fab-item"><a href="#carfax"><i class="fas fa-file-alt"></i>CARFAX</a></div>
-        <div class="fab-item"><a href="#autocheck"><i class="fas fa-search"></i>AutoCheck</a></div>
-        <div class="fab-item"><a href="#manheim"><i class="fas fa-gavel"></i>Manheim</a></div>
-        <div class="fab-item"><a href="#spec-compare"><i class="fas fa-list"></i>常見規格</a></div>
+        <div class="fab-item"><a href="index.html#guarantee"><i class="fas fa-shield-alt"></i>安心保證</a></div>
+        <div class="fab-item"><a href="index.html#reviews"><i class="fas fa-star"></i>顧客推薦</a></div>
+        <div class="fab-item"><a href="prove"><i class="fas fa-check-circle"></i>成交見證</a></div>
+        <div class="fab-item"><a href="index.html#owner"><i class="fas fa-user"></i>認識我們</a></div>
     </div>
     <button class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="開啟選單">選單</button>
 </div>
 
+<!-- 在庫車輛獨立懸浮按鈕 -->
+<a href="inventory" class="floating-inventory" aria-label="在庫車輛">
+    <i class="fas fa-car"></i>
+    在庫車輛
+</a>
 
 <a href="tel:077352855" class="floating-cta">立即來電預約</a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ── 手機選單 ──
     function toggleMobileMenu() {
         const menu = document.getElementById('mobileMenu');
@@ -1634,12 +1658,13 @@
         });
 
         // resize 時重算（手機轉橫等情況）
-        let resizeTimer;
         window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => SLIDER_IDS.forEach(setSliderHeight), 150);
+            SLIDER_IDS.forEach(setSliderHeight);
         });
     });
+
+    reveal();
+
 </script>
 </body>
 </html>
