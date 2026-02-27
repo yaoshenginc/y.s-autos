@@ -41,10 +41,12 @@
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(212, 169, 72, 0.2);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .nav-container { 
             max-width: 1600px; margin: 0 auto; padding: 15px 60px; 
             display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.4s ease;
         }
         .nav-left { display: flex; align-items: center; gap: 40px; }
         .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
@@ -53,12 +55,25 @@
         .logo-text .en { font-family: 'Playfair Display'; font-size: 11px; color: var(--gold); letter-spacing: 2px; }
         .logo-text .since { font-size: 9px; color: var(--text-gray); letter-spacing: 1px; margin-top: 2px; }
         .nav-links { display: flex; gap: 35px; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-light-gray); font-size: 13px; font-weight: 500; transition: 0.3s; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-light-gray); font-size: 13px;
+            font-weight: 500; transition: 0.3s; position: relative; padding-bottom: 3px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after { width: 100%; }
         .nav-links a:hover, .nav-links a.active { color: var(--gold); }
         .nav-right { display: flex; align-items: center; gap: 20px; }
-        .nav-social-top a { color: var(--text-gray); font-size: 18px; margin-left: 15px; transition: 0.3s; }
-        .nav-social-top a:hover { color: var(--gold); }
-        .nav-cta { padding: 12px 30px; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .nav-social-top a { color: var(--gold); font-size: 18px; margin-left: 15px; transition: 0.3s; }
+        .nav-social-top a:hover { color: var(--text-gray); }
+        .nav-cta { padding: 12px 0px; width: 100px; display: inline-block; text-align: center; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; }
         .nav-cta:hover { background: var(--gold); color: #000; }
 
         /* Mobile Menu */
@@ -73,6 +88,49 @@
         .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.7); z-index: 9998; }
         .mobile-menu-overlay.active { display: block; }
         .mobile-nav-social { display: none; }
+
+        /* ═══ 懸浮導覽選單 FAB（僅手機版）═══ */
+        .fab-wrapper { display: none; position: fixed; bottom: 136px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
+        @media (max-width: 968px) { .fab-wrapper { display: flex; } }
+        .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; }
+        .fab-item { opacity: 0; transform: translateX(14px); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; margin-bottom: 5px; }
+        .fab-item.visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
+        .fab-item:nth-child(5){transition-delay:.03s} .fab-item:nth-child(4){transition-delay:.07s}
+        .fab-item:nth-child(3){transition-delay:.11s} .fab-item:nth-child(2){transition-delay:.15s}
+        .fab-item:nth-child(1){transition-delay:.19s}
+        .fab-item a { display: flex; align-items: center; gap: 10px; background: rgba(12,12,12,.97); border: 1px solid rgba(212,169,72,.4); color: var(--text-light-gray); text-decoration: none; padding: 11px 16px 11px 13px; font-size: 13px; font-weight: 500; font-family: 'Noto Sans TC',sans-serif; letter-spacing: .5px; white-space: nowrap; box-shadow: 0 4px 18px rgba(0,0,0,.45); backdrop-filter: blur(10px); transition: background .18s, color .18s, border-color .18s; }
+        .fab-item a:hover, .fab-item a:active { background: rgba(212,169,72,.12); border-color: var(--gold); color: var(--gold); }
+        .fab-item a i { color: var(--gold); font-size: 12px; width: 14px; text-align: center; flex-shrink: 0; }
+        .fab-trigger { width: 46px; height: 46px; background: rgba(12,12,12,.97); border: 1px solid var(--gold); border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 11px; letter-spacing: 1.5px; font-family: 'Noto Sans TC',sans-serif; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.55); position: relative; overflow: visible; transition: background .2s, color .2s; }
+        .fab-trigger:active { transform: scale(.95); }
+        .fab-trigger.open { background: var(--gold); color: #000; }
+        .fab-trigger::before, .fab-trigger::after { content: ''; position: absolute; inset: -1px; border: 1px solid var(--gold); animation: fab-ripple 2.6s ease-out infinite; opacity: 0; }
+        .fab-trigger::after { animation-delay: 1.3s; }
+        .fab-trigger.open::before, .fab-trigger.open::after { display: none; }
+        @keyframes fab-ripple { 0%{transform:scale(1);opacity:.65} 100%{transform:scale(2);opacity:0} }
+
+        /* 在庫車輛獨立懸浮按鈕 */
+        .floating-inventory {
+            display: none;
+            position: fixed;
+            bottom: 86px; right: 20px;
+            z-index: 999;
+            width: 46px; height: 46px;
+            background: var(--gold);
+            border: 1px solid var(--gold-dark);
+            color: var(--primary-black);
+            text-decoration: none;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 10px; font-weight: 700; letter-spacing: 1px;
+            text-align: center;
+            flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+            box-shadow: 0 4px 20px rgba(212,169,72,0.35);
+            transition: background 0.2s, transform 0.2s;
+            cursor: pointer;
+        }
+        .floating-inventory i { font-size: 16px; display: block; margin-bottom: 1px; }
+        .floating-inventory:hover, .floating-inventory:active { background: var(--gold-light); transform: scale(1.05); color: var(--primary-black); }
+        @media (max-width: 968px) { .floating-inventory { display: flex; } }
 
         /* ───── PAGE HERO ───── */
         .page-hero {
@@ -296,8 +354,9 @@
         .footer-links ul li a { color: var(--text-gray); text-decoration: none; font-size: 14px; transition: 0.3s; }
         .footer-links ul li a:hover { color: var(--gold); }
 
-        .floating-cta { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: var(--primary-black); padding: 18px 35px; text-decoration: none; font-weight: 700; border-radius: 50px; box-shadow: 0 10px 30px rgba(212,169,72,0.4); z-index: 999; transition: 0.3s; }
+        .floating-cta { position: fixed; bottom: 30px; right: 20px; background: var(--gold); color: var(--primary-black); padding: 18px 35px; text-decoration: none; font-weight: 700; border-radius: 50px; box-shadow: 0 10px 30px rgba(212,169,72,0.4); z-index: 998; transition: 0.3s; font-size: 14px; }
         .floating-cta:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(212,169,72,0.6); }
+        @media (max-width: 968px) { .floating-cta { bottom: 24px; right: 20px; font-size: 13px; padding: 14px 24px; } }
 
         /* ───── REVEAL ───── */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -309,10 +368,9 @@
             .nav-links { display: none; }
             .nav-social-top { display: none; }
             .nav-cta { display: none; }
-            .mobile-menu-btn { display: block; }
+            .mobile-menu-btn { display: none; }
             .mobile-menu { display: block; }
-            .mobile-nav-social { display: flex; align-items: center; gap: 15px; margin-right: 10px; }
-            .mobile-nav-social a { color: var(--gold); font-size: 18px; text-decoration: none; }
+            .mobile-nav-social { display: none; }
             .nav-container { padding: 15px 30px !important; }
             .page-hero-inner { flex-direction: column; padding: 60px 30px; gap: 40px; }
             .page-hero h1 { font-size: 40px; }
@@ -370,11 +428,8 @@
                 <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
             </div>
-            <a href="inventory.html" class="nav-cta">在庫車輛</a>
+            <a href="inventory" class="nav-cta">在庫車輛</a>
             <a href="index.html#contact" class="nav-cta">立即諮詢</a>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
     </div>
 </nav>
@@ -494,7 +549,7 @@
                 電話: 07-7352855<br>
                 手機: 0979-226-338<br>
                 地址: 高雄市仁武區鳳仁路 3-36 號<br>
-                信箱: service@ys-autos.com
+                信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a>
             </p>
         </div>
     </div>
@@ -504,6 +559,24 @@
 </footer>
 
 <a href="tel:077352855" class="floating-cta">立即來電預約</a>
+
+<!-- 在庫車輛獨立懸浮按鈕 -->
+<a href="inventory" class="floating-inventory" aria-label="在庫車輛">
+    <i class="fas fa-car"></i>
+    在庫車輛
+</a>
+
+<!-- 懸浮導覽選單 FAB（手機版） -->
+<div class="fab-wrapper" id="fabWrapper">
+    <div class="fab-menu" id="fabMenu">
+        <div class="fab-item"><a href="import-cars"><i class="fas fa-ship"></i>外匯車介紹</a></div>
+        <div class="fab-item"><a href="index.html#guarantee"><i class="fas fa-shield-alt"></i>安心保證</a></div>
+        <div class="fab-item"><a href="index.html#reviews"><i class="fas fa-star"></i>顧客推薦</a></div>
+        <div class="fab-item"><a href="prove" class="active-fab"><i class="fas fa-check-circle"></i>成交見證</a></div>
+        <div class="fab-item"><a href="index.html#owner"><i class="fas fa-user"></i>認識我們</a></div>
+    </div>
+    <button class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="開啟選單">選單</button>
+</div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
@@ -516,7 +589,18 @@
     <div class="lightbox-counter" id="lightboxCounter"><span id="lbCurrent">1</span> / <span id="lbTotal">1</span></div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+    // 導航列滾動效果
+    window.addEventListener('scroll', function() {
+        var navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+        } else {
+            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+        }
+    });
+
     // ── All testimonial images ──
     const photos = [
         'image/6060.webp',
@@ -721,8 +805,31 @@
             }
         });
     }
+
     window.addEventListener('scroll', reveal);
     window.addEventListener('load', reveal);
+
+    // ── FAB 懸浮選單控制 ──
+    var fabOpen = false;
+    function toggleFab() {
+        fabOpen = !fabOpen;
+        var trigger = document.getElementById('fabTrigger');
+        var items = document.querySelectorAll('.fab-item');
+        trigger.classList.toggle('open', fabOpen);
+        items.forEach(function(item) { item.classList.toggle('visible', fabOpen); });
+    }
+    function closeFab() {
+        fabOpen = false;
+        var trigger = document.getElementById('fabTrigger');
+        var items = document.querySelectorAll('.fab-item');
+        if (trigger) trigger.classList.remove('open');
+        items.forEach(function(item) { item.classList.remove('visible'); });
+    }
+    document.addEventListener('click', function(e) {
+        var wrapper = document.getElementById('fabWrapper');
+        if (wrapper && !wrapper.contains(e.target)) { closeFab(); }
+    });
+
 </script>
 </body>
 </html>
