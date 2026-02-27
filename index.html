@@ -1201,7 +1201,7 @@
         @media (max-width: 968px) {
             .floating-cta { bottom: 24px; right: 20px; font-size: 13px; padding: 14px 24px; z-index: 998; }
         }
-        .fab-wrapper { display: none; position: fixed; bottom: 86px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
+        .fab-wrapper { display: none; position: fixed; bottom: 140px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
         @media (max-width: 968px) { .fab-wrapper { display: flex; } }
         .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; }
         .fab-item { opacity: 0; transform: translateX(14px); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; margin-bottom: 5px; }
@@ -1219,6 +1219,12 @@
         .fab-trigger::after { animation-delay: 1.3s; }
         .fab-trigger.open::before, .fab-trigger.open::after { display: none; }
         @keyframes fab-ripple { 0%{transform:scale(1);opacity:.65} 100%{transform:scale(2);opacity:0} }
+
+        /* 在庫車輛獨立懸浮按鈕（手機版）*/
+        .floating-inventory { display: none; position: fixed; bottom: 88px; right: 20px; z-index: 999; width: 46px; height: 46px; background: var(--gold); border: 1px solid var(--gold-dark); color: var(--primary-black); text-decoration: none; font-family: 'Noto Sans TC',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 4px 20px rgba(212,169,72,0.4); transition: background .2s, transform .2s; }
+        .floating-inventory i { font-size: 15px; }
+        .floating-inventory:hover, .floating-inventory:active { background: var(--gold-light); color: var(--primary-black); transform: scale(1.05); }
+        @media (max-width: 968px) { .floating-inventory { display: flex; } }
 
 </style>
 
@@ -1831,8 +1837,7 @@
                 電話: 07-7352855<br>
                 手機: 0979-226-338<br>
                 地址: 高雄市仁武區鳳仁路 3-36 號<br>
-                信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a>
-            </p>
+                信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a></p>
         </div>
     </div>
     <div style="text-align:center; padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); color:#666; font-size:12px; margin-top:50px;">
@@ -1844,7 +1849,6 @@
 <div class="fab-wrapper" id="fabWrapper">
     <div class="fab-menu" id="fabMenu">
         <div class="fab-item"><a href="import-cars"><i class="fas fa-ship"></i>外匯車介紹</a></div>
-        <div class="fab-item"><a href="inventory"><i class="fas fa-car"></i>在庫車輛</a></div>
         <div class="fab-item"><a href="#guarantee" onclick="closeFab()"><i class="fas fa-shield-alt"></i>安心保證</a></div>
         <div class="fab-item"><a href="#reviews" onclick="closeFab()"><i class="fas fa-star"></i>顧客推薦</a></div>
         <div class="fab-item"><a href="prove"><i class="fas fa-check-circle"></i>成交見證</a></div>
@@ -1853,9 +1857,11 @@
     <button class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="開啟選單">選單</button>
 </div>
 
+<a href="inventory" class="floating-inventory" aria-label="在庫車輛"><i class="fas fa-car"></i>在庫車輛</a>
+
 <a href="tel:0979226338" class="floating-cta">立即來電預約</a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ── FAB 懸浮選單控制 ──
     var fabOpen = false;
     function toggleFab() {
@@ -2014,7 +2020,9 @@ function createRow(direction) {
     function updateActiveNav() {
         var current = '';
         sections.forEach(function(section) {
-            if (window.scrollY >= section.offsetTop - 150) {
+                 var top = section.offsetTop - 120;
+            var bottom = top + section.offsetHeight;
+            if (window.scrollY >= top && window.scrollY < bottom) {
                 current = section.getAttribute('id');
             }
         });
@@ -2024,6 +2032,53 @@ function createRow(direction) {
                 link.classList.add('active');
             }
         });
+    }
+
+    // 車輛輪播
+    var carouselIndex = 0;
+    var carouselItems = [];
+    var autoPlayTimer = null;
+
+    function initCarousel() {
+        carouselItems = document.querySelectorAll('.carousel-item');
+        if (carouselItems.length > 0) {
+            showSlide(0);
+            startAutoPlay();
+        }
+    }
+
+    function showSlide(index) {
+        carouselItems.forEach(function(item, i) {
+            item.classList.toggle('active', i === index);
+        });
+        var dots = document.querySelectorAll('.carousel-dot');
+        dots.forEach(function(dot, i) {
+            dot.classList.toggle('active', i === index);
+        });
+        carouselIndex = index;
+    }
+
+    function moveCarousel(dir) {
+        var total = carouselItems.length;
+        var next = (carouselIndex + dir + total) % total;
+        showSlide(next);
+        resetAutoPlay();
+    }
+
+    function goToSlide(index) {
+        showSlide(index);
+        resetAutoPlay();
+    }
+
+    function startAutoPlay() {
+        autoPlayTimer = setInterval(function() {
+            moveCarousel(1);
+        }, 4000);
+    }
+
+    function resetAutoPlay() {
+        clearInterval(autoPlayTimer);
+        startAutoPlay();
     }
 
 </script>
