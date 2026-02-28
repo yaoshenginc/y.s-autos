@@ -299,7 +299,45 @@
         .car-inquire:hover { background: var(--gold); color: #000; }
         .car-inquire i { font-size: 11px; }
 
-        /* ═══════════════════════ EMPTY STATE ═══════════════════════ */
+        .badge-incoming { background: rgba(20, 80, 160, 0.9); color: #a8d4ff; border: 1px solid rgba(100, 160, 255, 0.5); }
+
+        /* Arrival banner on card */
+        .arrival-banner {
+            display: flex; align-items: center; gap: 10px;
+            background: linear-gradient(90deg, rgba(212,169,72,0.12), rgba(212,169,72,0.06));
+            border-top: 1px solid rgba(212,169,72,0.25);
+            border-bottom: 1px solid rgba(212,169,72,0.15);
+            padding: 9px 24px;
+            font-size: 12px; color: var(--gold); letter-spacing: 0.5px;
+        }
+        .arrival-banner i { font-size: 13px; }
+
+        /* Incoming card subtle tint */
+        .car-incoming { border: 1px solid rgba(212,169,72,0.12); }
+
+        /* ═══════════════════════ SECTION DIVIDER ═══════════════════════ */
+        .section-divider {
+            display: flex; align-items: center; gap: 24px;
+            padding: 60px 0 50px;
+        }
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .divider-label {
+            display: flex; align-items: center; gap: 14px;
+            padding: 12px 28px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Oswald', sans-serif;
+            font-size: 13px; letter-spacing: 4px; text-transform: uppercase;
+            background: rgba(212,169,72,0.06);
+            white-space: nowrap;
+        }
+        .divider-label i { font-size: 14px; opacity: 0.8; }
+
+                /* ═══════════════════════ EMPTY STATE ═══════════════════════ */
         .empty-state {
             display: none;
             text-align: center; padding: 100px 30px;
@@ -707,7 +745,7 @@
 
 <!-- ══ INVENTORY GRID ══ -->
 <section class="inventory-section">
-    <div class="inventory-inner">
+    <div class="inventory-inner" id="inventoryInner">
         <div class="car-grid" id="carGrid">
             <!-- 車輛卡片由 JavaScript 自動讀取 vehicle/carN/info.txt 動態產生 -->
         </div><!-- /car-grid -->
@@ -812,14 +850,15 @@
     <button class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="開啟選單">選單</button>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ════════════════════════════════════════════════════════════════
     // ★ 車輛設定區 ★
     // 新增車輛：在此陣列末端加一個數字（對應 vehicle/carN 資料夾）
-    // 例如現在有 car1~car3，就填 [1, 2, 3]
-    // 移除車輛：從陣列中刪掉對應數字即可
+    // 車輛顯示在哪個區塊，由 info.txt 的「在庫：是/否」欄位決定：
+    //   在庫：是  → 顯示在在庫車輛（上方）
+    //   在庫：否  → 顯示在即將到港（金色分隔線下方）
     // ════════════════════════════════════════════════════════════════
-    const CAR_IDS = [1, 2, 3, 4];   // ← 新增車輛只需修改這裡
+    const CAR_IDS = [1, 2, 3, 4];   // ← 新增/移除車輛只需修改這裡
 
     // ════════════════════════════════════════════════════════════════
     // info.txt 解析器
@@ -852,6 +891,8 @@
             price: '請洽詢', priceNote: '含運費、關稅、驗車費用，另行報價',
             carfax: '無事故紀錄', cpo: false, status: 'available',
             remark: '', highlights: [], equip: [],
+            inStock: true,       // 在庫：是(預設)/否
+            arrivalStatus: '',   // 到港狀態，例如「預計 2025/06 到港」
         };
         let inEquip = false;
         let inHighlights = false;
@@ -898,6 +939,10 @@
                 case '車輛/內裝顏色':
                 case '顏色':
                     car.color = val; break;
+                case '在庫':
+                    car.inStock = (val === '是'); break;
+                case '到港狀態':
+                    car.arrivalStatus = val; break;
             }
         }
 
@@ -939,25 +984,33 @@
     // ════════════════════════════════════════════════════════════════
     // 建立卡片 HTML
     // ════════════════════════════════════════════════════════════════
-    function buildCard(id, car, photos) {
+    function buildCard(id, car, photos, isIncoming = false) {
         const statusBadge = {
             sold: '<span class="badge badge-sold">已售出</span>',
             reserved: '<span class="badge badge-reserved">已預訂</span>',
         }[car.status] || '';
         const cpoBadge = car.cpo ? '<span class="badge badge-cpo">CPO 認證</span>' : '';
+        const incomingBadge = isIncoming ? '<span class="badge badge-incoming">即將到港</span>' : '';
         const firstPhoto = photos[0] || 'image/placeholder.jpg';
         const photoCount = photos.length;
 
-        const statusColor = { sold: '#666', reserved: 'var(--gold)' }[car.status] || '#4caf82';
-        const statusLabel = { sold: '已售', reserved: '預訂中' }[car.status] || '優良';
+        const statusColor = { sold: '#666', reserved: 'var(--gold)' }[car.status] || (isIncoming ? 'var(--gold)' : '#4caf82');
+        const statusLabel = { sold: '已售', reserved: '預訂中' }[car.status] || (isIncoming ? '即將到港' : '優良');
+
+        const arrivalBanner = isIncoming && car.arrivalStatus ? `
+            <div class="arrival-banner">
+                <i class="fas fa-ship"></i>
+                <span>${car.arrivalStatus}</span>
+            </div>` : '';
 
         return `
-        <div class="car-card reveal" data-car="${id}" onclick="openModal(${id})" style="animation-delay:${(id-1)*0.05}s">
+        <div class="car-card reveal${isIncoming ? ' car-incoming' : ''}" data-car="${id}" onclick="openModal(${id})" style="animation-delay:${(id-1)*0.05}s">
             <div class="car-photo">
                 <img src="${firstPhoto}" alt="${car.make} ${car.model}" loading="lazy">
-                <div class="car-badges">${cpoBadge}${statusBadge}</div>
+                <div class="car-badges">${cpoBadge}${incomingBadge}${statusBadge}</div>
                 ${photoCount > 1 ? `<div class="photo-count">${photoCount} 張照片</div>` : ''}
             </div>
+            ${arrivalBanner}
             <div class="car-body">
                 <div class="car-make-model">
                     <span class="car-make">${car.make}</span>
@@ -1115,27 +1168,21 @@
     // ════════════════════════════════════════════════════════════════
     async function loadInventory() {
         const grid = document.getElementById('carGrid');
+        const inventoryInner = document.getElementById('inventoryInner');
         const emptyState = document.getElementById('emptyState');
         grid.innerHTML = `
             <div class="loading-state">
                 <div class="loading-road">
                     <div class="loading-car-glow"></div>
                     <svg class="loading-car" viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- 車身 -->
                         <rect x="8" y="20" width="104" height="20" rx="4" fill="#1a1a1a" stroke="rgba(212,169,72,0.4)" stroke-width="1.5"/>
-                        <!-- 車頂 -->
                         <path d="M28 20 L38 8 L82 8 L94 20 Z" fill="#141414" stroke="rgba(212,169,72,0.35)" stroke-width="1.5"/>
-                        <!-- 擋風玻璃 -->
                         <path d="M40 10 L38.5 19 L81.5 19 L82 10 Z" fill="rgba(212,169,72,0.08)" stroke="rgba(212,169,72,0.2)" stroke-width="1"/>
-                        <!-- 前輪 -->
                         <circle cx="30" cy="40" r="8" fill="#0a0a0a" stroke="rgba(212,169,72,0.5)" stroke-width="2"/>
                         <circle cx="30" cy="40" r="3.5" fill="rgba(212,169,72,0.3)"/>
-                        <!-- 後輪 -->
                         <circle cx="90" cy="40" r="8" fill="#0a0a0a" stroke="rgba(212,169,72,0.5)" stroke-width="2"/>
                         <circle cx="90" cy="40" r="3.5" fill="rgba(212,169,72,0.3)"/>
-                        <!-- 車頭燈 -->
                         <rect x="108" y="24" width="6" height="5" rx="1" fill="rgba(212,169,72,0.9)"/>
-                        <!-- 尾燈 -->
                         <rect x="6" y="24" width="5" height="5" rx="1" fill="rgba(180,40,40,0.8)"/>
                     </svg>
                 </div>
@@ -1144,38 +1191,69 @@
                 </div>
             </div>`;
 
-        const loaded = [];
-
-        for (const id of CAR_IDS) {
+        async function loadCar(id) {
             try {
-                // 1. Fetch info.txt
                 const res = await fetch(`vehicle/car${id}/info.txt?v=${Date.now()}`);
-                if (!res.ok) { console.warn(`car${id}/info.txt not found`); continue; }
+                if (!res.ok) { console.warn(`car${id}/info.txt not found`); return null; }
                 const text = await res.text();
                 const car = parseInfo(text);
-
-                // 2. Detect photos
                 const photos = await detectPhotos(id);
                 if (photos.length === 0) photos.push('image/placeholder.jpg');
-
-                // 3. Cache
                 carCache[id] = { car, photos };
-                loaded.push({ id, car, photos });
+                return { id, car, photos };
             } catch(e) {
                 console.warn(`Failed to load car${id}:`, e);
+                return null;
             }
         }
 
-        // Render cards
-        if (loaded.length === 0) {
+        const allResults = (await Promise.all(CAR_IDS.map(loadCar))).filter(Boolean);
+
+        // 依 info.txt 的「在庫」欄位分流
+        const inStock  = allResults.filter(r => r.car.inStock !== false);
+        const incoming = allResults.filter(r => r.car.inStock === false);
+
+        if (allResults.length === 0) {
             grid.innerHTML = '';
             emptyState.classList.add('show');
-        } else {
-            grid.innerHTML = loaded.map(({ id, car, photos }) => buildCard(id, car, photos)).join('');
-            emptyState.classList.remove('show');
-            reveal();
+            return;
         }
+
+        emptyState.classList.remove('show');
+
+        // 在庫車輛
+        grid.innerHTML = inStock.map(({ id, car, photos }) => buildCard(id, car, photos, false)).join('');
+
+        // 清除舊的分隔線 / 到港 grid
+        const oldDivider = inventoryInner.querySelector('.section-divider');
+        if (oldDivider) oldDivider.remove();
+        const oldGrid2 = document.getElementById('incomingGrid');
+        if (oldGrid2) oldGrid2.remove();
+
+        // 即將到港
+        if (incoming.length > 0) {
+            const divider = document.createElement('div');
+            divider.className = 'section-divider';
+            divider.innerHTML = `
+                <div class="divider-line"></div>
+                <div class="divider-label">
+                    <i class="fas fa-ship"></i>
+                    <span>即將到港車輛</span>
+                    <i class="fas fa-ship"></i>
+                </div>
+                <div class="divider-line"></div>`;
+            emptyState.before(divider);
+
+            const incomingGrid = document.createElement('div');
+            incomingGrid.className = 'car-grid';
+            incomingGrid.id = 'incomingGrid';
+            incomingGrid.innerHTML = incoming.map(({ id, car, photos }) => buildCard(id, car, photos, true)).join('');
+            emptyState.before(incomingGrid);
+        }
+
+        reveal();
     }
+
 
     // ════════════════════════════════════════════════════════════════
     // NAV & SCROLL
@@ -1217,11 +1295,11 @@
     }
     document.addEventListener('click', e => {
         const w = document.getElementById('fabWrapper');
-        if (w && !w.contains(e.target)) closeFab();
+        if (fabWrapper && !fabWrapper.contains(e.target)) closeFab();
     });
 
     window.addEventListener('scroll', () => { handleNavScroll(); reveal(); });
-    window.addEventListener('load', () => { handleNavScroll(); reveal(); loadInventory(); });
+    window.addEventListener('load', () => { loadInventory(); reveal(); });
 </script>
 </body>
 </html>
