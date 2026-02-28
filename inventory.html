@@ -992,7 +992,7 @@
             sold: '<span class="badge badge-sold">已售出</span>',
             reserved: '<span class="badge badge-reserved">已預訂</span>',
         }[car.status] || '';
-        const cpoBadge = car.cpo ? '<span class="badge badge-cpo">CPO 認證</span>' : '';
+        const cpoBadge = car.cpo ? '<span class="badge badge-cpo"><i class="fas fa-certificate"></i>CPO原廠認證</span>' : '';
         const incomingBadge = isIncoming ? '<span class="badge badge-incoming">即將到港</span>' : '';
         const firstPhoto = photos[0] || 'image/placeholder.jpg';
         const photoCount = photos.length;
