@@ -853,12 +853,12 @@
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ════════════════════════════════════════════════════════════════
     // ★ 車輛設定區 ★
-    // 新增車輛：在此陣列末端加一個數字（對應 vehicle/carN 資料夾）
-    // 車輛顯示在哪個區塊，由 info.txt 的「在庫：是/否」欄位決定：
-    //   在庫：是  → 顯示在在庫車輛（上方）
-    //   在庫：否  → 顯示在即將到港（金色分隔線下方）
+    // 不需要手動設定！系統會自動從 car1 開始往後掃描，
+    // 直到找不到 info.txt 為止。
+    // 新增車輛：建立 vehicle/carN 資料夾並放入 info.txt 即可
+    // 移除車輛：刪除對應資料夾，或在 info.txt 加上「狀態：sold」
+    // 車輛順序：依資料夾編號 car1, car2, car3... 排列
     // ════════════════════════════════════════════════════════════════
-    const CAR_IDS = [1, 2, 3, 4, 5, 6];   // ← 新增/移除車輛只需修改這裡
 
     // ════════════════════════════════════════════════════════════════
     // info.txt 解析器
@@ -1210,7 +1210,16 @@
             }
         }
 
-        const allResults = (await Promise.all(CAR_IDS.map(loadCar))).filter(Boolean);
+        // 自動掃描：從 car1 開始，連續找不到就停止
+        const allResults = [];
+        for (let id = 1; id <= 999; id++) {
+            const result = await loadCar(id);
+            if (result) {
+                allResults.push(result);
+            } else {
+                break; // 找不到就停止掃描
+            }
+        }
 
         // 依 info.txt 的「在庫」欄位分流
         const inStock  = allResults.filter(r => r.car.inStock !== false);
