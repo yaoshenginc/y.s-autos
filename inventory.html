@@ -858,7 +858,7 @@
     //   在庫：是  → 顯示在在庫車輛（上方）
     //   在庫：否  → 顯示在即將到港（金色分隔線下方）
     // ════════════════════════════════════════════════════════════════
-    const CAR_IDS = [1, 2, 3, 4 ,5];   // ← 新增/移除車輛只需修改這裡
+    const CAR_IDS = [1, 2, 3, 4];   // ← 新增/移除車輛只需修改這裡
 
     // ════════════════════════════════════════════════════════════════
     // info.txt 解析器
@@ -892,6 +892,7 @@
             carfax: '無事故紀錄', cpo: false, status: 'available',
             remark: '', highlights: [], equip: [],
             inStock: true,       // 在庫：是(預設)/否
+            condition: '',       // 車況，例如「原鈑原漆」
             arrivalStatus: '',   // 到港狀態，例如「預計 2025/06 到港」
         };
         let inEquip = false;
@@ -939,8 +940,10 @@
                 case '車輛/內裝顏色':
                 case '顏色':
                     car.color = val; break;
+                case '車況':
+                    car.condition = val; break;
                 case '在庫':
-                    car.inStock = (val === '是'); break;
+                    car.inStock = (val !== '否'); break;
                 case '到港狀態':
                     car.arrivalStatus = val; break;
             }
@@ -995,7 +998,7 @@
         const photoCount = photos.length;
 
         const statusColor = { sold: '#666', reserved: 'var(--gold)' }[car.status] || (isIncoming ? 'var(--gold)' : '#4caf82');
-        const statusLabel = { sold: '已售', reserved: '預訂中' }[car.status] || (isIncoming ? '即將到港' : '優良');
+        const statusLabel = { sold: '已售', reserved: '預訂中' }[car.status] || (car.condition ? car.condition : (isIncoming ? '即將到港' : '優良'));
 
         const arrivalBanner = isIncoming && car.arrivalStatus ? `
             <div class="arrival-banner">
