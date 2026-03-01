@@ -1221,8 +1221,7 @@
         @media (max-width: 968px) { .floating-inventory { display: flex; } }
 
 </style>
-
-    <!-- Structured Data (Local SEO) -->
+<!-- Structured Data (Local SEO + Breadcrumb) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1268,19 +1267,47 @@
         "@id": "https://ys-autos.com/#autodealer"
       },
       "inLanguage": "zh-TW"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://ys-autos.com/#homepage",
+      "url": "https://ys-autos.com/",
+      "name": "耀笙國際汽車｜高雄外匯車推薦・CPO原廠認證車・進口車買賣",
+      "isPartOf": {
+        "@id": "https://ys-autos.com/#website"
+      },
+      "about": {
+        "@id": "https://ys-autos.com/#autodealer"
+      },
+      "inLanguage": "zh-TW",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://ys-autos.com/image/logo.png"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://ys-autos.com/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "耀笙國際汽車",
+          "item": "https://ys-autos.com/"
+        }
+      ]
     }
   ]
 }
 </script>
-
 </head>
 <body>
 
 <nav id="navbar">
     <div class="nav-container">
         <div class="nav-left">
-            <a href="#" class="logo">
-                <img src="image/logo.png" alt="Y.S. AUTOS Logo" class="logo-img">
+            <a href="https://ys-autos.com/" class="logo">
+                <img src="https://ys-autos.com/image/logo.png" alt="Y.S. AUTOS Logo" class="logo-img">
                 <div class="logo-text">
                     <div class="zh">耀笙國際汽車</div>
                     <div class="en">Y.S. AUTOS</div>
@@ -1288,12 +1315,12 @@
                 </div>
             </a>
             <ul class="nav-links">
-                <li><a href="#guarantee">安心保證</a></li>
-                <li><a href="#after-sales">一條龍服務</a></li>
-                <li><a href="#reviews">顧客推薦</a></li>
-                <li><a href="#owner">認識我們</a></li>
-                <li><a href="#philosophy">經營理念</a></li>
-                <li><a href="prove">成交見證</a></li>
+                <li><a href="https://ys-autos.com/#guarantee">安心保證</a></li>
+                <li><a href="https://ys-autos.com/#after-sales">一條龍服務</a></li>
+                <li><a href="https://ys-autos.com/#reviews">顧客推薦</a></li>
+                <li><a href="https://ys-autos.com/#owner">認識我們</a></li>
+                <li><a href="https://ys-autos.com/#philosophy">經營理念</a></li>
+                <li><a href="https://ys-autos.com/prove">成交見證</a></li>
             </ul>
         </div>
 <div class="nav-right">
@@ -1309,8 +1336,8 @@
         <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
     </div>
 
-    <a href="inventory" class="nav-cta">在庫車輛</a>
-    <a href="import-cars" class="nav-cta">了解外匯車</a>
+    <a href="https://ys-autos.com/inventory" class="nav-cta">在庫車輛</a>
+    <a href="https://ys-autos.com/import-cars" class="nav-cta">了解外匯車</a>
     
     <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
         <i class="fas fa-bars"></i>
@@ -1326,15 +1353,15 @@
         <i class="fas fa-times"></i>
     </button>
     <ul class="mobile-menu-links">
-        <li><a href="import-cars" onclick="closeMobileMenu()">外匯車介紹</a></li>
-        <li><a href="inventory" onclick="closeMobileMenu()">在庫車輛</a></li>
-        <li><a href="#guarantee" onclick="closeMobileMenu()">安心保證</a></li>
-        <li><a href="#after-sales" onclick="closeMobileMenu()">一條龍服務</a></li>
-        <li><a href="#reviews" onclick="closeMobileMenu()">顧客推薦</a></li>
-        <li><a href="prove" onclick="closeMobileMenu()">成交見證</a></li>
-        <li><a href="#owner" onclick="closeMobileMenu()">認識我們</a></li>
-        <li><a href="#philosophy" onclick="closeMobileMenu()">經營理念</a></li>
-        <li><a href="#contact" onclick="closeMobileMenu()">聯絡我們</a></li>
+        <li><a href="https://ys-autos.com/import-cars" onclick="closeMobileMenu()">外匯車介紹</a></li>
+        <li><a href="https://ys-autos.com/inventory" onclick="closeMobileMenu()">在庫車輛</a></li>
+        <li><a href="https://ys-autos.com/#guarantee" onclick="closeMobileMenu()">安心保證</a></li>
+        <li><a href="https://ys-autos.com/#after-sales" onclick="closeMobileMenu()">一條龍服務</a></li>
+        <li><a href="https://ys-autos.com/#reviews" onclick="closeMobileMenu()">顧客推薦</a></li>
+        <li><a href="https://ys-autos.com/prove" onclick="closeMobileMenu()">成交見證</a></li>
+        <li><a href="https://ys-autos.com/#owner" onclick="closeMobileMenu()">認識我們</a></li>
+        <li><a href="https://ys-autos.com/#philosophy" onclick="closeMobileMenu()">經營理念</a></li>
+        <li><a href="https://ys-autos.com/#contact" onclick="closeMobileMenu()">聯絡我們</a></li>
     </ul>
 </div>
 
@@ -1349,8 +1376,8 @@
             </span>售出超過200台進口車<br>至今0負評
         </p>
         <h1 class="sr-only">耀笙國際汽車 Y.S. AUTOS｜高雄仁武外匯車・CPO原廠認證車・進口車買賣・中古車高價收購</h1>
-        <a href="import-cars" class="cta-primary">了解外匯車</a>
-        <a href="inventory" class="cta-secondary">在庫車輛</a>
+        <a href="https://ys-autos.com/import-cars" class="cta-primary">了解外匯車</a>
+        <a href="https://ys-autos.com/inventory" class="cta-secondary">在庫車輛</a>
     </div>
 </section>
 
@@ -1827,24 +1854,24 @@
         <div class="footer-links">
             <h4 style="color:#fff; margin-bottom:25px;">快速連結</h4>
             <ul>
-                <li><a href="#owner">認識我們</a></li>
-                <li><a href="#philosophy">經營理念</a></li>
-                <li><a href="#services">服務項目</a></li>
-                <li><a href="#reviews">顧客推薦</a></li>
-                <li><a href="prove">成交見證</a></li>
+                <li><a href="https://ys-autos.com/#owner">認識我們</a></li>
+                <li><a href="https://ys-autos.com/#philosophy">經營理念</a></li>
+                <li><a href="https://ys-autos.com/#services">服務項目</a></li>
+                <li><a href="https://ys-autos.com/#reviews">顧客推薦</a></li>
+                <li><a href="https://ys-autos.com/prove">成交見證</a></li>
             </ul>
         </div>
         <div class="footer-links">
             <h4 style="color:#fff; margin-bottom:25px;">服務項目</h4>
             <ul>
-                <li><a href="#">CPO原廠認證車</a></li>
-                <li><a href="#">美規外匯車</a></li>
-                <li><a href="#">代辦外匯車</a></li>
-                <li><a href="#">中古車買賣</a></li>
-                <li><a href="#">代客尋車</a></li>
-                <li><a href="#">汽車貸款</a></li>
-                <li><a href="#">車輛保險</a></li>
-                <li><a href="#">愛車寄售</a></li>
+                <li>CPO原廠認證車</li>
+                <li>美規外匯車</li>
+                <li>代辦外匯車</li>
+                <li>中古車買賣</li>
+                <li>代客尋車</li>
+                <li>汽車貸款</li>
+                <li>車輛保險</li>
+                <li>愛車寄售</li>
             </ul>
         </div>
         <div class="footer-links">
@@ -1864,17 +1891,17 @@
 <!-- 懸浮導覽選單（手機版） -->
 <div class="fab-wrapper" id="fabWrapper">
     <div class="fab-menu" id="fabMenu">
-        <div class="fab-item"><a href="import-cars"><i class="fas fa-ship"></i>外匯車介紹</a></div>
-        <div class="fab-item"><a href="#guarantee" onclick="closeFab()"><i class="fas fa-shield-alt"></i>安心保證</a></div>
-        <div class="fab-item"><a href="#after-sales" onclick="closeFab()"><i class="fas fa-user-gear"></i>一條龍服務</a></div>
-        <div class="fab-item"><a href="#reviews" onclick="closeFab()"><i class="fas fa-star"></i>顧客推薦</a></div>
-        <div class="fab-item"><a href="prove"><i class="fas fa-check-circle"></i>成交見證</a></div>
-        <div class="fab-item"><a href="#owner" onclick="closeFab()"><i class="fas fa-user"></i>認識我們</a></div>
+        <div class="fab-item"><a href="https://ys-autos.com/import-cars"><i class="fas fa-ship"></i>外匯車介紹</a></div>
+        <div class="fab-item"><a href="https://ys-autos.com/#guarantee" onclick="closeFab()"><i class="fas fa-shield-alt"></i>安心保證</a></div>
+        <div class="fab-item"><a href="https://ys-autos.com/#after-sales" onclick="closeFab()"><i class="fas fa-user-gear"></i>一條龍服務</a></div>
+        <div class="fab-item"><a href="https://ys-autos.com/#reviews" onclick="closeFab()"><i class="fas fa-star"></i>顧客推薦</a></div>
+        <div class="fab-item"><a href="https://ys-autos.com/prove"><i class="fas fa-check-circle"></i>成交見證</a></div>
+        <div class="fab-item"><a href="https://ys-autos.com/#owner" onclick="closeFab()"><i class="fas fa-user"></i>認識我們</a></div>
     </div>
     <button class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="開啟選單">選單</button>
 </div>
 
-<a href="inventory" class="floating-inventory" aria-label="在庫車輛"><i class="fas fa-car"></i>在庫車輛</a>
+<a href="https://ys-autos.com/inventory" class="floating-inventory" aria-label="在庫車輛"><i class="fas fa-car"></i>在庫車輛</a>
 
 <a href="tel:0979226338" class="floating-cta">立即來電預約</a>
 
