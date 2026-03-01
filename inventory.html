@@ -1404,10 +1404,10 @@
         document.getElementById('fabTrigger').classList.remove('open');
         document.querySelectorAll('.fab-item').forEach(i => i.classList.remove('visible'));
     }
-    document.addEventListener('click', e => {
-        const w = document.getElementById('fabWrapper');
-        if (fabWrapper && !fabWrapper.contains(e.target)) closeFab();
-    });
+document.addEventListener('click', e => {
+    const fabWrapper = document.getElementById('fabWrapper');
+    if (fabWrapper && !fabWrapper.contains(e.target)) closeFab();
+});
 
     window.addEventListener('scroll', () => { handleNavScroll(); reveal(); });
     window.addEventListener('load', () => { loadInventory(); reveal(); });
