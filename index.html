@@ -1221,7 +1221,7 @@
         @media (max-width: 968px) { .floating-inventory { display: flex; } }
 
 </style>
-<!-- Structured Data (Local SEO + Breadcrumb) -->
+<!-- Structured Data (Local SEO + Breadcrumb + FAQ + Rating) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1248,9 +1248,9 @@
         "latitude": 22.6735694,
         "longitude": 120.3595321
       },
-      "areaServed": "高雄市",
+      "areaServed": ["高雄市", "屏東縣"],
       "hasMap": "https://www.google.com/maps/place/%E8%80%80%E7%AC%99%E5%9C%8B%E9%9A%9B%E6%B1%BD%E8%BB%8A%EF%BD%9C%E5%B0%88%E7%87%9F%E7%BE%8E%E5%9C%8B%E5%8E%9F%E5%BB%A0%E8%AA%8D%E8%AD%89%E8%BB%8A%EF%BD%9C%E8%87%AA%E8%BE%A6%E5%A4%96%E5%8C%AF%E8%BB%8A/@22.6735726,120.3578598,17z/data=!3m1!4b1!4m6!3m5!1s0x346e0f1defc8ead3:0x766bb7e2adad3e0b!8m2!3d22.6735694!4d120.3595321!16s%2Fg%2F11jwk9c6hr?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D",
-      "keywords": "高雄外匯車, 仁武外匯車, CPO原廠認證車, 進口車買賣, 二手車收購, 中古車收購, 美規車",
+      "keywords": "高雄外匯車, 仁武外匯車, 高雄外匯車推薦, 高雄外匯車車商, CPO原廠認證車, 進口車買賣, 中古車高價收購, 美規車",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -1264,16 +1264,19 @@
         "https://www.instagram.com/y.s_auto",
         "https://lin.ee/mDzezrK",
         "https://www.google.com/maps/place/%E8%80%80%E7%AC%99%E5%9C%8B%E9%9A%9B%E6%B1%BD%E8%BB%8A%EF%BD%9C%E5%B0%88%E7%87%9F%E7%BE%8E%E5%9C%8B%E5%8E%9F%E5%BB%A0%E8%AA%8D%E8%AD%89%E8%BB%8A%EF%BD%9C%E8%87%AA%E8%BE%A6%E5%A4%96%E5%8C%AF%E8%BB%8A/@22.6735726,120.3578598,17z/data=!3m1!4b1!4m6!3m5!1s0x346e0f1defc8ead3:0x766bb7e2adad3e0b!8m2!3d22.6735694!4d120.3595321!16s%2Fg%2F11jwk9c6hr?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
-      ]
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "25"
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://ys-autos.com/#website",
       "name": "耀笙國際汽車",
       "url": "https://ys-autos.com/",
-      "publisher": {
-        "@id": "https://ys-autos.com/#autodealer"
-      },
+      "publisher": { "@id": "https://ys-autos.com/#autodealer" },
       "inLanguage": "zh-TW"
     },
     {
@@ -1281,12 +1284,8 @@
       "@id": "https://ys-autos.com/#homepage",
       "url": "https://ys-autos.com/",
       "name": "耀笙國際汽車｜高雄外匯車推薦・CPO原廠認證車・進口車買賣",
-      "isPartOf": {
-        "@id": "https://ys-autos.com/#website"
-      },
-      "about": {
-        "@id": "https://ys-autos.com/#autodealer"
-      },
+      "isPartOf": { "@id": "https://ys-autos.com/#website" },
+      "about": { "@id": "https://ys-autos.com/#autodealer" },
       "inLanguage": "zh-TW",
       "primaryImageOfPage": {
         "@type": "ImageObject",
@@ -1297,11 +1296,56 @@
       "@type": "BreadcrumbList",
       "@id": "https://ys-autos.com/#breadcrumb",
       "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "耀笙國際汽車", "item": "https://ys-autos.com/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ys-autos.com/#faq",
+      "url": "https://ys-autos.com/#faq",
+      "isPartOf": { "@id": "https://ys-autos.com/#website" },
+      "about": { "@id": "https://ys-autos.com/#autodealer" },
+      "inLanguage": "zh-TW",
+      "mainEntity": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "耀笙國際汽車",
-          "item": "https://ys-autos.com/"
+          "@type": "Question",
+          "name": "高雄外匯車推薦怎麼選？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "建議確認是否提供事故/泡水檢測、第三方認證、透明車況報告、完整售後保養與貸款協助，並選擇有實體保養廠與專業技師把關的高雄外匯車車商。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "外匯車跟總代理車差在哪？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "外匯車由貿易商自行進口，價格通常更有競爭力、配備選擇更彈性；總代理車由原廠體系進口，價格相對較高但品牌體系完整。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "什麼是CPO原廠認證車？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CPO（Certified Pre-Owned）為原廠認證中古車，需通過原廠規範檢測，通常提供一定期限保固，屬於中古車中品質較有保障的選擇。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "高雄外匯車可以貸款嗎？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以。外匯車可透過銀行或融資公司申請貸款，核貸與利率依個人信用條件評估，專業車商通常可協助規劃合適方案。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "高雄哪裡買外匯車比較安全？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "建議選擇高雄在地、資訊透明、具備第三方認證與完整售後服務的一條龍車商，避免只比價而忽略車況來源與後續保固。"
+          }
         }
       ]
     }
@@ -1310,7 +1354,11 @@
 </script>
 </head>
 <body>
-
+<div class="sr-only">
+  <p>耀笙國際汽車位於高雄市仁武區，專營高雄外匯車推薦、美規車、CPO原廠認證車、進口車買賣與中古車高價收購。</p>
+  <p>服務範圍涵蓋高雄、仁武、左營、楠梓、鳳山與屏東地區，提供透明車況、第三方認證、事故泡水檢測與一條龍售後保養維修。</p>
+  <p>關鍵服務：高雄外匯車車商、高雄進口車推薦、外匯車貸款、中古車收購、寄售換車、保養維修、理賠協助。</p>
+</div>
 <nav id="navbar">
     <div class="nav-container">
         <div class="nav-left">
