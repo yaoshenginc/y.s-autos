@@ -1,4 +1,4 @@
-售價：電洽
+售價：已售出
 年份：2023
 make：Mercedes-Benz
 model：GLC300 4Matic
@@ -45,4 +45,5 @@ CARPLAY
 自動啟閉頭燈
 自動感應雨刷
 巡跡防滑系統
+
 車身動態穩定系統
