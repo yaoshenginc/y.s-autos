@@ -928,6 +928,23 @@
         .floating-inventory:hover, .floating-inventory:active { background: var(--gold-light); transform: scale(1.05); color: var(--primary-black); }
         @media (max-width: 968px) { .floating-inventory { display: flex; } }
 
+
+/* ===== Slider stability fix ===== */
+.img-slider {
+    position: relative;
+    z-index: 20;
+}
+.slider-btn {
+    z-index: 50;
+}
+.fab-wrapper {
+    pointer-events: none;
+}
+.fab-wrapper .fab-trigger,
+.fab-wrapper .fab-item {
+    pointer-events: auto;
+}
+
 </style>
 <!-- Structured Data (Local SEO + Breadcrumb) -->
 <script type="application/ld+json">
@@ -1708,7 +1725,9 @@
         sliderState[id] = index;
 
         // ✅ Safari 更穩：translate3d
-        track.style.transform = 'translate3d(-' + (index * 100) + '%, 0, 0)';
+        const slider = document.getElementById('slider-' + id);
+        const width = slider.offsetWidth;
+        track.style.transform = 'translate3d(-' + (index * width) + 'px, 0, 0)';
 
         if (dots) Array.from(dots.children).forEach((d, i) => d.classList.toggle('active', i === index));
         if (counter) counter.textContent = (index + 1) + ' / ' + total;
@@ -1795,47 +1814,33 @@
         recalcAllSliders();
     });
 
-// 圖片/資源載入後，再做一次完整重算
-window.addEventListener('load', () => {
+    // 圖片/資源載入後，再做一次完整重算
+    window.addEventListener('load', () => {
+        waitImagesThenRecalc(1200);
 
-    // 初次進頁確保穩定
-    waitImagesThenRecalc(1000);
-
-    // resize（含網址列收合）
-    window.addEventListener('resize', () => {
-        clearTimeout(window.__ysResizeTimer);
-        window.__ysResizeTimer = setTimeout(() => {
-            recalcAllSliders();
-        }, 150);
+        window.addEventListener('resize', () => {
+            // 連續 resize 時避免抖動：稍微延遲
+            clearTimeout(window.__ysResizeTimer);
+            window.__ysResizeTimer = setTimeout(recalcAllSliders, 120);
+        });
     });
 
-});
+    // ✅ iOS Safari：上一頁回來常用 bfcache，load 不一定會再跑
+    window.addEventListener('pageshow', () => {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                waitImagesThenRecalc(600);
+            });
+        });
+    });
 
-// ✅ iOS Safari 返回頁面（bfcache）
-window.addEventListener('pageshow', () => {
-    setTimeout(() => {
-        recalcAllSliders();
-    }, 120);
-});
+    // ✅ 手機轉向：有些機型 resize 觸發怪怪的
+    window.addEventListener('orientationchange', () => {
+        setTimeout(() => waitImagesThenRecalc(800), 250);
+    });
 
-// ✅ 手機旋轉
-window.addEventListener('orientationchange', () => {
-    setTimeout(() => {
-        recalcAllSliders();
-    }, 250);
-});
-
-// ✅ 從背景切回來
-document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) {
-        setTimeout(() => {
-            recalcAllSliders();
-        }, 120);
-    }
-});
-
-// 保留 reveal
-reveal();
+    // 保留你原本的立即 reveal
+    reveal();
 </script>
 </body>
 </html>
