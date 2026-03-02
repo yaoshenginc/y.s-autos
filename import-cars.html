@@ -1618,7 +1618,7 @@
 
 <a href="tel:077352855" class="floating-cta">立即來電預約</a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
     // ── 手機選單 ──
     function toggleMobileMenu() {
@@ -1713,6 +1713,12 @@
     function setSliderHeight(id) {
         const slider = document.getElementById('slider-' + id);
         if (!slider) return;
+        // 確保 slider 已有寬度才計算（手機版首次渲染可能為 0）
+        const w = slider.offsetWidth;
+        if (w === 0) {
+            requestAnimationFrame(() => setSliderHeight(id));
+            return;
+        }
         let maxRatio = 0;
         slider.querySelectorAll('.slider-slide img').forEach(img => {
             if (img.naturalWidth > 0) {
@@ -1721,13 +1727,12 @@
             }
         });
         if (maxRatio === 0) return;
-        const w = slider.offsetWidth;
         const h = Math.round(w * maxRatio);
         slider.style.height = h + 'px';
         slider.querySelectorAll('.slider-slide').forEach(slide => {
             slide.style.height = h + 'px';
         });
-        // 重設到第 0 張，確保顯示正確
+        // 重設到目前張，確保 translateX 正確
         slideTo(id, sliderState[id] || 0);
     }
 
@@ -1736,26 +1741,42 @@
         updateActiveNav();
         SLIDER_IDS.forEach(initSlider);
 
-        // 等所有圖片 load 完才設高度
+        // 等所有圖片 load 完才設高度，並加入 timeout fallback
         const allImgs = document.querySelectorAll('.img-slider img');
         let loaded = 0;
+        let initialized = false;
+        function doInit() {
+            if (initialized) return;
+            initialized = true;
+            // 用 requestAnimationFrame 確保 DOM layout 已完成
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    SLIDER_IDS.forEach(setSliderHeight);
+                });
+            });
+        }
         function onLoad() {
-            if (++loaded >= allImgs.length) {
-                SLIDER_IDS.forEach(setSliderHeight);
-            }
+            if (++loaded >= allImgs.length) doInit();
         }
         allImgs.forEach(img => {
             if (img.complete) onLoad(); else img.addEventListener('load', onLoad);
         });
+        if (allImgs.length === 0) doInit();
+        // Fallback：300ms 後強制初始化（以防圖片 load 事件遺失）
+        setTimeout(doInit, 300);
 
-        // resize 時重算（手機轉橫等情況）
-        window.addEventListener('resize', () => {
-            SLIDER_IDS.forEach(setSliderHeight);
-        });
+        // ResizeObserver：手機旋轉或視窗改變時重新計算 slider 高度與位置
+        if (window.ResizeObserver) {
+            SLIDER_IDS.forEach(id => {
+                const slider = document.getElementById('slider-' + id);
+                if (!slider) return;
+                const ro = new ResizeObserver(() => {
+                    requestAnimationFrame(() => setSliderHeight(id));
+                });
+                ro.observe(slider);
+            });
+        }
     });
-
-    reveal();
-
 </script>
 </body>
 </html>
