@@ -928,23 +928,6 @@
         .floating-inventory:hover, .floating-inventory:active { background: var(--gold-light); transform: scale(1.05); color: var(--primary-black); }
         @media (max-width: 968px) { .floating-inventory { display: flex; } }
 
-
-/* ===== Slider stability fix ===== */
-.img-slider {
-    position: relative;
-    z-index: 20;
-}
-.slider-btn {
-    z-index: 50;
-}
-.fab-wrapper {
-    pointer-events: none;
-}
-.fab-wrapper .fab-trigger,
-.fab-wrapper .fab-item {
-    pointer-events: auto;
-}
-
 </style>
 <!-- Structured Data (Local SEO + Breadcrumb) -->
 <script type="application/ld+json">
@@ -1044,11 +1027,11 @@
             </a>
             <ul class="nav-links">
                 <li><a href="https://ys-autos.com/">首頁</a></li>
-                <li><a href="/import-cars#cpo">CPO原廠認證</a></li>
-                <li><a href="/import-cars#carfax">CARFAX</a></li>
-                <li><a href="/import-cars#autocheck">AutoCheck</a></li>
-                <li><a href="/import-cars#manheim">Manheim</a></li>
-                <li><a href="/import-cars#spec-compare">常見規格</a></li>
+                <li><a href="#cpo">CPO原廠認證</a></li>
+                <li><a href="#carfax">CARFAX</a></li>
+                <li><a href="#autocheck">AutoCheck</a></li>
+                <li><a href="#manheim">Manheim</a></li>
+                <li><a href="#spec-compare">常見規格</a></li>
             </ul>
         </div>
         <div class="nav-right">
@@ -1076,11 +1059,11 @@
     <button class="mobile-menu-close" onclick="closeMobileMenu()"><i class="fas fa-times"></i></button>
     <ul class="mobile-menu-links">
         <li><a href="https://ys-autos.com/" onclick="closeMobileMenu()">首頁</a></li>
-        <li><a href="/import-cars#cpo" onclick="closeMobileMenu()">CPO原廠認證</a></li>
-        <li><a href="/import-cars#carfax" onclick="closeMobileMenu()">CARFAX</a></li>
-        <li><a href="/import-cars#autocheck" onclick="closeMobileMenu()">AutoCheck</a></li>
-        <li><a href="/import-cars#manheim" onclick="closeMobileMenu()">Manheim</a></li>
-        <li><a href="/import-cars#spec-compare" onclick="closeMobileMenu()">常見規格</a></li>
+        <li><a href="#cpo" onclick="closeMobileMenu()">CPO原廠認證</a></li>
+        <li><a href="#carfax" onclick="closeMobileMenu()">CARFAX</a></li>
+        <li><a href="#autocheck" onclick="closeMobileMenu()">AutoCheck</a></li>
+        <li><a href="#manheim" onclick="closeMobileMenu()">Manheim</a></li>
+        <li><a href="#spec-compare" onclick="closeMobileMenu()">常見規格</a></li>
         <li><a href="https://ys-autos.com/inventory" onclick="closeMobileMenu()">在庫車輛</a></li>
         <li><a href="https://ys-autos.com/prove" onclick="closeMobileMenu()">成交見證</a></li>
         <li><a href="https://ys-autos.com/#contact" onclick="closeMobileMenu()">聯絡我們</a></li>
@@ -1105,7 +1088,7 @@
                 <strong>車況透明、保養紀錄完整、日照充足不生鏽</strong>——美國的汽車文化成熟，每台車從出廠到換手都有完整數位紀錄，讓您買得安心、開得放心。<br><br>我們只從美國引進車輛，從來不碰雪地車，因為我的原則就是：<strong>只賣車況好的車。</strong>
             </p>
             <div class="hero-cta-group">
-                <a href="/import-cars#cpo" class="btn-gold"><i class="fas fa-certificate"></i> 了解CPO認證</a>
+                <a href="#cpo" class="btn-gold"><i class="fas fa-certificate"></i> 了解CPO認證</a>
                 <a href="https://ys-autos.com/#contact" class="btn-outline"><i class="fas fa-phone"></i> 立即諮詢</a>
             </div>
         </div>
@@ -1725,9 +1708,7 @@
         sliderState[id] = index;
 
         // ✅ Safari 更穩：translate3d
-        const slider = document.getElementById('slider-' + id);
-        const width = slider.offsetWidth;
-        track.style.transform = 'translate3d(-' + (index * width) + 'px, 0, 0)';
+        track.style.transform = 'translate3d(-' + (index * 100) + '%, 0, 0)';
 
         if (dots) Array.from(dots.children).forEach((d, i) => d.classList.toggle('active', i === index));
         if (counter) counter.textContent = (index + 1) + ' / ' + total;
