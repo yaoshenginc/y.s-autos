@@ -1795,33 +1795,47 @@
         recalcAllSliders();
     });
 
-    // 圖片/資源載入後，再做一次完整重算
-    window.addEventListener('load', () => {
-        waitImagesThenRecalc(1200);
+// 圖片/資源載入後，再做一次完整重算
+window.addEventListener('load', () => {
 
-        window.addEventListener('resize', () => {
-            // 連續 resize 時避免抖動：稍微延遲
-            clearTimeout(window.__ysResizeTimer);
-            window.__ysResizeTimer = setTimeout(recalcAllSliders, 120);
-        });
+    // 初次進頁確保穩定
+    waitImagesThenRecalc(1000);
+
+    // resize（含網址列收合）
+    window.addEventListener('resize', () => {
+        clearTimeout(window.__ysResizeTimer);
+        window.__ysResizeTimer = setTimeout(() => {
+            recalcAllSliders();
+        }, 150);
     });
 
-    // ✅ iOS Safari：上一頁回來常用 bfcache，load 不一定會再跑
-    window.addEventListener('pageshow', () => {
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                waitImagesThenRecalc(600);
-            });
-        });
-    });
+});
 
-    // ✅ 手機轉向：有些機型 resize 觸發怪怪的
-    window.addEventListener('orientationchange', () => {
-        setTimeout(() => waitImagesThenRecalc(800), 250);
-    });
+// ✅ iOS Safari 返回頁面（bfcache）
+window.addEventListener('pageshow', () => {
+    setTimeout(() => {
+        recalcAllSliders();
+    }, 120);
+});
 
-    // 保留你原本的立即 reveal
-    reveal();
+// ✅ 手機旋轉
+window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+        recalcAllSliders();
+    }, 250);
+});
+
+// ✅ 從背景切回來
+document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+        setTimeout(() => {
+            recalcAllSliders();
+        }, 120);
+    }
+});
+
+// 保留 reveal
+reveal();
 </script>
 </body>
 </html>
