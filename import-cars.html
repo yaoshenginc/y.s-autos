@@ -885,7 +885,10 @@
         /* ═══ 懸浮導覽選單 FAB（僅手機版）═══ */
         .fab-wrapper { display: none; position: fixed; bottom: 136px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
         @media (max-width: 968px) {
-            .fab-wrapper { display: flex; }
+            .img-slider .slider-btn { display: none; }
+            .img-slider { cursor: grab; }
+            .img-slider:active { cursor: grabbing; }
+        }
             .floating-cta { bottom: 24px; right: 20px; font-size: 13px; padding: 14px 24px; z-index: 998; }
         }
         .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; }
@@ -1708,6 +1711,41 @@
 
     function slideMove(id, dir) { slideTo(id, (sliderState[id] || 0) + dir); }
 
+    // ── Touch / Swipe 支援 ──
+    function initSwipe(id) {
+        const slider = document.getElementById('slider-' + id);
+        if (!slider) return;
+        let startX = 0, startY = 0, isDragging = false, isHorizontal = null;
+
+        slider.addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isDragging = true;
+            isHorizontal = null;
+        }, { passive: true });
+
+        slider.addEventListener('touchmove', e => {
+            if (!isDragging) return;
+            const dx = e.touches[0].clientX - startX;
+            const dy = e.touches[0].clientY - startY;
+            // 第一次 move 時判斷方向，避免干擾上下捲動頁面
+            if (isHorizontal === null) {
+                isHorizontal = Math.abs(dx) > Math.abs(dy);
+            }
+            if (isHorizontal) e.preventDefault();
+        }, { passive: false });
+
+        slider.addEventListener('touchend', e => {
+            if (!isDragging || !isHorizontal) { isDragging = false; return; }
+            const dx = e.changedTouches[0].clientX - startX;
+            isDragging = false;
+            // 滑動距離超過 40px 才換頁，避免誤觸
+            if (Math.abs(dx) > 40) {
+                slideMove(id, dx < 0 ? 1 : -1);
+            }
+        }, { passive: true });
+    }
+
     // 修正：各 slider 各自用自己的寬度計算高度，不跨 slider 統一
     // 避免手機版因不同 section 寬度導致第一張圖只顯示一半
     function setSliderHeight(id) {
@@ -1740,6 +1778,7 @@
         reveal();
         updateActiveNav();
         SLIDER_IDS.forEach(initSlider);
+        SLIDER_IDS.forEach(initSwipe);
 
         // 等所有圖片 load 完才設高度，並加入 timeout fallback
         const allImgs = document.querySelectorAll('.img-slider img');
