@@ -1691,36 +1691,28 @@
     const sliderState = {};
     const SLIDER_IDS = ['carfax', 'autocheck', 'cpo', 'manheim'];
 
-    function initSlider(id) {
-        if (typeof sliderState[id] !== 'number') sliderState[id] = 0;
-    }
+    function initSlider(id) { sliderState[id] = 0; }
 
     function slideTo(id, index) {
         const track   = document.getElementById('track-'   + id);
         const dots    = document.getElementById('dots-'    + id);
         const counter = document.getElementById('counter-' + id);
         if (!track) return;
-
         const total = track.children.length;
-        if (!total) return;
-
         index = (index + total) % total;
         sliderState[id] = index;
-
-        // ✅ Safari 更穩：translate3d
-        track.style.transform = 'translate3d(-' + (index * 100) + '%, 0, 0)';
-
-        if (dots) Array.from(dots.children).forEach((d, i) => d.classList.toggle('active', i === index));
+        track.style.transform = 'translateX(-' + (index * 100) + '%)';
+        if (dots)    Array.from(dots.children).forEach((d, i) => d.classList.toggle('active', i === index));
         if (counter) counter.textContent = (index + 1) + ' / ' + total;
     }
 
     function slideMove(id, dir) { slideTo(id, (sliderState[id] || 0) + dir); }
 
-    // 各 slider 各自用自己的寬度計算高度，不跨 slider 統一
+    // 修正：各 slider 各自用自己的寬度計算高度，不跨 slider 統一
+    // 避免手機版因不同 section 寬度導致第一張圖只顯示一半
     function setSliderHeight(id) {
         const slider = document.getElementById('slider-' + id);
         if (!slider) return;
-
         let maxRatio = 0;
         slider.querySelectorAll('.slider-slide img').forEach(img => {
             if (img.naturalWidth > 0) {
@@ -1728,100 +1720,42 @@
                 if (r > maxRatio) maxRatio = r;
             }
         });
-
-        // 圖片還沒 ready 就先不算
         if (maxRatio === 0) return;
-
         const w = slider.offsetWidth;
-        if (!w) return;
-
         const h = Math.round(w * maxRatio);
         slider.style.height = h + 'px';
         slider.querySelectorAll('.slider-slide').forEach(slide => {
             slide.style.height = h + 'px';
         });
-
-        // 確保回到目前張數
+        // 重設到第 0 張，確保顯示正確
         slideTo(id, sliderState[id] || 0);
     }
 
-    // ✅ 統一重算：高度 + transform（處理 iOS 快取返回 / 初次 reflow）
-    function recalcAllSliders() {
-        SLIDER_IDS.forEach(id => {
-            initSlider(id);
-            // 先把 transform 套回來，再算高度（避免出現偏移）
-            slideTo(id, sliderState[id] || 0);
-            setSliderHeight(id);
-        });
-    }
-
-    // ✅ 等圖片「盡量」ready 再算，但不會被單張慢/失敗卡死
-    function waitImagesThenRecalc(timeoutMs = 1200) {
-        const imgs = Array.from(document.querySelectorAll('.img-slider img'));
-        if (!imgs.length) { recalcAllSliders(); return; }
-
-        let done = false;
-        const finish = () => {
-            if (done) return;
-            done = true;
-            recalcAllSliders();
-        };
-
-        let remain = imgs.length;
-        const oneDone = () => {
-            remain -= 1;
-            if (remain <= 0) finish();
-        };
-
-        imgs.forEach(img => {
-            if (img.complete) {
-                oneDone();
-            } else {
-                img.addEventListener('load', oneDone, { once: true });
-                img.addEventListener('error', oneDone, { once: true });
-            }
-        });
-
-        // fallback：避免永遠等不到
-        setTimeout(finish, timeoutMs);
-    }
-
-    // 初次進頁：先初始化（不要等 load），避免使用者快速滑到該區塊時跑版
-    document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('load', () => {
         reveal();
         updateActiveNav();
         SLIDER_IDS.forEach(initSlider);
-        // 先做一次（不依賴圖片），讓位置先穩
-        recalcAllSliders();
-    });
 
-    // 圖片/資源載入後，再做一次完整重算
-    window.addEventListener('load', () => {
-        waitImagesThenRecalc(1200);
+        // 等所有圖片 load 完才設高度
+        const allImgs = document.querySelectorAll('.img-slider img');
+        let loaded = 0;
+        function onLoad() {
+            if (++loaded >= allImgs.length) {
+                SLIDER_IDS.forEach(setSliderHeight);
+            }
+        }
+        allImgs.forEach(img => {
+            if (img.complete) onLoad(); else img.addEventListener('load', onLoad);
+        });
 
+        // resize 時重算（手機轉橫等情況）
         window.addEventListener('resize', () => {
-            // 連續 resize 時避免抖動：稍微延遲
-            clearTimeout(window.__ysResizeTimer);
-            window.__ysResizeTimer = setTimeout(recalcAllSliders, 120);
+            SLIDER_IDS.forEach(setSliderHeight);
         });
     });
 
-    // ✅ iOS Safari：上一頁回來常用 bfcache，load 不一定會再跑
-    window.addEventListener('pageshow', () => {
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                waitImagesThenRecalc(600);
-            });
-        });
-    });
-
-    // ✅ 手機轉向：有些機型 resize 觸發怪怪的
-    window.addEventListener('orientationchange', () => {
-        setTimeout(() => waitImagesThenRecalc(800), 250);
-    });
-
-    // 保留你原本的立即 reveal
     reveal();
+
 </script>
 </body>
 </html>
