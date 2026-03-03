@@ -345,6 +345,21 @@
             pointer-events: none;
         }
 
+        /* ═══════════════════════ SLIDER IMAGE HINT ═══════════════════════ */
+        .slider-img-hint {
+            font-size: 11px;
+            color: rgba(160,160,160,0.55);
+            text-align: center;
+            margin-top: 10px;
+            letter-spacing: 0.3px;
+            line-height: 1.6;
+        }
+        .slider-img-hint i {
+            font-size: 10px;
+            margin-right: 4px;
+            color: rgba(212,169,72,0.5);
+        }
+
         /* ═══════════════════════ CPO SECTION ═══════════════════════ */
         .cpo-section {
             padding: 140px 60px;
@@ -458,7 +473,6 @@
             height: 40px; width: auto;
             object-fit: contain;
             display: block;
-            /* Manheim logo 通常為藍底白字，若背景色不搭可加 background: #fff; padding: 6px 12px; border-radius: 3px; */
         }
         .manheim-section {
             padding: 140px 60px;
@@ -930,7 +944,9 @@
         .floating-inventory i { font-size: 16px; display: block; margin-bottom: 1px; }
         .floating-inventory:hover, .floating-inventory:active { background: var(--gold-light); transform: scale(1.05); color: var(--primary-black); }
         @media (max-width: 968px) { .floating-inventory { display: flex; } }
-
+.versus-list li .v-check {
+    color: var(--gold);
+}
 </style>
 <!-- Structured Data (Local SEO + Breadcrumb) -->
 <script type="application/ld+json">
@@ -1104,7 +1120,7 @@
             <ul class="usa-reason-list">
                 <li>
                     <div class="icon"><i class="fas fa-file-alt"></i></div>
-                    <div class="txt"><strong>完整車輛歷史報告</strong><span>CARFAX & AutoCheck 完整事故、保養、里程紀錄</span></div>
+                    <div class="txt"><strong>完整車輛歷史報告</strong><span>CARFAX & AutoCheck 完整事故、保養、里程紀錄，車況透明</span></div>
                 </li>
                 <li>
                     <div class="icon"><i class="fas fa-sun"></i></div>
@@ -1112,15 +1128,15 @@
                 </li>
                 <li>
                     <div class="icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="txt"><strong>CPO 原廠認證機制</strong><span>原廠技師多點檢驗，品質有出廠背書保障</span></div>
+                    <div class="txt"><strong>可保固出廠7年</strong><span>未領牌的外匯車可提供出廠7年的保固，安心有保障</span></div>
                 </li>
                 <li>
                     <div class="icon"><i class="fas fa-car"></i></div>
-                    <div class="txt"><strong>豐富車款選擇</strong><span>全球最大汽車市場，各品牌、年式、配備應有盡有</span></div>
+                    <div class="txt"><strong>配備選擇彈性</strong><span>汽車市場非常大，可以依照自身需求選配，把錢都花在刀口</span></div>
                 </li>
                 <li>
-                    <div class="icon"><i class="fas fa-tools"></i></div>
-                    <div class="txt"><strong>一條龍售後服務</strong><span>自有保養廠，任何狀況直接疑難排解，不用擔心被坑</span></div>
+                    <div class="icon"><i class="fas fa-landmark"></i></div>
+                    <div class="txt"><strong>未領牌等同新車</strong><span>在台灣，未領牌的外匯車可用新車利率貸款，大幅降低利息成本</span></div>
                 </li>
             </ul>
         </div>
@@ -1170,6 +1186,7 @@
                     </div>
                     <div class="slider-counter" id="counter-cpo">1 / 5</div>
                 </div>
+                <p class="slider-img-hint"><i class="fas fa-sync-alt"></i>如果圖片沒有正常顯示可以按重新整理喔！</p>
                 <div class="visual-decoration"></div>
             </div>
         </div>
@@ -1186,19 +1203,19 @@
                 <i class="fas fa-search-dollar"></i>
                 <div class="cpo-card-step">Step 02</div>
                 <h4>原廠技師多點檢驗</h4>
-                <p>由品牌授權技師依原廠清單逐項檢驗，通常超過 100 至 150 個檢驗點。</p>
+                <p>由原廠技師依原廠清單逐項檢驗，通常約 165 至 175 個檢查項目。</p>
             </div>
             <div class="cpo-step-card">
                 <i class="fas fa-tools"></i>
                 <div class="cpo-card-step">Step 03</div>
                 <h4>整備至原廠標準</h4>
-                <p>不符合標準的零件一律更換為原廠零件，整備完成才掛上 CPO 認證標誌。</p>
+                <p>不符合標準的零件一律更換原廠零件，保證輪胎>7成，一切整備完成才掛上 CPO 認證標誌。</p>
             </div>
             <div class="cpo-step-card">
                 <i class="fas fa-shield-alt"></i>
                 <div class="cpo-card-step">Step 04</div>
-                <h4>原廠延長保固</h4>
-                <p>多數 CPO 計畫附帶原廠延長保固及道路救援服務，為您提供額外保障。</p>
+                <h4>嚴格的保養要求</h4>
+                <p>每一台原廠認證車，都須在原廠按時保養，會依照車子的歷史紀錄來評估車輛的價值。</p>
             </div>
         </div>
 
@@ -1209,8 +1226,8 @@
                 <p>原廠不會讓自己品牌的名字背書一台問題車——這就是 CPO 最大的價值所在。每一台 CPO 車輛的背後，是品牌信譽的全力保證。</p>
             </div>
             <div class="cpo-banner-num">
-                <span>100+</span>
-                <small>原廠檢驗點</small>
+                <span>175</span>
+                <small>原廠檢測項目</small>
             </div>
             <div class="cpo-banner-num">
                 <span>0</span>
@@ -1231,7 +1248,7 @@
             </div>
             <h2 class="report-title">買車前，先看<br>CARFAX 報告</h2>
             <p class="report-desc">
-                CARFAX 是北美最被廣泛信賴的車輛歷史報告服務，蒐集來自保險公司、各州政府機關、4S 店、碰撞修復廠等超過 10 萬個資料來源，完整呈現每一台車的過去。
+                CARFAX 是美國最被廣泛信賴的車輛歷史報告服務，蒐集來自保險公司、各州政府機關、各廠商經銷商、碰撞修復廠等超過 10 萬個資料來源，完整呈現每一台車的過去。
             </p>
             <ul class="report-features">
                 <li><div class="feat-icon"><i class="fas fa-car-crash"></i></div><div><strong>事故紀錄</strong>是否有過碰撞事故、氣囊是否展開、損傷程度如何，一目了然。</div></li>
@@ -1260,6 +1277,7 @@
                 </div>
                 <div class="slider-counter" id="counter-carfax">1 / 4</div>
             </div>
+            <p class="slider-img-hint"><i class="fas fa-sync-alt"></i>如果圖片沒有正常顯示可以按重新整理喔！</p>
             <div class="visual-decoration"></div>
         </div>
     </div>
@@ -1301,6 +1319,7 @@
                 </div>
                 <div class="slider-counter" id="counter-autocheck">1 / 3</div>
             </div>
+            <p class="slider-img-hint"><i class="fas fa-sync-alt"></i>如果圖片沒有正常顯示可以按重新整理喔！</p>
             <div class="visual-decoration"></div>
         </div>
     </div>
@@ -1342,6 +1361,7 @@
                     </div>
                     <div class="slider-counter" id="counter-manheim">1 / 3</div>
                 </div>
+                <p class="slider-img-hint"><i class="fas fa-sync-alt"></i>如果圖片沒有正常顯示可以按重新整理喔！</p>
             </div>
         </div>
 
@@ -1507,12 +1527,12 @@
             <div class="process-step">
                 <div class="step-circle">01</div>
                 <div class="step-title">精選車源</div>
-                <div class="step-desc">透過 Manheim 拍賣或 CPO 認證管道，搭配 CARFAX / AutoCheck 報告，逐車篩選</div>
+                <div class="step-desc">透過 CPO認證管道 或 其他經銷商，搭配 CARFAX / AutoCheck 報告，逐車篩選</div>
             </div>
             <div class="process-step">
                 <div class="step-circle">02</div>
                 <div class="step-title">現況確認</div>
-                <div class="step-desc">拍攝完整實況照片，Manheim 車況報告同步提供，車況透明無隱瞞</div>
+                <div class="step-desc">拍攝完整實車照片，確認車輛狀況，車況透明無隱瞞</div>
             </div>
             <div class="process-step">
                 <div class="step-circle">03</div>
@@ -1621,7 +1641,7 @@
 
 <a href="tel:077352855" class="floating-cta">立即來電預約</a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
     // ── 手機選單 ──
     function toggleMobileMenu() {
@@ -1809,10 +1829,7 @@
             SLIDER_IDS.forEach(id => {
                 const slider = document.getElementById('slider-' + id);
                 if (!slider) return;
-                const ro = new ResizeObserver(() => {
-                    requestAnimationFrame(() => setSliderHeight(id));
-                });
-                ro.observe(slider);
+                new ResizeObserver(() => setSliderHeight(id)).observe(slider);
             });
         }
     });
