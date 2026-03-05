@@ -948,7 +948,7 @@
     <button class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="開啟選單">選單</button>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
     // ════════════════════════════════════════════════════════════════
     // ★ 車輛設定區 ★
@@ -1066,6 +1066,19 @@
     // ════════════════════════════════════════════════════════════════
     // 自動偵測照片數量（先嘗試讀 1.jpg, 2.jpg... 直到 404）
     // ════════════════════════════════════════════════════════════════
+    // 只偵測第一張照片（給卡片縮圖用，速度快）
+    async function detectFirstPhoto(carId) {
+        const exts = ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
+        for (const ext of exts) {
+            try {
+                const r = await fetch(`vehicle/car${carId}/1.${ext}`, { method: 'HEAD' });
+                if (r.ok) return `vehicle/car${carId}/1.${ext}`;
+            } catch {}
+        }
+        return null;
+    }
+
+    // 偵測所有照片（點開 modal 時才呼叫）
     async function detectPhotos(carId) {
         const photos = [];
         const exts = ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
@@ -1110,7 +1123,7 @@
             <div class="car-photo">
                 <img src="${firstPhoto}" alt="${car.make} ${car.model}" loading="lazy">
                 <div class="car-badges">${cpoBadge}${incomingBadge}${statusBadge}</div>
-                ${photoCount > 1 ? `<div class="photo-count">${photoCount} 張照片</div>` : ''}
+                <div class="photo-count" id="pc-${id}"><i class="fas fa-camera" style="font-size:9px;margin-right:3px;opacity:0.7;"></i>載入中</div>
             </div>
             ${arrivalBanner}
             <div class="car-body">
@@ -1157,7 +1170,9 @@
     function openModal(id) {
         const data = carCache[id];
         if (!data) return;
-        const { car, photos } = data;
+
+        // 若照片還沒完整載入，先用現有的開 modal，背景補載
+        const { car } = data;
         mgIdx = 0;
 
         const statusBadge = {
@@ -1166,77 +1181,105 @@
         }[car.status] || '';
         const cpoBadge = car.cpo ? '<span class="badge badge-cpo" style="font-size:11px;padding:5px 12px;">CPO 原廠認證</span>' : '';
 
-        const slides = photos.map(p =>
-            `<div class="modal-gallery-slide"><img src="${p}" alt="${car.make} ${car.model}" loading="lazy"></div>`
-        ).join('');
-        const dots = photos.map((_, i) =>
-            `<div class="modal-gallery-dot ${i===0?'active':''}" onclick="mgTo(${i})"></div>`
-        ).join('');
-        const thumbs = photos.length > 1 ? `<div class="modal-thumbs">${photos.map((p,i) =>
-            `<div class="modal-thumb ${i===0?'active':''}" onclick="mgTo(${i})"><img src="${p}" loading="lazy"></div>`
-        ).join('')}</div>` : '';
+        function renderModal(photos) {
+            const slides = photos.map(p =>
+                `<div class="modal-gallery-slide"><img src="${p}" alt="${car.make} ${car.model}" loading="lazy"></div>`
+            ).join('');
+            const dots = photos.map((_, i) =>
+                `<div class="modal-gallery-dot ${i===0?'active':''}" onclick="mgTo(${i})"></div>`
+            ).join('');
+            const thumbs = photos.length > 1 ? `<div class="modal-thumbs">${photos.map((p,i) =>
+                `<div class="modal-thumb ${i===0?'active':''}" onclick="mgTo(${i})"><img src="${p}" loading="lazy"></div>`
+            ).join('')}</div>` : '';
 
-        const hlTags = (car.highlights.length ? car.highlights : car.equip.slice(0,4)).map(h =>
-            `<span class="modal-equip-tag hl">${h}</span>`).join('');
-        const eqTags = car.equip.map(e => `<span class="modal-equip-tag">${e}</span>`).join('');
-        const pStyle = car.status === 'sold' ? 'color:#666;text-decoration:line-through;' : '';
-        const navBtns = photos.length > 1 ? `
-            <button class="modal-gallery-btn prev" onclick="mgMove(-1)">&#8249;</button>
-            <button class="modal-gallery-btn next" onclick="mgMove(1)">&#8250;</button>` : '';
+            const hlTags = (car.highlights.length ? car.highlights : car.equip.slice(0,4)).map(h =>
+                `<span class="modal-equip-tag hl">${h}</span>`).join('');
+            const eqTags = car.equip.map(e => `<span class="modal-equip-tag">${e}</span>`).join('');
+            const pStyle = car.status === 'sold' ? 'color:#666;text-decoration:line-through;' : '';
+            const navBtns = photos.length > 1 ? `
+                <button class="modal-gallery-btn prev" onclick="mgMove(-1)">&#8249;</button>
+                <button class="modal-gallery-btn next" onclick="mgMove(1)">&#8250;</button>` : '';
 
-        const specRows = [
-            ['年份', car.year, 'gold'],
-            ['里程', car.mileage, ''],
-            car.engine ? ['引擎', car.engine, ''] : null,
-            car.transmission ? ['變速箱', car.transmission, ''] : null,
-            car.drive ? ['驅動方式', car.drive, ''] : null,
-            ['出廠日期', car.date || car.year, ''],
-            ['車輛/內裝顏色', car.color, ''],
-            ['CARFAX', car.carfax, 'green'],
-        ].filter(Boolean).map(([k, v, cls]) =>
-            `<li><span class="skey">${k}</span><span class="sval ${cls==='gold'?'gold':''}" ${cls==='green'?'style="color:#4caf82;"':''}>${v||'---'}</span></li>`
-        ).join('');
+            const specRows = [
+                ['年份', car.year, 'gold'],
+                ['里程', car.mileage, ''],
+                car.engine ? ['引擎', car.engine, ''] : null,
+                car.transmission ? ['變速箱', car.transmission, ''] : null,
+                car.drive ? ['驅動方式', car.drive, ''] : null,
+                ['出廠日期', car.date || car.year, ''],
+                ['車輛/內裝顏色', car.color, ''],
+                ['CARFAX', car.carfax, 'green'],
+            ].filter(Boolean).map(([k, v, cls]) =>
+                `<li><span class="skey">${k}</span><span class="sval ${cls==='gold'?'gold':''}" ${cls==='green'?'style="color:#4caf82;"':''}>${v||'---'}</span></li>`
+            ).join('');
 
-        document.getElementById('modalBody').innerHTML = `
-            <div class="modal-header">
-                <div>
-                    <div class="modal-make">${car.make}</div>
-                    <div class="modal-model">${car.model}</div>
-                    <div class="modal-trim">${car.trim}</div>
-                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">${cpoBadge}${statusBadge}</div>
+            document.getElementById('modalBody').innerHTML = `
+                <div class="modal-header">
+                    <div>
+                        <div class="modal-make">${car.make}</div>
+                        <div class="modal-model">${car.model}</div>
+                        <div class="modal-trim">${car.trim}</div>
+                        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">${cpoBadge}${statusBadge}</div>
+                    </div>
+                    <div class="modal-price-wrap">
+                        <div class="modal-price" style="${pStyle}">${car.price}</div>
+                        <small style="color:var(--text-gray);font-size:12px;margin-top:6px;display:block;">${car.priceNote}</small>
+                    </div>
                 </div>
-                <div class="modal-price-wrap">
-                    <div class="modal-price" style="${pStyle}">${car.price}</div>
-                    <small style="color:var(--text-gray);font-size:12px;margin-top:6px;display:block;">${car.priceNote}</small>
+                <div class="modal-gallery">
+                    <div class="modal-gallery-track" id="mgTrack">${slides}</div>
+                    ${navBtns}
+                    <div class="modal-gallery-counter" id="mgCounter">1 / ${photos.length}</div>
+                    <div class="modal-gallery-dots">${dots}</div>
                 </div>
-            </div>
-            <div class="modal-gallery">
-                <div class="modal-gallery-track" id="mgTrack">${slides}</div>
-                ${navBtns}
-                <div class="modal-gallery-counter" id="mgCounter">1 / ${photos.length}</div>
-                <div class="modal-gallery-dots">${dots}</div>
-            </div>
-            ${thumbs}
-            <div class="modal-grid">
-                <div class="modal-section">
-                    <div class="modal-section-title">車輛規格</div>
-                    <ul class="modal-spec-list">${specRows}</ul>
+                ${thumbs}
+                <div class="modal-grid">
+                    <div class="modal-section">
+                        <div class="modal-section-title">車輛規格</div>
+                        <ul class="modal-spec-list">${specRows}</ul>
+                    </div>
+                    <div class="modal-section">
+                        ${car.highlights.length ? `<div class="modal-section-title">亮點配備</div><div class="modal-equip-tags" style="margin-bottom:20px;">${hlTags}</div>` : ''}
+                        <div class="modal-section-title">完整配備</div>
+                        <div class="modal-equip-tags">${eqTags}</div>
+                    </div>
                 </div>
-                <div class="modal-section">
-                    ${car.highlights.length ? `<div class="modal-section-title">亮點配備</div><div class="modal-equip-tags" style="margin-bottom:20px;">${hlTags}</div>` : ''}
-                    <div class="modal-section-title">完整配備</div>
-                    <div class="modal-equip-tags">${eqTags}</div>
-                </div>
-            </div>
-            <div class="modal-remark">${car.remark}</div>
-            <div class="modal-ctas">
-                <a href="https://lin.ee/mDzezrK" target="_blank" class="modal-cta line"><i class="fab fa-line"></i> LINE 詢問此車</a>
-                <a href="tel:077352855" class="modal-cta phone"><i class="fas fa-phone"></i> 07-7352855</a>
-            </div>`;
+                <div class="modal-remark">${car.remark}</div>
+                <div class="modal-ctas">
+                    <a href="https://lin.ee/mDzezrK" target="_blank" class="modal-cta line"><i class="fab fa-line"></i> LINE 詢問此車</a>
+                    <a href="tel:077352855" class="modal-cta phone"><i class="fas fa-phone"></i> 07-7352855</a>
+                </div>`;
+        }
 
+        // 先用已有的照片（至少 1 張）立刻開 modal
+        renderModal(data.photos);
         document.getElementById('modalOverlay').classList.add('open');
         document.getElementById('modal').scrollTop = 0;
         document.body.style.overflow = 'hidden';
+
+        // 若照片尚未完整載入，背景繼續掃描，完成後更新 modal
+        if (!data.photosLoaded) {
+            detectPhotos(id).then(allPhotos => {
+                if (allPhotos.length === 0) allPhotos.push('image/placeholder.jpg');
+                carCache[id].photos = allPhotos;
+                carCache[id].photosLoaded = true;
+                // 更新卡片上的照片數量顯示
+                const countEl = document.getElementById(`pc-${id}`);
+                if (countEl) {
+                    if (allPhotos.length > 1) {
+                        countEl.innerHTML = `<i class="fas fa-camera" style="font-size:9px;margin-right:3px;"></i>${allPhotos.length} 張照片`;
+                    } else {
+                        countEl.style.display = 'none';
+                    }
+                }
+                // 若 modal 還開著就重新渲染
+                if (document.getElementById('modalOverlay').classList.contains('open')) {
+                    const currentMgIdx = mgIdx;
+                    renderModal(allPhotos);
+                    mgTo(currentMgIdx);
+                }
+            });
+        }
     }
 
     function closeModal() {
@@ -1289,7 +1332,7 @@
                     </svg>
                 </div>
                 <div class="loading-text">
-                    車輛載入中，修但幾勒<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>
+                    車輛載入中，修但幾勒<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span><span id="loadingPercent" style="color:var(--gold);font-weight:600;margin-left:6px;min-width:40px;display:inline-block;"> 0%</span>
                 </div>
             </div>`;
 
@@ -1299,14 +1342,32 @@
                 if (!res.ok) { console.warn(`car${id}/info.txt not found`); return null; }
                 const text = await res.text();
                 const car = parseInfo(text);
-                const photos = await detectPhotos(id);
-                if (photos.length === 0) photos.push('image/placeholder.jpg');
-                carCache[id] = { car, photos };
+                // 只抓第一張照片，其他照片等點開 modal 再載入
+                const firstPhoto = await detectFirstPhoto(id);
+                const photos = firstPhoto ? [firstPhoto] : ['image/placeholder.jpg'];
+                carCache[id] = { car, photos, photosLoaded: false };
                 return { id, car, photos };
             } catch(e) {
                 console.warn(`Failed to load car${id}:`, e);
                 return null;
             }
+        }
+
+        // 更新進度條文字
+        function updateProgress(current, total) {
+            const pct = total > 0 ? Math.round((current / total) * 100) : 0;
+            const el = document.getElementById('loadingPercent');
+            if (el) el.textContent = ` ${pct}%`;
+        }
+
+        // 預先掃描有幾台車（快速 HEAD 只抓 info.txt）
+        let totalCars = 0;
+        for (let id = 1; id <= 999; id++) {
+            try {
+                const r = await fetch(`vehicle/car${id}/info.txt`, { method: 'HEAD' });
+                if (!r.ok) break;
+                totalCars++;
+            } catch { break; }
         }
 
         // 自動掃描：從 car1 開始，連續找不到就停止
@@ -1315,10 +1376,12 @@
             const result = await loadCar(id);
             if (result) {
                 allResults.push(result);
+                updateProgress(allResults.length, totalCars || allResults.length + 1);
             } else {
                 break; // 找不到就停止掃描
             }
         }
+        updateProgress(1, 1); // 確保顯示 100%
 
         // 依 info.txt 的「在庫」欄位分流
         const inStock  = allResults.filter(r => r.car.inStock !== false);
@@ -1406,11 +1469,4 @@
     }
 document.addEventListener('click', e => {
     const fabWrapper = document.getElementById('fabWrapper');
-    if (fabWrapper && !fabWrapper.contains(e.target)) closeFab();
-});
-
-    window.addEventListener('scroll', () => { handleNavScroll(); reveal(); });
-    window.addEventListener('load', () => { loadInventory(); reveal(); });
-</script>
-</body>
-</html>
+ 
