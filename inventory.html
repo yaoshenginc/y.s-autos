@@ -1063,9 +1063,6 @@
         return car;
     }
 
-    // ════════════════════════════════════════════════════════════════
-    // 自動偵測照片數量（先嘗試讀 1.jpg, 2.jpg... 直到 404）
-    // ════════════════════════════════════════════════════════════════
     // 只偵測第一張照片（給卡片縮圖用，速度快）
     async function detectFirstPhoto(carId) {
         const exts = ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
@@ -1078,21 +1075,27 @@
         return null;
     }
 
-    // 偵測所有照片（點開 modal 時才呼叫）
-    async function detectPhotos(carId) {
-        const photos = [];
+    // 串流偵測所有照片：每找到一張就呼叫 onPhoto(url, index, isDone)
+    async function detectPhotosStreaming(carId, onPhoto) {
         const exts = ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
+        const photos = [];
         for (let i = 1; i <= 30; i++) {
             let found = false;
             for (const ext of exts) {
                 const url = `vehicle/car${carId}/${i}.${ext}`;
                 try {
                     const r = await fetch(url, { method: 'HEAD' });
-                    if (r.ok) { photos.push(url); found = true; break; }
+                    if (r.ok) {
+                        photos.push(url);
+                        found = true;
+                        onPhoto(url, photos.length, false);
+                        break;
+                    }
                 } catch {}
             }
             if (!found) break;
         }
+        onPhoto(null, photos.length, true); // 完成通知
         return photos;
     }
 
@@ -1123,7 +1126,7 @@
             <div class="car-photo">
                 <img src="${firstPhoto}" alt="${car.make} ${car.model}" loading="lazy">
                 <div class="car-badges">${cpoBadge}${incomingBadge}${statusBadge}</div>
-                <div class="photo-count" id="pc-${id}"><i class="fas fa-camera" style="font-size:9px;margin-right:3px;opacity:0.7;"></i>載入中</div>
+                <div class="photo-count" id="pc-${id}" style="opacity:0.7;font-size:9px;letter-spacing:0.5px;">照片載入中...</div>
             </div>
             ${arrivalBanner}
             <div class="car-body">
@@ -1167,119 +1170,197 @@
     let mgIdx = 0;
     const carCache = {}; // { id: { car, photos } }
 
+    // 追蹤目前開著的 modal 對應的車 id
+    let modalOpenCarId = null;
+
     function openModal(id) {
         const data = carCache[id];
         if (!data) return;
-
-        // 若照片還沒完整載入，先用現有的開 modal，背景補載
         const { car } = data;
         mgIdx = 0;
+        modalOpenCarId = id;
 
         const statusBadge = {
             sold: '<span class="badge badge-sold" style="font-size:11px;padding:5px 12px;">已售出</span>',
             reserved: '<span class="badge badge-reserved" style="font-size:11px;padding:5px 12px;">已預訂</span>',
         }[car.status] || '';
         const cpoBadge = car.cpo ? '<span class="badge badge-cpo" style="font-size:11px;padding:5px 12px;">CPO 原廠認證</span>' : '';
+        const pStyle = car.status === 'sold' ? 'color:#666;text-decoration:line-through;' : '';
 
-        function renderModal(photos) {
-            const slides = photos.map(p =>
-                `<div class="modal-gallery-slide"><img src="${p}" alt="${car.make} ${car.model}" loading="lazy"></div>`
-            ).join('');
-            const dots = photos.map((_, i) =>
-                `<div class="modal-gallery-dot ${i===0?'active':''}" onclick="mgTo(${i})"></div>`
-            ).join('');
-            const thumbs = photos.length > 1 ? `<div class="modal-thumbs">${photos.map((p,i) =>
-                `<div class="modal-thumb ${i===0?'active':''}" onclick="mgTo(${i})"><img src="${p}" loading="lazy"></div>`
-            ).join('')}</div>` : '';
+        const specRows = [
+            ['年份', car.year, 'gold'],
+            ['里程', car.mileage, ''],
+            car.engine ? ['引擎', car.engine, ''] : null,
+            car.transmission ? ['變速箱', car.transmission, ''] : null,
+            car.drive ? ['驅動方式', car.drive, ''] : null,
+            ['出廠日期', car.date || car.year, ''],
+            ['車輛/內裝顏色', car.color, ''],
+            ['CARFAX', car.carfax, 'green'],
+        ].filter(Boolean).map(([k, v, cls]) =>
+            `<li><span class="skey">${k}</span><span class="sval ${cls==='gold'?'gold':''}" ${cls==='green'?'style="color:#4caf82;"':''}>${v||'---'}</span></li>`
+        ).join('');
 
-            const hlTags = (car.highlights.length ? car.highlights : car.equip.slice(0,4)).map(h =>
-                `<span class="modal-equip-tag hl">${h}</span>`).join('');
-            const eqTags = car.equip.map(e => `<span class="modal-equip-tag">${e}</span>`).join('');
-            const pStyle = car.status === 'sold' ? 'color:#666;text-decoration:line-through;' : '';
-            const navBtns = photos.length > 1 ? `
-                <button class="modal-gallery-btn prev" onclick="mgMove(-1)">&#8249;</button>
-                <button class="modal-gallery-btn next" onclick="mgMove(1)">&#8250;</button>` : '';
+        const hlTags = (car.highlights.length ? car.highlights : car.equip.slice(0,4)).map(h =>
+            `<span class="modal-equip-tag hl">${h}</span>`).join('');
+        const eqTags = car.equip.map(e => `<span class="modal-equip-tag">${e}</span>`).join('');
 
-            const specRows = [
-                ['年份', car.year, 'gold'],
-                ['里程', car.mileage, ''],
-                car.engine ? ['引擎', car.engine, ''] : null,
-                car.transmission ? ['變速箱', car.transmission, ''] : null,
-                car.drive ? ['驅動方式', car.drive, ''] : null,
-                ['出廠日期', car.date || car.year, ''],
-                ['車輛/內裝顏色', car.color, ''],
-                ['CARFAX', car.carfax, 'green'],
-            ].filter(Boolean).map(([k, v, cls]) =>
-                `<li><span class="skey">${k}</span><span class="sval ${cls==='gold'?'gold':''}" ${cls==='green'?'style="color:#4caf82;"':''}>${v||'---'}</span></li>`
-            ).join('');
-
-            document.getElementById('modalBody').innerHTML = `
-                <div class="modal-header">
-                    <div>
-                        <div class="modal-make">${car.make}</div>
-                        <div class="modal-model">${car.model}</div>
-                        <div class="modal-trim">${car.trim}</div>
-                        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">${cpoBadge}${statusBadge}</div>
-                    </div>
-                    <div class="modal-price-wrap">
-                        <div class="modal-price" style="${pStyle}">${car.price}</div>
-                        <small style="color:var(--text-gray);font-size:12px;margin-top:6px;display:block;">${car.priceNote}</small>
-                    </div>
+        // 建立 modal 骨架（gallery 先空著）
+        document.getElementById('modalBody').innerHTML = `
+            <div class="modal-header">
+                <div>
+                    <div class="modal-make">${car.make}</div>
+                    <div class="modal-model">${car.model}</div>
+                    <div class="modal-trim">${car.trim}</div>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">${cpoBadge}${statusBadge}</div>
                 </div>
-                <div class="modal-gallery">
-                    <div class="modal-gallery-track" id="mgTrack">${slides}</div>
-                    ${navBtns}
-                    <div class="modal-gallery-counter" id="mgCounter">1 / ${photos.length}</div>
-                    <div class="modal-gallery-dots">${dots}</div>
+                <div class="modal-price-wrap">
+                    <div class="modal-price" style="${pStyle}">${car.price}</div>
+                    <small style="color:var(--text-gray);font-size:12px;margin-top:6px;display:block;">${car.priceNote}</small>
                 </div>
-                ${thumbs}
-                <div class="modal-grid">
-                    <div class="modal-section">
-                        <div class="modal-section-title">車輛規格</div>
-                        <ul class="modal-spec-list">${specRows}</ul>
-                    </div>
-                    <div class="modal-section">
-                        ${car.highlights.length ? `<div class="modal-section-title">亮點配備</div><div class="modal-equip-tags" style="margin-bottom:20px;">${hlTags}</div>` : ''}
-                        <div class="modal-section-title">完整配備</div>
-                        <div class="modal-equip-tags">${eqTags}</div>
-                    </div>
+            </div>
+            <div class="modal-gallery" id="mgGallery">
+                <div class="modal-gallery-track" id="mgTrack"></div>
+                <div class="modal-gallery-counter" id="mgCounter" style="display:none;"></div>
+                <div class="modal-gallery-dots" id="mgDots"></div>
+            </div>
+            <div id="mgThumbs"></div>
+            <div class="modal-grid">
+                <div class="modal-section">
+                    <div class="modal-section-title">車輛規格</div>
+                    <ul class="modal-spec-list">${specRows}</ul>
                 </div>
-                <div class="modal-remark">${car.remark}</div>
-                <div class="modal-ctas">
-                    <a href="https://lin.ee/mDzezrK" target="_blank" class="modal-cta line"><i class="fab fa-line"></i> LINE 詢問此車</a>
-                    <a href="tel:077352855" class="modal-cta phone"><i class="fas fa-phone"></i> 07-7352855</a>
-                </div>`;
-        }
+                <div class="modal-section">
+                    ${car.highlights.length ? `<div class="modal-section-title">亮點配備</div><div class="modal-equip-tags" style="margin-bottom:20px;">${hlTags}</div>` : ''}
+                    <div class="modal-section-title">完整配備</div>
+                    <div class="modal-equip-tags">${eqTags}</div>
+                </div>
+            </div>
+            <div class="modal-remark">${car.remark}</div>
+            <div class="modal-ctas">
+                <a href="https://lin.ee/mDzezrK" target="_blank" class="modal-cta line"><i class="fab fa-line"></i> LINE 詢問此車</a>
+                <a href="tel:077352855" class="modal-cta phone"><i class="fas fa-phone"></i> 07-7352855</a>
+            </div>`;
 
-        // 先用已有的照片（至少 1 張）立刻開 modal
-        renderModal(data.photos);
         document.getElementById('modalOverlay').classList.add('open');
         document.getElementById('modal').scrollTop = 0;
         document.body.style.overflow = 'hidden';
 
-        // 若照片尚未完整載入，背景繼續掃描，完成後更新 modal
-        if (!data.photosLoaded) {
-            detectPhotos(id).then(allPhotos => {
+        // 如果照片已完整載入，直接渲染
+        if (data.photosLoaded) {
+            renderModalPhotos(id, data.photos, true);
+            return;
+        }
+
+        // 優先搶先載入這台車的照片（中斷背景掃描，改由此 modal 主導）
+        // 先把已有的第一張放進去
+        const initialPhotos = data.photos.slice();
+        renderModalPhotos(id, initialPhotos, false);
+
+        // 取消原本的背景掃描（若有），改為優先掃描此車
+        if (data._scanAbort) data._scanAbort();
+        let aborted = false;
+        data._scanAbort = () => { aborted = true; };
+
+        // 從第 2 張開始串流掃描（第 1 張已有）
+        const exts = ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
+        (async () => {
+            const allPhotos = initialPhotos.slice();
+            for (let i = allPhotos.length + 1; i <= 30; i++) {
+                if (aborted) return;
+                let found = false;
+                for (const ext of exts) {
+                    if (aborted) return;
+                    const photoUrl = `vehicle/car${id}/${i}.${ext}`;
+                    try {
+                        const r = await fetch(photoUrl, { method: 'HEAD' });
+                        if (r.ok) {
+                            allPhotos.push(photoUrl);
+                            found = true;
+                            // 若 modal 還開著且是同一台車，加入這張照片
+                            if (!aborted && modalOpenCarId === id) {
+                                renderModalPhotos(id, allPhotos, false);
+                            }
+                            break;
+                        }
+                    } catch {}
+                }
+                if (!found) break;
+            }
+            if (!aborted) {
                 if (allPhotos.length === 0) allPhotos.push('image/placeholder.jpg');
                 carCache[id].photos = allPhotos;
                 carCache[id].photosLoaded = true;
-                // 更新卡片上的照片數量顯示
+                if (modalOpenCarId === id) renderModalPhotos(id, allPhotos, true);
+                // 更新卡片照片數顯示
                 const countEl = document.getElementById(`pc-${id}`);
                 if (countEl) {
-                    if (allPhotos.length > 1) {
-                        countEl.innerHTML = `<i class="fas fa-camera" style="font-size:9px;margin-right:3px;"></i>${allPhotos.length} 張照片`;
-                    } else {
-                        countEl.style.display = 'none';
-                    }
+                    countEl.innerHTML = allPhotos.length > 1
+                        ? `<i class="fas fa-camera" style="font-size:9px;margin-right:3px;"></i>${allPhotos.length} 張`
+                        : '';
+                    countEl.style.opacity = '1';
                 }
-                // 若 modal 還開著就重新渲染
-                if (document.getElementById('modalOverlay').classList.contains('open')) {
-                    const currentMgIdx = mgIdx;
-                    renderModal(allPhotos);
-                    mgTo(currentMgIdx);
-                }
-            });
+            }
+        })();
+    }
+
+    // 把照片列表渲染進 modal gallery（保留目前位置）
+    function renderModalPhotos(id, photos, isDone) {
+        const track = document.getElementById('mgTrack');
+        const dots = document.getElementById('mgDots');
+        const counter = document.getElementById('mgCounter');
+        const thumbsEl = document.getElementById('mgThumbs');
+        const gallery = document.getElementById('mgGallery');
+        if (!track) return;
+
+        const car = carCache[id] && carCache[id].car;
+        const altText = car ? `${car.make} ${car.model}` : '';
+        const total = photos.length;
+        const safeMgIdx = Math.min(mgIdx, Math.max(0, total - 1));
+
+        // 重建 slides（已有的正常顯示，其餘黑色佔位）
+        track.innerHTML = photos.map((p, i) =>
+            `<div class="modal-gallery-slide"><img src="${p}" alt="${altText}" style="background:#0a0a0a;"></div>`
+        ).join('');
+
+        // 導航按鈕
+        let prevBtn = gallery.querySelector('.modal-gallery-btn.prev');
+        let nextBtn = gallery.querySelector('.modal-gallery-btn.next');
+        if (total > 1) {
+            if (!prevBtn) {
+                prevBtn = document.createElement('button');
+                prevBtn.className = 'modal-gallery-btn prev';
+                prevBtn.innerHTML = '&#8249;';
+                prevBtn.onclick = () => mgMove(-1);
+                gallery.appendChild(prevBtn);
+            }
+            if (!nextBtn) {
+                nextBtn = document.createElement('button');
+                nextBtn.className = 'modal-gallery-btn next';
+                nextBtn.innerHTML = '&#8250;';
+                nextBtn.onclick = () => mgMove(1);
+                gallery.appendChild(nextBtn);
+            }
         }
+
+        // dots
+        dots.innerHTML = photos.map((_, i) =>
+            `<div class="modal-gallery-dot ${i===safeMgIdx?'active':''}" onclick="mgTo(${i})"></div>`
+        ).join('');
+
+        // counter
+        counter.style.display = '';
+        counter.textContent = `${safeMgIdx + 1} / ${total}${isDone ? '' : ' (載入中...)'}`;
+
+        // thumbs
+        if (total > 1) {
+            thumbsEl.innerHTML = `<div class="modal-thumbs">${photos.map((p, i) =>
+                `<div class="modal-thumb ${i===safeMgIdx?'active':''}" onclick="mgTo(${i})"><img src="${p}" loading="lazy" style="background:#0a0a0a;"></div>`
+            ).join('')}</div>`;
+        }
+
+        // 維持目前位置
+        track.style.transform = `translateX(-${safeMgIdx * 100}%)`;
+        mgIdx = safeMgIdx;
     }
 
     function closeModal() {
@@ -1332,7 +1413,7 @@
                     </svg>
                 </div>
                 <div class="loading-text">
-                    車輛載入中，修但幾勒<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span><span id="loadingPercent" style="color:var(--gold);font-weight:600;margin-left:6px;min-width:40px;display:inline-block;"> 0%</span>
+                    車輛載入中，修但幾勒<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span><span id="loadingPercent" style="color:var(--gold);font-weight:600;margin-left:8px;">(0%)</span>
                 </div>
             </div>`;
 
@@ -1353,26 +1434,35 @@
             }
         }
 
-        // 更新進度條文字（單程掃描，總數用動態估算）
-        function updateProgress(current) {
+        // 更新主載入進度（百分比格式）
+        function updateProgress(current, total) {
+            const pct = total > 0 ? Math.round((current / total) * 100) : 0;
             const el = document.getElementById('loadingPercent');
-            if (el) el.textContent = ` ${current} 台`;
+            if (el) el.textContent = `(${pct}%)`;
         }
 
-        // 自動掃描：從 car1 開始，連續找不到就停止
-        const allResults = [];
+        // 先快速掃描有幾台車，取得總數（只發 HEAD 到 info.txt）
+        let totalCars = 0;
         for (let id = 1; id <= 999; id++) {
+            try {
+                const r = await fetch(`vehicle/car${id}/info.txt`, { method: 'HEAD' });
+                if (!r.ok) break;
+                totalCars++;
+            } catch { break; }
+        }
+
+        // 自動掃描：讀 info.txt + 第一張照片
+        const allResults = [];
+        for (let id = 1; id <= totalCars; id++) {
             const result = await loadCar(id);
             if (result) {
                 allResults.push(result);
-                updateProgress(allResults.length);
+                updateProgress(allResults.length, totalCars);
             } else {
                 break;
             }
         }
-        // 載入完成，顯示 100%
-        const el = document.getElementById('loadingPercent');
-        if (el) el.textContent = ` 100%`;
+        updateProgress(1, 1); // 確保顯示 (100%)
 
         // 依 info.txt 的「在庫」欄位分流
         const inStock  = allResults.filter(r => r.car.inStock !== false);
@@ -1417,6 +1507,57 @@
         }
 
         reveal();
+
+        // ── 背景掃描所有車的完整照片 ──
+        // 每台車獨立跑，互不阻塞，掃描中更新卡片右下角進度
+        allResults.forEach(({ id }) => {
+            if (carCache[id] && carCache[id].photosLoaded) return;
+            const exts = ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
+            let aborted = false;
+            if (!carCache[id]) return;
+            carCache[id]._scanAbort = () => { aborted = true; };
+
+            (async () => {
+                const photos = carCache[id].photos.slice(); // 從已有的第 1 張開始
+                const countEl = document.getElementById(`pc-${id}`);
+
+                for (let i = photos.length + 1; i <= 30; i++) {
+                    if (aborted) return;
+                    let found = false;
+                    for (const ext of exts) {
+                        if (aborted) return;
+                        try {
+                            const r = await fetch(`vehicle/car${id}/${i}.${ext}`, { method: 'HEAD' });
+                            if (r.ok) {
+                                photos.push(`vehicle/car${id}/${i}.${ext}`);
+                                found = true;
+                                // 更新卡片進度：已找到 i 張，最多 30 張，用比例顯示
+                                if (countEl) {
+                                    const pct = Math.round((i / 30) * 100);
+                                    countEl.textContent = `照片載入中...(${pct}%)`;
+                                    countEl.style.opacity = '0.7';
+                                }
+                                break;
+                            }
+                        } catch {}
+                    }
+                    if (!found) break;
+                }
+
+                if (!aborted) {
+                    if (photos.length === 0) photos.push('image/placeholder.jpg');
+                    carCache[id].photos = photos;
+                    carCache[id].photosLoaded = true;
+                    // 更新卡片右下角：顯示最終張數
+                    if (countEl) {
+                        countEl.style.opacity = '1';
+                        countEl.innerHTML = photos.length > 1
+                            ? `<i class="fas fa-camera" style="font-size:9px;margin-right:3px;"></i>${photos.length} 張`
+                            : '';
+                    }
+                }
+            })();
+        });
     }
 
 
