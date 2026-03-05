@@ -919,7 +919,7 @@
                 電話: 07-7352855<br>
                 手機: 0979-226-338<br>
                 地址: 高雄市仁武區鳳仁路 3-36 號<br>
-                信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a>
+                信箱:  <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a>
             </p>
         </div>
     </div>
@@ -948,7 +948,7 @@
     <button class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="開啟選單">選單</button>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
     // ════════════════════════════════════════════════════════════════
     // ★ 車輛設定區 ★
@@ -1365,14 +1365,6 @@
         for (let id = 1; id <= 999; id++) {
             try {
                 const r = await fetch(`vehicle/car${id}/info.txt`, { method: 'HEAD' });
-                if (!r.ok) break;
-                totalCars++;
-            } catch { break; }
-        }
-
-        // 自動掃描：從 car1 開始，連續找不到就停止
-        const allResults = [];
-        for (let id = 1; id <= 999; id++) {
             const result = await loadCar(id);
             if (result) {
                 allResults.push(result);
@@ -1469,4 +1461,12 @@
     }
 document.addEventListener('click', e => {
     const fabWrapper = document.getElementById('fabWrapper');
- 
+     if (fabWrapper && !fabWrapper.contains(e.target)) closeFab();
+});
+
+    window.addEventListener('scroll', () => { handleNavScroll(); reveal(); });
+    handleNavScroll();
+    loadInventory();
+    </script>
+</body>
+</html>
