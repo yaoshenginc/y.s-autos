@@ -679,7 +679,7 @@
             color: var(--text-light-gray);
             line-height: 1.7;
         }
-        .versus-list li .v-check { color: var(--gold); font-size: 13px; margin-top: 2px; flex-shrink: 0; }
+        .versus-list li .v-check { color: var(--gold) !important; font-size: 13px; margin-top: 2px; flex-shrink: 0; -webkit-text-fill-color: var(--gold); display: inline-block; }
         .versus-list li .v-x { color: #666; font-size: 13px; margin-top: 2px; flex-shrink: 0; }
         .versus-note {
             margin-top: 28px;
@@ -945,7 +945,9 @@
         .floating-inventory:hover, .floating-inventory:active { background: var(--gold-light); transform: scale(1.05); color: var(--primary-black); }
         @media (max-width: 968px) { .floating-inventory { display: flex; } }
 .versus-list li .v-check {
-    color: var(--gold);
+    color: var(--gold) !important;
+    -webkit-text-fill-color: var(--gold) !important;
+    font-style: normal;
 }
 </style>
 <!-- Structured Data (Local SEO + Breadcrumb) -->
@@ -1083,9 +1085,6 @@
         <li><a href="#autocheck" onclick="closeMobileMenu()">AutoCheck</a></li>
         <li><a href="#manheim" onclick="closeMobileMenu()">Manheim</a></li>
         <li><a href="#spec-compare" onclick="closeMobileMenu()">常見規格</a></li>
-        <li><a href="https://ys-autos.com/inventory" onclick="closeMobileMenu()">在庫車輛</a></li>
-        <li><a href="https://ys-autos.com/prove" onclick="closeMobileMenu()">成交見證</a></li>
-        <li><a href="https://ys-autos.com/#contact" onclick="closeMobileMenu()">聯絡我們</a></li>
     </ul>
 </div>
 
@@ -1239,7 +1238,7 @@
 </section>
 
 <!-- ══ CARFAX ══ -->
-<section class="report-section" id="carfax">
+<section class="report-section alt" id="carfax">
     <div class="report-grid reveal">
         <div class="report-content">
             <div class="report-badge" style="flex-direction:column; align-items:flex-start; gap:10px;">
@@ -1284,7 +1283,7 @@
 </section>
 
 <!-- ══ AUTOCHECK ══ -->
-<section class="report-section alt" id="autocheck">
+<section class="report-section" id="autocheck">
     <div class="report-grid reverse reveal">
         <div class="report-content">
             <div class="report-badge" style="flex-direction:column; align-items:flex-start; gap:10px;">
@@ -1380,12 +1379,12 @@
                 <div class="versus-badge badge-cpo">✦ 我們主力進口</div>
                 <h3>CPO 原廠認證車</h3>
                 <ul class="versus-list">
-                    <li><span class="v-check">✔</span> 175 項原廠逐點檢驗，品質有依據</li>
-                    <li><span class="v-check">✔</span> 消耗品已更換，輪胎 7 成以上保證</li>
-                    <li><span class="v-check">✔</span> 原廠鈑件保證，無不明修復</li>
-                    <li><span class="v-check">✔</span> 回台洗車即可銷售，不需額外等待整備</li>
-                    <li><span class="v-check">✔</span> 顧客放心、故障率低、口碑有保障</li>
-                    <li><span class="v-check">✔</span> 雖然成本較高，但長期省下大量麻煩</li>
+                    <li><i class="fas fa-check v-check"></i> 175 項原廠逐點檢驗，品質有依據</li>
+                    <li><i class="fas fa-check v-check"></i> 消耗品已更換，輪胎 7 成以上保證</li>
+                    <li><i class="fas fa-check v-check"></i> 原廠鈑件保證，無不明修復</li>
+                    <li><i class="fas fa-check v-check"></i> 回台洗車即可銷售，不需額外等待整備</li>
+                    <li><i class="fas fa-check v-check"></i> 顧客放心、故障率低、口碑有保障</li>
+                    <li><i class="fas fa-check v-check"></i> 雖然成本較高，但長期省下大量麻煩</li>
                 </ul>
                 <div class="versus-note">
                     <strong>我們的理念：</strong><br>
@@ -1400,8 +1399,8 @@
                     <li><span class="v-x">–</span> 需回台後才能仔細檢查，不確定性高</li>
                     <li><span class="v-x">–</span> 整備期可能長達一個月以上</li>
                     <li><span class="v-x">–</span> 車況差異大，需仰賴車商整備能力</li>
-                    <li><span class="v-check">✔</span> 成本相對較低</li>
-                    <li><span class="v-check">✔</span> 車源量大，車型選擇多元</li>
+                    <li><i class="fas fa-check v-check"></i> 成本相對較低</li>
+                    <li><i class="fas fa-check v-check"></i> 車源量大，車型選擇多元</li>
                 </ul>
                 <div class="versus-note">
                     市面上大部分外匯車商都是從拍賣場購車，整理後再販售。並非不好，但品質的穩定性與透明度，相對較難掌控。
@@ -1611,7 +1610,7 @@
                 電話: 07-7352855<br>
                 手機: 0979-226-338<br>
                 地址: 高雄市仁武區鳳仁路 3-36 號<br>
-                信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a>
+                信箱: <a href="/cdn-cgi/l/email-protection#334a525c405b565d541d5a5d5073545e525a5f1d505c5e" style="color: inherit !important; text-decoration: none !important;"><span class="__cf_email__" data-cfemail="8af3ebe5f9e2efe4eda4e3e4e9caede7ebe3e6a4e9e5e7">[email&#160;protected]</span></a>
             </p>
         </div>
     </div>
@@ -1624,10 +1623,11 @@
 <div class="fab-wrapper" id="fabWrapper">
     <div class="fab-menu" id="fabMenu">
         <div class="fab-item"><a href="https://ys-autos.com/"><i class="fas fa-home"></i>首頁</a></div>
-        <div class="fab-item"><a href="https://ys-autos.com/#guarantee"><i class="fas fa-shield-alt"></i>安心保證</a></div>
-        <div class="fab-item"><a href="https://ys-autos.com/#reviews"><i class="fas fa-star"></i>顧客推薦</a></div>
-        <div class="fab-item"><a href="https://ys-autos.com/prove"><i class="fas fa-check-circle"></i>成交見證</a></div>
-        <div class="fab-item"><a href="https://ys-autos.com/#owner"><i class="fas fa-user"></i>認識我們</a></div>
+        <div class="fab-item"><a href="#cpo"><i class="fas fa-certificate"></i>CPO原廠認證</a></div>
+        <div class="fab-item"><a href="#carfax"><i class="fas fa-file-alt"></i>CARFAX</a></div>
+        <div class="fab-item"><a href="#autocheck"><i class="fas fa-star-half-alt"></i>AutoCheck</a></div>
+        <div class="fab-item"><a href="#manheim"><i class="fas fa-gavel"></i>Manheim</a></div>
+        <div class="fab-item"><a href="#spec-compare"><i class="fas fa-list"></i>常見規格</a></div>
     </div>
     <button class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="開啟選單">選單</button>
 </div>
@@ -1640,7 +1640,7 @@
 
 <a href="tel:077352855" class="floating-cta">立即來電預約</a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
     // ── 手機選單 ──
     function toggleMobileMenu() {
@@ -1826,9 +1826,13 @@
         // ResizeObserver：手機旋轉或視窗改變時重新計算 slider 高度與位置
         if (window.ResizeObserver) {
             SLIDER_IDS.forEach(id => {
+      
+                const ro = new ResizeObserver(() => {
+                    slideTo(id, sliderState[id] || 0);
+                    setSliderHeight(id);
+                });
                 const slider = document.getElementById('slider-' + id);
-                if (!slider) return;
-                new ResizeObserver(() => setSliderHeight(id)).observe(slider);
+                if (slider) ro.observe(slider);
             });
         }
     });
