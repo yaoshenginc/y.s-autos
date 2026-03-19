@@ -828,14 +828,14 @@
 
 <!-- ══ PAGE HEADER ══ -->
 <div class="page-header">
-    <div class="page-header-inner reveal">
+    <div class="page-header-inner">
         <div class="page-header-text">
             <div class="page-eyebrow">
                 <div class="eyebrow-line"></div>
                 <span class="eyebrow-text">Current Inventory</span>
             </div>
             <h1 class="page-title">在庫<em>車輛</em></h1>
-            <p class="page-subtitle">每一台車都有完整 CARFAX 報告，大部分為 CPO 原廠認證車。實車拍攝，所見即所得。<br>點擊任一車輛查看詳細照片、配備與售價。</p>
+            <p class="page-subtitle">每一台車都有完整 <img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;display:inline;"> 報告，大部分為 CPO 原廠認證車。實車拍攝，所見即所得。<br>點擊任一車輛查看詳細照片、配備與售價。</p>
         </div>
 
     </div>
@@ -1054,9 +1054,9 @@
         // Auto-generate remark if not set
         if (!car.remark) {
             if (car.cpo) {
-                car.remark = `此車為 <strong>CPO 原廠認證車</strong>，經原廠技師逐項檢驗，整備至原廠交車標準。CARFAX 報告顯示${car.carfax}。`;
+                car.remark = `此車為 <strong>CPO 原廠認證車</strong>，經原廠技師逐項檢驗，整備至原廠交車標準。<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}。`;
             } else {
-                car.remark = `CARFAX 報告顯示${car.carfax}，車況良好，歡迎來電或 LINE 詳細詢問。`;
+                car.remark = `<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}，車況良好，歡迎來電或 LINE 詳細詢問。`;
             }
         }
 
@@ -1187,10 +1187,7 @@
         const cpoBadge = car.cpo ? '<span class="badge badge-cpo" style="font-size:11px;padding:5px 12px;">CPO 原廠認證</span>' : '';
         const pStyle = car.status === 'sold' ? 'color:#666;text-decoration:line-through;' : '';
 
-        const carfaxLogoHtml = `<a href="vehicle/car${id}/carfax.pdf" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
-            <img src="image/carfax_logo.png" alt="CARFAX" style="height:22px;width:auto;vertical-align:middle;filter:brightness(1.1);">
-            <span style="color:#4caf82;font-size:12px;">${car.carfax||''}</span>
-        </a>`;
+        const carfaxLogoHtml = `<a href="vehicle/car${id}/carfax" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="color:#4caf82;font-size:13px;text-decoration:none;">${car.carfax||''}</a>`;
 
         const specRows = [
             ['年份', car.year, 'gold'],
@@ -1204,7 +1201,7 @@
             `<li><span class="skey">${k}</span><span class="sval ${cls==='gold'?'gold':''}" ${cls==='green'?'style="color:#4caf82;"':''}>${v||'---'}</span></li>`
         ).join('');
 
-        const carfaxRow = `<li><span class="skey">CARFAX</span><span class="sval">${carfaxLogoHtml}</span></li>`;
+        const carfaxRow = `<li><span class="skey"><img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;"></span><span class="sval">${carfaxLogoHtml}</span></li>`;
 
         const hlTags = (car.highlights.length ? car.highlights : car.equip.slice(0,4)).map(h =>
             `<span class="modal-equip-tag hl">${h}</span>`).join('');
