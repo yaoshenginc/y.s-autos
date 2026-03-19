@@ -1606,4 +1606,12 @@
         document.querySelectorAll('.fab-item').forEach(i => i.classList.remove('visible'));
     }
 document.addEventListener('click', e => {
-    const fabWrapper = document.getElementById
+    const fabWrapper = document.getElementById('fabWrapper');
+    if (fabWrapper && !fabWrapper.contains(e.target)) closeFab();
+});
+
+    window.addEventListener('scroll', () => { handleNavScroll(); reveal(); });
+    window.addEventListener('load', () => { handleNavScroll(); loadInventory(); reveal(); });
+    </script>
+</body>
+</html>
