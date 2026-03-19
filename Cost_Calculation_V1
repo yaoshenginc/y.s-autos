@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系統鎖定 | Y.S. AUTOS</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --card-bg: #161616;
+            --gold: #c5a059;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --border: #2c2c2c;
+        }
+        
+        body {
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* 預設隱藏內容 */
+        #mainContent {
+            display: none;
+        }
+
+        .container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 480px;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            letter-spacing: 4px;
+            margin-bottom: 35px;
+            color: var(--gold);
+            font-weight: 300;
+        }
+
+        .label {
+            font-size: 13px;
+            color: var(--text-dim);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            background: #222;
+            border: 1px solid var(--border);
+            padding: 14px;
+            border-radius: 12px;
+            color: white;
+            font-size: 18px;
+            margin-bottom: 25px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: var(--gold);
+            outline: none;
+            background: #2a2a2a;
+        }
+
+        .row { display: flex; gap: 20px; }
+        .row div { flex: 1; }
+
+        .result-panel {
+            background: linear-gradient(145deg, #1e1e1e, #121212);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .total-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 10px 0;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: var(--text-dim);
+        }
+
+        .item-row span:last-child { color: white; font-family: monospace; }
+
+        .footer-note {
+            text-align: center;
+            font-size: 11px;
+            color: #444;
+            margin-top: 30px;
+            line-height: 1.8;
+        }
+
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+            -webkit-appearance: none; margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="mainContent" class="container">
+    <h2>耀笙國際汽車</h2>
+    
+    <label class="label">美國網站買價 (USD)</label>
+    <input type="number" id="pUsd" placeholder="請輸入標價" oninput="run()">
+
+    <div class="row">
+        <div>
+            <label class="label">車輛年份</label>
+            <input type="number" id="pYear" value="2022" oninput="run()">
+        </div>
+        <div>
+            <label class="label">累積里程 (Miles)</label>
+            <input type="number" id="pMile" value="20000" oninput="run()">
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            <label class="label">美國段雜費 (USD)</label>
+            <input type="number" id="pFee" value="0" oninput="run()">
+        </div>
+        <div>
+            <label class="label">預估匯率</label>
+            <input type="number" id="pEx" value="32.1" step="0.1" oninput="run()">
+        </div>
+    </div>
+
+    <div class="result-panel">
+        <div class="total-title" style="color:var(--text-dim); font-size: 14px;">預估總成本 (TWD)</div>
+        <div class="total-value" id="vTotal">NT$ 0</div>
+        <div style="height:1px; background:var(--border); margin: 20px 0;"></div>
+        <div class="item-row"><span>車價折合台幣</span><span id="vCar">0</span></div>
+        <div class="item-row"><span>預估關稅 (含海運)</span><span id="vTax">0</span></div>
+        <div class="item-row"><span>美國段雜費</span><span id="vUs">0</span></div>
+        <div class="item-row"><span>台灣段固定費用</span><span>85,000</span></div>
+    </div>
+
+    <div class="footer-note">
+        數據模型版本 V2.1 // 密碼授權保護中<br>
+        本計算鎖定 2.0L 以下車型
+    </div>
+</div>
+
+<script>
+    // --- 密碼保護邏輯 ---
+    // 請在這裡修改你的密碼
+    const SECRET_KEY = "88"; 
+
+    window.onload = function() {
+        const userInput = prompt("請輸入耀笙系統授權密碼：");
+        if (userInput === SECRET_KEY) {
+            document.getElementById("mainContent").style.display = "block";
+        } else {
+            alert("密碼錯誤，請重新整理網頁再試。");
+            document.body.innerHTML = "<h2 style='color:var(--gold); text-align:center; margin-top:200px;'>無授權存取權限</h2>";
+        }
+    };
+
+    // --- 核心計算邏輯 ---
+    function run() {
+        const usd = parseFloat(document.getElementById('pUsd').value) || 0;
+        const year = parseInt(document.getElementById('pYear').value) || 2026;
+        const mile = parseFloat(document.getElementById('pMile').value) || 0;
+        const usFee = parseFloat(document.getElementById('pFee').value) || 0;
+        const ex = parseFloat(document.getElementById('pEx').value) || 32.1;
+
+        if (usd === 0) return;
+
+        const age = 2026 - year;
+        let dep = 1.0;
+        if (age <= 1) dep = 0.95; 
+        else if (age === 2) dep = 0.88; 
+        else if (age === 3) dep = 0.82; 
+        else if (age === 4) dep = 0.76; 
+        else if (age === 5) dep = 0.69; 
+        else dep = 0.62;
+
+        const mileAdjustment = Math.min((mile / 10000) * 0.005, 0.05);
+        const finalDep = dep - mileAdjustment;
+
+        const cif = usd * ex * finalDep;
+        const tax = (cif * 0.542) + 46000; 
+        
+        const usFeeTwd = usFee * ex;
+        const total = (usd * ex) + usFeeTwd + tax + 85000;
+
+        document.getElementById('vTotal').innerText = 'NT$ ' + Math.round(total).toLocaleString();
+        document.getElementById('vCar').innerText = Math.round(usd * ex).toLocaleString();
+        document.getElementById('vTax').innerText = Math.round(tax).toLocaleString();
+        document.getElementById('vUs').innerText = Math.round(usFeeTwd).toLocaleString();
+    }
+</script>
+
+</body>
+</html>
