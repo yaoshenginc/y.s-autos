@@ -835,7 +835,7 @@
                 <span class="eyebrow-text">Current Inventory</span>
             </div>
             <h1 class="page-title">在庫<em>車輛</em></h1>
-            <p class="page-subtitle">每一台車都有完整 <img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;display:inline;"> 報告，大部分為 CPO 原廠認證車。實車拍攝，所見即所得。<br>點擊任一車輛查看詳細照片、配備與售價。</p>
+            <p class="page-subtitle">每一台車都有完整 CARFAX 報告，大部分為 CPO 原廠認證車。實車拍攝，所見即所得。<br>點擊任一車輛查看詳細照片、配備與售價。</p>
         </div>
 
     </div>
@@ -1187,8 +1187,6 @@
         const cpoBadge = car.cpo ? '<span class="badge badge-cpo" style="font-size:11px;padding:5px 12px;">CPO 原廠認證</span>' : '';
         const pStyle = car.status === 'sold' ? 'color:#666;text-decoration:line-through;' : '';
 
-        const carfaxLogoHtml = `<a href="vehicle/car${id}/carfax" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="color:#4caf82;font-size:13px;text-decoration:none;">${car.carfax||''}</a>`;
-
         const specRows = [
             ['年份', car.year, 'gold'],
             ['里程', car.mileage, ''],
@@ -1201,7 +1199,7 @@
             `<li><span class="skey">${k}</span><span class="sval ${cls==='gold'?'gold':''}" ${cls==='green'?'style="color:#4caf82;"':''}>${v||'---'}</span></li>`
         ).join('');
 
-        const carfaxRow = `<li><span class="skey"><img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;"></span><span class="sval">${carfaxLogoHtml}</span></li>`;
+        const carfaxRow = `<li><span class="skey"><a href="vehicle/car${id}/carfax" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="display:inline-block;"><img src="image/carfax_logo.png" alt="CARFAX" style="height:22px;width:auto;vertical-align:middle;"></a></span><span class="sval" style="color:#4caf82;font-size:13px;">${car.carfax||''}</span></li>`;
 
         const hlTags = (car.highlights.length ? car.highlights : car.equip.slice(0,4)).map(h =>
             `<span class="modal-equip-tag hl">${h}</span>`).join('');
