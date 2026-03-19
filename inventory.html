@@ -1199,7 +1199,8 @@
             `<li><span class="skey">${k}</span><span class="sval ${cls==='gold'?'gold':''}" ${cls==='green'?'style="color:#4caf82;"':''}>${v||'---'}</span></li>`
         ).join('');
 
-        const carfaxRow = `<li><span class="skey"><a href="vehicle/car${id}/carfax" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="display:inline-block;"><img src="image/carfax_logo.png" alt="CARFAX" style="height:22px;width:auto;vertical-align:middle;"></a></span><span class="sval" style="color:#4caf82;font-size:13px;">${car.carfax||''}</span></li>`;
+        // carfax row 先預留空位，非同步檢查後補入
+        const carfaxRow = `<li id="carfaxRow-${id}" style="display:none;"><span class="skey"><a href="vehicle/car${id}/carfax" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="display:inline-block;"><img src="image/carfax_logo.png" alt="CARFAX" style="height:22px;width:auto;vertical-align:middle;"></a></span><span class="sval" style="color:var(--text-gray);font-size:13px;">${car.carfax||''}</span></li>`;
 
         const hlTags = (car.highlights.length ? car.highlights : car.equip.slice(0,4)).map(h =>
             `<span class="modal-equip-tag hl">${h}</span>`).join('');
@@ -1245,6 +1246,11 @@
         document.getElementById('modalOverlay').classList.add('open');
         document.getElementById('modal').scrollTop = 0;
         document.body.style.overflow = 'hidden';
+
+        // 非同步檢查 carfax 檔案是否存在，有才顯示那一行
+        fetch(`vehicle/car${id}/carfax`, { method: 'HEAD' })
+            .then(r => { if (r.ok) { const el = document.getElementById(`carfaxRow-${id}`); if (el) el.style.display = ''; } })
+            .catch(() => {});
 
         // 如果照片已完整載入，直接渲染
         if (data.photosLoaded) {
