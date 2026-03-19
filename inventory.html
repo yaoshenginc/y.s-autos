@@ -948,7 +948,7 @@
     <button class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="開啟選單">選單</button>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
     // ════════════════════════════════════════════════════════════════
     // ★ 車輛設定區 ★
@@ -1187,6 +1187,11 @@
         const cpoBadge = car.cpo ? '<span class="badge badge-cpo" style="font-size:11px;padding:5px 12px;">CPO 原廠認證</span>' : '';
         const pStyle = car.status === 'sold' ? 'color:#666;text-decoration:line-through;' : '';
 
+        const carfaxLogoHtml = `<a href="vehicle/car${id}/carfax" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
+            <img src="image/carfax_logo.png" alt="CARFAX" style="height:22px;width:auto;vertical-align:middle;filter:brightness(1.1);">
+            <span style="color:#4caf82;font-size:12px;">${car.carfax||''}</span>
+        </a>`;
+
         const specRows = [
             ['年份', car.year, 'gold'],
             ['里程', car.mileage, ''],
@@ -1195,10 +1200,11 @@
             car.drive ? ['驅動方式', car.drive, ''] : null,
             ['出廠日期', car.date || car.year, ''],
             ['車輛/內裝顏色', car.color, ''],
-            ['CARFAX', car.carfax, 'green'],
         ].filter(Boolean).map(([k, v, cls]) =>
             `<li><span class="skey">${k}</span><span class="sval ${cls==='gold'?'gold':''}" ${cls==='green'?'style="color:#4caf82;"':''}>${v||'---'}</span></li>`
         ).join('');
+
+        const carfaxRow = `<li><span class="skey">CARFAX</span><span class="sval">${carfaxLogoHtml}</span></li>`;
 
         const hlTags = (car.highlights.length ? car.highlights : car.equip.slice(0,4)).map(h =>
             `<span class="modal-equip-tag hl">${h}</span>`).join('');
@@ -1227,7 +1233,7 @@
             <div class="modal-grid">
                 <div class="modal-section">
                     <div class="modal-section-title">車輛規格</div>
-                    <ul class="modal-spec-list">${specRows}</ul>
+                    <ul class="modal-spec-list">${specRows}${carfaxRow}</ul>
                 </div>
                 <div class="modal-section">
                     ${car.highlights.length ? `<div class="modal-section-title">亮點配備</div><div class="modal-equip-tags" style="margin-bottom:20px;">${hlTags}</div>` : ''}
@@ -1600,13 +1606,4 @@
         document.querySelectorAll('.fab-item').forEach(i => i.classList.remove('visible'));
     }
 document.addEventListener('click', e => {
-    const fabWrapper = document.getElementById('fabWrapper');
-     if (fabWrapper && !fabWrapper.contains(e.target)) closeFab();
-});
-
-    window.addEventListener('scroll', () => { handleNavScroll(); reveal(); });
-    handleNavScroll();
-    loadInventory();
-    </script>
-</body>
-</html>
+    const fabWrapper = document.getElementById
