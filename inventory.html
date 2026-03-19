@@ -919,7 +919,7 @@
                 電話: 07-7352855<br>
                 手機: 0979-226-338<br>
                 地址: 高雄市仁武區鳳仁路 3-36 號<br>
-                信箱: <a href="/cdn-cgi/l/email-protection#aad3cbc5d9c2cfc4cd84c3c4c9eacdc7cbc3c684c9c5c7" style="color: inherit !important; text-decoration: none !important;"><span class="__cf_email__" data-cfemail="c7bea6a8b4afa2a9a0e9aea9a487a0aaa6aeabe9a4a8aa">[email&#160;protected]</span></a>
+                信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a>
             </p>
         </div>
     </div>
@@ -1199,8 +1199,8 @@
             `<li><span class="skey">${k}</span><span class="sval ${cls==='gold'?'gold':''}" ${cls==='green'?'style="color:#4caf82;"':''}>${v||'---'}</span></li>`
         ).join('');
 
-        // carfax row 先預留空位，非同步檢查後補入
-        const carfaxRow = `<li id="carfaxRow-${id}" style="display:none;"><span class="skey"><a href="vehicle/car${id}/carfax.pdf" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="display:inline-block;"><img src="image/carfax_logo.png" alt="CARFAX" style="height:22px;width:auto;vertical-align:middle;"></a></span><span class="sval" style="color:var(--text-gray);font-size:13px;">${car.carfax||''}</span></li>`;
+        // carfax：有文字就顯示綠色，有PDF才加logo連結
+        const carfaxRow = car.carfax ? `<li id="carfaxRow-${id}"><span class="skey" id="carfaxKey-${id}"></span><span class="sval" style="color:#4caf82;font-size:13px;">${car.carfax}</span></li>` : '';
 
         const hlTags = (car.highlights.length ? car.highlights : car.equip.slice(0,4)).map(h =>
             `<span class="modal-equip-tag hl">${h}</span>`).join('');
@@ -1247,10 +1247,17 @@
         document.getElementById('modal').scrollTop = 0;
         document.body.style.overflow = 'hidden';
 
-        // 非同步檢查 carfax 檔案是否存在，有才顯示那一行
-        fetch(`vehicle/car${id}/carfax.pdf`, { method: 'HEAD' })
-            .then(r => { if (r.ok) { const el = document.getElementById(`carfaxRow-${id}`); if (el) el.style.display = ''; } })
-            .catch(() => {});
+        // 非同步檢查 carfax.pdf，有才在左側顯示可點擊logo
+        if (car.carfax) {
+            fetch(`vehicle/car${id}/carfax.pdf`, { method: 'HEAD' })
+                .then(r => {
+                    if (r.ok) {
+                        const keyEl = document.getElementById(`carfaxKey-${id}`);
+                        if (keyEl) keyEl.innerHTML = `<a href="vehicle/car${id}/carfax.pdf" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="display:inline-block;"><img src="image/carfax_logo.png" alt="CARFAX" style="height:22px;width:auto;vertical-align:middle;"></a>`;
+                    }
+                })
+                .catch(() => {});
+        }
 
         // 如果照片已完整載入，直接渲染
         if (data.photosLoaded) {
