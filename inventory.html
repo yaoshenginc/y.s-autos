@@ -919,7 +919,7 @@
                 電話: 07-7352855<br>
                 手機: 0979-226-338<br>
                 地址: 高雄市仁武區鳳仁路 3-36 號<br>
-                信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a>
+                信箱: <a href="/cdn-cgi/l/email-protection#aad3cbc5d9c2cfc4cd84c3c4c9eacdc7cbc3c684c9c5c7" style="color: inherit !important; text-decoration: none !important;"><span class="__cf_email__" data-cfemail="c7bea6a8b4afa2a9a0e9aea9a487a0aaa6aeabe9a4a8aa">[email&#160;protected]</span></a>
             </p>
         </div>
     </div>
@@ -1200,7 +1200,7 @@
         ).join('');
 
         // carfax row 先預留空位，非同步檢查後補入
-        const carfaxRow = `<li id="carfaxRow-${id}" style="display:none;"><span class="skey"><a href="vehicle/car${id}/carfax" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="display:inline-block;"><img src="image/carfax_logo.png" alt="CARFAX" style="height:22px;width:auto;vertical-align:middle;"></a></span><span class="sval" style="color:var(--text-gray);font-size:13px;">${car.carfax||''}</span></li>`;
+        const carfaxRow = `<li id="carfaxRow-${id}" style="display:none;"><span class="skey"><a href="vehicle/car${id}/carfax.pdf" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="display:inline-block;"><img src="image/carfax_logo.png" alt="CARFAX" style="height:22px;width:auto;vertical-align:middle;"></a></span><span class="sval" style="color:var(--text-gray);font-size:13px;">${car.carfax||''}</span></li>`;
 
         const hlTags = (car.highlights.length ? car.highlights : car.equip.slice(0,4)).map(h =>
             `<span class="modal-equip-tag hl">${h}</span>`).join('');
@@ -1248,7 +1248,7 @@
         document.body.style.overflow = 'hidden';
 
         // 非同步檢查 carfax 檔案是否存在，有才顯示那一行
-        fetch(`vehicle/car${id}/carfax`, { method: 'HEAD' })
+        fetch(`vehicle/car${id}/carfax.pdf`, { method: 'HEAD' })
             .then(r => { if (r.ok) { const el = document.getElementById(`carfaxRow-${id}`); if (el) el.style.display = ''; } })
             .catch(() => {});
 
@@ -1472,7 +1472,10 @@
         updateProgress(1, 1); // 確保顯示 (100%)
 
         // 依 info.txt 的「在庫」欄位分流
-        const inStock  = allResults.filter(r => r.car.inStock !== false);
+        const inStock  = allResults.filter(r => r.car.inStock !== false).sort((a, b) => {
+            const order = { available: 0, reserved: 1, sold: 2 };
+            return (order[a.car.status] ?? 0) - (order[b.car.status] ?? 0);
+        });
         const incoming = allResults.filter(r => r.car.inStock === false);
 
         if (allResults.length === 0) {
