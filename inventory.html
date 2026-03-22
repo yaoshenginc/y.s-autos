@@ -505,32 +505,17 @@
             .cta-strip { padding: 50px 25px; }
             .btn-outline { margin-left: 0; margin-top: 12px; }
             .floating-cta { bottom: 24px; right: 20px; font-size: 13px; padding: 14px 24px; z-index: 998; }
-
-            /* 手機版：照片導覽點常駐顯示（不靠 hover） */
-            .photo-nav { opacity: 1; }
-            /* 手機版：點擊查看詳情 更醒目 */
-            .car-footer span[style*="text-gray"] {
-                color: var(--gold) !important;
-                font-weight: 600;
-            }
-            /* 手機版 tap 反饋 */
-            .car-card { -webkit-tap-highlight-color: rgba(212,169,72,0.15); }
-            /* Modal 手機排版 */
-            .modal-body { padding: 0 20px 30px; }
-            .modal-header { flex-direction: column; gap: 12px; }
-            .modal-price-wrap { text-align: left; }
-            .modal-model { font-size: 26px; }
         }
 
         /* ═══ 懸浮導覽選單 FAB（僅手機版）═══ */
         .fab-wrapper { display: none; position: fixed; bottom: 136px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
         @media (max-width: 968px) { .fab-wrapper { display: flex; } }
-        .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; }
+        .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; width: max-content; }
         .fab-item { opacity: 0; transform: translateX(14px); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; margin-bottom: 5px; }
         .fab-item.visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
-        .fab-item:nth-child(5){transition-delay:.03s} .fab-item:nth-child(4){transition-delay:.07s}
-        .fab-item:nth-child(3){transition-delay:.11s} .fab-item:nth-child(2){transition-delay:.15s}
-        .fab-item:nth-child(1){transition-delay:.19s}
+        .fab-item:nth-child(6){transition-delay:.00s} .fab-item:nth-child(5){transition-delay:.04s}
+        .fab-item:nth-child(4){transition-delay:.08s} .fab-item:nth-child(3){transition-delay:.12s}
+        .fab-item:nth-child(2){transition-delay:.16s} .fab-item:nth-child(1){transition-delay:.20s}
         .fab-item a { display: flex; align-items: center; gap: 10px; background: rgba(12,12,12,.97); border: 1px solid rgba(212,169,72,.4); color: var(--text-light-gray); text-decoration: none; padding: 11px 16px 11px 13px; font-size: 13px; font-weight: 500; font-family: 'Noto Sans TC',sans-serif; letter-spacing: .5px; white-space: nowrap; box-shadow: 0 4px 18px rgba(0,0,0,.45); backdrop-filter: blur(10px); transition: background .18s, color .18s, border-color .18s; }
         .fab-item a:hover, .fab-item a:active { background: rgba(212,169,72,.12); border-color: var(--gold); color: var(--gold); }
         .fab-item a i { color: var(--gold); font-size: 12px; width: 14px; text-align: center; flex-shrink: 0; }
@@ -934,8 +919,7 @@
                 電話: 07-7352855<br>
                 手機: 0979-226-338<br>
                 地址: 高雄市仁武區鳳仁路 3-36 號<br>
-                信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a>
-            </p>
+                信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a></p>
         </div>
     </div>
     <div style="text-align:center; padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); color:#666; font-size:12px; margin-top:50px;">
@@ -955,6 +939,7 @@
 <div class="fab-wrapper" id="fabWrapper">
     <div class="fab-menu" id="fabMenu">
         <div class="fab-item"><a href="https://ys-autos.com/"><i class="fas fa-home"></i>首頁</a></div>
+        <div class="fab-item"><a href="https://ys-autos.com/#after-sales"><i class="fas fa-tools"></i>一條龍服務</a></div>
         <div class="fab-item"><a href="https://ys-autos.com/#guarantee"><i class="fas fa-shield-alt"></i>安心保證</a></div>
         <div class="fab-item"><a href="https://ys-autos.com/#reviews"><i class="fas fa-star"></i>顧客推薦</a></div>
         <div class="fab-item"><a href="https://ys-autos.com/prove"><i class="fas fa-check-circle"></i>成交見證</a></div>
@@ -1633,54 +1618,4 @@
     }
 document.addEventListener('click', e => {
     const fabWrapper = document.getElementById('fabWrapper');
-    if (fabWrapper && !fabWrapper.contains(e.target)) closeFab();
-});
-
-    // ════════════════════════════════════════════════════════════════
-    // 手機版：讓卡片照片區支援 touch 滑動換張
-    // ════════════════════════════════════════════════════════════════
-    function initCardTouchSwipe() {
-        document.querySelectorAll('.car-card').forEach(card => {
-            const img = card.querySelector('.car-photo img');
-            if (!img) return;
-            const id = parseInt(card.dataset.car);
-            let touchStartX = 0;
-            let isSwiping = false;
-            let currentIdx = 0;
-
-            card.querySelector('.car-photo').addEventListener('touchstart', e => {
-                touchStartX = e.touches[0].clientX;
-                isSwiping = false;
-            }, { passive: true });
-
-            card.querySelector('.car-photo').addEventListener('touchmove', e => {
-                if (Math.abs(e.touches[0].clientX - touchStartX) > 10) isSwiping = true;
-            }, { passive: true });
-
-            card.querySelector('.car-photo').addEventListener('touchend', e => {
-                const dx = e.changedTouches[0].clientX - touchStartX;
-                if (isSwiping && Math.abs(dx) > 40 && carCache[id]) {
-                    const photos = carCache[id].photos;
-                    if (!photos || photos.length <= 1) return;
-                    if (dx < 0) currentIdx = (currentIdx + 1) % photos.length;
-                    else currentIdx = (currentIdx - 1 + photos.length) % photos.length;
-                    img.src = photos[currentIdx];
-                    e.preventDefault();
-                }
-            });
-        });
-    }
-
-    // ════════════════════════════════════════════════════════════════
-    // 初始化
-    // ════════════════════════════════════════════════════════════════
-    window.addEventListener('scroll', () => { handleNavScroll(); reveal(); }, { passive: true });
-    handleNavScroll();
-    loadInventory().then(() => {
-        reveal();
-        setTimeout(initCardTouchSwipe, 500);
-    });
-
-    </script>
-</body>
-</html>
+    if (fabWrapper && !f
