@@ -919,7 +919,8 @@
                 電話: 07-7352855<br>
                 手機: 0979-226-338<br>
                 地址: 高雄市仁武區鳳仁路 3-36 號<br>
-                信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a></p>
+                信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a>
+            </p>
         </div>
     </div>
     <div style="text-align:center; padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); color:#666; font-size:12px; margin-top:50px;">
@@ -1618,4 +1619,11 @@
     }
 document.addEventListener('click', e => {
     const fabWrapper = document.getElementById('fabWrapper');
-    if (fabWrapper && !f
+    if (fabWrapper && !fabWrapper.contains(e.target)) closeFab();
+});
+
+    window.addEventListener('scroll', () => { handleNavScroll(); reveal(); });
+    window.addEventListener('load', () => { handleNavScroll(); loadInventory(); reveal(); });
+    </script>
+</body>
+</html>
