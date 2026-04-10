@@ -9,7 +9,7 @@ model：GLC300 4Matic
 排氣量：2.0L 渦輪
 變速箱：9速自排
 驅動方式：4Matic 四輪驅動
-狀態：available
+狀態：sold
 車況：原鈑原漆
 在庫：是
 CARFAX：無事故紀錄
