@@ -219,6 +219,7 @@
         .badge-sold { background: rgba(180,30,30,0.9); color: #fff; }
         .badge-new { background: rgba(30,120,80,0.9); color: #fff; }
         .badge-reserved { background: rgba(100,80,20,0.9); color: var(--gold-light); border: 1px solid var(--gold); }
+        .badge-agent { background: rgba(30,60,120,0.92); color: #a8c8ff; border: 1px solid rgba(120,170,255,0.6); }
 
         /* Photo count */
         .photo-count {
@@ -959,37 +960,53 @@
     // 移除車輛：刪除對應資料夾，或在 info.txt 加上「狀態：sold」
     // 車輛順序：依資料夾編號 car1, car2, car3... 排列
     // ════════════════════════════════════════════════════════════════
-
-    // ════════════════════════════════════════════════════════════════
-    // info.txt 解析器
-    // 格式規則（每行一個欄位，重點配備逐行列出）：
-    //   售價：xxx
-    //   年份：xxxx
-    //   make：xxx
-    //   model：xxx
-    //   車型暱稱：xxx       （可選，卡片副標題）
-    //   車輛/內裝顏色：x/x
-    //   出廠日期：yyyy/mm
-    //   里程：xx,xxx km
-    //   排氣量：x.xL        （可選）
-    //   變速箱：xxx         （可選）
-    //   驅動方式：xxx       （可選）
-    //   車況說明：xxx       （可選，modal 備註欄）
-    //   CPO：是             （可選，填「是」顯示 CPO 徽章）
-    //   狀態：available     （available / sold / reserved，預設 available）
-    //   亮點配備：配備A, 配備B, 配備C  （逗號分隔，可選）
-    //   重點配備：          （之後每一行都是一個配備項目）
-    //   配備1
-    //   配備2
-    //   ...
-    // ════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════════
+// info.txt 解析器
+//
+// 【基本格式規則】
+// 1. 每行一個欄位，使用「全形冒號：」分隔（不可用半形 :）
+// 2. 空白行會自動忽略
+// 3. 未包含冒號的行，只有在「重點配備：」之後，才會被視為配備項目
+//
+// 【範例（可直接複製使用）】
+//   售價：368萬            // 必填欄位（例如：368萬）
+//   售價備註：未含牌險     // 可選（補充價格資訊；未填不顯示）
+//   年份：2022             // 必填欄位（例如：2022）
+//   make：BMW             // 必填欄位（品牌，例如 BMW）
+//   model：M3             // 必填欄位（車型，例如 M3）
+//   車型暱稱：性能旗艦     // 可選（卡片副標題；未填不顯示）
+//   車輛/內裝顏色：黑 / 紅內裝 // 建議填寫（主要顯示欄位）
+//   顏色：黑 / 紅內裝       // 可選（等同上欄，擇一填寫）
+//   出廠日期：2022/03      // 建議填寫（格式 yyyy/mm）
+//   里程：12,000 km       // 建議填寫（可含單位）
+//   排氣量：3.0L          // 可選（未填不顯示）
+//   變速箱：自手排         // 可選（未填不顯示）
+//   驅動方式：後驅         // 可選（未填不顯示）
+//   車況：優質            // 可選（例如 優質/待整理；未填不顯示）
+//   車況說明：原版件 無事故 // 可選（modal 備註用；未填不顯示）
+//   在庫：在庫            // 可選（未填預設為「在庫」）
+//   到港狀態：已到港       // 可選（未填不顯示）
+//   CARFAX：有           // 可選（有/無/查詢中；未填不顯示）
+//   CPO：是              // 可選（是=CPO徽章 / 否=總代理 / 空白=不顯示）
+//   狀態：available       // 可選（available / sold / reserved；預設 available）
+//   亮點配備：碳纖維套件, 抬頭顯示器, 環景影像 // 可選（逗號分隔）
+//   重點配備：            // 可選（以下每行皆為一個配備）
+//   碳纖維套件
+//   抬頭顯示器
+//   環景影像
+//
+// ════════════════════════════════════════════════════════════════
     function parseInfo(text) {
-        const lines = text.replace(/\r/g, '').split('\n').map(l => l.trim()).filter(l => l);
+const lines = text
+  .replace(/\r/g, '')
+  .split('\n')
+  .map(l => l.replace(/\s*\/\/.*$/, '').trim())
+  .filter(l => l);
         const car = {
             make: '', model: '', trim: '', year: '', mileage: '',
             engine: '', transmission: '', drive: '', color: '', date: '',
             price: '請洽詢', priceNote: '含運費、關稅、驗車費用，另行報價',
-            carfax: '無事故紀錄', cpo: false, status: 'available',
+            carfax: '無事故紀錄', cpo: null, status: 'available',
             remark: '', highlights: [], equip: [],
             inStock: true,       // 在庫：是(預設)/否
             condition: '',       // 車況，例如「原鈑原漆」
@@ -1026,7 +1043,11 @@
                     break;
                 case '售價備註':    car.priceNote = val; break;
                 case '車況說明':    car.remark = val; break;
-                case 'CPO':         car.cpo = (val === '是'); break;
+                case 'CPO':
+                    if (val === '是') car.cpo = 'cpo';
+                    else if (val === '否') car.cpo = 'agent';
+                    else car.cpo = null;
+                    break;
                 case '狀態':        car.status = val; break;
                 case 'CARFAX':      car.carfax = val; break;
                 case '亮點配備':
@@ -1054,8 +1075,10 @@
 
         // Auto-generate remark if not set
         if (!car.remark) {
-            if (car.cpo) {
+            if (car.cpo === 'cpo') {
                 car.remark = `此車為 <strong>CPO 原廠認證車</strong>，經原廠技師逐項檢驗，整備至原廠交車標準。<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}。`;
+            } else if (car.cpo === 'agent') {
+                car.remark = `此車為 <strong>總代理車輛</strong>，由原廠授權總代理引進，品質有保障。<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}。`;
             } else {
                 car.remark = `<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}，車況良好，歡迎來電或 LINE 詳細詢問。`;
             }
@@ -1108,7 +1131,11 @@
             sold: '<span class="badge badge-sold">已售出</span>',
             reserved: '<span class="badge badge-reserved">已預訂</span>',
         }[car.status] || '';
-        const cpoBadge = car.cpo ? '<span class="badge badge-cpo"><i class="fas fa-certificate"></i>CPO原廠認證</span>' : '';
+        const cpoBadge = car.cpo === 'cpo'
+            ? '<span class="badge badge-cpo"><i class="fas fa-certificate"></i>CPO原廠認證</span>'
+            : car.cpo === 'agent'
+                ? '<span class="badge badge-agent"><i class="fas fa-shield-alt"></i>總代理</span>'
+                : '';
         const incomingBadge = isIncoming ? '<span class="badge badge-incoming">即將到港</span>' : '';
         const firstPhoto = photos[0] || 'image/placeholder.jpg';
         const photoCount = photos.length;
