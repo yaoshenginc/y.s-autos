@@ -210,16 +210,24 @@
             position: absolute; top: 12px; left: 12px;
             display: flex; flex-direction: column; gap: 6px; z-index: 2;
         }
-        .badge {
-            display: inline-block;
-            padding: 4px 10px; font-size: 10px; font-weight: 700;
-            letter-spacing: 1.5px; text-transform: uppercase;
-        }
-        .badge-cpo { background: var(--gold); color: #000; }
-        .badge-sold { background: rgba(180,30,30,0.9); color: #fff; }
-        .badge-new { background: rgba(30,120,80,0.9); color: #fff; }
-        .badge-reserved { background: rgba(100,80,20,0.9); color: var(--gold-light); border: 1px solid var(--gold); }
-        .badge-agent { background: rgba(30,60,120,0.92); color: #a8c8ff; border: 1px solid rgba(120,170,255,0.6); }
+/* 徽章統一尺寸（讓 CPO / SOLD 等大小一致） */
+.badge {
+    display: inline-flex;        /* 置中用 */
+    align-items: center;         /* 垂直置中 */
+    justify-content: center;     /* 水平置中 */
+    min-width: 90px;             /* 最小寬度一致 */
+    height: 28px;                /* 高度固定 */
+    padding: 0 12px;             /* 左右間距 */
+    font-size: 11px;             /* 字體大小 */
+    font-weight: 700;            /* 粗體 */
+}
+
+/* 不同徽章顏色 */
+.badge-cpo { background: var(--gold); color: #000; }
+.badge-sold { background: rgba(180,30,30,0.9); color: #fff; }
+.badge-new { background: rgba(30,120,80,0.9); color: #fff; }
+.badge-reserved { background: rgba(100,80,20,0.9); color: var(--gold-light); border: 1px solid var(--gold); }
+.badge-agent { background: rgba(30,60,120,0.92); color: #a8c8ff; border: 1px solid rgba(120,170,255,0.6); }
 
         /* Photo count */
         .photo-count {
