@@ -6,12 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
 
+    <!-- ═══ Performance & Resource Hints ═══ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com">
+
+    <!-- ═══ Language / Region ═══ -->
+    <link rel="alternate" hreflang="zh-TW" href="https://ys-autos.com/buyback">
+    <link rel="alternate" hreflang="x-default" href="https://ys-autos.com/buyback">
+
     <!-- ═══ Primary SEO ═══ -->
     <title>高雄收車・高價收購中古車｜耀笙國際汽車・仁武在地・當場出價</title>
     <meta name="description" content="高雄收車首選！耀笙國際汽車專業高價收購中古車，屏科大車輛工程背景、40年保養廠資源，當場出價不低估、程序透明不複雜。地址：高雄市仁武區鳳仁路3-36號，歡迎來電或線上預約免費估價。">
-    <meta name="keywords" content="高雄收車,高雄收購中古車,高價收購中古車,中古車收購,二手車收購,高雄賣車,仁武收車,高雄二手車收購,舊車換新車,中古車高價收購,汽車收購,愛車估價">
+    <meta name="keywords" content="高雄收車,高雄收購中古車,高價收購中古車,中古車收購,二手車收購,高雄賣車,仁武收車,高雄二手車收購,舊車換新車,中古車高價收購,汽車收購,愛車估價,高雄收車推薦,鳳山收車,左營收車,楠梓收車,岡山收車">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <meta name="author" content="耀笙國際汽車">
+    <meta name="geo.region" content="TW-KHH">
+    <meta name="geo.placename" content="高雄市仁武區">
+    <meta name="geo.position" content="22.6735694;120.3595321">
+    <meta name="ICBM" content="22.6735694, 120.3595321">
     <link rel="canonical" href="https://ys-autos.com/buyback">
     <link rel="icon" href="https://ys-autos.com/image/favicon.png" sizes="144x144">
     <link rel="apple-touch-icon" href="https://ys-autos.com/image/favicon.png">
@@ -24,6 +39,8 @@
     <meta property="og:description" content="高雄仁武在地收車！屏科大車輛工程背景，當場出價不低估。舊車換新車、急需現金、移民出國皆可。歡迎免費預約估價。">
     <meta property="og:image" content="https://ys-autos.com/image/logo.png">
     <meta property="og:image:alt" content="耀笙國際汽車 高雄高價收購中古車">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://ys-autos.com/buyback">
 
     <!-- ═══ Twitter Card ═══ -->
@@ -43,7 +60,12 @@
           "name": "耀笙國際汽車",
           "alternateName": "耀笙國際汽車 Y.S. AUTOS",
           "url": "https://ys-autos.com/",
-          "logo": "https://ys-autos.com/image/logo.png",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://ys-autos.com/image/logo.png",
+            "width": 400,
+            "height": 400
+          },
           "image": "https://ys-autos.com/image/logo.png",
           "telephone": "+886-7-7352855",
           "address": {
@@ -59,7 +81,15 @@
             "latitude": 22.6735694,
             "longitude": 120.3595321
           },
-          "areaServed": ["高雄市", "屏東縣", "台南市"],
+          "areaServed": [
+            { "@type": "City", "name": "高雄市" },
+            { "@type": "City", "name": "屏東縣" },
+            { "@type": "AdministrativeArea", "name": "仁武區" },
+            { "@type": "AdministrativeArea", "name": "鳳山區" },
+            { "@type": "AdministrativeArea", "name": "左營區" },
+            { "@type": "AdministrativeArea", "name": "楠梓區" },
+            { "@type": "AdministrativeArea", "name": "岡山區" }
+          ],
           "hasMap": "https://www.google.com/maps/place/%E8%80%80%E7%AC%99%E5%9C%8B%E9%9A%9B%E6%B1%BD%E8%BB%8A",
           "openingHoursSpecification": [
             {
@@ -77,8 +107,11 @@
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "5.0",
-            "reviewCount": "25"
-          }
+            "reviewCount": "25",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "priceRange": "$$"
         },
         {
           "@type": "WebPage",
@@ -89,14 +122,28 @@
           "isPartOf": { "@id": "https://ys-autos.com/#website" },
           "about": { "@id": "https://ys-autos.com/#autodealer" },
           "inLanguage": "zh-TW",
-          "breadcrumb": { "@id": "https://ys-autos.com/buyback#breadcrumb" }
+          "datePublished": "2024-01-01",
+          "dateModified": "2026-04-22",
+          "breadcrumb": { "@id": "https://ys-autos.com/buyback#breadcrumb" },
+          "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": [".hero-title", ".hero-desc", ".section-title"]
+          }
         },
         {
           "@type": "WebSite",
           "@id": "https://ys-autos.com/#website",
           "name": "耀笙國際汽車",
           "url": "https://ys-autos.com/",
-          "inLanguage": "zh-TW"
+          "inLanguage": "zh-TW",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://ys-autos.com/inventory?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
         },
         {
           "@type": "BreadcrumbList",
@@ -111,10 +158,16 @@
           "@id": "https://ys-autos.com/buyback#service",
           "serviceType": "中古車收購",
           "name": "高雄高價收購中古車",
-          "description": "耀笙國際汽車提供高雄在地高價收購中古車服務，屏科大車輛工程背景，當場出價，程序透明。",
+          "description": "耀笙國際汽車提供高雄在地高價收購中古車服務，屏科大車輛工程背景，當場出價，程序透明。服務範圍：高雄市、屏東縣各鄉鎮。",
           "provider": { "@id": "https://ys-autos.com/#autodealer" },
           "areaServed": ["高雄市", "屏東縣"],
-          "url": "https://ys-autos.com/buyback"
+          "url": "https://ys-autos.com/buyback",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "TWD",
+            "description": "免費現場估價，當場出價，無隱藏費用",
+            "availability": "https://schema.org/InStock"
+          }
         },
         {
           "@type": "FAQPage",
@@ -130,7 +183,7 @@
             },
             {
               "@type": "Question",
-              "name": "收購中古車的流程是什麼？",
+              "name": "高雄收購中古車的流程是什麼？",
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "四個步驟：1. 來電或填表單提供車輛基本資訊進行初步詢價；2. 攜車至高雄仁武展示中心進行現場鑑定；3. 鑑定完成後當場出價，過程透明無隱藏費用；4. 雙方同意後協助辦理過戶，帳款快速入帳。"
@@ -158,6 +211,14 @@
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "可以。耀笙獨創Win²雙贏方案，舊車以市場最高價收購，同時在我們這裡挑選外匯進口車，差額以最低利率貸款，讓換車比不換車還省。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "高雄收車需要預約嗎？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "建議事先來電（0979-226-338）或線上填寫估價表單，讓我們預先了解車輛基本資訊，到店後評估效率更高。也可直接在營業時間（週二至週日 10:30-19:00）攜車前往。"
               }
             }
           ]
