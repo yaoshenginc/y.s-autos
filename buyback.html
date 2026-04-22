@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="耀笙國際汽車高價收購中古車・二手車估價・舊車換新車・寄售服務。專業評估、當場出價、程序透明，高雄仁武在地車商，讓您的愛車賣出最好的價錢。">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://ys-autos.com/buyback">
+    <link rel="icon" href="https://ys-autos.com/image/favicon.png" sizes="144x144">
+    <meta property="og:title" content="高價收購中古車｜耀笙國際汽車・高雄仁武・專業估價">
+    <meta property="og:description" content="專業評估不低估、當場出價不拖延、程序透明不複雜。耀笙國際汽車高價收購您的愛車。">
+    <meta property="og:image" content="https://ys-autos.com/image/logo.png">
+    <meta property="og:url" content="https://ys-autos.com/buyback">
+    <title>高價收購中古車｜耀笙國際汽車</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --secondary-black: #1a1a1a;
+            --gold: #d4a948;
+            --gold-dark: #b8923e;
+            --gold-light: #e5c05d;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --text-light-gray: #d0d0d0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--primary-black);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: transparent;
+            border-bottom: 1px solid rgba(212,169,72,0);
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            backdrop-filter: blur(0px);
+        }
+        nav.nav-scrolled {
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212,169,72,0.2);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+        .nav-container {
+            max-width: 1600px; margin: 0 auto;
+            padding: 20px 60px;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.4s ease;
+        }
+        nav.nav-scrolled .nav-container { padding: 15px 60px; }
+        .nav-left { display: flex; align-items: center; gap: 40px; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-img { height: 45px; width: auto; object-fit: contain; }
+        .logo-text .zh { font-size: 22px; font-weight: 600; color: #fff; letter-spacing: 2px; }
+        .logo-text .en { font-family: 'Playfair Display'; font-size: 11px; color: var(--gold); letter-spacing: 2px; }
+        .logo-text .since { font-size: 9px; color: var(--text-gray); letter-spacing: 1px; margin-top: 2px; }
+        .nav-links { display: flex; gap: 35px; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-light-gray);
+            font-size: 13px; font-weight: 500; transition: 0.3s;
+            position: relative; padding-bottom: 3px;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 1px; background: var(--gold); transition: 0.3s;
+        }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .nav-social-top a { color: var(--gold); font-size: 18px; margin-left: 15px; transition: 0.3s; }
+        .nav-social-top a:hover { color: var(--text-gray); }
+        .nav-cta {
+            padding: 12px 0; width: 100px; display: inline-block; text-align: center;
+            border: 1px solid var(--gold); color: var(--gold);
+            font-size: 12px; font-weight: 600; text-decoration: none; transition: 0.3s;
+        }
+        .nav-cta:hover { background: var(--gold); color: #000; }
+        .mobile-menu-btn { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; padding: 10px; }
+        .mobile-social { display: none; }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none; position: fixed; top: 0; right: -100%;
+            width: 280px; height: 100vh; background: var(--secondary-black);
+            z-index: 9999; transition: right 0.3s ease;
+            padding: 80px 30px 30px; overflow-y: auto;
+        }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu-close {
+            position: absolute; top: 20px; right: 20px;
+            background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; padding: 10px;
+        }
+        .mobile-menu-links { list-style: none; padding: 0; margin: 0; }
+        .mobile-menu-links li { margin-bottom: 20px; }
+        .mobile-menu-links a {
+            color: #fff; text-decoration: none; font-size: 18px; font-weight: 500;
+            display: block; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.3s;
+        }
+        .mobile-menu-links a:hover { color: var(--gold); padding-left: 10px; }
+        .mobile-menu-overlay {
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100vh; background: rgba(0,0,0,0.7); z-index: 9998;
+        }
+        .mobile-menu-overlay.active { display: block; }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex; align-items: center; justify-content: center;
+            background: #000; overflow: hidden;
+        }
+
+        /* 背景：斜角金線紋路 */
+        .hero-bg-pattern {
+            position: absolute; inset: 0; z-index: 1;
+            background:
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(212,169,72,0.03) 80px,
+                    rgba(212,169,72,0.03) 81px
+                );
+        }
+
+        /* 大型水印數字 */
+        .hero-watermark {
+            position: absolute;
+            right: -60px; top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 400px; font-weight: 700;
+            color: rgba(212,169,72,0.04);
+            letter-spacing: -20px;
+            line-height: 1;
+            z-index: 1;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg,
+                rgba(10,10,10,0.95) 0%,
+                rgba(10,10,10,0.6) 60%,
+                rgba(10,10,10,0.8) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative; z-index: 3;
+            max-width: 1400px; padding: 0 60px;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 100px; align-items: center;
+        }
+
+        .hero-left { }
+
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 12px;
+            color: var(--gold); font-size: 11px; letter-spacing: 4px;
+            font-weight: 600; text-transform: uppercase; margin-bottom: 30px;
+        }
+        .hero-tag::before {
+            content: ''; width: 40px; height: 1px; background: var(--gold);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px; font-weight: 700; line-height: 1.15;
+            margin-bottom: 30px;
+        }
+        .hero-title .accent { color: var(--gold); display: block; }
+        .hero-title .outline {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+            color: transparent;
+            display: block;
+        }
+
+        .hero-desc {
+            font-size: 17px; color: var(--text-gray);
+            line-height: 2; margin-bottom: 50px; max-width: 480px;
+        }
+        .hero-desc strong { color: var(--text-white); }
+
+        .hero-ctas { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--gold); color: #000;
+            padding: 18px 40px; font-weight: 700; font-size: 14px;
+            text-decoration: none; display: inline-block; transition: 0.3s;
+            letter-spacing: 1px;
+        }
+        .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,169,72,0.4); }
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,0.3); color: #fff;
+            padding: 18px 40px; font-weight: 600; font-size: 14px;
+            text-decoration: none; display: inline-block; transition: 0.3s;
+        }
+        .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* 右側：統計數字卡 */
+        .hero-right { }
+
+        .stats-card {
+            background: rgba(26,26,26,0.8);
+            border: 1px solid rgba(212,169,72,0.2);
+            backdrop-filter: blur(20px);
+            padding: 50px 45px;
+        }
+        .stats-card h3 {
+            font-size: 14px; letter-spacing: 3px; color: var(--gold);
+            text-transform: uppercase; margin-bottom: 40px;
+            padding-bottom: 20px; border-bottom: 1px solid rgba(212,169,72,0.2);
+        }
+
+        .stats-row {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 30px; margin-bottom: 35px;
+        }
+        .stat-item { }
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px; font-weight: 700; color: var(--gold);
+            line-height: 1; display: block;
+        }
+        .stat-label { font-size: 13px; color: var(--text-gray); margin-top: 8px; display: block; }
+
+        .promise-list { margin-top: 35px; padding-top: 35px; border-top: 1px solid rgba(212,169,72,0.2); }
+        .promise-item {
+            display: flex; align-items: center; gap: 15px;
+            padding: 12px 0; font-size: 14px; color: var(--text-light-gray);
+        }
+        .promise-item i { color: var(--gold); font-size: 16px; width: 18px; flex-shrink: 0; }
+
+        /* ── REVEAL ── */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.4,0,0.2,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-30px); transition: all 0.7s cubic-bezier(0.4,0,0.2,1); }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(30px); transition: all 0.7s cubic-bezier(0.4,0,0.2,1); }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+        /* ── SECTION COMMONS ── */
+        section { padding: 120px 60px; }
+        .section-tag {
+            font-size: 11px; letter-spacing: 4px; color: var(--gold);
+            margin-bottom: 20px; font-weight: 600; display: block;
+            text-transform: uppercase;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif; font-size: 52px;
+            margin-bottom: 25px; line-height: 1.2;
+        }
+        .section-desc {
+            font-size: 17px; color: var(--text-gray); line-height: 2;
+            max-width: 700px; margin: 0 auto 70px;
+        }
+        .section-center { text-align: center; }
+
+        /* ── WHO SECTION ── */
+        .who-section { background: var(--secondary-black); }
+        .who-grid {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+        }
+        .who-card {
+            background: var(--primary-black); padding: 50px 35px;
+            border: 1px solid rgba(212,169,72,0.08);
+            transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .who-card::before {
+            content: ''; position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 3px;
+            background: var(--gold); transform: scaleX(0); transition: 0.4s;
+        }
+        .who-card:hover::before { transform: scaleX(1); }
+        .who-card:hover { border-color: rgba(212,169,72,0.25); transform: translateY(-8px); }
+        .who-icon { font-size: 40px; margin-bottom: 25px; display: block; }
+        .who-card h3 { font-size: 20px; color: var(--gold); margin-bottom: 15px; }
+        .who-card p { font-size: 14px; color: var(--text-gray); line-height: 1.9; }
+
+        /* ── PROCESS SECTION ── */
+        .process-section { background: var(--primary-black); }
+        .process-container { max-width: 1200px; margin: 0 auto; }
+        .process-steps {
+            display: flex; gap: 0; position: relative;
+        }
+        .process-line {
+            position: absolute; top: 40px; left: 40px; right: 40px; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            z-index: 0;
+        }
+        .process-step {
+            flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 20px;
+        }
+        .step-circle {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: var(--secondary-black);
+            border: 1px solid rgba(212,169,72,0.4);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 30px; font-size: 28px;
+            transition: 0.4s;
+        }
+        .process-step:hover .step-circle {
+            background: var(--gold); border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(212,169,72,0.4);
+            transform: scale(1.1);
+        }
+        .step-num {
+            position: absolute; top: -8px; right: calc(50% - 50px);
+            width: 22px; height: 22px; border-radius: 50%;
+            background: var(--gold); color: #000;
+            font-size: 11px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .step-title { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: #fff; }
+        .step-desc { font-size: 13px; color: var(--text-gray); line-height: 1.8; }
+
+        /* ── WIN² SECTION ── */
+        .win-section { background: var(--secondary-black); }
+        .win-container {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+        }
+        .win-left { }
+        .win-badge {
+            display: inline-block; background: var(--gold); color: #000;
+            padding: 8px 20px; font-size: 11px; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px;
+        }
+        .win-left h2 { font-family: 'Playfair Display'; font-size: 50px; margin-bottom: 25px; line-height: 1.2; }
+        .win-left p { font-size: 16px; color: var(--text-light-gray); line-height: 2; margin-bottom: 20px; }
+        .win-highlight {
+            background: rgba(212,169,72,0.08);
+            border-left: 4px solid var(--gold);
+            padding: 25px 30px; margin: 30px 0;
+        }
+        .win-highlight p { margin: 0; font-size: 15px; color: var(--text-light-gray); line-height: 1.9; }
+        .win-highlight strong { color: var(--gold); font-size: 17px; }
+
+        .win-right { }
+        .scenario-card {
+            background: var(--primary-black); border: 1px solid rgba(212,169,72,0.15);
+            padding: 40px; margin-bottom: 20px; transition: 0.3s;
+        }
+        .scenario-card:hover { border-color: rgba(212,169,72,0.35); transform: translateX(8px); }
+        .scenario-tag {
+            display: inline-block; font-size: 11px; letter-spacing: 2px;
+            color: var(--gold); border: 1px solid rgba(212,169,72,0.4);
+            padding: 5px 14px; margin-bottom: 20px;
+        }
+        .scenario-card h4 { font-size: 20px; margin-bottom: 15px; color: #fff; }
+        .scenario-card p { font-size: 14px; color: var(--text-gray); line-height: 1.9; margin-bottom: 15px; }
+        .scenario-card .result {
+            font-size: 14px; color: var(--gold); font-weight: 600;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        /* ── REASONS SECTION ── */
+        .reasons-section { background: var(--primary-black); }
+        .reasons-grid {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+        }
+        .reason-card {
+            border: 1px solid rgba(212,169,72,0.1); padding: 45px 40px;
+            position: relative; overflow: hidden; transition: 0.4s;
+        }
+        .reason-card::after {
+            content: attr(data-num);
+            position: absolute; bottom: -20px; right: -10px;
+            font-family: 'Playfair Display'; font-size: 120px; font-weight: 700;
+            color: rgba(212,169,72,0.05); line-height: 1;
+            pointer-events: none; user-select: none;
+        }
+        .reason-card:hover { border-color: rgba(212,169,72,0.3); transform: translateY(-8px); background: rgba(26,26,26,0.5); }
+        .reason-icon { font-size: 36px; margin-bottom: 25px; display: block; }
+        .reason-card h3 { font-size: 22px; color: var(--gold); margin-bottom: 15px; }
+        .reason-card p { font-size: 14px; color: var(--text-gray); line-height: 1.9; position: relative; z-index: 1; }
+
+        /* ── WHAT WE BUY ── */
+        .types-section { background: var(--secondary-black); }
+        .types-container { max-width: 1400px; margin: 0 auto; }
+        .types-header { text-align: center; margin-bottom: 70px; }
+        .types-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
+            margin-bottom: 50px;
+        }
+        .type-card {
+            background: var(--primary-black); padding: 40px 35px;
+            border: 1px solid rgba(212,169,72,0.08); transition: 0.3s;
+            display: flex; align-items: flex-start; gap: 25px;
+        }
+        .type-card:hover { border-color: rgba(212,169,72,0.25); }
+        .type-icon-wrap {
+            width: 55px; height: 55px; flex-shrink: 0;
+            background: rgba(212,169,72,0.1); border: 1px solid rgba(212,169,72,0.3);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px;
+        }
+        .type-info h4 { font-size: 18px; margin-bottom: 10px; color: #fff; }
+        .type-info p { font-size: 13px; color: var(--text-gray); line-height: 1.8; }
+
+        .not-buy {
+            background: rgba(255,80,80,0.05); border: 1px solid rgba(255,80,80,0.15);
+            padding: 30px 40px; margin-top: 10px;
+        }
+        .not-buy h4 { font-size: 15px; color: #ff8080; margin-bottom: 15px; }
+        .not-buy p { font-size: 14px; color: var(--text-gray); line-height: 1.9; }
+
+        /* ── CONTACT CTA ── */
+        .contact-cta {
+            background: linear-gradient(135deg, #111 0%, #0a0a0a 100%);
+            position: relative; overflow: hidden;
+        }
+        .contact-cta::before {
+            content: ''; position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(212,169,72,0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .contact-cta-inner {
+            max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 1;
+        }
+        .contact-cta h2 { font-family: 'Playfair Display'; font-size: 54px; margin-bottom: 25px; }
+        .contact-cta p { font-size: 18px; color: var(--text-gray); line-height: 2; margin-bottom: 50px; }
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+
+        .contact-grid-small {
+            max-width: 1000px; margin: 70px auto 0;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+        }
+        .contact-mini {
+            background: rgba(26,26,26,0.8); border: 1px solid rgba(212,169,72,0.15);
+            padding: 30px; text-align: center; text-decoration: none; color: inherit;
+            transition: 0.3s; display: block;
+        }
+        .contact-mini:hover { border-color: rgba(212,169,72,0.35); transform: translateY(-5px); }
+        .contact-mini .icon { font-size: 28px; margin-bottom: 12px; display: block; }
+        .contact-mini h4 { font-size: 14px; color: var(--gold); margin-bottom: 8px; }
+        .contact-mini p { font-size: 13px; color: var(--text-gray); line-height: 1.7; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--secondary-black); padding: 80px 60px 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .footer-content {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px;
+        }
+        .footer-socials { display: flex; gap: 15px; margin-top: 25px; }
+        .social-btn {
+            width: 40px; height: 40px;
+            background: rgba(212,169,72,0.1); border: 1px solid rgba(212,169,72,0.2);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gold); text-decoration: none; transition: 0.3s;
+        }
+        .social-btn:hover { background: var(--gold); color: var(--primary-black); }
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 12px; }
+        .footer-links ul li a { color: var(--text-gray); text-decoration: none; font-size: 14px; transition: 0.3s; }
+        .footer-links ul li a:hover { color: var(--gold); }
+        @media (max-width: 968px) {
+            footer { padding: 60px 25px 40px; }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        /* ── FLOATING ── */
+        .floating-cta {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--gold); color: #000;
+            padding: 16px 30px; text-decoration: none;
+            font-weight: 700; font-size: 13px; border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(212,169,72,0.4); z-index: 999;
+            transition: 0.3s;
+        }
+        .floating-cta:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(212,169,72,0.6); }
+
+        /* ── MOBILE ── */
+        @media (max-width: 968px) {
+            .nav-links, .nav-social-top, .nav-cta, .mobile-menu-btn { display: none; }
+            .mobile-social { display: flex; align-items: center; gap: 12px; }
+            .mobile-social a { color: var(--gold); font-size: 18px; text-decoration: none; display: flex; }
+            .nav-right { display: flex; align-items: center; gap: 15px; }
+            .nav-container { padding: 20px 30px !important; }
+            nav.nav-scrolled .nav-container { padding: 15px 30px !important; }
+            .hero-content { grid-template-columns: 1fr; gap: 40px; padding: 0 25px; padding-top: 120px; }
+            .hero-title { font-size: 44px; }
+            .hero-watermark { display: none; }
+            section { padding: 80px 25px; }
+            .section-title { font-size: 36px; }
+            .who-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+            .who-card { padding: 30px 20px; }
+            .process-steps { flex-direction: column; gap: 30px; }
+            .process-line { display: none; }
+            .win-container { grid-template-columns: 1fr; gap: 40px; }
+            .win-left h2 { font-size: 36px; }
+            .reasons-grid { grid-template-columns: 1fr; gap: 20px; }
+            .types-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .floating-cta { bottom: 24px; right: 20px; font-size: 13px; padding: 14px 24px; z-index: 998; }
+            .stats-row { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* ── FAB 懸浮導覽（手機版）── */
+        .fab-wrapper { display: none; position: fixed; bottom: 140px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
+        @media (max-width: 968px) { .fab-wrapper { display: flex; } }
+        .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; }
+        .fab-item { opacity: 0; transform: translateX(14px); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; margin-bottom: 5px; }
+        .fab-item.visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
+        .fab-item:nth-child(6){transition-delay:.03s} .fab-item:nth-child(5){transition-delay:.07s}
+        .fab-item:nth-child(4){transition-delay:.11s} .fab-item:nth-child(3){transition-delay:.15s}
+        .fab-item:nth-child(2){transition-delay:.19s} .fab-item:nth-child(1){transition-delay:.23s}
+        .fab-item a { display: flex; align-items: center; gap: 10px; background: rgba(12,12,12,.97); border: 1px solid rgba(212,169,72,.4); color: var(--text-light-gray); text-decoration: none; padding: 11px 16px 11px 13px; font-size: 13px; font-weight: 500; font-family: 'Noto Sans TC',sans-serif; letter-spacing: .5px; white-space: nowrap; box-shadow: 0 4px 18px rgba(0,0,0,.45); backdrop-filter: blur(10px); transition: background .18s, color .18s, border-color .18s; }
+        .fab-item a:hover, .fab-item a:active { background: rgba(212,169,72,.12); border-color: var(--gold); color: var(--gold); }
+        .fab-item a i { color: var(--gold); font-size: 12px; width: 14px; text-align: center; flex-shrink: 0; }
+        .fab-trigger { width: 46px; height: 46px; background: rgba(12,12,12,.97); border: 1px solid var(--gold); border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 11px; letter-spacing: 1.5px; font-family: 'Noto Sans TC',sans-serif; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.55); position: relative; overflow: visible; transition: background .2s, color .2s; }
+        .fab-trigger:active { transform: scale(.95); }
+        .fab-trigger.open { background: var(--gold); color: #000; }
+        .fab-trigger::before, .fab-trigger::after { content: ''; position: absolute; inset: -1px; border: 1px solid var(--gold); animation: fab-ripple 2.6s ease-out infinite; opacity: 0; }
+        .fab-trigger::after { animation-delay: 1.3s; }
+        .fab-trigger.open::before, .fab-trigger.open::after { display: none; }
+        @keyframes fab-ripple { 0%{transform:scale(1);opacity:.65} 100%{transform:scale(2);opacity:0} }
+
+        /* ── 在庫車輛懸浮按鈕（手機版）── */
+        .floating-inventory { display: none; position: fixed; bottom: 88px; right: 20px; z-index: 999; width: 46px; height: 46px; background: var(--gold); border: 1px solid var(--gold-dark); color: var(--primary-black); text-decoration: none; font-family: 'Noto Sans TC',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 4px 20px rgba(212,169,72,0.4); transition: background .2s, transform .2s; }
+        .floating-inventory i { font-size: 15px; }
+        .floating-inventory:hover, .floating-inventory:active { background: var(--gold-light); color: var(--primary-black); transform: scale(1.05); }
+        @media (max-width: 968px) { .floating-inventory { display: flex; } }
+
+        /* ── QUOTE FORM SECTION ── */
+        .quote-section { background: var(--primary-black); padding: 120px 60px; }
+        .quote-wrapper {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1.2fr; gap: 100px; align-items: start;
+        }
+        .form-promises { margin-bottom: 40px; }
+        .form-promise-item {
+            display: flex; align-items: flex-start; gap: 18px;
+            padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .form-promise-item:last-child { border-bottom: none; }
+        .form-promise-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+        .form-promise-item strong { display: block; font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .form-promise-item p { font-size: 13px; color: var(--text-gray); line-height: 1.7; margin: 0; }
+        .alt-contact { margin-top: 35px; padding-top: 30px; border-top: 1px solid rgba(212,169,72,0.15); }
+        .alt-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 22px; border: 1px solid rgba(212,169,72,0.4);
+            color: var(--gold); text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.3s;
+        }
+        .alt-btn:hover { background: rgba(212,169,72,0.1); border-color: var(--gold); }
+        .alt-btn-line { border-color: rgba(0,195,0,0.4); color: #00c300; }
+        .alt-btn-line:hover { background: rgba(0,195,0,0.08); border-color: #00c300; }
+        .form-card {
+            background: var(--secondary-black); border: 1px solid rgba(212,169,72,0.2);
+            padding: 50px 45px; position: relative; overflow: hidden;
+        }
+        .form-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
+        }
+        .form-header { margin-bottom: 35px; }
+        .form-header h3 { font-family: 'Playfair Display'; font-size: 26px; margin-bottom: 8px; }
+        .form-header p { font-size: 13px; color: var(--text-gray); }
+        .form-group { margin-bottom: 22px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .form-label {
+            display: block; font-size: 12px; font-weight: 600; color: var(--text-gray);
+            letter-spacing: 1px; text-transform: uppercase; margin-bottom: 9px;
+        }
+        .req { color: var(--gold); }
+        .form-input {
+            width: 100%; background: var(--primary-black); border: 1px solid rgba(255,255,255,0.1);
+            color: #fff; padding: 13px 16px; font-size: 14px; font-family: 'Noto Sans TC', sans-serif;
+            outline: none; transition: 0.3s; appearance: none;
+        }
+        .form-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,169,72,0.08); }
+        .form-input::placeholder { color: rgba(255,255,255,0.2); }
+        .form-select { cursor: pointer; }
+        .form-select option { background: var(--secondary-black); }
+        .form-textarea { height: 110px; resize: vertical; }
+        .form-divider {
+            display: flex; align-items: center; gap: 15px; margin: 28px 0 22px;
+            color: var(--gold); font-size: 11px; letter-spacing: 2px; font-weight: 600; text-transform: uppercase;
+        }
+        .form-divider::before, .form-divider::after { content: ''; flex: 1; height: 1px; background: rgba(212,169,72,0.2); }
+        .reason-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 5px; }
+        .chip {
+            padding: 9px 16px; border: 1px solid rgba(255,255,255,0.12);
+            font-size: 13px; color: var(--text-gray); cursor: pointer;
+            transition: 0.25s; user-select: none;
+        }
+        .chip:hover { border-color: rgba(212,169,72,0.4); color: var(--text-white); }
+        .chip.selected { background: rgba(212,169,72,0.15); border-color: var(--gold); color: var(--gold); font-weight: 600; }
+        .form-submit {
+            width: 100%; padding: 18px; margin-top: 10px;
+            background: var(--gold); color: #000; border: none;
+            font-size: 15px; font-weight: 700; font-family: 'Noto Sans TC', sans-serif;
+            cursor: pointer; transition: 0.3s; letter-spacing: 1px;
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+        }
+        .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(212,169,72,0.35); }
+        .form-submit.loading { opacity: 0.7; pointer-events: none; }
+        .form-note { font-size: 11px; color: rgba(255,255,255,0.25); text-align: center; margin-top: 14px; }
+        .form-error { border-color: #e05555 !important; }
+        .error-msg { font-size: 11px; color: #e05555; margin-top: 5px; display: block; }
+        .contact-bar {
+            max-width: 900px; margin: 80px auto 0;
+            display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+        }
+        .contact-bar .contact-mini {
+            background: rgba(26,26,26,0.8); border: 1px solid rgba(212,169,72,0.15);
+            padding: 30px; text-align: center; text-decoration: none; color: inherit;
+            transition: 0.3s; display: block;
+        }
+        .contact-bar .contact-mini:hover { border-color: rgba(212,169,72,0.35); transform: translateY(-5px); }
+        .contact-bar .icon { font-size: 28px; margin-bottom: 12px; display: block; }
+        .contact-bar h4 { font-size: 14px; color: var(--gold); margin-bottom: 8px; }
+        .contact-bar p { font-size: 13px; color: var(--text-gray); line-height: 1.7; }
+        @media (max-width: 968px) {
+            .quote-section { padding: 80px 25px; }
+            .quote-wrapper { grid-template-columns: 1fr; gap: 50px; }
+            .form-card { padding: 35px 25px; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .contact-bar { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="https://ys-autos.com/" class="logo">
+                <img src="https://ys-autos.com/image/logo.png" alt="耀笙國際汽車" class="logo-img">
+                <div class="logo-text">
+                    <div class="zh">耀笙國際汽車</div>
+                    <div class="en">Y.S. AUTOS</div>
+                    <div class="since">SINCE 2020</div>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="https://ys-autos.com/#guarantee">安心保證</a></li>
+                <li><a href="https://ys-autos.com/#after-sales">一條龍服務</a></li>
+                <li><a href="https://ys-autos.com/#reviews">顧客推薦</a></li>
+                <li><a href="https://ys-autos.com/#owner">認識我們</a></li>
+                <li><a href="https://ys-autos.com/prove">成交見證</a></li>
+                <li><a href="https://ys-autos.com/buyback" class="active">高價收購</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="nav-social-top">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+            </div>
+            <div class="mobile-social">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+            </div>
+            <a href="https://ys-autos.com/inventory" class="nav-cta">在庫車輛</a>
+            <a href="https://ys-autos.com/import-cars" class="nav-cta">了解外匯車</a>
+        </div>
+    </div>
+</nav>
+
+
+<!-- ── HERO ── -->
+<section class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-watermark">¥</div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <div class="hero-left" style="animation: fadeInLeft 1s ease-out;">
+            <span class="hero-tag">Car Buyback Service</span>
+            <h1 class="hero-title">
+                <span class="outline">您的愛車</span>
+                <span class="accent">值得最好</span>
+                <span>的價格</span>
+            </h1>
+            <p class="hero-desc">
+                <strong>不低估、不拖延、不複雜</strong><br>
+                憑藉屏科大車輛工程背景與40年保養廠資源，
+                我們給出業界最合理的收購價，
+                讓每一台車都賣出應有的價值。
+            </p>
+            <div class="hero-ctas">
+                <a href="#quote-form" class="btn-primary">📋 免費預約估價</a>
+                <a href="https://lin.ee/mDzezrK" target="_blank" class="btn-secondary">加LINE詢問 →</a>
+            </div>
+        </div>
+
+        <div class="hero-right" style="animation: fadeInRight 1s ease-out 0.2s both;">
+            <div class="stats-card">
+                <h3>耀笙收購保證</h3>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-num">200+</span>
+                        <span class="stat-label">已售出進口車</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">0</span>
+                        <span class="stat-label">至今負評數</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">5.0</span>
+                        <span class="stat-label">Google 評分</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">40年</span>
+                        <span class="stat-label">保養廠資源</span>
+                    </div>
+                </div>
+                <div class="promise-list">
+                    <div class="promise-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>專業鑑定，給出最合理收購價</span>
+                    </div>
+                    <div class="promise-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>當場出價，不讓您空等</span>
+                    </div>
+                    <div class="promise-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>程序透明，帳款快速入帳</span>
+                    </div>
+                    <div class="promise-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>買新車同時收購，省到最大化</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── WHO SHOULD SELL ── -->
+<section class="who-section">
+    <div class="section-center" style="margin-bottom: 70px;">
+        <span class="section-tag reveal">Who Should Sell</span>
+        <h2 class="section-title reveal">哪些人適合找我們？</h2>
+        <p class="section-desc reveal">不管您的情況是什麼，我們都有對應的方案</p>
+    </div>
+    <div class="who-grid">
+        <div class="who-card reveal">
+            <span class="who-icon">🔄</span>
+            <h3>想換新車</h3>
+            <p>舊車直接折抵新車款，搭配我們的 Win² 方案，讓您換車比不換車還省，無縫銜接不空窗。</p>
+        </div>
+        <div class="who-card reveal">
+            <span class="who-icon">💸</span>
+            <h3>急需現金</h3>
+            <p>快速鑑定、當場出價、帳款迅速入帳。讓您的愛車在最短時間內轉換成現金，解決燃眉之急。</p>
+        </div>
+        <div class="who-card reveal">
+            <span class="who-icon">✈️</span>
+            <h3>移民・出國</h3>
+            <p>不需要了的車輛，交給我們幫您處理，省去奔波與等待的麻煩，讓您安心準備人生下一段旅程。</p>
+        </div>
+        <div class="who-card reveal">
+            <span class="who-icon">📦</span>
+            <h3>舊車想脫手</h3>
+            <p>車齡較高或功能不合用，與其停在車庫折舊，不如讓專業的人給您合理的價格，換回真實的價值。</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── PROCESS ── -->
+<section class="process-section">
+    <div class="section-center" style="margin-bottom: 80px;">
+        <span class="section-tag reveal">How It Works</span>
+        <h2 class="section-title reveal">收購流程</h2>
+        <p class="section-desc reveal">四個步驟，輕鬆完成，不複雜</p>
+    </div>
+    <div class="process-container">
+        <div class="process-steps reveal">
+            <div class="process-line"></div>
+            <div class="process-step">
+                <div class="step-circle">
+                    <span class="step-num">1</span>
+                    📞
+                </div>
+                <div class="step-title">聯絡詢價</div>
+                <div class="step-desc">來電或加LINE，提供車型、年份、里程等基本資訊，我們預先評估給您心理準備</div>
+            </div>
+            <div class="process-step">
+                <div class="step-circle">
+                    <span class="step-num">2</span>
+                    🔍
+                </div>
+                <div class="step-title">現場鑑定</div>
+                <div class="step-desc">攜車至高雄仁武展示中心，由專業技師進行全面鑑定，包含車況、事故紀錄、市場行情</div>
+            </div>
+            <div class="process-step">
+                <div class="step-circle">
+                    <span class="step-num">3</span>
+                    💰
+                </div>
+                <div class="step-title">當場出價</div>
+                <div class="step-desc">鑑定完成後當場給出收購報價，過程完全透明，無任何隱藏費用，不接受可以直接離開</div>
+            </div>
+            <div class="process-step">
+                <div class="step-circle">
+                    <span class="step-num">4</span>
+                    ✅
+                </div>
+                <div class="step-title">完成過戶</div>
+                <div class="step-desc">雙方同意後協助辦理過戶手續，帳款快速入帳，整個流程乾淨俐落</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── WIN² SECTION ── -->
+<section class="win-section" id="win2">
+    <div class="win-container" style="max-width:1400px; margin:0 auto;">
+        <div class="win-left reveal-left">
+            <span class="win-badge">業界首創</span>
+            <h2 class="section-title" style="margin-bottom: 25px;">Win² 雙贏方案<br><span style="color:var(--gold)">換車比不換<br>還省</span></h2>
+            <p>我們獨創的商業模式，真正從顧客的角度出發。當您在我們這裡購買新車的同時，將舊車交給我們處理，兩邊的費用和優惠可以互相抵扣，讓整體支出降到最低。</p>
+            <div class="win-highlight">
+                <p><strong>具體怎麼省？</strong><br>
+                舊車以市場最高價收購 + 新車以最透明成本定價 + 貸款不賺傭金 + 寄售費用減免 = 您是最大贏家</p>
+            </div>
+            <p style="margin-top: 20px;">這不是口號，是我們真實在執行的方式。已有多位顧客親身體驗，從沒想到換車可以這麼輕鬆。</p>
+            <div style="margin-top: 40px; display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="tel:0979226338" class="btn-primary">來電了解詳情</a>
+                <a href="https://lin.ee/mDzezrK" target="_blank" class="btn-secondary">加LINE諮詢</a>
+            </div>
+        </div>
+
+        <div class="win-right reveal-right">
+            <div class="scenario-card">
+                <span class="scenario-tag">情境 A</span>
+                <h4>🔄 舊車換進口車</h4>
+                <p>您的舊車用最高價收購，同時在我們這邊挑選一台CP值超高的外匯進口車，差額以最低利率貸款，整體支出遠低於市場行情。</p>
+                <div class="result"><i class="fas fa-arrow-right"></i> 舊車賣最高 + 新車買最低 = 雙贏</div>
+            </div>
+            <div class="scenario-card">
+                <span class="scenario-tag">情境 B</span>
+                <h4>📋 寄售 + 購車</h4>
+                <p>不急著賣、想等好價錢？將舊車委託我們寄售，同時訂購新車，寄售成交後再結清尾款。我們的寄售服務費業界最低，若同時購車還可減免。</p>
+                <div class="result"><i class="fas fa-arrow-right"></i> 寄售費用減免 + 時間彈性 = 利益最大化</div>
+            </div>
+            <div class="scenario-card">
+                <span class="scenario-tag">情境 C</span>
+                <h4>💵 單純現金收購</h4>
+                <p>不想換車、只想把舊車賣掉？沒問題，我們同樣提供專業鑑定與最合理的現金收購價，不因為您沒買車而壓低出價。</p>
+                <div class="result"><i class="fas fa-arrow-right"></i> 合理定價 + 快速交割 = 省心省力</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── REASONS ── -->
+<section class="reasons-section">
+    <div class="section-center" style="margin-bottom: 70px;">
+        <span class="section-tag reveal">Why Choose Us</span>
+        <h2 class="section-title reveal">為什麼選耀笙？</h2>
+        <p class="section-desc reveal">我們說的每一點，都有背後的專業在支撐</p>
+    </div>
+    <div class="reasons-grid">
+        <div class="reason-card reveal" data-num="01">
+            <span class="reason-icon">🎓</span>
+            <h3>純血汽車科系背景</h3>
+            <p>屏科大車輛工程系畢業，不是野路子出身。我們看車的眼光，和只靠年份里程判斷的業者完全不同，能給出更合理的估值。</p>
+        </div>
+        <div class="reason-card reveal" data-num="02">
+            <span class="reason-icon">🏭</span>
+            <h3>40年保養廠資源</h3>
+            <p>第三代保養廠傳承，掌握完整的零件、維修、保值評估體系。收進來的車我們知道能修到什麼程度，所以出價比別人更有底氣。</p>
+        </div>
+        <div class="reason-card reveal" data-num="03">
+            <span class="reason-icon">📊</span>
+            <h3>外匯車行情熟悉</h3>
+            <p>自辦進口車、長期追蹤美規外匯市場，對各車型的台灣市場定價與轉售行情了然於心，估價更精準，不亂砍不虛報。</p>
+        </div>
+        <div class="reason-card reveal" data-num="04">
+            <span class="reason-icon">💎</span>
+            <h3>透明不藏私</h3>
+            <p>利潤只抓6-7%，敢把成本秀給客人看。收購報價的依據我們都可以解釋給您聽，不是拍腦袋出個數字打發您。</p>
+        </div>
+        <div class="reason-card reveal" data-num="05">
+            <span class="reason-icon">🤝</span>
+            <h3>不強迫成交</h3>
+            <p>鑑定完之後，您覺得價格不合理可以直接走，不會有任何催促或施壓。我們只做雙方都滿意的交易。</p>
+        </div>
+        <div class="reason-card reveal" data-num="06">
+            <span class="reason-icon">⭐</span>
+            <h3>售出200台・0負評</h3>
+            <p>從不要求顧客評論，Google 評分依然 5.0 滿分。收購服務延伸自同一套誠實做事的原則，品質與口碑一致。</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── WHAT WE BUY ── -->
+<section class="types-section">
+    <div class="types-container">
+        <div class="types-header">
+            <span class="section-tag reveal">What We Accept</span>
+            <h2 class="section-title reveal">收購車款範圍</h2>
+            <p class="section-desc reveal">原則上各品牌、各年份均可評估，以下為主要收購範圍</p>
+        </div>
+        <div class="types-grid">
+            <div class="type-card reveal">
+                <div class="type-icon-wrap">🇺🇸</div>
+                <div class="type-info">
+                    <h4>美規外匯車</h4>
+                    <p>我們的專業核心，最了解美規車的市場行情與車況評估，給出最準確的收購價。</p>
+                </div>
+            </div>
+            <div class="type-card reveal">
+                <div class="type-icon-wrap">🏎️</div>
+                <div class="type-info">
+                    <h4>日系進口車</h4>
+                    <p>Toyota、Honda、Mazda、Subaru 等日系品牌均可評估，年份與里程依實際車況定價。</p>
+                </div>
+            </div>
+            <div class="type-card reveal">
+                <div class="type-icon-wrap">🇩🇪</div>
+                <div class="type-info">
+                    <h4>歐系豪華品牌</h4>
+                    <p>BMW、Benz、Audi、Volvo 等歐系車型均可收購，名車也能賣出應有身價。</p>
+                </div>
+            </div>
+            <div class="type-card reveal">
+                <div class="type-icon-wrap">🔋</div>
+                <div class="type-info">
+                    <h4>電動車 / 油電車</h4>
+                    <p>Tesla、Toyota Hybrid 等新能源車型，專業評估電池健康度，給出合理市價。</p>
+                </div>
+            </div>
+            <div class="type-card reveal">
+                <div class="type-icon-wrap">🚙</div>
+                <div class="type-info">
+                    <h4>國產中古車</h4>
+                    <p>Toyota、Ford、Mitsubishi 等國產品牌同樣收購，車況良好者優先，里程不限。</p>
+                </div>
+            </div>
+            <div class="type-card reveal">
+                <div class="type-icon-wrap">❓</div>
+                <div class="type-info">
+                    <h4>其他車款</h4>
+                    <p>不確定自己的車能不能賣？直接來電或加LINE，提供車型資訊，我們協助評估。</p>
+                </div>
+            </div>
+        </div>
+        <div class="not-buy reveal">
+            <h4>⚠️ 以下情況恕無法收購</h4>
+            <p>重大結構損壞、泡水車、火燒車、車體嚴重鏽蝕、無法發動或行駛、產權糾紛或貸款未清償的車輛。若有疑問歡迎直接詢問，我們會如實告知。</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── QUOTE FORM ── -->
+<section class="quote-section" id="quote-form">
+    <div class="quote-wrapper">
+
+        <!-- 左：說明 -->
+        <div class="quote-left reveal-left">
+            <span class="section-tag">Free Estimate</span>
+            <h2 class="section-title" style="font-size:44px;">
+                免費預約<br><span style="color:var(--gold)">估價服務</span>
+            </h2>
+            <p style="font-size:16px; color:var(--text-gray); line-height:2; margin-bottom:35px;">
+                填寫下方表單，我們會在<strong style="color:#fff">營業時間內盡快與您聯絡</strong>，先初步了解車況，再安排到店估價。
+            </p>
+
+            <div class="form-promises">
+                <div class="form-promise-item">
+                    <span class="form-promise-icon">⚡</span>
+                    <div>
+                        <strong>快速回覆</strong>
+                        <p>營業時間內收到表單，通常在 1 小時內聯絡</p>
+                    </div>
+                </div>
+                <div class="form-promise-item">
+                    <span class="form-promise-icon">🔒</span>
+                    <div>
+                        <strong>資料保密</strong>
+                        <p>您的個人資訊僅供本次估價使用，絕不外流</p>
+                    </div>
+                </div>
+                <div class="form-promise-item">
+                    <span class="form-promise-icon">🚫</span>
+                    <div>
+                        <strong>無強迫成交</strong>
+                        <p>報價後不滿意可直接離開，絕無任何壓力</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alt-contact">
+                <p style="font-size:13px; color:var(--text-gray); margin-bottom: 15px;">或直接聯絡我們：</p>
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                    <a href="tel:0979226338" class="alt-btn"><i class="fas fa-phone"></i> 0979-226-338</a>
+                    <a href="https://lin.ee/mDzezrK" target="_blank" class="alt-btn alt-btn-line"><i class="fab fa-line"></i> 加LINE</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右：表單 -->
+        <div class="quote-right reveal-right">
+            <div class="form-card" id="formCard">
+                <div class="form-header">
+                    <h3>愛車估價預約</h3>
+                    <p>填寫越詳細，我們越能給您準確的初步估價</p>
+                </div>
+
+                <div id="quoteForm">
+                    <!-- 聯絡資訊 -->
+                    <div class="form-group">
+                        <label class="form-label">您的姓名 <span class="req">*</span></label>
+                        <input type="text" class="form-input" id="f_name" placeholder="王小明">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">聯絡電話 <span class="req">*</span></label>
+                            <input type="tel" class="form-input" id="f_phone" placeholder="09XX-XXX-XXX">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">偏好聯絡方式</label>
+                            <select class="form-input form-select" id="f_contact">
+                                <option value="">請選擇</option>
+                                <option>電話</option>
+                                <option>LINE</option>
+                                <option>均可</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-divider"><span>車輛資訊</span></div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">品牌 <span class="req">*</span></label>
+                            <input type="text" class="form-input" id="f_brand" placeholder="例：Toyota">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">車款 <span class="req">*</span></label>
+                            <input type="text" class="form-input" id="f_model" placeholder="例：Camry">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">年份</label>
+                            <input type="text" class="form-input" id="f_year" placeholder="例：2020">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">目前里程（公里）</label>
+                            <input type="text" class="form-input" id="f_km" placeholder="例：80,000">
+                        </div>
+                    </div>
+
+                    <!-- 出售原因 -->
+                    <div class="form-group">
+                        <label class="form-label">出售原因</label>
+                        <div class="reason-chips" id="reasonChips">
+                            <span class="chip" data-val="換新車">🔄 想換新車</span>
+                            <span class="chip" data-val="急需現金">💸 急需現金</span>
+                            <span class="chip" data-val="移民出國">✈️ 移民・出國</span>
+                            <span class="chip" data-val="舊車脫手">📦 舊車想脫手</span>
+                            <span class="chip" data-val="Win²方案">🤝 想了解Win²方案</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">備註（車況、改裝、事故歷史等）</label>
+                        <textarea class="form-input form-textarea" id="f_note" placeholder="例：曾修過右前葉子板、輪胎近期換新…"></textarea>
+                    </div>
+
+                    <button class="form-submit" id="submitBtn" onclick="submitForm()">
+                        <span id="submitText">送出預約估價</span>
+                        <i class="fas fa-arrow-right" id="submitIcon"></i>
+                    </button>
+                    <p class="form-note">* 為必填欄位。資料僅供本次估價使用。</p>
+                </div>
+
+                <!-- 成功畫面 -->
+                <div id="formSuccess" style="display:none; text-align:center; padding: 60px 20px;">
+                    <div style="font-size:60px; margin-bottom:20px;">✅</div>
+                    <h3 style="font-size:26px; color:var(--gold); margin-bottom:15px;">已收到您的預約！</h3>
+                    <p style="color:var(--text-gray); line-height:2; font-size:15px; margin-bottom:30px;">
+                        我們會在營業時間內盡快聯絡您。<br>如有急事也可直接撥打：
+                    </p>
+                    <a href="tel:0979226338" class="btn-primary" style="display:inline-block;">📞 0979-226-338</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 底部聯絡資訊列 -->
+    <div class="contact-bar">
+        <a href="https://maps.app.goo.gl/JbWz8W7Ny3a5bAj9A" target="_blank" class="contact-mini reveal">
+            <span class="icon">📍</span>
+            <h4>展示中心</h4>
+            <p>高雄市仁武區鳳仁路 3-36 號</p>
+        </a>
+        <div class="contact-mini reveal">
+            <span class="icon">🕐</span>
+            <h4>營業時間</h4>
+            <p>週二至週日 10:30 – 19:00（週一公休）</p>
+        </div>
+        <a href="tel:07-7352855" class="contact-mini reveal">
+            <span class="icon">📞</span>
+            <h4>市話</h4>
+            <p>07-7352855</p>
+        </a>
+    </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="footer-content">
+        <div>
+            <div class="logo-text" style="margin-bottom:25px;">
+                <div class="zh" style="color:#fff; font-size:20px;">耀笙國際汽車</div>
+                <div class="en" style="color:var(--gold); font-size:11px;">Y.S. AUTOS</div>
+                <div class="since" style="color:var(--text-gray); font-size:9px; letter-spacing:1px; margin-top:2px;">SINCE 2020</div>
+            </div>
+            <p style="color:var(--text-gray); font-size:14px; line-height:1.8;">
+                專業透明的中古車專家，用誠實改變二手車市場。<br>每一台車都經過專業把關，每一筆交易都完全透明。
+            </p>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank" class="social-btn"><i class="fab fa-line"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4 style="color:#fff; margin-bottom:25px;">快速連結</h4>
+            <ul>
+                <li><a href="https://ys-autos.com/#owner">認識我們</a></li>
+                <li><a href="https://ys-autos.com/#philosophy">經營理念</a></li>
+                <li><a href="https://ys-autos.com/#services">服務項目</a></li>
+                <li><a href="https://ys-autos.com/#reviews">顧客推薦</a></li>
+                <li><a href="https://ys-autos.com/prove">成交見證</a></li>
+                <li><a href="https://ys-autos.com/buyback">高價收購</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4 style="color:#fff; margin-bottom:25px;">服務項目</h4>
+            <ul>
+                <li><a href="#">CPO原廠認證車</a></li>
+                <li><a href="#">美規外匯車</a></li>
+                <li><a href="#">代辦外匯車</a></li>
+                <li><a href="#">中古車買賣</a></li>
+                <li><a href="#">代客尋車</a></li>
+                <li><a href="#">汽車貸款</a></li>
+                <li><a href="#">車輛保險</a></li>
+                <li><a href="#">愛車寄售</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4 style="color:#fff; margin-bottom:25px;">聯絡資訊</h4>
+            <p style="color:var(--text-gray); font-size:14px; line-height:2;">
+                電話: 07-7352855<br>
+                手機: 0979-226-338<br>
+                地址: 高雄市仁武區鳳仁路 3-36 號<br>
+                信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color:inherit; text-decoration:none;">yaosheng.inc@gmail.com</a><br><br>
+                <span style="color:var(--gold);">營業時間</span><br>
+                週二至週日 10:30 – 19:00<br>
+                <span style="color:#666;">週一公休</span>
+            </p>
+        </div>
+    </div>
+    <div style="text-align:center; padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); color:#666; font-size:12px; margin-top:50px;">
+        © 2026 Y.S. AUTOS 耀笙國際汽車. All Rights Reserved.
+    </div>
+</footer>
+
+<!-- 懸浮導覽選單（手機版）-->
+<div class="fab-wrapper" id="fabWrapper">
+    <div class="fab-menu" id="fabMenu">
+        <div class="fab-item"><a href="https://ys-autos.com/import-cars"><i class="fas fa-ship"></i>外匯車介紹</a></div>
+        <div class="fab-item"><a href="https://ys-autos.com/#guarantee"><i class="fas fa-shield-alt"></i>安心保證</a></div>
+        <div class="fab-item"><a href="https://ys-autos.com/#after-sales"><i class="fas fa-user-gear"></i>一條龍服務</a></div>
+        <div class="fab-item"><a href="https://ys-autos.com/#reviews"><i class="fas fa-star"></i>顧客推薦</a></div>
+        <div class="fab-item"><a href="https://ys-autos.com/prove"><i class="fas fa-check-circle"></i>成交見證</a></div>
+        <div class="fab-item"><a href="https://ys-autos.com/#owner"><i class="fas fa-user"></i>認識我們</a></div>
+    </div>
+    <button class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="開啟選單">選單</button>
+</div>
+
+<a href="https://ys-autos.com/inventory" class="floating-inventory" aria-label="在庫車輛"><i class="fas fa-car"></i>在庫車輛</a>
+
+<a href="#quote-form" class="floating-cta">📋 免費預約估價</a>
+
+<script>
+    // ── NAV 滾動效果 ──
+    window.addEventListener('scroll', function () {
+        document.getElementById('navbar').classList.toggle('nav-scrolled', window.scrollY > 50);
+        revealAll();
+    });
+
+    // ── Reveal 動畫 ──
+    function revealAll() {
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add('active');
+        });
+    }
+    window.addEventListener('load', revealAll);
+
+    // ── FAB 懸浮選單 ──
+    var fabOpen = false;
+    function toggleFab() {
+        fabOpen = !fabOpen;
+        document.getElementById('fabTrigger').classList.toggle('open', fabOpen);
+        document.querySelectorAll('.fab-item').forEach(function(item) { item.classList.toggle('visible', fabOpen); });
+    }
+    function closeFab() {
+        fabOpen = false;
+        var trigger = document.getElementById('fabTrigger');
+        if (trigger) trigger.classList.remove('open');
+        document.querySelectorAll('.fab-item').forEach(function(item) { item.classList.remove('visible'); });
+    }
+    document.addEventListener('click', function(e) {
+        var wrapper = document.getElementById('fabWrapper');
+        if (wrapper && !wrapper.contains(e.target)) closeFab();
+    });
+
+    // ── Chips toggle ──
+    document.querySelectorAll('.chip').forEach(chip => {
+        chip.addEventListener('click', () => chip.classList.toggle('selected'));
+    });
+
+    // ── Form submission ──
+    function submitForm() {
+        const name = document.getElementById('f_name');
+        const phone = document.getElementById('f_phone');
+        const brand = document.getElementById('f_brand');
+        const model = document.getElementById('f_model');
+        let valid = true;
+
+        [name, phone, brand, model].forEach(el => {
+            el.classList.remove('form-error');
+            const next = el.nextElementSibling;
+            if (next && next.classList.contains('error-msg')) next.remove();
+        });
+
+        function markError(el, msg) {
+            el.classList.add('form-error');
+            const span = document.createElement('span');
+            span.className = 'error-msg';
+            span.textContent = msg;
+            el.parentNode.appendChild(span);
+            valid = false;
+        }
+
+        if (!name.value.trim()) markError(name, '請填寫姓名');
+        if (!phone.value.trim()) markError(phone, '請填寫聯絡電話');
+        if (!brand.value.trim()) markError(brand, '請填寫車輛品牌');
+        if (!model.value.trim()) markError(model, '請填寫車款');
+        if (!valid) return;
+
+        const btn = document.getElementById('submitBtn');
+        btn.classList.add('loading');
+        document.getElementById('submitText').textContent = '送出中…';
+
+        const reasons = [...document.querySelectorAll('.chip.selected')].map(c => c.dataset.val).join(', ') || '未填寫';
+        const subject = encodeURIComponent(`【耀笙收購估價預約】${brand.value} ${model.value} - ${name.value}`);
+        const body = encodeURIComponent(
+            `姓名：${name.value}\n電話：${phone.value}\n聯絡方式：${document.getElementById('f_contact').value || '均可'}\n\n` +
+            `品牌：${brand.value}\n車款：${model.value}\n年份：${document.getElementById('f_year').value || '未填'}\n` +
+            `里程：${document.getElementById('f_km').value || '未填'}\n出售原因：${reasons}\n\n備註：${document.getElementById('f_note').value || '無'}`
+        );
+
+        setTimeout(() => {
+            document.getElementById('quoteForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+            window.location.href = `mailto:yaosheng.inc@gmail.com?subject=${subject}&body=${body}`;
+        }, 800);
+    }
+</script>
+
+<style>
+    @keyframes fadeInLeft { from{opacity:0;transform:translateX(-40px)} to{opacity:1;transform:translateX(0)} }
+    @keyframes fadeInRight { from{opacity:0;transform:translateX(40px)} to{opacity:1;transform:translateX(0)} }
+</style>
+
+</body>
+</html>
