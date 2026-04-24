@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="成鑫汽車位於高雄市鳳山區，專營中古車買賣，Honda銷冠出身、中華賓士金牌銷售，累積超過1000台銷售經驗，誠信、服務、品質是我們的核心。">
+    <meta name="robots" content="index,follow">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="成鑫汽車｜高雄鳳山中古車推薦・誠信・服務・品質">
+    <meta property="og:description" content="Honda銷冠×中華賓士金牌銷售，累積超過1000台，第三方認證，絕無事故泡水車，誠信經營。">
+    <meta property="og:image" content="https://i.ibb.co/SDMWD4PJ/CX-LOGO.png">
+    <title>成鑫汽車｜高雄鳳山中古車推薦・誠信・服務・品質</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:      #1c1c1c;
+            --bg2:     #232323;
+            --bg3:     #2a2a2a;
+            --bg4:     #303030;
+            --gold:    #c9a227;
+            --gold-lt: #e2b93b;
+            --gold-dk: #a0821a;
+            --silver:  #c8c8c8;
+            --silver-lt:#e8e8e8;
+            --muted:   #888;
+            --line:    rgba(201,162,39,0.18);
+        }
+
+        /* ── DIAGONAL STRIPE TEXTURE (logo-matching) ── */
+        .stripe-bg {
+            background-color: var(--bg);
+            background-image: repeating-linear-gradient(
+                -55deg,
+                transparent,
+                transparent 18px,
+                rgba(255,255,255,0.025) 18px,
+                rgba(255,255,255,0.025) 19px
+            );
+        }
+        .stripe-bg2 {
+            background-color: var(--bg2);
+            background-image: repeating-linear-gradient(
+                -55deg,
+                transparent,
+                transparent 18px,
+                rgba(255,255,255,0.02) 18px,
+                rgba(255,255,255,0.02) 19px
+            );
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--bg);
+            color: var(--silver-lt);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            transition: all 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(28,28,28,0.97);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--line);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.6);
+        }
+        .nav-inner {
+            max-width: 1400px; margin: 0 auto;
+            padding: 20px 60px;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: padding 0.3s;
+        }
+        nav.scrolled .nav-inner { padding: 13px 60px; }
+        .logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .logo-wrap img { height: 50px; width: auto; object-fit: contain; }
+        .logo-text .zh { font-size: 19px; font-weight: 700; color: #fff; letter-spacing: 3px; }
+        .logo-text .en { font-family: 'Cormorant Garamond'; font-size: 10px; color: var(--gold); letter-spacing: 3px; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--silver); font-size: 13px; font-weight: 500;
+            position: relative; padding-bottom: 4px; transition: color 0.25s;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 1.5px; background: var(--gold); transition: width 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold-lt); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .nav-social a { color: var(--gold); font-size: 17px; margin-left: 14px; transition: 0.25s; }
+        .nav-social a:hover { color: var(--gold-lt); }
+        .nav-cta {
+            padding: 9px 22px; border: 1.5px solid var(--gold);
+            color: var(--gold); font-size: 12px; font-weight: 600;
+            text-decoration: none; transition: 0.3s; letter-spacing: 0.5px;
+        }
+        .nav-cta:hover { background: var(--gold); color: #111; }
+        .mobile-menu-btn {
+            display: none; background: none; border: none;
+            color: var(--gold); font-size: 22px; cursor: pointer;
+        }
+        .mobile-menu {
+            display: none; position: fixed; top: 0; right: -100%;
+            width: 280px; height: 100vh; background: var(--bg2);
+            border-left: 1px solid var(--line);
+            z-index: 9999; transition: right 0.3s ease;
+            padding: 80px 30px 30px; overflow-y: auto;
+        }
+        .mobile-menu.open { right: 0; }
+        .mobile-menu-close {
+            position: absolute; top: 20px; right: 20px;
+            background: none; border: none; color: var(--gold);
+            font-size: 26px; cursor: pointer;
+        }
+        .mobile-menu ul { list-style: none; }
+        .mobile-menu ul li { margin-bottom: 6px; }
+        .mobile-menu ul li a {
+            color: var(--silver-lt); text-decoration: none; font-size: 16px;
+            display: block; padding: 13px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06); transition: 0.25s;
+        }
+        .mobile-menu ul li a:hover { color: var(--gold); padding-left: 10px; }
+        .overlay-bg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 9998; }
+        .overlay-bg.open { display: block; }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; padding-top: 80px;
+            background-color: var(--bg);
+        }
+        .hero-bg-stripe {
+            position: absolute; inset: 0;
+            background-image: repeating-linear-gradient(
+                -55deg,
+                transparent, transparent 22px,
+                rgba(255,255,255,0.028) 22px,
+                rgba(255,255,255,0.028) 23px
+            );
+            z-index: 0;
+        }
+        .hero-bg-photo {
+            position: absolute;
+            top: 80px; left: 5%; right: 5%;
+            bottom: 60px;
+            background: url('https://i.ibb.co/1tcLGGJh/shop.webp') center center / cover no-repeat;
+            opacity: 0.22;
+            border-radius: 4px;
+            z-index: 1;
+        }
+        .hero-bg-vignette {
+            position: absolute;
+            top: 80px; left: 5%; right: 5%;
+            bottom: 60px;
+            background: radial-gradient(ellipse at center, transparent 25%, rgba(28,28,28,0.82) 100%);
+            border-radius: 4px;
+            z-index: 2;
+        }
+        .hero-gold-line {
+            position: absolute; left: 0; top: 0;
+            width: 3px; height: 100%;
+            background: linear-gradient(180deg, transparent, var(--gold) 25%, var(--gold) 75%, transparent);
+            z-index: 4;
+        }
+        .hero-gold-line-r {
+            position: absolute; right: 0; top: 0;
+            width: 3px; height: 100%;
+            background: linear-gradient(180deg, transparent, var(--gold-dk) 25%, var(--gold-dk) 75%, transparent);
+            z-index: 4;
+        }
+        .hero-content {
+            position: relative; z-index: 5;
+            max-width: 1000px; padding: 0 60px;
+            text-align: center;
+        }
+        .hero-eyebrow {
+            font-size: 10px; letter-spacing: 6px;
+            color: var(--gold); margin-bottom: 26px; font-weight: 500;
+            text-transform: uppercase;
+            display: flex; align-items: center; justify-content: center; gap: 14px;
+        }
+        .hero-eyebrow::before, .hero-eyebrow::after {
+            content: ''; width: 50px; height: 1px; background: var(--gold);
+        }
+        .logo-hero { height: 120px; width: auto; margin-bottom: 30px; }
+        .hero-tagline {
+            font-size: 16px; color: var(--silver); letter-spacing: 10px;
+            margin-bottom: 44px; font-weight: 300;
+        }
+        .hero-pillars {
+            display: flex; justify-content: center; gap: 0;
+            margin-bottom: 52px;
+        }
+        .pillar {
+            padding: 16px 36px;
+            border: 1px solid var(--line);
+            position: relative;
+            background: rgba(201,162,39,0.04);
+        }
+        .pillar + .pillar { border-left: none; }
+        .pillar-icon { font-size: 20px; display: block; margin-bottom: 7px; }
+        .pillar-zh { font-size: 15px; color: var(--gold-lt); font-weight: 600; letter-spacing: 4px; }
+        .pillar-en { font-size: 9px; color: var(--muted); letter-spacing: 2px; margin-top: 4px; }
+        .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-gold {
+            background: var(--gold); color: #111;
+            padding: 15px 42px; font-size: 13px; font-weight: 700;
+            text-decoration: none; transition: 0.3s; letter-spacing: 1px;
+            display: inline-block;
+        }
+        .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(201,162,39,0.35); }
+        .btn-outline-gold {
+            border: 1.5px solid var(--gold); color: var(--gold);
+            padding: 15px 42px; font-size: 13px; font-weight: 600;
+            text-decoration: none; transition: 0.3s; display: inline-block; letter-spacing: 1px;
+        }
+        .btn-outline-gold:hover { background: var(--gold); color: #111; transform: translateY(-2px); }
+        .hero-scroll {
+            position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+            color: var(--gold); font-size: 10px; letter-spacing: 3px;
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            animation: bounce 2.2s infinite; z-index: 5;
+        }
+        @keyframes bounce {
+            0%,100%{transform:translateX(-50%) translateY(0)}
+            50%{transform:translateX(-50%) translateY(7px)}
+        }
+
+        /* ── STATS BAR ── */
+        .stats-bar {
+            background: var(--gold);
+            padding: 26px 60px;
+        }
+        .stats-inner {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(4,1fr);
+            text-align: center;
+        }
+        .stat-item { padding: 0 20px; border-right: 1px solid rgba(0,0,0,0.15); }
+        .stat-item:last-child { border-right: none; }
+        .stat-num { font-family:'Cormorant Garamond'; font-size: 42px; font-weight: 700; color: #111; line-height: 1; }
+        .stat-label { font-size: 11px; color: rgba(0,0,0,0.65); letter-spacing: 2px; margin-top: 6px; font-weight: 600; }
+
+        /* ── COMMON ── */
+        section { padding: 110px 60px; }
+        .section-tag {
+            font-size: 10px; letter-spacing: 5px; color: var(--gold);
+            margin-bottom: 16px; font-weight: 500; display: block; text-transform: uppercase;
+        }
+        .section-title {
+            font-family:'Cormorant Garamond',serif;
+            font-size: 52px; font-weight: 700; color: #fff; margin-bottom: 18px;
+        }
+        .section-desc { font-size: 16px; color: var(--muted); line-height: 1.9; max-width: 760px; }
+        .section-divider {
+            width: 60px; height: 2px; background: var(--gold); margin: 20px auto 0;
+        }
+
+        /* ── ABOUT / SHOP ── */
+        .about-section { background: var(--bg2); }
+        .about-grid {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+        }
+        .shop-img-wrap { position: relative; }
+        .shop-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border: 1px solid var(--line);
+            display: block;
+        }
+        .shop-badge {
+            position: absolute; bottom: -22px; right: -22px;
+            background: var(--gold); color: #111;
+            padding: 22px 28px; text-align: center;
+        }
+        .shop-badge .big { font-family:'Cormorant Garamond'; font-size: 36px; font-weight: 700; display: block; line-height: 1; }
+        .shop-badge .sm { font-size: 11px; display: block; margin-top: 4px; letter-spacing: 1px; font-weight: 600; }
+        .about-text h3 { font-size: 28px; color: var(--gold-lt); margin-bottom: 22px; font-weight: 600; }
+        .about-text p { font-size: 15px; color: var(--silver); line-height: 2.1; margin-bottom: 18px; }
+        .highlight { color: var(--gold-lt); font-weight: 600; }
+        .career-list { list-style: none; margin-top: 28px; }
+        .career-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex; align-items: center; gap: 15px;
+            color: var(--silver); font-size: 14px;
+        }
+        .career-list li i { color: var(--gold); font-size: 17px; flex-shrink: 0; }
+
+        /* ── GUARANTEE ── */
+        .guarantee { }
+        .guarantee-header { text-align: center; margin-bottom: 70px; }
+        .guarantee-grid {
+            display: grid; grid-template-columns: repeat(4,1fr);
+            gap: 1px; background: var(--line);
+            max-width: 1400px; margin: 0 auto;
+        }
+        .g-card {
+            background: var(--bg2); padding: 46px 30px; text-align: center;
+            transition: 0.35s; position: relative; overflow: hidden;
+        }
+        .g-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--gold-dk), var(--gold-lt));
+            transform: scaleX(0); transition: 0.35s;
+        }
+        .g-card:hover { background: var(--bg3); }
+        .g-card:hover::before { transform: scaleX(1); }
+        .g-icon { font-size: 38px; margin-bottom: 20px; display: block; }
+        .g-card h4 { font-size: 17px; color: var(--gold-lt); margin-bottom: 13px; font-weight: 600; }
+        .g-card p { font-size: 13px; color: var(--muted); line-height: 1.85; }
+
+        /* ── PROCESS ── */
+        .process-header { text-align: center; margin-bottom: 70px; }
+        .process-steps {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(5,1fr);
+            gap: 0; position: relative;
+        }
+        .process-steps::before {
+            content: ''; position: absolute;
+            top: 31px; left: 10%; right: 10%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .step { text-align: center; padding: 0 14px; }
+        .step-num {
+            width: 62px; height: 62px; border-radius: 50%;
+            background: var(--bg2); border: 2px solid var(--gold);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 22px;
+            font-family:'Cormorant Garamond'; font-size: 24px; font-weight: 700; color: var(--gold);
+            position: relative; z-index: 1;
+        }
+        .step h4 { font-size: 14px; color: #fff; margin-bottom: 9px; font-weight: 600; }
+        .step p { font-size: 12px; color: var(--muted); line-height: 1.8; }
+
+        /* ── REVIEWS ── */
+        .reviews-header { text-align: center; margin-bottom: 24px; }
+        .rating-badge {
+            display: inline-flex; align-items: center; gap: 18px;
+            background: var(--bg3); padding: 18px 38px;
+            border: 1px solid var(--line); margin-bottom: 56px;
+        }
+        .r-score { font-family:'Cormorant Garamond'; font-size: 42px; font-weight: 700; color: var(--gold); }
+        .r-stars { color: var(--gold); font-size: 22px; }
+        .r-txt { font-size: 12px; color: var(--muted); }
+        .reviews-grid {
+            display: grid; grid-template-columns: repeat(3,1fr);
+            gap: 22px; max-width: 1400px; margin: 0 auto 48px;
+        }
+        .review-card {
+            background: var(--bg2); padding: 30px;
+            border: 1px solid rgba(255,255,255,0.04); transition: 0.3s;
+        }
+        .review-card:hover { border-color: var(--line); transform: translateY(-4px); }
+        .rv-head { display: flex; align-items: center; gap: 13px; margin-bottom: 16px; }
+        .rv-avatar {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--gold); color: #111;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 17px; font-weight: 700; flex-shrink: 0;
+        }
+        .rv-name { font-size: 14px; color: #fff; font-weight: 600; }
+        .rv-stars { color: var(--gold); font-size: 12px; }
+        .rv-text { font-size: 13px; color: var(--silver); line-height: 1.9; }
+
+        /* ── SERVICES ── */
+        .services-header { text-align: center; margin-bottom: 70px; }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(3,1fr);
+            gap: 22px; max-width: 1400px; margin: 0 auto;
+        }
+        .svc-card {
+            padding: 42px 30px; text-align: center; transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative; overflow: hidden;
+        }
+        .svc-card::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, var(--gold-dk), var(--gold-lt));
+            transition: width 0.4s;
+        }
+        .svc-card:hover { border-color: var(--line); transform: translateY(-6px); }
+        .svc-card:hover::after { width: 100%; }
+        .svc-icon { font-size: 42px; margin-bottom: 18px; display: block; }
+        .svc-card h4 { font-size: 19px; color: var(--gold-lt); margin-bottom: 12px; font-weight: 600; }
+        .svc-card p { font-size: 13px; color: var(--muted); line-height: 1.85; }
+
+        /* ── CONTACT ── */
+        .contact-header { text-align: center; margin-bottom: 70px; }
+        .contact-grid {
+            display: grid; grid-template-columns: repeat(4,1fr);
+            gap: 18px; max-width: 1400px; margin: 0 auto;
+        }
+        .contact-card {
+            padding: 38px 26px; text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s; text-decoration: none; color: inherit; display: block;
+            background: var(--bg3);
+        }
+        .contact-card:hover { border-color: var(--line); transform: translateY(-6px); }
+        .c-icon { font-size: 26px; margin-bottom: 16px; display: block; }
+        .contact-card h4 { font-size: 14px; color: var(--gold-lt); margin-bottom: 11px; font-weight: 600; }
+        .contact-card p { font-size: 13px; color: var(--silver); line-height: 1.85; }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 68px 60px 34px;
+            border-top: 1px solid var(--line);
+            background-color: var(--bg2);
+            background-image: repeating-linear-gradient(
+                -55deg, transparent, transparent 18px,
+                rgba(255,255,255,0.018) 18px, rgba(255,255,255,0.018) 19px
+            );
+        }
+        .footer-inner {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px;
+        }
+        .footer-desc { color: var(--muted); font-size: 14px; line-height: 1.9; margin-top: 18px; }
+        .footer-socials { display: flex; gap: 10px; margin-top: 22px; }
+        .social-btn {
+            width: 36px; height: 36px;
+            background: rgba(201,162,39,0.08);
+            border: 1px solid var(--line);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gold); text-decoration: none; transition: 0.3s;
+        }
+        .social-btn:hover { background: var(--gold); color: #111; }
+        .footer-col h4 { color: var(--gold-lt); margin-bottom: 18px; font-size: 13px; font-weight: 600; letter-spacing: 1px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 9px; }
+        .footer-col ul li a { color: var(--muted); text-decoration: none; font-size: 13px; transition: 0.25s; }
+        .footer-col ul li a:hover { color: var(--gold); }
+        .footer-col p { color: var(--muted); font-size: 13px; line-height: 2.1; }
+        .footer-bottom {
+            max-width: 1400px; margin: 48px auto 0;
+            padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center; color: var(--muted); font-size: 11px;
+        }
+
+        /* ── FLOATING CALL BTN ── */
+        .float-call {
+            position: fixed; bottom: 26px; right: 26px;
+            background: var(--gold); color: #111;
+            padding: 15px 28px; border-radius: 40px;
+            font-weight: 700; font-size: 13px; letter-spacing: 0.5px;
+            text-decoration: none; z-index: 999; transition: 0.3s;
+            box-shadow: 0 8px 24px rgba(201,162,39,0.45);
+        }
+        .float-call:hover { background: var(--gold-lt); transform: translateY(-4px); box-shadow: 0 14px 32px rgba(226,185,59,0.55); }
+
+        /* ── REVEAL ── */
+        .reveal { opacity: 0; transform: translateY(26px); transition: all 0.65s cubic-bezier(0.4,0,0.2,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ── RWD ── */
+        @media (max-width: 968px) {
+            .nav-links, .nav-social, .nav-cta { display: none; }
+            .mobile-menu-btn { display: block; }
+            .mobile-menu { display: block; }
+            .nav-inner { padding: 16px 22px !important; }
+            .logo-hero { height: 80px; }
+            .hero-content { padding: 0 24px; }
+            .hero-pillars { flex-wrap: wrap; }
+            .pillar { flex: 1; min-width: 90px; padding: 14px 16px; }
+            section { padding: 72px 24px; }
+            .stats-inner { grid-template-columns: 1fr 1fr; }
+            .stat-item:nth-child(2) { border-right: none; }
+            .stat-item:nth-child(4) { border-right: none; }
+            .about-grid { grid-template-columns: 1fr; gap: 50px; }
+            .shop-badge { bottom: -14px; right: 10px; }
+            .guarantee-grid { grid-template-columns: 1fr 1fr; }
+            .process-steps { grid-template-columns: 1fr 1fr; gap: 36px; }
+            .process-steps::before { display: none; }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .contact-grid { grid-template-columns: 1fr 1fr; }
+            .footer-inner { grid-template-columns: 1fr; gap: 38px; }
+            .float-call { bottom: 18px; right: 14px; font-size: 12px; padding: 13px 20px; }
+        }
+        @media (max-width: 580px) {
+            .guarantee-grid, .services-grid, .contact-grid { grid-template-columns: 1fr; }
+            .stats-inner { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "成鑫汽車",
+      "alternateName": "成鑫汽車 CX Automobile",
+      "telephone": "+886-971-436-636",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "鳳甲二街50-1號",
+        "addressLocality": "鳳山區",
+        "addressRegion": "高雄市",
+        "addressCountry": "TW"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "09:30",
+        "closes": "19:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/p/%E6%88%90%E9%91%AB%E6%B1%BD%E8%BB%8A-100083297922949/",
+        "https://www.instagram.com/chengxincar/"
+      ]
+    }
+    </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="#" class="logo-wrap">
+            <img src="https://i.ibb.co/SDMWD4PJ/CX-LOGO.png" alt="成鑫汽車 CX Automobile">
+            <div class="logo-text">
+                <div class="zh">成鑫汽車</div>
+                <div class="en">CX AUTOMOBILE · SINCE 2022</div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#guarantee">安心保證</a></li>
+            <li><a href="#about">認識我們</a></li>
+            <li><a href="#process">購車流程</a></li>
+            <li><a href="#services">服務項目</a></li>
+            <li><a href="#reviews">顧客好評</a></li>
+            <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="nav-social">
+                <a href="https://www.facebook.com/p/%E6%88%90%E9%91%AB%E6%B1%BD%E8%BB%8A-100083297922949/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/chengxincar/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <a href="tel:0971436636" class="nav-cta">立即來電</a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+        </div>
+    </div>
+</nav>
+
+<div class="overlay-bg" id="overlay" onclick="closeMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMenu()"><i class="fas fa-times"></i></button>
+    <ul>
+        <li><a href="#guarantee" onclick="closeMenu()">安心保證</a></li>
+        <li><a href="#about" onclick="closeMenu()">認識我們</a></li>
+        <li><a href="#process" onclick="closeMenu()">購車流程</a></li>
+        <li><a href="#services" onclick="closeMenu()">服務項目</a></li>
+        <li><a href="#reviews" onclick="closeMenu()">顧客好評</a></li>
+        <li><a href="#contact" onclick="closeMenu()">聯絡我們</a></li>
+    </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg-photo"></div>
+    <div class="hero-bg-stripe"></div>
+    <div class="hero-bg-vignette"></div>
+    <div class="hero-gold-line"></div>
+    <div class="hero-gold-line-r"></div>
+    <div class="hero-content">
+        <div class="hero-eyebrow">SINCE 2022 &nbsp;·&nbsp; 高雄鳳山 &nbsp;·&nbsp; CX AUTOMOBILE</div>
+        <h1 style="font-family:'Cormorant Garamond',serif; font-size:90px; font-weight:700; color:#fff; line-height:1.05; margin-bottom:12px; text-shadow: 0 2px 20px rgba(0,0,0,0.8);">成鑫<span style="color:var(--gold);">汽車</span></h1>
+        <p class="hero-tagline">買車賣車　找銷冠</p>
+        <div class="hero-pillars">
+            <div class="pillar">
+                <span class="pillar-icon">🤝</span>
+                <div class="pillar-zh">誠信</div>
+                <div class="pillar-en">INTEGRITY</div>
+            </div>
+            <div class="pillar">
+                <span class="pillar-icon">⭐</span>
+                <div class="pillar-zh">服務</div>
+                <div class="pillar-en">SERVICE</div>
+            </div>
+            <div class="pillar">
+                <span class="pillar-icon">💎</span>
+                <div class="pillar-zh">品質</div>
+                <div class="pillar-en">QUALITY</div>
+            </div>
+        </div>
+        <div class="hero-btns">
+            <a href="#about" class="btn-gold">認識我們</a>
+            <a href="tel:0971436636" class="btn-outline-gold">📞 立即諮詢</a>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <span>SCROLL</span>
+        <i class="fas fa-chevron-down" style="font-size:9px;"></i>
+    </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <div class="stat-num">1000<span style="font-size:24px;">+</span></div>
+            <div class="stat-label">累積銷售台數</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">5.0</div>
+            <div class="stat-label">Google 評分</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">0</div>
+            <div class="stat-label">事故 / 泡水車</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">第三方</div>
+            <div class="stat-label">專業車況認證</div>
+        </div>
+    </div>
+</div>
+
+<!-- GUARANTEE -->
+<section id="guarantee" class="stripe-bg">
+    <div class="guarantee-header reveal">
+        <span class="section-tag">Quality Assurance</span>
+        <h2 class="section-title">安心保證</h2>
+        <p class="section-desc" style="margin: 0 auto 20px;">嚴選好車，絕無事故車、泡水車，每台車均經第三方專業認證，里程透明，讓您買得放心、開得安心</p>
+        <div class="section-divider"></div>
+    </div>
+    <div class="guarantee-grid">
+        <div class="g-card reveal">
+            <span class="g-icon">🛡️</span>
+            <h4>絕無事故車</h4>
+            <p>每台車輛均嚴格篩選，確認無重大事故紀錄，鈑件完整無修復，保障您的行車安全。</p>
+        </div>
+        <div class="g-card reveal">
+            <span class="g-icon">💧</span>
+            <h4>絕無泡水車</h4>
+            <p>全面檢查車輛是否曾遭水患，電路系統、底盤結構全面把關，拒絕任何隱藏風險。</p>
+        </div>
+        <div class="g-card reveal">
+            <span class="g-icon">📋</span>
+            <h4>第三方專業認證</h4>
+            <p>引入專業第三方鑑定，客觀透明的車況報告，數據說話，資訊完全公開不藏私。</p>
+        </div>
+        <div class="g-card reveal">
+            <span class="g-icon">🔢</span>
+            <h4>里程保證</h4>
+            <p>里程數據真實可查，絕不調表，確保每台車的行駛歷程透明可信，誠信是我們底線。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about-section stripe-bg2">
+    <div class="about-grid">
+        <div class="shop-img-wrap reveal">
+            <img src="https://i.ibb.co/1tcLGGJh/shop.webp" alt="成鑫汽車展示中心" class="shop-img">
+            <div class="shop-badge">
+                <span class="big">1000+</span>
+                <span class="sm">銷售台數</span>
+            </div>
+        </div>
+        <div class="about-text reveal">
+            <span class="section-tag">About Us</span>
+            <h2 class="section-title" style="font-size:42px;">買車賣車<br>找銷冠</h2>
+            <p>我是洪店長，從事汽車銷售超過十年。從 <span class="highlight">Honda 銷售冠軍</span>到<span class="highlight">中華賓士金牌銷售</span>，每個頭銜背後都是無數客戶的信任與肯定。帶著這份熱情與專業，創辦了成鑫汽車。</p>
+            <p>買中古車最怕資訊不對等、車況不透明。我用自己在原廠累積的鑑車眼光與銷售經驗，幫每位客戶嚴格把關，讓您享有原廠等級的服務水準，以更透明、更實惠的價格買到好車。</p>
+            <p><span class="highlight">誠信、服務、品質</span>，不只是口號，是我每天開門做生意的原則。超過 1,000 台的銷售經歷，沒有任何問題難得倒我。</p>
+            <ul class="career-list">
+                <li><i class="fas fa-trophy"></i> Honda 銷售冠軍 — 全台業績頂尖</li>
+                <li><i class="fas fa-medal"></i> 中華賓士金牌銷售 — 豪華品牌高端服務歷練</li>
+                <li><i class="fas fa-car"></i> 累積銷售超過 1,000 台 — 經驗豐富</li>
+                <li><i class="fas fa-certificate"></i> 第三方認證合作商 — 車況透明保障</li>
+                <li><i class="fas fa-handshake"></i> 8891 / SAVE 認證車商 — 業界口碑認可</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="stripe-bg">
+    <div class="process-header reveal">
+        <span class="section-tag">How It Works</span>
+        <h2 class="section-title">購車流程</h2>
+        <p class="section-desc" style="margin: 0 auto 20px;">透明簡單的五步驟，從諮詢到交車全程省心省力</p>
+        <div class="section-divider"></div>
+    </div>
+    <div class="process-steps reveal" style="margin-top:70px;">
+        <div class="step">
+            <div class="step-num">01</div>
+            <h4>聯絡諮詢</h4>
+            <p>來電或來店，告訴我們您的需求、預算與偏好車款</p>
+        </div>
+        <div class="step">
+            <div class="step-num">02</div>
+            <h4>挑選好車</h4>
+            <p>依您需求推薦合適車輛，提供第三方認證報告，車況完全透明</p>
+        </div>
+        <div class="step">
+            <div class="step-num">03</div>
+            <h4>試乘確認</h4>
+            <p>親自試乘感受，無任何購買壓力，滿意再談</p>
+        </div>
+        <div class="step">
+            <div class="step-num">04</div>
+            <h4>貸款協助</h4>
+            <p>協助規劃貸款方案，配合多家銀行，找最優惠利率</p>
+        </div>
+        <div class="step">
+            <div class="step-num">05</div>
+            <h4>交車服務</h4>
+            <p>整備完畢，代辦牌照，完美交車，售後持續關懷</p>
+        </div>
+    </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="stripe-bg2">
+    <div class="reviews-header reveal">
+        <span class="section-tag">Customer Reviews</span>
+        <h2 class="section-title">顧客好評</h2>
+        <p class="section-desc" style="margin: 0 auto 28px;">真實評價、從不造假，每一筆好評都是最好的證明</p>
+        <div class="rating-badge">
+            <i class="fab fa-google" style="font-size:28px; color:#4285F4;"></i>
+            <div>
+                <div class="r-stars">★★★★★</div>
+                <div class="r-score">5.0</div>
+                <div class="r-txt">Google 評分</div>
+            </div>
+        </div>
+    </div>
+    <div class="reviews-grid">
+        <div class="review-card reveal">
+            <div class="rv-head">
+                <div class="rv-avatar">王</div>
+                <div><div class="rv-name">王先生</div><div class="rv-stars">★★★★★</div></div>
+            </div>
+            <div class="rv-text">洪店長人非常好，從看車到交車全程服務都很到位，沒有任何強迫推銷的感覺。車況透明，認證報告詳細，買得很放心，強力推薦！</div>
+        </div>
+        <div class="review-card reveal">
+            <div class="rv-head">
+                <div class="rv-avatar">林</div>
+                <div><div class="rv-name">林小姐</div><div class="rv-stars">★★★★★</div></div>
+            </div>
+            <div class="rv-text">第一次買中古車超緊張，但洪店長非常耐心解說每個細節，從車況、里程到貸款都幫我規劃好，完全不用煩惱，真的是業界良心。</div>
+        </div>
+        <div class="review-card reveal">
+            <div class="rv-head">
+                <div class="rv-avatar">陳</div>
+                <div><div class="rv-name">陳大哥</div><div class="rv-stars">★★★★★</div></div>
+            </div>
+            <div class="rv-text">之前在別家買過中古車被坑過，這次朋友介紹來成鑫，差別真的很大。店長懂車，說的和實際完全一致，這才是正派的車商！</div>
+        </div>
+        <div class="review-card reveal">
+            <div class="rv-head">
+                <div class="rv-avatar">張</div>
+                <div><div class="rv-name">張先生</div><div class="rv-stars">★★★★★</div></div>
+            </div>
+            <div class="rv-text">誠信、服務、品質，這三點在成鑫都做到了。換車流程順暢，舊車收購價格也很合理，交車後還持續關心車況，非常滿意！</div>
+        </div>
+        <div class="review-card reveal">
+            <div class="rv-head">
+                <div class="rv-avatar">黃</div>
+                <div><div class="rv-name">黃小姐</div><div class="rv-stars">★★★★★</div></div>
+            </div>
+            <div class="rv-text">從Honda銷冠到賓士金牌，洪店長的專業背景讓我很信任。幫我找到CP值超高的車，還幫我談到很好的利率，真的是買車找對人了！</div>
+        </div>
+        <div class="review-card reveal">
+            <div class="rv-head">
+                <div class="rv-avatar">吳</div>
+                <div><div class="rv-name">吳先生</div><div class="rv-stars">★★★★★</div></div>
+            </div>
+            <div class="rv-text">實車實價，不藏任何問題，主動把車子狀況都說清楚，這種透明度在中古車業真的少見。以後有需要一定還是來找成鑫！</div>
+        </div>
+    </div>
+    <div style="text-align:center;">
+        <a href="https://www.google.com/maps/search/成鑫汽車+高雄+鳳山" target="_blank" class="btn-gold" style="display:inline-block;">查看更多評論 &rarr;</a>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="stripe-bg">
+    <div class="services-header reveal">
+        <span class="section-tag">Our Services</span>
+        <h2 class="section-title">服務項目</h2>
+        <p class="section-desc" style="margin: 0 auto 20px;">一條龍服務，買車賣車換車，一次搞定</p>
+        <div class="section-divider"></div>
+    </div>
+    <div class="services-grid">
+        <div class="svc-card stripe-bg2 reveal">
+            <span class="svc-icon">🚗</span>
+            <h4>中古車買賣</h4>
+            <p>嚴選優質中古車，第三方認證車況透明，實車實價，絕無隱藏費用，讓您安心選購。</p>
+        </div>
+        <div class="svc-card stripe-bg2 reveal">
+            <span class="svc-icon">🔄</span>
+            <h4>舊換新 / 高價收購</h4>
+            <p>憑藉專業鑑車眼光，給出市場最合理收購價，以舊換新輕鬆升級，手續全包。</p>
+        </div>
+        <div class="svc-card stripe-bg2 reveal">
+            <span class="svc-icon">💳</span>
+            <h4>貸款規劃</h4>
+            <p>配合多家銀行，協助評估最適合您的貸款方案，爭取最低利率，不從中抽傭。</p>
+        </div>
+        <div class="svc-card stripe-bg2 reveal">
+            <span class="svc-icon">🔍</span>
+            <h4>代客尋車</h4>
+            <p>告訴我您想要的車款、預算、顏色，我幫您找到最適合的選擇，省時省力。</p>
+        </div>
+        <div class="svc-card stripe-bg2 reveal">
+            <span class="svc-icon">📝</span>
+            <h4>過戶領牌</h4>
+            <p>代辦一切過戶、領牌、驗車手續，讓您坐等交車，省去跑監理站的麻煩。</p>
+        </div>
+        <div class="svc-card stripe-bg2 reveal">
+            <span class="svc-icon">📞</span>
+            <h4>售後諮詢</h4>
+            <p>交車後持續支援，有任何用車問題隨時來電，洪店長的經驗讓任何問題迎刃而解。</p>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="stripe-bg2">
+    <div class="contact-header reveal">
+        <span class="section-tag">Contact Us</span>
+        <h2 class="section-title">聯絡我們</h2>
+        <p class="section-desc" style="margin: 0 auto 20px;">歡迎來電或親臨展示中心，洪店長親自為您服務</p>
+        <div class="section-divider"></div>
+    </div>
+    <div class="contact-grid" style="margin-top:70px;">
+        <a href="tel:0971436636" class="contact-card reveal">
+            <span class="c-icon">📞</span>
+            <h4>電話諮詢</h4>
+            <p>0971-436-636<br>洪店長直線</p>
+        </a>
+        <a href="https://maps.app.goo.gl/search?q=高雄市鳳山區鳳甲二街50-1號" target="_blank" class="contact-card reveal">
+            <span class="c-icon">📍</span>
+            <h4>展示中心</h4>
+            <p>高雄市鳳山區<br>鳳甲二街50-1號</p>
+            <span style="color:var(--gold); font-size:12px; margin-top:10px; display:block;">點擊導航</span>
+        </a>
+        <div class="contact-card reveal">
+            <span class="c-icon">🕐</span>
+            <h4>營業時間</h4>
+            <p>每日 09:30 – 19:00<br><span style="color:var(--gold);">全年無休</span></p>
+        </div>
+        <div class="contact-card reveal">
+            <span class="c-icon">📱</span>
+            <h4>社群平台</h4>
+            <p>
+                <a href="https://www.facebook.com/p/%E6%88%90%E9%91%AB%E6%B1%BD%E8%BB%8A-100083297922949/" target="_blank" style="color:var(--gold); text-decoration:none; display:block; margin-bottom:7px;"><i class="fab fa-facebook-f"></i> &nbsp;Facebook</a>
+                <a href="https://www.instagram.com/chengxincar/" target="_blank" style="color:var(--gold); text-decoration:none; display:block;"><i class="fab fa-instagram"></i> &nbsp;Instagram</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div>
+            <div style="display:flex; align-items:center; gap:13px;">
+                <img src="https://i.ibb.co/SDMWD4PJ/CX-LOGO.png" alt="成鑫汽車" style="height:44px;">
+                <div>
+                    <div style="color:#fff; font-size:17px; font-weight:700; letter-spacing:2px;">成鑫汽車</div>
+                    <div style="color:var(--gold); font-size:10px; letter-spacing:3px;">CX AUTOMOBILE · SINCE 2022</div>
+                </div>
+            </div>
+            <p class="footer-desc">Honda銷冠 × 中華賓士金牌銷售，累積超過1000台銷售經驗。誠信、服務、品質，是我們對每位客戶最真誠的承諾。</p>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/p/%E6%88%90%E9%91%AB%E6%B1%BD%E8%BB%8A-100083297922949/" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/chengxincar/" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>快速連結</h4>
+            <ul>
+                <li><a href="#guarantee">安心保證</a></li>
+                <li><a href="#about">認識我們</a></li>
+                <li><a href="#process">購車流程</a></li>
+                <li><a href="#services">服務項目</a></li>
+                <li><a href="#reviews">顧客好評</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>服務項目</h4>
+            <ul>
+                <li><a href="#services">中古車買賣</a></li>
+                <li><a href="#services">高價收購</a></li>
+                <li><a href="#services">舊換新</a></li>
+                <li><a href="#services">貸款規劃</a></li>
+                <li><a href="#services">代客尋車</a></li>
+                <li><a href="#services">過戶領牌</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>聯絡資訊</h4>
+            <p>電話：0971-436-636<br>
+            地址：高雄市鳳山區<br>　　　鳳甲二街50-1號<br>
+            營業：09:30 – 19:00<br>
+            全年無休</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2025 成鑫汽車 CX Automobile. All Rights Reserved.
+    </div>
+</footer>
+
+<a href="tel:0971436636" class="float-call"><i class="fas fa-phone" style="margin-right:8px;"></i>立即來電</a>
+
+<script>
+function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+    document.body.style.overflow = '';
+}
+window.addEventListener('scroll', function() {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    document.querySelectorAll('.reveal').forEach(function(el) {
+        if (el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add('active');
+    });
+});
+window.addEventListener('load', function() {
+    document.querySelectorAll('.reveal').forEach(function(el) {
+        if (el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add('active');
+    });
+});
+</script>
+</body>
+</html>
