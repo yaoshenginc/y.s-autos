@@ -1262,74 +1262,76 @@
                     <p>填寫越詳細，我們越能給您準確的初步估價</p>
                 </div>
 
-                <div id="quoteForm">
-                    <!-- 聯絡資訊 -->
-                    <div class="form-group">
-                        <label class="form-label">您的姓名 <span class="req">*</span></label>
-                        <input type="text" class="form-input" id="f_name" placeholder="王小明">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">聯絡電話 <span class="req">*</span></label>
-                            <input type="tel" class="form-input" id="f_phone" placeholder="09XX-XXX-XXX">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">偏好聯絡方式</label>
-                            <select class="form-input form-select" id="f_contact">
-                                <option value="">請選擇</option>
-                                <option>電話</option>
-                                <option>LINE</option>
-                                <option>均可</option>
-                            </select>
-                        </div>
-                    </div>
+<div id="quoteForm">
+    <form id="estimateForm" novalidate>
+        <!-- 聯絡資訊 -->
+        <div class="form-group">
+            <label class="form-label">您的姓名 <span class="req">*</span></label>
+            <input type="text" class="form-input" id="f_name" name="姓名" placeholder="王小明" required>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label class="form-label">聯絡電話 <span class="req">*</span></label>
+                <input type="tel" class="form-input" id="f_phone" name="電話" placeholder="09XX-XXX-XXX" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">偏好聯絡方式</label>
+                <select class="form-input form-select" id="f_contact" name="聯絡方式">
+                    <option value="">請選擇</option>
+                    <option value="電話">電話</option>
+                    <option value="LINE">LINE</option>
+                    <option value="均可">均可</option>
+                </select>
+            </div>
+        </div>
 
-                    <div class="form-divider"><span>車輛資訊</span></div>
+        <div class="form-divider"><span>車輛資訊</span></div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">品牌 <span class="req">*</span></label>
-                            <input type="text" class="form-input" id="f_brand" placeholder="例：Toyota">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">車款 <span class="req">*</span></label>
-                            <input type="text" class="form-input" id="f_model" placeholder="例：Camry">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">年份</label>
-                            <input type="text" class="form-input" id="f_year" placeholder="例：2020">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">目前里程（公里）</label>
-                            <input type="text" class="form-input" id="f_km" placeholder="例：80,000">
-                        </div>
-                    </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label class="form-label">品牌 <span class="req">*</span></label>
+                <input type="text" class="form-input" id="f_brand" name="品牌" placeholder="例：Toyota" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">車款 <span class="req">*</span></label>
+                <input type="text" class="form-input" id="f_model" name="車款" placeholder="例：Camry" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label class="form-label">年份</label>
+                <input type="text" class="form-input" id="f_year" name="年份" placeholder="例：2020">
+            </div>
+            <div class="form-group">
+                <label class="form-label">目前里程（公里）</label>
+                <input type="text" class="form-input" id="f_km" name="里程" placeholder="例：80,000">
+            </div>
+        </div>
 
-                    <!-- 出售原因 -->
-                    <div class="form-group">
-                        <label class="form-label">出售原因</label>
-                        <div class="reason-chips" id="reasonChips">
-                            <span class="chip" data-val="換新車">🔄 想換新車</span>
-                            <span class="chip" data-val="急需現金">💸 急需現金</span>
-                            <span class="chip" data-val="移民出國">✈️ 移民・出國</span>
-                            <span class="chip" data-val="舊車脫手">📦 舊車想脫手</span>
-                            <span class="chip" data-val="Win²方案">🤝 想了解Win²方案</span>
-                        </div>
-                    </div>
+        <!-- 出售原因 -->
+        <div class="form-group">
+            <label class="form-label">出售原因</label>
+            <div class="reason-chips" id="reasonChips">
+                <span class="chip" data-val="換新車">🔄 想換新車</span>
+                <span class="chip" data-val="急需現金">💸 急需現金</span>
+                <span class="chip" data-val="移民出國">✈️ 移民・出國</span>
+                <span class="chip" data-val="舊車脫手">📦 舊車想脫手</span>
+                <span class="chip" data-val="Win²方案">🤝 想了解Win²方案</span>
+            </div>
+        </div>
 
-                    <div class="form-group">
-                        <label class="form-label">備註（車況、改裝、事故歷史等）</label>
-                        <textarea class="form-input form-textarea" id="f_note" placeholder="例：曾修過右前葉子板、輪胎近期換新…"></textarea>
-                    </div>
+        <div class="form-group">
+            <label class="form-label">備註（車況、改裝、事故歷史等）</label>
+            <textarea class="form-input form-textarea" id="f_note" name="備註" placeholder="例：曾修過右前葉子板、輪胎近期換新…"></textarea>
+        </div>
 
-                    <button class="form-submit" id="submitBtn" onclick="submitForm()">
-                        <span id="submitText">送出預約估價</span>
-                        <i class="fas fa-arrow-right" id="submitIcon"></i>
-                    </button>
-                    <p class="form-note">* 為必填欄位。資料僅供本次估價使用。</p>
-                </div>
+        <button type="submit" class="form-submit" id="submitBtn">
+            <span id="submitText">送出預約估價</span>
+            <i class="fas fa-arrow-right" id="submitIcon"></i>
+        </button>
+        <p class="form-note">* 為必填欄位。資料僅供本次估價使用。</p>
+    </form>
+</div>
 
                 <!-- 成功畫面 -->
                 <div id="formSuccess" style="display:none; text-align:center; padding: 60px 20px;">
@@ -1463,13 +1465,17 @@
     function toggleFab() {
         fabOpen = !fabOpen;
         document.getElementById('fabTrigger').classList.toggle('open', fabOpen);
-        document.querySelectorAll('.fab-item').forEach(function(item) { item.classList.toggle('visible', fabOpen); });
+        document.querySelectorAll('.fab-item').forEach(function(item) { 
+            item.classList.toggle('visible', fabOpen); 
+        });
     }
     function closeFab() {
         fabOpen = false;
         var trigger = document.getElementById('fabTrigger');
         if (trigger) trigger.classList.remove('open');
-        document.querySelectorAll('.fab-item').forEach(function(item) { item.classList.remove('visible'); });
+        document.querySelectorAll('.fab-item').forEach(function(item) { 
+            item.classList.remove('visible'); 
+        });
     }
     document.addEventListener('click', function(e) {
         var wrapper = document.getElementById('fabWrapper');
@@ -1481,8 +1487,10 @@
         chip.addEventListener('click', () => chip.classList.toggle('selected'));
     });
 
-    // ── Form submission ──（改成 FB Messenger）
-    function submitForm() {
+    // ── Google Sheets 表單送出 ──
+    document.getElementById('estimateForm').addEventListener('submit', async function(e) {
+        e.preventDefault();   // 防止跳頁
+
         const name = document.getElementById('f_name');
         const phone = document.getElementById('f_phone');
         const brand = document.getElementById('f_brand');
@@ -1513,36 +1521,45 @@
 
         // 載入動畫
         const btn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
         btn.classList.add('loading');
-        document.getElementById('submitText').textContent = '產生私訊中…';
+        submitText.textContent = '送出中…';
 
-        // 收集表單資料
+        // 收集資料
         const reasons = [...document.querySelectorAll('.chip.selected')].map(c => c.dataset.val).join(', ') || '未填寫';
-        const contactWay = document.getElementById('f_contact').value || '均可';
 
-        const message = `您好！我是從網站填寫估價表單的客人\n\n` +
-            `姓名：${name.value}\n` +
-            `電話：${phone.value}\n` +
-            `聯絡方式：${contactWay}\n\n` +
-            `車輛資訊：\n` +
-            `品牌：${brand.value}\n` +
-            `車款：${model.value}\n` +
-            `年份：${document.getElementById('f_year').value || '未填'}\n` +
-            `里程：${document.getElementById('f_km').value || '未填'} 公里\n` +
-            `出售原因：${reasons}\n\n` +
-            `備註：${document.getElementById('f_note').value || '無'}\n\n` +
-            `麻煩請盡快幫我估價，謝謝！🙏`;
+        const formData = new FormData();
+        formData.append('姓名', name.value);
+        formData.append('電話', phone.value);
+        formData.append('聯絡方式', document.getElementById('f_contact').value || '均可');
+        formData.append('品牌', brand.value);
+        formData.append('車款', model.value);
+        formData.append('年份', document.getElementById('f_year').value || '');
+        formData.append('里程', document.getElementById('f_km').value || '');
+        formData.append('出售原因', reasons);
+        formData.append('備註', document.getElementById('f_note').value || '');
+        formData.append('來源', 'buyback.html');
 
-        // 成功畫面 + 跳轉 FB
-        setTimeout(() => {
-            document.getElementById('quoteForm').style.display = 'none';
-            document.getElementById('formSuccess').style.display = 'block';
+        try {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbx-b1SqzJ8VZUQ9xmQRdyluQL1kD9yu_fzxJ-jcWwXl8uxaXFe2SgEMSArj2cz-j38x/exec', {
+                method: 'POST',
+                body: formData
+            });
 
-            const fbUsername = "yaosheng.inc";   // ← 確認這邊正確（你的粉專 Username）
-            const encodedMsg = encodeURIComponent(message);
-            window.open(`https://m.me/${fbUsername}?text=${encodedMsg}`, '_blank');
-        }, 800);
-    }
+            if (response.ok) {
+                // 成功畫面
+                document.getElementById('quoteForm').style.display = 'none';
+                document.getElementById('formSuccess').style.display = 'block';
+            } else {
+                alert('送出失敗，請稍後再試或直接來電 0979-226-338');
+            }
+        } catch (err) {
+            alert('網路錯誤，請檢查網路或直接來電 0979-226-338');
+        } finally {
+            btn.classList.remove('loading');
+            submitText.textContent = '送出預約估價';
+        }
+    });
 </script>
 
 <style>
