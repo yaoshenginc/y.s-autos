@@ -1482,7 +1482,7 @@
         chip.addEventListener('click', () => chip.classList.toggle('selected'));
     });
 
-    // ── Form submission ──
+    // ── Form submission ──（改成 FB Messenger）
     function submitForm() {
         const name = document.getElementById('f_name');
         const phone = document.getElementById('f_phone');
@@ -1490,6 +1490,7 @@
         const model = document.getElementById('f_model');
         let valid = true;
 
+        // 清空錯誤提示
         [name, phone, brand, model].forEach(el => {
             el.classList.remove('form-error');
             const next = el.nextElementSibling;
@@ -1511,22 +1512,36 @@
         if (!model.value.trim()) markError(model, '請填寫車款');
         if (!valid) return;
 
+        // 載入動畫
         const btn = document.getElementById('submitBtn');
         btn.classList.add('loading');
-        document.getElementById('submitText').textContent = '送出中…';
+        document.getElementById('submitText').textContent = '產生私訊中…';
 
+        // 收集表單資料
         const reasons = [...document.querySelectorAll('.chip.selected')].map(c => c.dataset.val).join(', ') || '未填寫';
-        const subject = encodeURIComponent(`【耀笙收購估價預約】${brand.value} ${model.value} - ${name.value}`);
-        const body = encodeURIComponent(
-            `姓名：${name.value}\n電話：${phone.value}\n聯絡方式：${document.getElementById('f_contact').value || '均可'}\n\n` +
-            `品牌：${brand.value}\n車款：${model.value}\n年份：${document.getElementById('f_year').value || '未填'}\n` +
-            `里程：${document.getElementById('f_km').value || '未填'}\n出售原因：${reasons}\n\n備註：${document.getElementById('f_note').value || '無'}`
-        );
+        const contactWay = document.getElementById('f_contact').value || '均可';
 
+        const message = `您好！我是從網站填寫估價表單的客人\n\n` +
+            `姓名：${name.value}\n` +
+            `電話：${phone.value}\n` +
+            `聯絡方式：${contactWay}\n\n` +
+            `車輛資訊：\n` +
+            `品牌：${brand.value}\n` +
+            `車款：${model.value}\n` +
+            `年份：${document.getElementById('f_year').value || '未填'}\n` +
+            `里程：${document.getElementById('f_km').value || '未填'} 公里\n` +
+            `出售原因：${reasons}\n\n` +
+            `備註：${document.getElementById('f_note').value || '無'}\n\n` +
+            `麻煩請盡快幫我估價，謝謝！🙏`;
+
+        // 成功畫面 + 跳轉 FB
         setTimeout(() => {
             document.getElementById('quoteForm').style.display = 'none';
             document.getElementById('formSuccess').style.display = 'block';
-            window.location.href = `mailto:yaosheng.inc@gmail.com?subject=${subject}&body=${body}`;
+
+            const fbUsername = "yaosheng.inc";   // ← 確認這邊正確（你的粉專 Username）
+            const encodedMsg = encodeURIComponent(message);
+            window.open(`https://m.me/${fbUsername}?text=${encodedMsg}`, '_blank');
         }, 800);
     }
 </script>
