@@ -281,6 +281,47 @@
         .floating-buyback i { font-size: 15px; }
         .floating-buyback:hover, .floating-buyback:active { background: var(--gold-light); color: var(--primary-black); transform: scale(1.05); }
         @media (max-width: 968px) { .floating-buyback { display: flex; } }
+
+		/* 電腦版 高價收購按鈕 - 金色邊框黑底 + 動畫 */
+.desktop-buyback-btn {
+    position: fixed;
+    bottom: 110px;           /* 調整位置，讓它在來電預約上方 */
+    right: 30px;
+    background: rgba(12, 12, 12, 0.97);   /* 黑底 */
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 16px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+}
+
+.desktop-buyback-btn i {
+    font-size: 16px;
+}
+
+.desktop-buyback-btn:hover {
+    background: var(--gold);
+    color: var(--primary-black);
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(212, 169, 72, 0.4);
+}
+
+/* 手機版隱藏這個按鈕（避免重複，手機已經有 floating-buyback） */
+@media (max-width: 968px) {
+    .desktop-buyback-btn {
+        display: none;
+    }
+}
     </style>
 <script type="application/ld+json">
 {
@@ -576,7 +617,14 @@
     </div>
     <div style="text-align:center; padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); color:#666; font-size:12px; margin-top:50px;">© 2026 Y.S. AUTOS 耀笙國際汽車. All Rights Reserved.</div>
 </footer>
+	
+<!-- 電腦版 高價收購按鈕（金色邊框黑底） -->
+<a href="https://ys-autos.com/buyback" class="desktop-buyback-btn" aria-label="高價收購">
+    <i class="fas fa-dollar-sign"></i> 高價收購
+</a>
 
+<!-- 原有的來電預約（保持不變） -->
+<a href="tel:0979226338" class="floating-cta">立即來電預約</a>
 <!-- 懸浮導覽選單（手機版）-->
 <div class="fab-wrapper" id="fabWrapper">
     <div class="fab-menu" id="fabMenu">
