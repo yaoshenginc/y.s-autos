@@ -1465,14 +1465,14 @@
         const formData = new FormData();
         formData.append('姓名', name.value);
         formData.append('電話', phone.value);
-        formData.append('LINE ID', document.getElementById('f_line').value || '');
+        formData.append('LINE_ID', document.getElementById('f_line').value || '');
         formData.append('品牌', brand.value);
         formData.append('車款', model.value);
         formData.append('年份', document.getElementById('f_year').value || '');
         formData.append('里程', document.getElementById('f_km').value || '');
-        formData.append('出售原因', reasons);
         formData.append('顏色', document.getElementById('f_color').value || '');
         formData.append('備註', document.getElementById('f_note').value || '');
+        formData.append('出售原因', reasons);
         formData.append('來源', 'buyback.html');
 
         try {
