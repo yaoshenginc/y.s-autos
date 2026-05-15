@@ -7,17 +7,13 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="description" content="耀笙國際汽車位於高雄市仁武區鳳仁路3-36號，專營外匯車、CPO原廠認證車、進口車買賣與中古車高價收購。專業透明、車況把關嚴格，提供一條龍售後服務，讓您安心購車。">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-    
     <link rel="canonical" href="https://ys-autos.com/">
-<link rel="icon" href="https://ys-autos.com/image/favicon.png" sizes="144x144">
-<link rel="apple-touch-icon" href="https://ys-autos.com/image/favicon.png">
-
-
-
+    <link rel="icon" href="https://ys-autos.com/image/favicon.png" sizes="144x144">
+    <link rel="apple-touch-icon" href="https://ys-autos.com/image/favicon.png">
     <meta property="og:locale" content="zh_TW">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="耀笙國際汽車">
-    <meta property="og:title" content="耀笙國際汽車｜高雄外匯車推薦・CPO原廠認證車・進口車買賣">h
+    <meta property="og:title" content="耀笙國際汽車｜高雄外匯車推薦・CPO原廠認證車・進口車買賣">
     <meta property="og:description" content="高雄仁武外匯車/進口車買賣與中古車高價收購。專業透明、車況把關嚴格，提供一條龍售後服務。地址：高雄市仁武區鳳仁路3-36號。">
     <meta property="og:image" content="https://ys-autos.com/image/logo.png">
     <meta property="og:image:alt" content="耀笙國際汽車 Y.S. AUTOS">
@@ -26,9 +22,7 @@
     <meta name="twitter:title" content="耀笙國際汽車｜高雄外匯車推薦・CPO原廠認證車・進口車買賣">
     <meta name="twitter:description" content="高雄仁武外匯車/進口車買賣與中古車高價收購。地址：高雄市仁武區鳳仁路3-36號。">
     <meta name="twitter:image" content="https://ys-autos.com/image/logo.png">
-
     <title>耀笙國際汽車｜高雄外匯車推薦・CPO原廠認證車・進口車買賣</title>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -42,111 +36,30 @@
             --text-gray: #a0a0a0;
             --text-light-gray: #d0d0d0;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Noto Sans TC', sans-serif; background: var(--primary-black); color: var(--text-white); overflow-x: hidden; line-height: 1.6; }
-
-        /* 背景流沙牆 */
-        .bg-carousel-container {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 110%;
-            z-index: 1;
-            opacity: 0.65;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .marquee-row {
-            display: flex;
-            white-space: nowrap;
-            width: fit-content;
-        }
-
+        .bg-carousel-container { position: absolute; top: 0; left: 0; width: 100%; height: 110%; z-index: 1; opacity: 0.65; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-row { display: flex; white-space: nowrap; width: fit-content; }
         .marquee-row.left { animation: marquee 250s linear infinite; }
         .marquee-row.right { animation: marquee 280s linear infinite reverse; }
-
-        .bg-photo-item {
-            width: 300px; 
-            height: 200px;
-            margin: 0 10px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid rgba(212, 169, 72, 0.4);
-            filter: brightness(1.1);
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, 
-                rgba(10,10,10,0.6) 0%, 
-                rgba(10,10,10,0.1) 50%, 
-                rgba(10,10,10,0.7) 100%);
-            z-index: 2;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        .bg-photo-item { width: 300px; height: 200px; margin: 0 10px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(212, 169, 72, 0.4); filter: brightness(1.1); }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.1) 50%, rgba(10,10,10,0.7) 100%); z-index: 2; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         .philosophy-card.active:nth-child(1) { transition-delay: 0.05s; }
         .philosophy-card.active:nth-child(2) { transition-delay: 0.10s; }
         .philosophy-card.active:nth-child(3) { transition-delay: 0.15s; }
         .philosophy-card.active:nth-child(4) { transition-delay: 0.20s; }
         .philosophy-card.active:nth-child(5) { transition-delay: 0.25s; }
         .philosophy-card.active:nth-child(6) { transition-delay: 0.30s; }
-		.mobile-social { display: none; }
-        /* 導航列 */
-        nav {
-            position: fixed;
-            top: 0; width: 100%; z-index: 1000;
-            background: transparent;
-            border-bottom: 1px solid rgba(212, 169, 72, 0);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(0px);
-        }
-
-        nav.nav-scrolled {
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(212, 169, 72, 0.2);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .nav-container { 
-            max-width: 1600px; 
-            margin: 0 auto; 
-            padding: 20px 60px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            transition: all 0.4s ease;
-        }
-
-        nav.nav-scrolled .nav-container {
-            padding: 15px 60px;
-        }
-
+        .mobile-social { display: none; }
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: transparent; border-bottom: 1px solid rgba(212, 169, 72, 0); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); backdrop-filter: blur(0px); }
+        nav.nav-scrolled { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212, 169, 72, 0.2); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); }
+        .nav-container { max-width: 1600px; margin: 0 auto; padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; transition: all 0.4s ease; }
+        nav.nav-scrolled .nav-container { padding: 15px 60px; }
         .nav-left { display: flex; align-items: center; gap: 40px; }
         .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
         .logo-img { height: 45px; width: auto; object-fit: contain; }
@@ -154,965 +67,152 @@
         .logo-text .en { font-family: 'Playfair Display'; font-size: 11px; color: var(--gold); letter-spacing: 2px; }
         .logo-text .since { font-size: 9px; color: var(--text-gray); letter-spacing: 1px; margin-top: 2px; }
         .nav-links { display: flex; gap: 35px; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-light-gray); font-size: 13px; font-weight: 500; transition: 0.3s; position: relative; padding-bottom: 3px;}
-		.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--gold);
-    transition: 0.3s;
-}
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 100%; color: var(--gold);
-}
+        .nav-links a { text-decoration: none; color: var(--text-light-gray); font-size: 13px; font-weight: 500; transition: 0.3s; position: relative; padding-bottom: 3px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: 0.3s; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; color: var(--gold); }
         .nav-links a:hover, .nav-links a.active { color: var(--gold); }
         .nav-right { display: flex; align-items: center; gap: 20px; }
         .nav-social-top a { color: var(--gold); font-size: 18px; margin-left: 15px; transition: 0.3s; }
         .nav-social-top a:hover { color: var(--text-gray); }
         .nav-cta { padding: 12px 0px; width: 100px; display: inline-block; text-align: center; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; }
         .nav-cta:hover { background: var(--gold); color: #000; }
-
-        /* 手機版選單 */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-white);
-            font-size: 24px;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 280px;
-            height: 100vh;
-            background: var(--secondary-black);
-            z-index: 9999;
-            transition: right 0.3s ease;
-            padding: 80px 30px 30px;
-            overflow-y: auto;
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--text-white);
-            font-size: 30px;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .mobile-menu-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .mobile-menu-links li {
-            margin-bottom: 20px;
-        }
-
-        .mobile-menu-links a {
-            color: var(--text-white);
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 500;
-            display: block;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            transition: 0.3s;
-        }
-
-        .mobile-menu-links a:hover {
-            color: var(--gold);
-            padding-left: 10px;
-        }
-
-        .mobile-menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0,0,0,0.7);
-            z-index: 9998;
-        }
-
-        .mobile-menu-overlay.active {
-            display: block;
-        }
-
-       /* Hero 區塊優化版 */
-        .hero {
-            height: 110vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #000; /* 背景改為全黑，提升質感 */
-            overflow: hidden;
-            padding-top: 200px;
-        }
-        
-        .hero-content { 
-            position: relative; 
-            z-index: 3; 
-            text-align: center; 
-            max-width: 1200px; 
-            padding: 0 60px; 
-            animation: fadeInUp 1.2s ease-out;
-        }
-        
-        .hero-title { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 75px; 
-            font-weight: 700; 
-            line-height: 1.2; 
-            margin-bottom: 30px; 
-            color: #ffffff;
-            /* 加入多重陰影，讓標題即便在亮色圖片上也能清晰跳脫 */
-            text-shadow: 0 4px 15px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        .hero-subtitle {
-            font-size: 26px;
-            color: var(--gold);
-            margin-bottom: 20px;
-            font-weight: 600;
-            /* 讓金色副標題也有陰影感 */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-        }
-        
-        .hero-description { 
-            font-size: 20px; /* 字體稍微放大一點點，更易讀 */
-            color: #ffffff; /* 顏色從 light-gray 改回純白，增加對比 */
-            max-width: 800px; 
-            margin: 0 auto 50px; 
-            line-height: 2; /* 行高拉大，讀起來比較輕鬆 */
-            font-weight: 500;
-            /* 關鍵：加入強效文字陰影 */
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5);
-        }
-		/* 1.在一般電腦版畫面上，把手機換行標籤藏起來 */
-			.mobile-br {
-		    display: none;
-		}
-
-		/* 2. 設定：當螢幕寬度小於 968px (手機/平板版) 時，讓換行標籤顯現 */
-			@media (max-width: 968px) {
-    		.mobile-br {
-        	display: block;
-    		}
-		}
-
-        /* 額外優化：讓背景遮罩深一點，文字會更顯眼 */
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* 透明度從 0.4 改為 0.6 */
-            z-index: 2;
-        }
-
-        /* 讓文字中的重點變金色 */
-        .highlight-gold {
-            color: var(--gold);
-            font-weight: 700;
-        }
-        /* 修改後的hero按鈕樣式 */
-.cta-primary { 
-    background: var(--gold); 
-    color: var(--primary-black); 
-    padding: 16px 0;           /* 將原本左右 45px 改為 0 */
-    width: 130px;              /* 設定固定寬度 */
-    text-align: center;         /* 文字置中 */
-    text-decoration: none; 
-    font-weight: 600; 
-    margin-right: 20px; 
-    display: inline-block; 
-    transition: 0.3s; 
-}
-
-.cta-secondary { 
-    border: 1px solid #fff; 
-    color: #fff; 
-    padding: 16px 0;           /* 將原本左右 45px 改為 0 */
-    width: 130px;              /* 設定固定寬度，與 primary 一致 */
-    text-align: center;         /* 文字置中 */
-    text-decoration: none; 
-    font-weight: 600; 
-    display: inline-block; 
-    transition: 0.3s; 
-}
-        
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-white); font-size: 24px; cursor: pointer; padding: 10px; }
+        .mobile-menu { display: none; position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--secondary-black); z-index: 9999; transition: right 0.3s ease; padding: 80px 30px 30px; overflow-y: auto; }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: var(--text-white); font-size: 30px; cursor: pointer; padding: 10px; }
+        .mobile-menu-links { list-style: none; padding: 0; margin: 0; }
+        .mobile-menu-links li { margin-bottom: 20px; }
+        .mobile-menu-links a { color: var(--text-white); text-decoration: none; font-size: 18px; font-weight: 500; display: block; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .mobile-menu-links a:hover { color: var(--gold); padding-left: 10px; }
+        .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.7); z-index: 9998; }
+        .mobile-menu-overlay.active { display: block; }
+        .hero { height: 110vh; position: relative; display: flex; align-items: center; justify-content: center; background: #000; overflow: hidden; padding-top: 200px; }
+        .hero-content { position: relative; z-index: 3; text-align: center; max-width: 1200px; padding: 0 60px; animation: fadeInUp 1.2s ease-out; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: 75px; font-weight: 700; line-height: 1.2; margin-bottom: 30px; color: #ffffff; text-shadow: 0 4px 15px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.5); }
+        .hero-subtitle { font-size: 26px; color: var(--gold); margin-bottom: 20px; font-weight: 600; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+        .hero-description { font-size: 20px; color: #ffffff; max-width: 800px; margin: 0 auto 50px; line-height: 2; font-weight: 500; text-shadow: 2px 2px 8px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5); }
+        .mobile-br { display: none; }
+        @media (max-width: 968px) { .mobile-br { display: block; } }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 2; }
+        .highlight-gold { color: var(--gold); font-weight: 700; }
+        .cta-primary { background: var(--gold); color: var(--primary-black); padding: 16px 0; width: 130px; text-align: center; text-decoration: none; font-weight: 600; margin-right: 20px; display: inline-block; transition: 0.3s; }
+        .cta-secondary { border: 1px solid #fff; color: #fff; padding: 16px 0; width: 130px; text-align: center; text-decoration: none; font-weight: 600; display: inline-block; transition: 0.3s; }
         .cta-primary:hover { background: var(--gold-light); transform: translateY(-3px); }
         .cta-secondary:hover { background: #fff; color: #000; transform: translateY(-3px); }
-
         section { padding: 120px 60px; }
-        .section-tag { 
-            font-size: 12px; 
-            letter-spacing: 3px; 
-            color: var(--gold); 
-            margin-bottom: 20px; 
-            font-weight: 500; 
-            display: block; 
-            text-transform: uppercase; 
-        }
-        
-        .section-title { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 50px; 
-            margin-bottom: 30px; 
-        }
-        
-        .section-description {
-            font-size: 18px;
-            color: var(--text-gray);
-            max-width: 900px;
-            margin: 0 auto 60px;
-            line-height: 1.8;
-        }
-
-        /* 經營者專業背景 */
-        .owner-section {
-            background: var(--primary-black);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .owners-wrapper {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .owner-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-            margin-bottom: 100px;
-        }
-        
-        .owner-container:last-child {
-            margin-bottom: 0;
-        }
-        
-        .owner-image {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .owner-image img {
-            width: 100%;
-            max-width: 200px;
-            border-radius: 4px;
-            border: 1px solid rgba(212, 169, 72, 0.3);
-        }
-        
-        .credential-badge {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            background: var(--gold);
-            color: var(--primary-black);
-            padding: 25px 35px;
-            border-radius: 4px;
-            text-align: center;
-            font-weight: 700;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-        
-        .credential-badge .big {
-            font-size: 32px;
-            display: block;
-        }
-        
-        .credential-badge .small {
-            font-size: 14px;
-            display: block;
-            margin-top: 5px;
-        }
-        
-        .mascot-badge {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            background: var(--gold);
-            color: var(--primary-black);
-            padding: 20px 30px;
-            border-radius: 4px;
-            text-align: center;
-            font-weight: 700;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            font-size: 18px;
-        }
-        
-        .owner-content h3 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: var(--gold);
-        }
-        
-        .owner-content p {
-            font-size: 16px;
-            line-height: 2;
-            color: var(--text-light-gray);
-            margin-bottom: 30px;
-        }
-        
-        .credential-list {
-            list-style: none;
-            margin-top: 30px;
-        }
-        
-        .credential-list li {
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .credential-list li i {
-            color: var(--gold);
-            font-size: 20px;
-        }
-
-        /* 核心理念區塊 */
-        .philosophy-grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 30px; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-        }
-        
-        .philosophy-card { 
-            background: var(--secondary-black); 
-            padding: 50px 40px; 
-            border: 1px solid rgba(212,169,72,0.1); 
-            transition: 0.4s; 
-            position: relative; 
-            overflow: hidden; 
-        }
-        
-        .philosophy-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gold);
-            transform: scaleX(0);
-            transition: 0.4s;
-        }
-        
-        .philosophy-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .philosophy-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(212,169,72,0.3);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-        }
-        
-        .philosophy-icon { 
-            font-size: 45px; 
-            color: var(--gold); 
-            margin-bottom: 25px; 
-            display: block; 
-        }
-        
-        .philosophy-card h3 { 
-            font-size: 22px; 
-            margin-bottom: 15px; 
-            color: #fff; 
-        }
-        
-        .philosophy-card p { 
-            font-size: 15px; 
-            color: var(--text-gray); 
-            line-height: 1.8;
-        }
-
-        /* 把關流程 */
-        .quality-control {
-            background: var(--secondary-black);
-        }
-        
-        .qc-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 2px 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-        
-        .qc-divider {
-            width: 2px;
-            background: linear-gradient(180deg, 
-                rgba(212,169,72,0.2) 0%, 
-                var(--gold) 50%, 
-                rgba(212,169,72,0.2) 100%);
-            height: 100%;
-            justify-self: center;
-        }
-        
-        .qc-column h3 {
-            font-size: 32px;
-            color: var(--gold);
-            margin-bottom: 40px;
-            text-align: center;
-        }
-        
-        .qc-items {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-        
-        .qc-item {
-            background: var(--primary-black);
-            padding: 30px 35px;
-            border: 1px solid rgba(212,169,72,0.2);
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            transition: 0.3s;
-        }
-        
-        .qc-item:hover {
-            transform: translateX(10px);
-            border-color: rgba(212,169,72,0.4);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
-        
-        .qc-column:last-child .qc-item:hover {
-            transform: translateX(-10px);
-        }
-        
-        .qc-item-icon {
-            font-size: 45px;
-            flex-shrink: 0;
-        }
-        
-        .qc-item-content {
-            flex: 1;
-        }
-        
-        .qc-item h4 {
-            font-size: 20px;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-        
-        .qc-item p {
-            font-size: 14px;
-            line-height: 1.7;
-            color: var(--text-light-gray);
-            margin: 0;
-        }
-
-        /* 售後服務 */
-        .after-sales {
-            background: var(--primary-black);
-        }
-        
-        .after-sales-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .after-sales-card {
-            background: var(--secondary-black);
-            padding: 40px 30px;
-            border: 1px solid rgba(212,169,72,0.1);
-            text-align: center;
-            transition: 0.3s;
-        }
-        
-        .after-sales-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(212,169,72,0.3);
-        }
-        
-        .after-sales-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
-            display: block;
-        }
-        
-        .after-sales-card h4 {
-            font-size: 22px;
-            color: var(--gold);
-            margin-bottom: 15px;
-        }
-        
-        .after-sales-card p {
-            font-size: 15px;
-            line-height: 1.8;
-            color: var(--text-light-gray);
-        }
-
-        /* 顧客推薦 */
-        .reviews-section {
-            background: var(--secondary-black);
-        }
-        
-        .reviews-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .google-rating {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            background: var(--primary-black);
-            padding: 20px 40px;
-            border: 1px solid rgba(212,169,72,0.3);
-            margin-bottom: 60px;
-        }
-        
-        .google-rating .stars {
-            color: var(--gold);
-            font-size: 28px;
-        }
-        
-        .google-rating .score {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--gold);
-        }
-        
-        .google-rating .text {
-            color: var(--text-gray);
-            font-size: 14px;
-        }
-        
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto 40px;
-        }
-        
-        .review-card {
-            background: var(--primary-black);
-            padding: 35px;
-            border: 1px solid rgba(212,169,72,0.1);
-            position: relative;
-        }
-        
-        .review-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .review-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary-black);
-        }
-        
-        .review-info h4 {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-        
-        .review-stars {
-            color: var(--gold);
-            font-size: 14px;
-        }
-        
-        .review-content {
-            font-size: 15px;
-            line-height: 1.8;
-            color: var(--text-light-gray);
-        }
-        
-        .view-all-reviews {
-            text-align: center;
-        }
-        
-        .view-all-reviews a {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--primary-black);
-            padding: 18px 45px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-        
-        .view-all-reviews a:hover {
-            background: var(--gold-light);
-            transform: translateY(-3px);
-        }
-
-        /* 創新服務方案 */
-        .services-special {
-            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-        }
-        
-        .service-card-large {
-            background: var(--secondary-black);
-            padding: 60px;
-            border: 1px solid rgba(212,169,72,0.2);
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card-large::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(212,169,72,0.1) 0%, transparent 70%);
-        }
-        
-        .service-badge {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--primary-black);
-            padding: 8px 20px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-        
-        .service-card-large h3 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: var(--gold);
-        }
-        
-        .service-card-large p {
-            font-size: 16px;
-            color: var(--text-light-gray);
-            line-height: 1.9;
-            margin-bottom: 20px;
-        }
-        
-        .service-highlight {
-            background: rgba(212,169,72,0.1);
-            border-left: 4px solid var(--gold);
-            padding: 25px;
-            margin-top: 30px;
-        }
-        
-        .service-highlight strong {
-            color: var(--gold);
-            font-size: 18px;
-        }
-
-        /* 其他服務項目 */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 1400px;
-            margin: 60px auto 0;
-        }
-        
-        .service-card {
-            background: var(--secondary-black);
-            padding: 45px 35px;
-            border: 1px solid rgba(212,169,72,0.1);
-            text-align: center;
-            transition: 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(212,169,72,0.3);
-        }
-        
-        .service-card .icon {
-            font-size: 50px;
-            color: var(--gold);
-            margin-bottom: 25px;
-        }
-        
-        .service-card h4 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-        
-        .service-card p {
-            color: var(--text-gray);
-            font-size: 15px;
-            line-height: 1.8;
-        }
-
-        /* 車輛輪播 */
-        .inventory-carousel {
-            position: relative;
-            max-width: 1400px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease;
-            gap: 20px;
-        }
-        
-        .carousel-item {
-            min-width: calc((100% - 40px) / 3);
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-        }
-        
-        .carousel-item img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            transition: 0.5s;
-        }
-        
-        .carousel-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(212,169,72,0.9);
-            border: none;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            transition: 0.3s;
-            z-index: 10;
-        }
-        
-        .carousel-nav:hover {
-            background: var(--gold-light);
-        }
-        
+        .section-tag { font-size: 12px; letter-spacing: 3px; color: var(--gold); margin-bottom: 20px; font-weight: 500; display: block; text-transform: uppercase; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 50px; margin-bottom: 30px; }
+        .section-description { font-size: 18px; color: var(--text-gray); max-width: 900px; margin: 0 auto 60px; line-height: 1.8; }
+        .owner-section { background: var(--primary-black); position: relative; overflow: hidden; }
+        .owners-wrapper { max-width: 1400px; margin: 0 auto; }
+        .owner-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
+        .owner-container:last-child { margin-bottom: 0; }
+        .owner-image { position: relative; display: flex; justify-content: center; align-items: center; }
+        .owner-image img { width: 100%; max-width: 200px; border-radius: 4px; border: 1px solid rgba(212, 169, 72, 0.3); }
+        .credential-badge { position: absolute; bottom: -20px; right: -20px; background: var(--gold); color: var(--primary-black); padding: 25px 35px; border-radius: 4px; text-align: center; font-weight: 700; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .credential-badge .big { font-size: 32px; display: block; }
+        .credential-badge .small { font-size: 14px; display: block; margin-top: 5px; }
+        .mascot-badge { position: absolute; bottom: -20px; right: -20px; background: var(--gold); color: var(--primary-black); padding: 20px 30px; border-radius: 4px; text-align: center; font-weight: 700; box-shadow: 0 10px 40px rgba(0,0,0,0.5); font-size: 18px; }
+        .owner-content h3 { font-size: 32px; margin-bottom: 20px; color: var(--gold); }
+        .owner-content p { font-size: 16px; line-height: 2; color: var(--text-light-gray); margin-bottom: 30px; }
+        .credential-list { list-style: none; margin-top: 30px; }
+        .credential-list li { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 15px; }
+        .credential-list li i { color: var(--gold); font-size: 20px; }
+        .philosophy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1400px; margin: 0 auto; }
+        .philosophy-card { background: var(--secondary-black); padding: 50px 40px; border: 1px solid rgba(212,169,72,0.1); transition: 0.4s; position: relative; overflow: hidden; }
+        .philosophy-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gold); transform: scaleX(0); transition: 0.4s; }
+        .philosophy-card:hover::before { transform: scaleX(1); }
+        .philosophy-card:hover { transform: translateY(-10px); border-color: rgba(212,169,72,0.3); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+        .philosophy-icon { font-size: 45px; color: var(--gold); margin-bottom: 25px; display: block; }
+        .philosophy-card h3 { font-size: 22px; margin-bottom: 15px; color: #fff; }
+        .philosophy-card p { font-size: 15px; color: var(--text-gray); line-height: 1.8; }
+        .quality-control { background: var(--secondary-black); }
+        .qc-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2px 1fr; gap: 60px; align-items: start; }
+        .qc-divider { width: 2px; background: linear-gradient(180deg, rgba(212,169,72,0.2) 0%, var(--gold) 50%, rgba(212,169,72,0.2) 100%); height: 100%; justify-self: center; }
+        .qc-column h3 { font-size: 32px; color: var(--gold); margin-bottom: 40px; text-align: center; }
+        .qc-items { display: flex; flex-direction: column; gap: 25px; }
+        .qc-item { background: var(--primary-black); padding: 30px 35px; border: 1px solid rgba(212,169,72,0.2); display: flex; align-items: center; gap: 25px; transition: 0.3s; }
+        .qc-item:hover { transform: translateX(10px); border-color: rgba(212,169,72,0.4); box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
+        .qc-column:last-child .qc-item:hover { transform: translateX(-10px); }
+        .qc-item-icon { font-size: 45px; flex-shrink: 0; }
+        .qc-item-content { flex: 1; }
+        .qc-item h4 { font-size: 20px; color: var(--gold); margin-bottom: 10px; }
+        .qc-item p { font-size: 14px; line-height: 1.7; color: var(--text-light-gray); margin: 0; }
+        .after-sales { background: var(--primary-black); }
+        .after-sales-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1400px; margin: 0 auto; }
+        .after-sales-card { background: var(--secondary-black); padding: 40px 30px; border: 1px solid rgba(212,169,72,0.1); text-align: center; transition: 0.3s; }
+        .after-sales-card:hover { transform: translateY(-8px); border-color: rgba(212,169,72,0.3); }
+        .after-sales-icon { font-size: 50px; margin-bottom: 20px; display: block; }
+        .after-sales-card h4 { font-size: 22px; color: var(--gold); margin-bottom: 15px; }
+        .after-sales-card p { font-size: 15px; line-height: 1.8; color: var(--text-light-gray); }
+        .reviews-section { background: var(--secondary-black); }
+        .reviews-header { text-align: center; margin-bottom: 40px; }
+        .google-rating { display: inline-flex; align-items: center; gap: 15px; background: var(--primary-black); padding: 20px 40px; border: 1px solid rgba(212,169,72,0.3); margin-bottom: 60px; }
+        .google-rating .stars { color: var(--gold); font-size: 28px; }
+        .google-rating .score { font-size: 36px; font-weight: 700; color: var(--gold); }
+        .google-rating .text { color: var(--text-gray); font-size: 14px; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1400px; margin: 0 auto 40px; }
+        .review-card { background: var(--primary-black); padding: 35px; border: 1px solid rgba(212,169,72,0.1); position: relative; }
+        .review-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .review-avatar { width: 50px; height: 50px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: var(--primary-black); }
+        .review-info h4 { font-size: 16px; margin-bottom: 5px; }
+        .review-stars { color: var(--gold); font-size: 14px; }
+        .review-content { font-size: 15px; line-height: 1.8; color: var(--text-light-gray); }
+        .view-all-reviews { text-align: center; }
+        .view-all-reviews a { display: inline-block; background: var(--gold); color: var(--primary-black); padding: 18px 45px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .view-all-reviews a:hover { background: var(--gold-light); transform: translateY(-3px); }
+        .services-special { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); }
+        .service-card-large { background: var(--secondary-black); padding: 60px; border: 1px solid rgba(212,169,72,0.2); margin-bottom: 40px; position: relative; overflow: hidden; }
+        .service-card-large::after { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 200px; background: radial-gradient(circle, rgba(212,169,72,0.1) 0%, transparent 70%); }
+        .service-badge { display: inline-block; background: var(--gold); color: var(--primary-black); padding: 8px 20px; font-size: 12px; font-weight: 700; letter-spacing: 1px; margin-bottom: 20px; }
+        .service-card-large h3 { font-size: 36px; margin-bottom: 20px; color: var(--gold); }
+        .service-card-large p { font-size: 16px; color: var(--text-light-gray); line-height: 1.9; margin-bottom: 20px; }
+        .service-highlight { background: rgba(212,169,72,0.1); border-left: 4px solid var(--gold); padding: 25px; margin-top: 30px; }
+        .service-highlight strong { color: var(--gold); font-size: 18px; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1400px; margin: 60px auto 0; }
+        .service-card { background: var(--secondary-black); padding: 45px 35px; border: 1px solid rgba(212,169,72,0.1); text-align: center; transition: 0.3s; }
+        .service-card:hover { transform: translateY(-8px); border-color: rgba(212,169,72,0.3); }
+        .service-card .icon { font-size: 50px; color: var(--gold); margin-bottom: 25px; }
+        .service-card h4 { font-size: 22px; margin-bottom: 15px; }
+        .service-card p { color: var(--text-gray); font-size: 15px; line-height: 1.8; }
+        .inventory-carousel { position: relative; max-width: 1400px; margin: 0 auto; overflow: hidden; }
+        .carousel-track { display: flex; transition: transform 0.5s ease; gap: 20px; }
+        .carousel-item { min-width: calc((100% - 40px) / 3); position: relative; overflow: hidden; border-radius: 4px; }
+        .carousel-item img { width: 100%; height: 400px; object-fit: cover; transition: 0.5s; }
+        .carousel-item:hover img { transform: scale(1.05); }
+        .carousel-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(212,169,72,0.9); border: none; width: 50px; height: 50px; cursor: pointer; transition: 0.3s; z-index: 10; }
+        .carousel-nav:hover { background: var(--gold-light); }
         .carousel-nav.prev { left: 0; }
         .carousel-nav.next { right: 0; }
-        
-        .auto-play-btn {
-            background: var(--gold);
-            color: var(--primary-black);
-            border: none;
-            padding: 15px 35px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        
-        .auto-play-btn:hover {
-            background: var(--gold-light);
-        }
+        .contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1400px; margin: 0 auto; }
+        .contact-item { background: var(--secondary-black); padding: 45px 35px; text-align: center; border: 1px solid rgba(212,169,72,0.1); transition: 0.3s; text-decoration: none; color: inherit; display: block; }
+        .contact-item:hover { transform: translateY(-8px); border-color: rgba(212,169,72,0.3); }
+        .contact-item h4 { font-size: 18px; margin-bottom: 15px; color: var(--gold); }
+        .contact-item p { color: var(--text-light-gray); font-size: 14px; line-height: 1.8; }
+        footer { background: var(--secondary-black); padding: 80px 60px 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; }
+        .footer-socials { display: flex; gap: 15px; margin-top: 25px; }
+        .social-btn { width: 40px; height: 40px; background: rgba(212,169,72,0.1); border: 1px solid rgba(212,169,72,0.2); display: flex; align-items: center; justify-content: center; color: var(--gold); text-decoration: none; transition: 0.3s; }
+        .social-btn:hover { background: var(--gold); color: var(--primary-black); }
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 12px; }
+        .footer-links ul li a { color: var(--text-gray); text-decoration: none; font-size: 14px; transition: 0.3s; }
+        .footer-links ul li a:hover { color: var(--gold); }
+        .floating-cta { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: var(--primary-black); padding: 18px 35px; text-decoration: none; font-weight: 700; border-radius: 50px; box-shadow: 0 10px 30px rgba(212,169,72,0.4); z-index: 999; transition: 0.3s; }
+        .floating-cta:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(212,169,72,0.6); }
 
-        /* 聯絡區塊 */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .contact-item {
-            background: var(--secondary-black);
-            padding: 45px 35px;
-            text-align: center;
-            border: 1px solid rgba(212,169,72,0.1);
-            transition: 0.3s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        
-        .contact-item:hover {
-            transform: translateY(-8px);
-            border-color: rgba(212,169,72,0.3);
-        }
-        
-        .contact-item h4 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: var(--gold);
-        }
-        
-        .contact-item p {
-            color: var(--text-light-gray);
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--secondary-black);
-            padding: 80px 60px 40px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 60px;
-        }
-        
-        .footer-socials {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
-        
-        .social-btn {
-            width: 40px;
-            height: 40px;
-            background: rgba(212,169,72,0.1);
-            border: 1px solid rgba(212,169,72,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        
-        .social-btn:hover {
-            background: var(--gold);
-            color: var(--primary-black);
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links ul li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links ul li a {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-        
-        .footer-links ul li a:hover {
-            color: var(--gold);
-        }
-
-        .floating-cta {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--gold);
-            color: var(--primary-black);
-            padding: 18px 35px;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(212,169,72,0.4);
-            z-index: 999;
-            transition: 0.3s;
-        }
-        
-        .floating-cta:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(212,169,72,0.6);
-        }
-
-        /* 手機版RWD */
-@media (max-width: 968px) {
-	/* 1. 讓右側容器內的社群圖示與三條線橫向排好 */
-    .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 15px; /* 設定社群圖示與三條線按鈕的間距 */
-    }
-
-    /* 2. 手機版社群圖示的具體設定 */
-    .mobile-social {
-        display: flex;
-        align-items: center;
-        gap: 12px; /* 設定圖示與圖示之間的間距，解決擠在一起的問題 */
-    }
-
-    /* 3. 設定圖示顏色與大小，解決變藍色的問題 */
-    .mobile-social a {
-        color: var(--gold); /* 強制使用金色變數 */
-        font-size: 18px;
-        text-decoration: none; /* 移除超連結底線 */
-        display: flex;
-    }
-    .hero {
-        min-height: 80vh;
-        height: auto;
-        padding-top: 110px;
-        padding-bottom: 60px;
-     }
-	.bg-carousel-container {
-        height: 90vh !important; /* 將高度改為螢幕的 60%，可根據需求調整數值 */
-    }
-	.marquee-row.left { animation-duration: 250s; }
-    .marquee-row.right { animation-duration: 280s; } /* 讓下面那一排慢一點點，會更有層次 */
-	
+        @media (max-width: 968px) {
+            .nav-right { display: flex; align-items: center; gap: 15px; }
+            .mobile-social { display: flex; align-items: center; gap: 12px; }
+            .mobile-social a { color: var(--gold); font-size: 18px; text-decoration: none; display: flex; }
+            .hero { min-height: 80vh; height: auto; padding-top: 110px; padding-bottom: 60px; }
+            .bg-carousel-container { height: 90vh !important; }
+            .marquee-row.left { animation-duration: 250s; }
+            .marquee-row.right { animation-duration: 280s; }
             .hero-title { font-size: 48px; }
             .hero-subtitle { font-size: 20px; }
             .hero-description { font-size: 16px; }
-            
-            /* 手機版按鈕重新配置 - 垂直排列 */
-		.cta-primary, .cta-secondary {
-        display: block;
-        width: 80%;       /* 手機版設定為 100% 寬度 */
-        max-width: 280px;  /* 限制最大寬度，避免太長 */
-        margin: 10px auto;
-        text-align: center;
-        padding: 15px 0;   /* 稍微縮小手機版的高度 */
-		}
+            .cta-primary, .cta-secondary { display: block; width: 80%; max-width: 280px; margin: 10px auto; text-align: center; padding: 15px 0; }
             section { padding: 120px 30px; }
             .owners-wrapper .owner-container { grid-template-columns: 1fr; gap: 40px; }
             .owner-image { text-align: center; }
@@ -1122,48 +222,18 @@
             .philosophy-icon { font-size: 30px; margin-bottom: 12px; }
             .philosophy-card h3 { font-size: 15px; margin-bottom: 8px; }
             .philosophy-card p { font-size: 12px; line-height: 1.6; }
-            .qc-container { 
-                grid-template-columns: 1fr 1px 1fr;
-                gap: 20px;
-            }
+            .qc-container { grid-template-columns: 1fr 1px 1fr; gap: 20px; }
             .qc-divider { width: 1px; }
             .qc-column h3 { font-size: 20px; margin-bottom: 25px; }
-            .qc-item { 
-                flex-direction: column;
-                text-align: center;
-                padding: 20px;
-                gap: 15px;
-            }
+            .qc-item { flex-direction: column; text-align: center; padding: 20px; gap: 15px; }
             .qc-item-icon { font-size: 35px; }
             .qc-item h4 { font-size: 16px; }
             .qc-item p { font-size: 12px; }
-            /* 1. 設定一條龍服務手機板顯示為一排兩個 */
-    .after-sales-grid {
-        grid-template-columns: 1fr 1fr; /* 關鍵：讓它變左右兩邊 */
-        gap: 15px;
-    }
-
-    /* 2. 調整內部的卡片樣式，確保空間足夠 */
-    .after-sales-card {
-        padding: 20px 15px; 
-    }
-
-    /* 3. 調整圖示大小 */
-    .after-sales-icon {
-        font-size: 30px; 
-        margin-bottom: 10px;
-    }
-
-    /* 4. 調整標題大小 */
-    .after-sales-card h4 {
-        font-size: 15px; 
-    }
-
-    /* 5. 調整描述文字大小 */
-    .after-sales-card p {
-        font-size: 12px; 
-        line-height: 1.5;
-    }
+            .after-sales-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+            .after-sales-card { padding: 20px 15px; }
+            .after-sales-icon { font-size: 30px; margin-bottom: 10px; }
+            .after-sales-card h4 { font-size: 15px; }
+            .after-sales-card p { font-size: 12px; line-height: 1.5; }
             .services-grid { grid-template-columns: 1fr; }
             .reviews-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
@@ -1175,27 +245,13 @@
             .mobile-menu-btn { display: none; }
             .mobile-menu { display: block; }
             .nav-container { padding: 20px 30px !important; }
-        }
-    
-        /* SEO/Accessibility helper (no layout impact) */
-        .sr-only {
-            position: absolute !important;
-            width: 1px !important;
-            height: 1px !important;
-            padding: 0 !important;
-            margin: -1px !important;
-            overflow: hidden !important;
-            clip: rect(0,0,0,0) !important;
-            white-space: nowrap !important;
-            border: 0 !important;
-        }
-
-
-        /* ═══ 懸浮導覽選單 FAB（僅手機版）═══ */
-        @media (max-width: 968px) {
             .floating-cta { bottom: 24px; right: 20px; font-size: 13px; padding: 14px 24px; z-index: 998; }
         }
-        .fab-wrapper { display: none; position: fixed; bottom: 140px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
+
+        .sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+
+        /* ═══ FAB 懸浮導覽選單（手機版）═══ */
+        .fab-wrapper { display: none; position: fixed; bottom: 192px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
         @media (max-width: 968px) { .fab-wrapper { display: flex; } }
         .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; }
         .fab-item { opacity: 0; transform: translateX(14px); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; margin-bottom: 5px; }
@@ -1214,146 +270,26 @@
         .fab-trigger.open::before, .fab-trigger.open::after { display: none; }
         @keyframes fab-ripple { 0%{transform:scale(1);opacity:.65} 100%{transform:scale(2);opacity:0} }
 
-        /* 在庫車輛獨立懸浮按鈕（手機版）*/
-        .floating-inventory { display: none; position: fixed; bottom: 134px; right: 20px; z-index: 999; width: 46px; height: 46px; background: var(--gold); border: 1px solid var(--gold-dark); color: var(--primary-black); text-decoration: none; font-family: 'Noto Sans TC',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 4px 20px rgba(212,169,72,0.4); transition: background .2s, transform .2s; }
+        /* 在庫車輛懸浮按鈕（手機版）*/
+        .floating-inventory { display: none; position: fixed; bottom: 138px; right: 20px; z-index: 999; width: 46px; height: 46px; background: var(--gold); border: 1px solid var(--gold-dark); color: var(--primary-black); text-decoration: none; font-family: 'Noto Sans TC',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 4px 20px rgba(212,169,72,0.4); transition: background .2s, transform .2s; }
         .floating-inventory i { font-size: 15px; }
         .floating-inventory:hover, .floating-inventory:active { background: var(--gold-light); color: var(--primary-black); transform: scale(1.05); }
         @media (max-width: 968px) { .floating-inventory { display: flex; } }
+
+        /* 高價收購懸浮按鈕（手機版）*/
         .floating-buyback { display: none; position: fixed; bottom: 88px; right: 20px; z-index: 999; width: 46px; height: 46px; background: var(--gold); border: 1px solid var(--gold-dark); color: var(--primary-black); text-decoration: none; font-family: 'Noto Sans TC',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 4px 20px rgba(212,169,72,0.4); transition: background .2s, transform .2s; }
         .floating-buyback i { font-size: 15px; }
         .floating-buyback:hover, .floating-buyback:active { background: var(--gold-light); color: var(--primary-black); transform: scale(1.05); }
         @media (max-width: 968px) { .floating-buyback { display: flex; } }
-
-</style>
-<!-- Structured Data (Local SEO + Breadcrumb + FAQ + Rating) -->
+    </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "AutoDealer",
-      "@id": "https://ys-autos.com/#autodealer",
-      "name": "耀笙國際汽車",
-      "alternateName": "耀笙國際汽車 Y.S. AUTOS",
-      "url": "https://ys-autos.com/",
-      "logo": "https://ys-autos.com/image/logo.png",
-      "image": "https://ys-autos.com/image/logo.png",
-      "telephone": "+886-7-7352855",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "鳳仁路3-36號",
-        "addressLocality": "仁武區",
-        "addressRegion": "高雄市",
-        "postalCode": "814",
-        "addressCountry": "TW"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 22.6735694,
-        "longitude": 120.3595321
-      },
-      "areaServed": ["高雄市", "屏東縣"],
-      "hasMap": "https://www.google.com/maps/place/%E8%80%80%E7%AC%99%E5%9C%8B%E9%9A%9B%E6%B1%BD%E8%BB%8A%EF%BD%9C%E5%B0%88%E7%87%9F%E7%BE%8E%E5%9C%8B%E5%8E%9F%E5%BB%A0%E8%AA%8D%E8%AD%89%E8%BB%8A%EF%BD%9C%E8%87%AA%E8%BE%A6%E5%A4%96%E5%8C%AF%E8%BB%8A/@22.6735726,120.3578598,17z/data=!3m1!4b1!4m6!3m5!1s0x346e0f1defc8ead3:0x766bb7e2adad3e0b!8m2!3d22.6735694!4d120.3595321!16s%2Fg%2F11jwk9c6hr?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D",
-      "keywords": "高雄外匯車, 仁武外匯車, 高雄外匯車推薦, 高雄外匯車車商, CPO原廠認證車, 進口車買賣, 中古車高價收購, 美規車",
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-          "opens": "10:30",
-          "closes": "19:00"
-        }
-      ],
-      "sameAs": [
-        "https://www.facebook.com/yaosheng.inc",
-        "https://www.instagram.com/y.s_auto",
-        "https://lin.ee/mDzezrK",
-        "https://www.google.com/maps/place/%E8%80%80%E7%AC%99%E5%9C%8B%E9%9A%9B%E6%B1%BD%E8%BB%8A%EF%BD%9C%E5%B0%88%E7%87%9F%E7%BE%8E%E5%9C%8B%E5%8E%9F%E5%BB%A0%E8%AA%8D%E8%AD%89%E8%BB%8A%EF%BD%9C%E8%87%AA%E8%BE%A6%E5%A4%96%E5%8C%AF%E8%BB%8A/@22.6735726,120.3578598,17z/data=!3m1!4b1!4m6!3m5!1s0x346e0f1defc8ead3:0x766bb7e2adad3e0b!8m2!3d22.6735694!4d120.3595321!16s%2Fg%2F11jwk9c6hr?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
-      ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "25"
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://ys-autos.com/#website",
-      "name": "耀笙國際汽車",
-      "alternateName": "耀笙國際汽車　Y.S. AUTOS",
-      "url": "https://ys-autos.com/",
-      "publisher": { "@id": "https://ys-autos.com/#autodealer" },
-      "inLanguage": "zh-TW"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://ys-autos.com/#homepage",
-      "url": "https://ys-autos.com/",
-      "name": "耀笙國際汽車｜高雄外匯車推薦・CPO原廠認證車・進口車買賣",
-      "isPartOf": { "@id": "https://ys-autos.com/#website" },
-      "about": { "@id": "https://ys-autos.com/#autodealer" },
-      "inLanguage": "zh-TW",
-      "primaryImageOfPage": {
-        "@type": "ImageObject",
-        "url": "https://ys-autos.com/image/logo.png"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://ys-autos.com/#breadcrumb",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "耀笙國際汽車", "item": "https://ys-autos.com/" }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://ys-autos.com/#faq",
-      "url": "https://ys-autos.com/#faq",
-      "isPartOf": { "@id": "https://ys-autos.com/#website" },
-      "about": { "@id": "https://ys-autos.com/#autodealer" },
-      "inLanguage": "zh-TW",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "高雄外匯車推薦怎麼選？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "建議確認是否提供事故/泡水檢測、第三方認證、透明車況報告、完整售後保養與貸款協助，並選擇有實體保養廠與專業技師把關的高雄外匯車車商。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "外匯車跟總代理車差在哪？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "外匯車由貿易商自行進口，價格通常更有競爭力、配備選擇更彈性；總代理車由原廠體系進口，價格相對較高但品牌體系完整。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "什麼是CPO原廠認證車？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "CPO（Certified Pre-Owned）為原廠認證中古車，需通過原廠規範檢測，通常提供一定期限保固，屬於中古車中品質較有保障的選擇。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "高雄外匯車可以貸款嗎？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "可以。外匯車可透過銀行或融資公司申請貸款，核貸與利率依個人信用條件評估，專業車商通常可協助規劃合適方案。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "高雄哪裡買外匯車比較安全？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "建議選擇高雄在地、資訊透明、具備第三方認證與完整售後服務的一條龍車商，避免只比價而忽略車況來源與後續保固。"
-          }
-        }
-      ]
-    }
+    { "@type": "AutoDealer", "@id": "https://ys-autos.com/#autodealer", "name": "耀笙國際汽車", "alternateName": "耀笙國際汽車 Y.S. AUTOS", "url": "https://ys-autos.com/", "logo": "https://ys-autos.com/image/logo.png", "image": "https://ys-autos.com/image/logo.png", "telephone": "+886-7-7352855", "address": { "@type": "PostalAddress", "streetAddress": "鳳仁路3-36號", "addressLocality": "仁武區", "addressRegion": "高雄市", "postalCode": "814", "addressCountry": "TW" }, "geo": { "@type": "GeoCoordinates", "latitude": 22.6735694, "longitude": 120.3595321 }, "areaServed": ["高雄市", "屏東縣"], "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "10:30", "closes": "19:00" }], "sameAs": ["https://www.facebook.com/yaosheng.inc","https://www.instagram.com/y.s_auto","https://lin.ee/mDzezrK"], "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "25" } },
+    { "@type": "WebSite", "@id": "https://ys-autos.com/#website", "name": "耀笙國際汽車", "url": "https://ys-autos.com/", "publisher": { "@id": "https://ys-autos.com/#autodealer" }, "inLanguage": "zh-TW" },
+    { "@type": "WebPage", "@id": "https://ys-autos.com/#homepage", "url": "https://ys-autos.com/", "name": "耀笙國際汽車｜高雄外匯車推薦・CPO原廠認證車・進口車買賣", "isPartOf": { "@id": "https://ys-autos.com/#website" }, "about": { "@id": "https://ys-autos.com/#autodealer" }, "inLanguage": "zh-TW" },
+    { "@type": "BreadcrumbList", "@id": "https://ys-autos.com/#breadcrumb", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "耀笙國際汽車", "item": "https://ys-autos.com/" }] }
   ]
 }
 </script>
@@ -1364,6 +300,7 @@
   <p>服務範圍涵蓋高雄、仁武、左營、楠梓、鳳山與屏東地區，提供透明車況、第三方認證、事故泡水檢測與一條龍售後保養維修。</p>
   <p>關鍵服務：高雄外匯車車商、高雄進口車推薦、外匯車貸款、中古車收購、寄售換車、保養維修、理賠協助。</p>
 </div>
+
 <nav id="navbar">
     <div class="nav-container">
         <div class="nav-left">
@@ -1385,35 +322,27 @@
                 <li><a href="https://ys-autos.com/buyback">收車專區</a></li>
             </ul>
         </div>
-<div class="nav-right">
-    <div class="nav-social-top">
-        <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
-    </div>
-
-    <div class="mobile-social">
-        <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
-    </div>
-
-    <a href="https://ys-autos.com/inventory" class="nav-cta">在庫車輛</a>
-    <a href="https://ys-autos.com/import-cars" class="nav-cta">了解外匯車</a>
-    
-    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-        <i class="fas fa-bars"></i>
-    </button>
-</div>
+        <div class="nav-right">
+            <div class="nav-social-top">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+            </div>
+            <div class="mobile-social">
+                <a href="https://www.facebook.com/yaosheng.inc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/y.s_auto" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://lin.ee/mDzezrK" target="_blank"><i class="fab fa-line"></i></a>
+            </div>
+            <a href="https://ys-autos.com/inventory" class="nav-cta">在庫車輛</a>
+            <a href="https://ys-autos.com/import-cars" class="nav-cta">了解外匯車</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+        </div>
     </div>
 </nav>
 
-<!-- 手機版選單 -->
 <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
 <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu-close" onclick="closeMobileMenu()">
-        <i class="fas fa-times"></i>
-    </button>
+    <button class="mobile-menu-close" onclick="closeMobileMenu()"><i class="fas fa-times"></i></button>
     <ul class="mobile-menu-links">
         <li><a href="https://ys-autos.com/import-cars" onclick="closeMobileMenu()">外匯車介紹</a></li>
         <li><a href="https://ys-autos.com/inventory" onclick="closeMobileMenu()">在庫車輛</a></li>
@@ -1448,83 +377,26 @@
     <div style="text-align: center; margin-bottom: 80px;">
         <span class="section-tag">Quality Control</span>
         <h2 class="section-title">安心保證</h2>
-        <p class="section-description">
-	流程層層把關<br>
-            從購車前的嚴格檢驗到交車前的完美整備，每個細節都不馬虎
-        </p>
+        <p class="section-description">流程層層把關<br>從購車前的嚴格檢驗到交車前的完美整備，每個細節都不馬虎</p>
     </div>
-    
     <div class="qc-container">
-        <!-- 購車前保障 -->
         <div class="qc-column">
             <h3>🛡️ 購車前保障</h3>
             <div class="qc-items">
-                <div class="qc-item reveal">
-                    <span class="qc-item-icon">🔧</span>
-                    <div class="qc-item-content">
-                        <h4>鈑件檢查</h4>
-                        <p>檢查鈑件是否有更換或修復痕跡，確認車體結構完整性</p>
-                    </div>
-                </div>
-                <div class="qc-item reveal">
-                    <span class="qc-item-icon">🚗</span>
-                    <div class="qc-item-content">
-                        <h4>事故泡水檢測</h4>
-                        <p>嚴格檢查車輛是否曾發生重大事故或泡水，確保車況清白　</p>
-                    </div>
-                </div>
-                <div class="qc-item reveal">
-                    <span class="qc-item-icon">📋</span>
-                    <div class="qc-item-content">
-                        <h4>第三方認證</h4>
-                        <p>汽車公會專業認證，提供客觀車況報告，資訊完全透明　　</p>
-                    </div>
-                </div>
-                <div class="qc-item reveal">
-                    <span class="qc-item-icon">👨‍🔧</span>
-                    <div class="qc-item-content">
-                        <h4>專業技師檢查</h4>
-                        <p>全車系統檢測，包含引擎、變速箱、底盤、煞車等</p>
-                    </div>
-                </div>
+                <div class="qc-item reveal"><span class="qc-item-icon">🔧</span><div class="qc-item-content"><h4>鈑件檢查</h4><p>檢查鈑件是否有更換或修復痕跡，確認車體結構完整性</p></div></div>
+                <div class="qc-item reveal"><span class="qc-item-icon">🚗</span><div class="qc-item-content"><h4>事故泡水檢測</h4><p>嚴格檢查車輛是否曾發生重大事故或泡水，確保車況清白</p></div></div>
+                <div class="qc-item reveal"><span class="qc-item-icon">📋</span><div class="qc-item-content"><h4>第三方認證</h4><p>汽車公會專業認證，提供客觀車況報告，資訊完全透明</p></div></div>
+                <div class="qc-item reveal"><span class="qc-item-icon">👨‍🔧</span><div class="qc-item-content"><h4>專業技師檢查</h4><p>全車系統檢測，包含引擎、變速箱、底盤、煞車等</p></div></div>
             </div>
         </div>
-
-        <!-- 分隔線 -->
         <div class="qc-divider"></div>
-
-        <!-- 交車前整備 -->
         <div class="qc-column">
             <h3>✨ 交車前整備</h3>
             <div class="qc-items">
-                <div class="qc-item reveal">
-                    <span class="qc-item-icon">💎</span>
-                    <div class="qc-item-content">
-                        <h4>整車大美容</h4>
-                        <p>外觀漆面拋光、內裝清潔及皮革保養、引擎室清洗</p>
-                    </div>
-                </div>
-                <div class="qc-item reveal">
-                    <span class="qc-item-icon">🔩</span>
-                    <div class="qc-item-content">
-                        <h4>交車前保養</h4>
-                        <p>機油更換、機油濾心更換，專業技師檢查車況</p>
-                    </div>
-                </div>
-                <div class="qc-item reveal">
-                    <span class="qc-item-icon">🎨</span>
-                    <div class="qc-item-content">
-                        <h4>烤漆整理</h4>
-                        <p>漆面只要顧客不滿意就重新烤漆，保證顧客滿意</p>
-                    </div>
-                </div>
-                <div class="qc-item reveal">
-                    <span class="qc-item-icon">⛽</span>
-                    <div class="qc-item-content">
-                        <h4>滿油交車</h4>
-                        <p>每一台車交車前都會把油加滿，讓每一位顧客滿載而歸</p>
-                    </div>
-                </div>
+                <div class="qc-item reveal"><span class="qc-item-icon">💎</span><div class="qc-item-content"><h4>整車大美容</h4><p>外觀漆面拋光、內裝清潔及皮革保養、引擎室清洗</p></div></div>
+                <div class="qc-item reveal"><span class="qc-item-icon">🔩</span><div class="qc-item-content"><h4>交車前保養</h4><p>機油更換、機油濾心更換，專業技師檢查車況</p></div></div>
+                <div class="qc-item reveal"><span class="qc-item-icon">🎨</span><div class="qc-item-content"><h4>烤漆整理</h4><p>漆面只要顧客不滿意就重新烤漆，保證顧客滿意</p></div></div>
+                <div class="qc-item reveal"><span class="qc-item-icon">⛽</span><div class="qc-item-content"><h4>滿油交車</h4><p>每一台車交車前都會把油加滿，讓每一位顧客滿載而歸</p></div></div>
             </div>
         </div>
     </div>
@@ -1534,60 +406,20 @@
     <div style="text-align: center; margin-bottom: 80px;">
         <span class="section-tag">One-Stop Service</span>
         <h2 class="section-title">一條龍服務</h2>
-        <p class="section-description">
-            買車只是開始，完整的一條龍服務才是我們的承諾
-        </p>
+        <p class="section-description">買車只是開始，完整的一條龍服務才是我們的承諾</p>
     </div>
-    
     <div class="after-sales-grid">
-        <div class="after-sales-card reveal">
-            <span class="after-sales-icon">🔧</span>
-            <h4>車輛維護</h4>
-            <p>本店自設大型保養廠，不管是保養、維修、更換輪胎、四輪定位等等，我們皆有一條龍服務</p>
-        </div>
-        <div class="after-sales-card reveal">
-            <span class="after-sales-icon">⚙️</span>
-            <h4>車輛改裝</h4>
-            <p>配合專業改裝廠，不管是升級配備、外觀改裝、音響改裝，甚至動力提升，皆可滿足顧客需求</p>
-        </div>
-        <div class="after-sales-card reveal">
-            <span class="after-sales-icon">🛠️</span>
-            <h4>車輛周邊</h4>
-            <p>隔熱紙、行車紀錄器、避光墊等等，只要和車子相關的配件都可以找我們，連洗車都可以</p>
-        </div>
-        <div class="after-sales-card reveal">
-            <span class="after-sales-icon">🛡️</span>
-            <h4>理賠服務</h4>
-            <p>本公司為保險公司之簽約車商，顧客發生任何事故，我們會馬上聯絡保險公司，安排道路救援，後續維修理賠完全處理</p>
-        </div>
-        <div class="after-sales-card reveal">
-            <span class="after-sales-icon">🔍</span>
-            <h4>尋車服務</h4>
-            <p>想買什麼車，告訴我，我馬上找給你</p>
-        </div>
-        <div class="after-sales-card reveal">
-            <span class="after-sales-icon">💬</span>
-            <h4>24小時諮詢服務</h4>
-            <p>不管遇到什麼汽車問題，像是故障燈、異音、冷氣不冷，或功能不懂怎麼用，都可以隨時撥電話給我，馬上排解所有疑難雜症</p>
-        </div>
-        <div class="after-sales-card reveal">
-            <span class="after-sales-icon">💰</span>
-            <h4>車輛貸款</h4>
-            <p>我們配合各大銀行及融資，幫顧客評估貸款條件，始終秉持著我們的原則，就是幫顧客省錢，所以只幫顧客做最低利率，從不從中賺取傭金</p>
-        </div>
-        <div class="after-sales-card reveal">
-            <span class="after-sales-icon">🚗</span>
-            <h4>高價收購中古車</h4>
-            <p>憑藉專業判斷與50年保養廠資源，能給出市場上最合理的收購價格。誠實評估，絕不低估您的愛車價值</p>
-        </div>
-        <div class="after-sales-card reveal">
-            <span class="after-sales-icon">🤝</span>
-            <h4>完美的寄售服務</h4>
-            <p>我們獨創的完美換車服務，讓您換車比不換車還省，詳情請看創新收購方案</p>
-        </div>
+        <div class="after-sales-card reveal"><span class="after-sales-icon">🔧</span><h4>車輛維護</h4><p>本店自設大型保養廠，不管是保養、維修、更換輪胎、四輪定位等等，我們皆有一條龍服務</p></div>
+        <div class="after-sales-card reveal"><span class="after-sales-icon">⚙️</span><h4>車輛改裝</h4><p>配合專業改裝廠，不管是升級配備、外觀改裝、音響改裝，甚至動力提升，皆可滿足顧客需求</p></div>
+        <div class="after-sales-card reveal"><span class="after-sales-icon">🛠️</span><h4>車輛周邊</h4><p>隔熱紙、行車紀錄器、避光墊等等，只要和車子相關的配件都可以找我們，連洗車都可以</p></div>
+        <div class="after-sales-card reveal"><span class="after-sales-icon">🛡️</span><h4>理賠服務</h4><p>本公司為保險公司之簽約車商，顧客發生任何事故，我們會馬上聯絡保險公司，安排道路救援，後續維修理賠完全處理</p></div>
+        <div class="after-sales-card reveal"><span class="after-sales-icon">🔍</span><h4>尋車服務</h4><p>想買什麼車，告訴我，我馬上找給你</p></div>
+        <div class="after-sales-card reveal"><span class="after-sales-icon">💬</span><h4>24小時諮詢服務</h4><p>不管遇到什麼汽車問題，像是故障燈、異音、冷氣不冷，或功能不懂怎麼用，都可以隨時撥電話給我，馬上排解所有疑難雜症</p></div>
+        <div class="after-sales-card reveal"><span class="after-sales-icon">💰</span><h4>車輛貸款</h4><p>我們配合各大銀行及融資，幫顧客評估貸款條件，始終秉持著我們的原則，就是幫顧客省錢，所以只幫顧客做最低利率，從不從中賺取傭金</p></div>
+        <div class="after-sales-card reveal"><span class="after-sales-icon">🚗</span><h4>高價收購中古車</h4><p>憑藉專業判斷與50年保養廠資源，能給出市場上最合理的收購價格。誠實評估，絕不低估您的愛車價值</p></div>
+        <div class="after-sales-card reveal"><span class="after-sales-icon">🤝</span><h4>完美的寄售服務</h4><p>我們獨創的完美換車服務，讓您換車比不換車還省，詳情請看創新收購方案</p></div>
     </div>
 </section>
-
 
 <section id="reviews" class="reviews-section reveal">
     <div class="reviews-header">
@@ -1596,98 +428,19 @@
         <p class="section-description">從不要求顧客評論<br>已售出超過200台車  至今0負評</p>
         <div class="google-rating">
             <i class="fab fa-google" style="font-size: 32px; color: #4285F4;"></i>
-            <div>
-                <div class="stars">★★★★★</div>
-                <div class="score">5.0</div>
-                <div class="text">Google評分</div>
-            </div>
+            <div><div class="stars">★★★★★</div><div class="score">5.0</div><div class="text">Google評分</div></div>
         </div>
     </div>
-    
     <div class="reviews-grid">
-        <div class="review-card reveal">
-            <div class="review-header">
-                <div class="review-avatar">韓</div>
-                <div class="review-info">
-                    <h4>韓小菲</h4>
-                    <div class="review-stars">★★★★★</div>
-                </div>
-            </div>
-            <div class="review-content">
-                一開始不知道老公為什麼執意要選這間，明明我朋友的店就在附近，但來了之後就知道了，從介紹、談價格、試乘，都非常專業跟親切，完全沒有被強迫很難拒絕的感覺，後來簽約到交車，老闆甚至直接開來屏東給我們，真的很暖心，而且車子不太會操作跟遇到問題，即便是非營業時間也是有問必答，從來沒發過評論，但覺得一定要來給五星，認識你們真的太好了！
-            </div>
-        </div>
-        
-        <div class="review-card reveal">
-            <div class="review-header">
-                <div class="review-avatar">黃</div>
-                <div class="review-info">
-                    <h4>黃政達</h4>
-                    <div class="review-stars">★★★★★</div>
-                </div>
-            </div>
-            <div class="review-content">
-                我是沒在留評論的人，但是這間的服務實在太好了！從去年10月買車到現在，都會定期關心我們的車況，有不懂的功能或是問題，還特地跑到屏東來教我，連要保養都還跑來幫我牽車，買車這半年跑來屏東5、6次，態度又好，真的良心推薦。
-            </div>
-        </div>
-        
-        <div class="review-card reveal">
-            <div class="review-header">
-                <div class="review-avatar">S</div>
-                <div class="review-info">
-                    <h4>saitama_777</h4>
-                    <div class="review-stars">★★★★★</div>
-                </div>
-            </div>
-            <div class="review-content">
-                一定是大拇指👍雖然沒有跟老闆消費，但老闆還是耐心的跟我講解了一個小時的外匯車知識，不強迫完全沒有壓力，賣的車老闆肯定幫你把關👍
-            </div>
-        </div>
-        
-        <div class="review-card reveal">
-            <div class="review-header">
-                <div class="review-avatar">朱</div>
-                <div class="review-info">
-                    <h4>朱釗志</h4>
-                    <div class="review-stars">★★★★★</div>
-                </div>
-            </div>
-            <div class="review-content">
-                遇過最透明的車商，老闆人超好，車也超漂亮  大推👍
-            </div>
-        </div>
-        
-        <div class="review-card reveal">
-            <div class="review-header">
-                <div class="review-avatar">楊</div>
-                <div class="review-info">
-                    <h4>楊詠筌</h4>
-                    <div class="review-stars">★★★★★</div>
-                </div>
-            </div>
-            <div class="review-content">
-                車子我在這邊買的，超讚老闆人超好，價格便宜公道，售後服務超讚👍
-            </div>
-        </div>
-        
-        <div class="review-card reveal">
-            <div class="review-header">
-                <div class="review-avatar">黃</div>
-                <div class="review-info">
-                    <h4>黃嵩閔</h4>
-                    <div class="review-stars">★★★★★</div>
-                </div>
-            </div>
-            <div class="review-content">
-                車子真的超讚，售前售後服務都有顧到，車況透明，老闆售價也經濟實惠，實車實價，真的非常推👍
-            </div>
-        </div>
+        <div class="review-card reveal"><div class="review-header"><div class="review-avatar">韓</div><div class="review-info"><h4>韓小菲</h4><div class="review-stars">★★★★★</div></div></div><div class="review-content">一開始不知道老公為什麼執意要選這間，明明我朋友的店就在附近，但來了之後就知道了，從介紹、談價格、試乘，都非常專業跟親切，完全沒有被強迫很難拒絕的感覺，後來簽約到交車，老闆甚至直接開來屏東給我們，真的很暖心，而且車子不太會操作跟遇到問題，即便是非營業時間也是有問必答，從來沒發過評論，但覺得一定要來給五星，認識你們真的太好了！</div></div>
+        <div class="review-card reveal"><div class="review-header"><div class="review-avatar">黃</div><div class="review-info"><h4>黃政達</h4><div class="review-stars">★★★★★</div></div></div><div class="review-content">我是沒在留評論的人，但是這間的服務實在太好了！從去年10月買車到現在，都會定期關心我們的車況，有不懂的功能或是問題，還特地跑到屏東來教我，連要保養都還跑來幫我牽車，買車這半年跑來屏東5、6次，態度又好，真的良心推薦。</div></div>
+        <div class="review-card reveal"><div class="review-header"><div class="review-avatar">S</div><div class="review-info"><h4>saitama_777</h4><div class="review-stars">★★★★★</div></div></div><div class="review-content">一定是大拇指👍雖然沒有跟老闆消費，但老闆還是耐心的跟我講解了一個小時的外匯車知識，不強迫完全沒有壓力，賣的車老闆肯定幫你把關👍</div></div>
+        <div class="review-card reveal"><div class="review-header"><div class="review-avatar">朱</div><div class="review-info"><h4>朱釗志</h4><div class="review-stars">★★★★★</div></div></div><div class="review-content">遇過最透明的車商，老闆人超好，車也超漂亮  大推👍</div></div>
+        <div class="review-card reveal"><div class="review-header"><div class="review-avatar">楊</div><div class="review-info"><h4>楊詠筌</h4><div class="review-stars">★★★★★</div></div></div><div class="review-content">車子我在這邊買的，超讚老闆人超好，價格便宜公道，售後服務超讚👍</div></div>
+        <div class="review-card reveal"><div class="review-header"><div class="review-avatar">黃</div><div class="review-info"><h4>黃嵩閔</h4><div class="review-stars">★★★★★</div></div></div><div class="review-content">車子真的超讚，售前售後服務都有顧到，車況透明，老闆售價也經濟實惠，實車實價，真的非常推👍</div></div>
     </div>
-    
     <div class="view-all-reviews">
-        <a href="https://maps.app.goo.gl/adZzk5gSL8okM9ScA" target="_blank">
-            查看更多Google評論 <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
-        </a>
+        <a href="https://maps.app.goo.gl/adZzk5gSL8okM9ScA" target="_blank">查看更多Google評論 <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
     </div>
 </section>
 
@@ -1695,34 +448,20 @@
     <div style="text-align: center; margin-bottom: 80px;">
         <span class="section-tag">Our Team</span>
         <h2 class="section-title">認識我們</h2>
-        <p class="section-description">
-            兩個屏科大車輛系畢業的好兄弟，用專業和誠懇經營每一天
-        </p>
+        <p class="section-description">兩個屏科大車輛系畢業的好兄弟，用專業和誠懇經營每一天</p>
     </div>
-    
     <div class="owners-wrapper">
-        <!-- 第一位經營者 -->
         <div class="owner-container">
             <div class="owner-image">
                 <img src="https://i.ibb.co/Gv8TjvHY/155-C3806-02-D6-49-A2-84-E1-CB550272-B221.png" alt="經營者">
-                <div class="credential-badge">
-                     <span class="big" style="font-size: 16px;">超佛系老闆</span>
-                </div>
+                <div class="credential-badge"><span class="big" style="font-size: 16px;">超佛系老闆</span></div>
             </div>
             <div class="owner-content">
                 <h3>極致專業背景，怎麼輸？</h3>
-                <p>
-                    汽車學霸，純血汽車科系畢業，應屆統測全國前百，高雄高工汽車科 + 屏科大車輛工程系畢業，40年保養廠第三代，擁有15年汽車維修經歷、售出超過200台進口車。我說這車讚，就是讚。
-                </p>
-                <p>
-                    24歲出來創業，從沒賣過車的我們，不懂話術、不懂銷售技巧，只靠真誠及專業服務每個客人，每一台車都是我精挑細選的，always只賣我喜歡的車。
-                </p>
-                <p>
-					為了降低成本和售價，從選車到交車、從美國到台灣、從船運到報關，全都是我自己搞，不依賴貿易商，我就是貿易商，有我的層層把關，不用被層層剝削就能買到好車，有我的專業，絕對放心。
-                </p>
-                <p>
-                    秉持著<strong style="color: var(--gold);">「我們的好，運氣好才能享受到」</strong>的理念，看我們賣這麼多車，至今依然0負評，就知道有多佛。每個顧客都是朋友，我就是大家的汽車顧問。不說大話，我賣的車子絕對都超讚。但我們年輕人出來創業沒什麼錢，車輛數不多，如果沒有喜歡的也沒關係，還是可以提供一點建議的啦～
-                </p>
+                <p>汽車學霸，純血汽車科系畢業，應屆統測全國前百，高雄高工汽車科 + 屏科大車輛工程系畢業，40年保養廠第三代，擁有15年汽車維修經歷、售出超過200台進口車。我說這車讚，就是讚。</p>
+                <p>24歲出來創業，從沒賣過車的我們，不懂話術、不懂銷售技巧，只靠真誠及專業服務每個客人，每一台車都是我精挑細選的，always只賣我喜歡的車。</p>
+                <p>為了降低成本和售價，從選車到交車、從美國到台灣、從船運到報關，全都是我自己搞，不依賴貿易商，我就是貿易商，有我的層層把關，不用被層層剝削就能買到好車，有我的專業，絕對放心。</p>
+                <p>秉持著<strong style="color: var(--gold);">「我們的好，運氣好才能享受到」</strong>的理念，看我們賣這麼多車，至今依然0負評，就知道有多佛。每個顧客都是朋友，我就是大家的汽車顧問。不說大話，我賣的車子絕對都超讚。但我們年輕人出來創業沒什麼錢，車輛數不多，如果沒有喜歡的也沒關係，還是可以提供一點建議的啦～</p>
                 <ul class="credential-list">
                     <li><i class="fas fa-graduation-cap"></i> <span>高雄高工汽車科 / 屏東科技大學車輛工程系</span></li>
                     <li><i class="fas fa-trophy"></i> <span>售出超過200台進口車・0負評</span></li>
@@ -1734,35 +473,22 @@
                 </ul>
             </div>
         </div>
-
-        <!-- 第二位經營者 -->
         <div class="owner-container">
             <div class="owner-image">
                 <img src="https://i.ibb.co/k2knDf2M/image.png" alt="第二位經營者">
-                <div class="mascot-badge">
-               <span class="big" style="font-size: 16px;">超佛系夥伴</span>
-                </div>
+                <div class="mascot-badge"><span class="big" style="font-size: 16px;">超佛系夥伴</span></div>
             </div>
             <div class="owner-content">
                 <h3>看就知道我不會說謊</h3>
-                <p>
-                    純血汽車科系+1，台南高工汽車科 + 屏科大學車輛工程系畢業。監理站大師，領牌超過200台！也是車輛鑑定大師，因為非常怕出錯，只能把車子要看得非常仔細！我說這個門換過就是換過
-                </p>
-                <p>
-                    我是保守派，超carry輔助，老闆都得聽我的，他挑的車都要經過我這關，我說No就是No，因為錢是我在管的。<br>24歲被拖來創業，身為台南人的我帶著對車子的熱情離鄉背井。我是內向的i人，想買車找老闆、不想買可以找我聊天，不要問我能不能便宜一點，我真的不會賣車...
-                </p>
-                <p>
-                    我也很專業，但我不會反駁，我說這正常，你說這不正常，那就不正常，不要起爭議就是我的原則。
-                </p>
-                <p>
-                    秉持著<strong style="color: var(--gold);">「想買就買，不想買就不要買」</strong>的理念，看我們賣這麼多車，至今依然0負評，就知道我們真的是好車商，請不要欺負我們
-                </p>
+                <p>純血汽車科系+1，台南高工汽車科 + 屏科大學車輛工程系畢業。監理站大師，領牌超過200台！也是車輛鑑定大師，因為非常怕出錯，只能把車子要看得非常仔細！我說這個門換過就是換過</p>
+                <p>我是保守派，超carry輔助，老闆都得聽我的，他挑的車都要經過我這關，我說No就是No，因為錢是我在管的。<br>24歲被拖來創業，身為台南人的我帶著對車子的熱情離鄉背井。我是內向的i人，想買車找老闆、不想買可以找我聊天，不要問我能不能便宜一點，我真的不會賣車...</p>
+                <p>我也很專業，但我不會反駁，我說這正常，你說這不正常，那就不正常，不要起爭議就是我的原則。</p>
+                <p>秉持著<strong style="color: var(--gold);">「想買就買，不想買就不要買」</strong>的理念，看我們賣這麼多車，至今依然0負評，就知道我們真的是好車商，請不要欺負我們</p>
                 <ul class="credential-list">
                     <li><i class="fas fa-graduation-cap"></i> <span>台南高工汽車科 / 屏東科技大學車輛工程系</span></li>
                     <li><i class="fas fa-id-card"></i> <span>超過200台領牌經驗</span></li>
                     <li><i class="fas fa-circle-check"></i> <span>專業車輛鑑定</span></li>
                     <li><i class="fas fa-handshake"></i> <span>到府服務小幫手</span></li>
-
                 </ul>
             </div>
         </div>
@@ -1773,41 +499,15 @@
     <div style="text-align: center; margin-bottom: 80px;">
         <span class="section-tag">Our Philosophy</span>
         <h2 class="section-title">經營理念</h2>
-        <p class="section-description">
-            交友第一，服務第二，成交第三<br>用專業和透明，改變二手車市場
-        </p>
+        <p class="section-description">交友第一，服務第二，成交第三<br>用專業和透明，改變二手車市場</p>
     </div>
     <div class="philosophy-grid">
-        <div class="philosophy-card reveal">
-            <span class="philosophy-icon">🎯</span>
-            <h3>極致CP值</h3>
-            <p>每一台車都經過專業眼光精挑細選，確保客人花的每一分錢都值得。絕不賣連自己都不想買的車。</p>
-        </div>
-        <div class="philosophy-card reveal">
-            <span class="philosophy-icon">💎</span>
-            <h3>透明誠實</h3>
-            <p>所有車況、成本、利潤完全公開透明。利潤只抓6-7%，用誠實證明二手車市場也可以正派經營。</p>
-        </div>
-        <div class="philosophy-card reveal">
-            <span class="philosophy-icon">🤝</span>
-            <h3>客戶變朋友</h3>
-            <p>不把客人當客人，而是當朋友。能來這裡買車的人都是幸運的，因為遇到的是真心想幫忙的人。</p>
-        </div>
-        <div class="philosophy-card reveal">
-            <span class="philosophy-icon">🔍</span>
-            <h3>專業把關</h3>
-            <p>每一台車都經過專業檢查，有任何問題絕不隱瞞。對每一台車都非常有信心，因為都是嚴格篩選的精品。</p>
-        </div>
-        <div class="philosophy-card reveal">
-            <span class="philosophy-icon">💰</span>
-            <h3>零貸款傭金</h3>
-            <p>貸款完全不賺傭金！會比較多家銀行，幫客人找到最低利率。這是承諾，也是對「誠實」的實踐。</p>
-        </div>
-        <div class="philosophy-card reveal">
-            <span class="philosophy-icon">📊</span>
-            <h3>成本公開</h3>
-            <p>因為賺得不多，所以敢把車子的成本直接秀給客人看。這在業界很少見，但這就是改變市場的方式。</p>
-        </div>
+        <div class="philosophy-card reveal"><span class="philosophy-icon">🎯</span><h3>極致CP值</h3><p>每一台車都經過專業眼光精挑細選，確保客人花的每一分錢都值得。絕不賣連自己都不想買的車。</p></div>
+        <div class="philosophy-card reveal"><span class="philosophy-icon">💎</span><h3>透明誠實</h3><p>所有車況、成本、利潤完全公開透明。利潤只抓6-7%，用誠實證明二手車市場也可以正派經營。</p></div>
+        <div class="philosophy-card reveal"><span class="philosophy-icon">🤝</span><h3>客戶變朋友</h3><p>不把客人當客人，而是當朋友。能來這裡買車的人都是幸運的，因為遇到的是真心想幫忙的人。</p></div>
+        <div class="philosophy-card reveal"><span class="philosophy-icon">🔍</span><h3>專業把關</h3><p>每一台車都經過專業檢查，有任何問題絕不隱瞞。對每一台車都非常有信心，因為都是嚴格篩選的精品。</p></div>
+        <div class="philosophy-card reveal"><span class="philosophy-icon">💰</span><h3>零貸款傭金</h3><p>貸款完全不賺傭金！會比較多家銀行，幫客人找到最低利率。這是承諾，也是對「誠實」的實踐。</p></div>
+        <div class="philosophy-card reveal"><span class="philosophy-icon">📊</span><h3>成本公開</h3><p>因為賺得不多，所以敢把車子的成本直接秀給客人看。這在業界很少見，但這就是改變市場的方式。</p></div>
     </div>
 </section>
 
@@ -1815,44 +515,25 @@
     <div style="text-align: center; margin-bottom: 80px;">
         <span class="section-tag">Our Services</span>
         <h2 class="section-title">創新收購方案</h2>
-        <p class="section-description">
-            不只是賣車，我們提供的是一個全新的合作模式
-        </p>
+        <p class="section-description">不只是賣車，我們提供的是一個全新的合作模式</p>
     </div>
-    
     <div style="max-width: 1400px; margin: 0 auto;">
         <div class="services-grid" style="margin-bottom: 40px;">
-            <div class="service-card reveal">
-                <div class="icon">🚗</div>
-                <h4>高價收購中古車</h4>
-                <p>憑藉專業判斷與外匯車行情比較，能給出市場上最合理的收購價格。誠實評估，絕不低估您的愛車價值。</p>
-            </div>
-            <div class="service-card reveal">
-                <div class="icon">🔄</div>
-                <h4>舊車換新車</h4>
-                <p>您的舊車可以直接折抵新車款。提供最透明的換車方案，讓您清楚知道每一筆交易的細節。</p>
-            </div>
-            <div class="service-card reveal">
-                <div class="icon">📋</div>
-                <h4>超低服務費寄賣</h4>
-                <p>想自己賣車但缺少管道？提供最低服務費的寄賣服務。若您跟我們購買新車，寄賣服務費還可以減免！</p>
-            </div>
+            <div class="service-card reveal"><div class="icon">🚗</div><h4>高價收購中古車</h4><p>憑藉專業判斷與外匯車行情比較，能給出市場上最合理的收購價格。誠實評估，絕不低估您的愛車價值。</p></div>
+            <div class="service-card reveal"><div class="icon">🔄</div><h4>舊車換新車</h4><p>您的舊車可以直接折抵新車款。提供最透明的換車方案，讓您清楚知道每一筆交易的細節。</p></div>
+            <div class="service-card reveal"><div class="icon">📋</div><h4>超低服務費寄賣</h4><p>想自己賣車但缺少管道？提供最低服務費的寄賣服務。若您跟我們購買新車，寄賣服務費還可以減免！</p></div>
         </div>
-
         <div class="service-card-large reveal">
             <span class="service-badge">業界首創</span>
             <h3>🤝 Win²雙贏方案</h3>
-            <p>
-                真正從顧客的角度出發，而發想出的獨創商業模式！如果您想買車、賣車，了解看看，保證不吃虧。
-            </p>
+            <p>真正從顧客的角度出發，而發想出的獨創商業模式！如果您想買車、賣車，了解看看，保證不吃虧。</p>
             <div class="service-highlight">
                 <strong>猛在哪？：</strong><br>
                 我們會教你用最省的方式開最棒的車，試一次就黏住，業界唯一，顧客就是最大贏家<br><br>
                 <strong>「Customer to Partner」才是我們追求的商業模式</strong><br><br>
-				<a href="tel:0979226338" class="cta-primary">立即來電</a><br>
+                <a href="tel:0979226338" class="cta-primary">立即來電</a><br>
             </div>
         </div>
-
         <div style="text-align: center; margin-top: 60px; padding: 50px; background: rgba(212,169,72,0.05); border: 1px solid rgba(212,169,72,0.2);">
             <h3 style="color: var(--gold); margin-bottom: 20px; font-size: 28px;">我們的保證</h3>
             <p style="font-size: 18px; line-height: 2; color: var(--text-light-gray); max-width: 900px; margin: 0 auto;">
@@ -1864,8 +545,6 @@
     </div>
 </section>
 
-
-
 <section id="contact" class="reveal" style="background: var(--secondary-black);">
     <div style="text-align: center; margin-bottom: 80px;">
         <span class="section-tag">Contact Us</span>
@@ -1873,85 +552,32 @@
         <p class="section-description">歡迎來電或來店，很樂意和您聊聊購車需求</p>
     </div>
     <div class="contact-grid">
-        <a href="tel:0979226338" class="contact-item">
-            <span style="font-size:30px; display:block; margin-bottom:20px;">📞</span>
-            <h4>電話諮詢</h4>
-            <p>07-7352855<br>0979-226-338</p>
-        </a>
-        <a href="https://maps.app.goo.gl/JbWz8W7Ny3a5bAj9A" target="_blank" class="contact-item">
-            <span style="font-size:30px; display:block; margin-bottom:20px;">📍</span>
-            <h4>展示中心</h4>
-            <p>高雄市仁武區鳳仁路 3-36 號</p>
-            <span style="color:var(--gold); font-size:12px; margin-top:10px; display:block;">點擊導航</span>
-        </a>
-        <div class="contact-item">
-            <span style="font-size:30px; display:block; margin-bottom:20px;">✉</span>
-            <h4>電子郵件</h4>
-           <p><a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a></p>
-        </div>
-        <div class="contact-item">
-            <span style="font-size:30px; display:block; margin-bottom:20px;">🕐</span>
-            <h4>營業時間</h4>
-            <p>週二至週日 10:30 - 19:00<br><span style="color:var(--gold);">週一公休</span></p>
-        </div>
+        <a href="tel:0979226338" class="contact-item"><span style="font-size:30px; display:block; margin-bottom:20px;">📞</span><h4>電話諮詢</h4><p>07-7352855<br>0979-226-338</p></a>
+        <a href="https://maps.app.goo.gl/JbWz8W7Ny3a5bAj9A" target="_blank" class="contact-item"><span style="font-size:30px; display:block; margin-bottom:20px;">📍</span><h4>展示中心</h4><p>高雄市仁武區鳳仁路 3-36 號</p><span style="color:var(--gold); font-size:12px; margin-top:10px; display:block;">點擊導航</span></a>
+        <div class="contact-item"><span style="font-size:30px; display:block; margin-bottom:20px;">✉</span><h4>電子郵件</h4><p><a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a></p></div>
+        <div class="contact-item"><span style="font-size:30px; display:block; margin-bottom:20px;">🕐</span><h4>營業時間</h4><p>週二至週日 10:30 - 19:00<br><span style="color:var(--gold);">週一公休</span></p></div>
     </div>
 </section>
 
 <footer>
     <div class="footer-content">
         <div>
-            <div class="logo-text" style="margin-bottom:25px;">
-                <div class="zh" style="color:#fff; font-size:20px;">耀笙國際汽車</div>
-                <div class="en" style="color:var(--gold); font-size:11px;">Y.S. AUTOS</div>
-                <div class="since" style="color:var(--text-gray); font-size:9px; letter-spacing:1px; margin-top:2px;">SINCE 2020</div>
-            </div>
-            <p style="color:var(--text-gray); font-size:14px; line-height:1.8;">
-                專業透明的中古車專家，用誠實改變二手車市場。每一台車都經過專業把關，每一筆交易都完全透明。
-            </p>
+            <div class="logo-text" style="margin-bottom:25px;"><div class="zh" style="color:#fff; font-size:20px;">耀笙國際汽車</div><div class="en" style="color:var(--gold); font-size:11px;">Y.S. AUTOS</div><div class="since" style="color:var(--text-gray); font-size:9px; letter-spacing:1px; margin-top:2px;">SINCE 2020</div></div>
+            <p style="color:var(--text-gray); font-size:14px; line-height:1.8;">專業透明的中古車專家，用誠實改變二手車市場。每一台車都經過專業把關，每一筆交易都完全透明。</p>
             <div class="footer-socials">
                 <a href="https://www.facebook.com/yaosheng.inc" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/y.s_auto" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
                 <a href="https://lin.ee/mDzezrK" target="_blank" class="social-btn"><i class="fab fa-line"></i></a>
             </div>
         </div>
-        <div class="footer-links">
-            <h4 style="color:#fff; margin-bottom:25px;">快速連結</h4>
-            <ul>
-                <li><a href="https://ys-autos.com/#owner">認識我們</a></li>
-                <li><a href="https://ys-autos.com/#philosophy">經營理念</a></li>
-                <li><a href="https://ys-autos.com/#services">服務項目</a></li>
-                <li><a href="https://ys-autos.com/#reviews">顧客推薦</a></li>
-                <li><a href="https://ys-autos.com/prove">成交見證</a></li>
-            </ul>
-        </div>
-        <div class="footer-links">
-            <h4 style="color:#fff; margin-bottom:25px;">服務項目</h4>
-            <ul>
-                <li><a href="#">CPO原廠認證車</a></li>
-                <li><a href="#">美規外匯車</a></li>
-                <li><a href="#">代辦外匯車</a></li>
-                <li><a href="#">中古車買賣</a></li>
-                <li><a href="#">代客尋車</a></li>
-                <li><a href="#">汽車貸款</a></li>
-                <li><a href="#">車輛保險</a></li>
-                <li><a href="#">愛車寄售</a></li>
-            </ul>
-        </div>
-        <div class="footer-links">
-            <h4 style="color:#fff; margin-bottom:25px;">聯絡資訊</h4>
-            <p style="color:var(--text-gray); font-size:14px;">
-                電話: 07-7352855<br>
-                手機: 0979-226-338<br>
-                地址: 高雄市仁武區鳳仁路 3-36 號<br>
-                信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a></p>
-        </div>
+        <div class="footer-links"><h4 style="color:#fff; margin-bottom:25px;">快速連結</h4><ul><li><a href="https://ys-autos.com/#owner">認識我們</a></li><li><a href="https://ys-autos.com/#philosophy">經營理念</a></li><li><a href="https://ys-autos.com/#services">服務項目</a></li><li><a href="https://ys-autos.com/#reviews">顧客推薦</a></li><li><a href="https://ys-autos.com/prove">成交見證</a></li></ul></div>
+        <div class="footer-links"><h4 style="color:#fff; margin-bottom:25px;">服務項目</h4><ul><li><a href="#">CPO原廠認證車</a></li><li><a href="#">美規外匯車</a></li><li><a href="#">代辦外匯車</a></li><li><a href="#">中古車買賣</a></li><li><a href="#">代客尋車</a></li><li><a href="#">汽車貸款</a></li><li><a href="#">車輛保險</a></li><li><a href="#">愛車寄售</a></li></ul></div>
+        <div class="footer-links"><h4 style="color:#fff; margin-bottom:25px;">聯絡資訊</h4><p style="color:var(--text-gray); font-size:14px;">電話: 07-7352855<br>手機: 0979-226-338<br>地址: 高雄市仁武區鳳仁路 3-36 號<br>信箱: <a href="mailto:yaosheng.inc@gmail.com" style="color: inherit !important; text-decoration: none !important;">yaosheng.inc@gmail.com</a></p></div>
     </div>
-    <div style="text-align:center; padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); color:#666; font-size:12px; margin-top:50px;">
-        © 2026 Y.S. AUTOS 耀笙國際汽車. All Rights Reserved.
-    </div>
+    <div style="text-align:center; padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); color:#666; font-size:12px; margin-top:50px;">© 2026 Y.S. AUTOS 耀笙國際汽車. All Rights Reserved.</div>
 </footer>
 
-<!-- 懸浮導覽選單（手機版） -->
+<!-- 懸浮導覽選單（手機版）-->
 <div class="fab-wrapper" id="fabWrapper">
     <div class="fab-menu" id="fabMenu">
         <div class="fab-item"><a href="https://ys-autos.com/import-cars"><i class="fas fa-ship"></i>外匯車介紹</a></div>
@@ -1965,14 +591,15 @@
     <button class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="開啟選單">選單</button>
 </div>
 
+<!-- 在庫車輛懸浮按鈕 -->
 <a href="https://ys-autos.com/inventory" class="floating-inventory" aria-label="在庫車輛"><i class="fas fa-car"></i>在庫車輛</a>
-        <a href="buyback.html" class="floating-buyback" aria-label="高價收購"><i class="fas fa-dollar-sign"></i>高價收購</a>
+
+<!-- 高價收購懸浮按鈕 -->
+<a href="https://ys-autos.com/buyback" class="floating-buyback" aria-label="高價收購"><i class="fas fa-dollar-sign"></i>高價收購</a>
 
 <a href="tel:0979226338" class="floating-cta">立即來電預約</a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-	<script>
-    // ── FAB 懸浮選單控制 ──
+<script>
     var fabOpen = false;
     function toggleFab() {
         fabOpen = !fabOpen;
@@ -1993,107 +620,77 @@
         if (wrapper && !wrapper.contains(e.target)) { closeFab(); }
     });
 
-    // 流沙背景牆
     const bgWall = document.getElementById('bgWall');
     const photoUrls = [
-'image/compress/1247.webp',
-'image/compress/4085.webp',
-'image/compress/4393.webp',
-'image/compress/5647.webp',
-'image/compress/6060.webp',
-'image/compress/6293.webp',
-'image/compress/6320.webp',
-'image/compress/8223.webp',
-'image/compress/8945.webp',
-'image/compress/63201.webp',
-'image/compress/0E990A8A-610E-4206-ADBC-EA89586EB682.webp',
-'image/compress/0F42780B-37E6-460B-93AA-306A67AE0EC3.webp',
-'image/compress/4A3EC415-2174-409F-ABDC-DBF5549079AB.webp',
-'image/compress/4D9BDF4F-C525-4FE8-B198-0C2BFF60C11E.webp',
-'image/compress/5C4CFBF0-D7C1-469D-A64B-7895B1E17EFD.webp',
-'image/compress/5DB981E9-41D5-4457-88CE-3C81049AD6C755.webp',
-'image/compress/5FD8288F-BF56-4254-8612-10BB2F2F9BFF.webp',
-'image/compress/5FFF5953-BB4D-4275-AD9F-CFAB712F3F19.webp',
-'image/compress/8C1FBCC8-F6AE-484E-A1CE-EAE7C63DF0B2.webp',
-'image/compress/9B70A754-05C1-4020-8202-131CF6C5279955.webp',
-'image/compress/9B8276BE-A425-47DA-BE16-2CF1C908BE6C.webp',
-'image/compress/9F61D3C9-9883-4E8A-8A38-5BF01ECCC2CD.webp',
-'image/compress/14C92520-15BC-4B4D-A679-B8BA46E5E0EF.webp',
-'image/compress/40F7BDCC-C304-417B-8CA0-F555E9989DDF.webp',
-'image/compress/87F09F81-910D-4B62-A898-03344F449152.webp',
-'image/compress/88DE7D11-7395-466E-8A68-02ECD408E758.webp',
-'image/compress/330.webp',
-'image/compress/344DE7C3-4043-42D0-AFFA-F690A3F62B8D.webp',
-'image/compress/441F81FE-E421-4090-B296-45A6E5926069.webp',
-'image/compress/717FFF45-78A0-486A-AE06-8C8EE3D4DDB5.webp',
-'image/compress/856E8BB7-353B-4E2D-8BEA-84119906D413.webp',
-'image/compress/944AE69B-723D-4111-B9E2-650E305B1ABA.webp',
-'image/compress/953A739E-0AFD-49F9-8C21-6CF118495CE0.webp',
-'image/compress/1491.webp',
-'image/compress/01972A3C-ACD4-4809-93DE-75D316FEAC80.webp',
-'image/compress/2481EF1C-2CEE-4D48-8F3C-0ABA02755E60.webp',
-'image/compress/7602AAAF-59C4-470E-856C-5E7E56DD3400.webp',
-'image/compress/8065.webp',
-'image/compress/8432B507-E534-4606-A6BB-B06F1FCC57C655.webp',
-'image/compress/8745F88C-62DB-4E85-97DD-0B84B9F505CB.webp',
-'image/compress/23687D23-FF63-4735-807B-BE49ECCAAC44.webp',
-'image/compress/27831F2A-34BB-461F-A866-89A0F8943345.webp',
-'image/compress/2919380E-967A-4CE7-9DEE-9B6D13C9821D.webp',
-'image/compress/11111111.webp',
-'image/compress/64619039-8A50-4BF1-BBEE-7C78480EFF37.webp',
-'image/compress/165849463_797807610852464_6408012920781809324_n.webp',
-'image/compress/173969791_809637686336123_8605031118397524654_n.webp',
-'image/compress/192688507_839588333341058_2996060440068174326_n.webp',
+        'image/compress/1247.webp','image/compress/4085.webp','image/compress/4393.webp',
+        'image/compress/5647.webp','image/compress/6060.webp','image/compress/6293.webp',
+        'image/compress/6320.webp','image/compress/8223.webp','image/compress/8945.webp',
+        'image/compress/63201.webp','image/compress/0E990A8A-610E-4206-ADBC-EA89586EB682.webp',
+        'image/compress/0F42780B-37E6-460B-93AA-306A67AE0EC3.webp',
+        'image/compress/4A3EC415-2174-409F-ABDC-DBF5549079AB.webp',
+        'image/compress/4D9BDF4F-C525-4FE8-B198-0C2BFF60C11E.webp',
+        'image/compress/5C4CFBF0-D7C1-469D-A64B-7895B1E17EFD.webp',
+        'image/compress/5DB981E9-41D5-4457-88CE-3C81049AD6C755.webp',
+        'image/compress/5FD8288F-BF56-4254-8612-10BB2F2F9BFF.webp',
+        'image/compress/5FFF5953-BB4D-4275-AD9F-CFAB712F3F19.webp',
+        'image/compress/8C1FBCC8-F6AE-484E-A1CE-EAE7C63DF0B2.webp',
+        'image/compress/9B70A754-05C1-4020-8202-131CF6C5279955.webp',
+        'image/compress/9B8276BE-A425-47DA-BE16-2CF1C908BE6C.webp',
+        'image/compress/9F61D3C9-9883-4E8A-8A38-5BF01ECCC2CD.webp',
+        'image/compress/14C92520-15BC-4B4D-A679-B8BA46E5E0EF.webp',
+        'image/compress/40F7BDCC-C304-417B-8CA0-F555E9989DDF.webp',
+        'image/compress/87F09F81-910D-4B62-A898-03344F449152.webp',
+        'image/compress/88DE7D11-7395-466E-8A68-02ECD408E758.webp',
+        'image/compress/330.webp','image/compress/344DE7C3-4043-42D0-AFFA-F690A3F62B8D.webp',
+        'image/compress/441F81FE-E421-4090-B296-45A6E5926069.webp',
+        'image/compress/717FFF45-78A0-486A-AE06-8C8EE3D4DDB5.webp',
+        'image/compress/856E8BB7-353B-4E2D-8BEA-84119906D413.webp',
+        'image/compress/944AE69B-723D-4111-B9E2-650E305B1ABA.webp',
+        'image/compress/953A739E-0AFD-49F9-8C21-6CF118495CE0.webp',
+        'image/compress/1491.webp','image/compress/01972A3C-ACD4-4809-93DE-75D316FEAC80.webp',
+        'image/compress/2481EF1C-2CEE-4D48-8F3C-0ABA02755E60.webp',
+        'image/compress/7602AAAF-59C4-470E-856C-5E7E56DD3400.webp',
+        'image/compress/8065.webp','image/compress/8432B507-E534-4606-A6BB-B06F1FCC57C655.webp',
+        'image/compress/8745F88C-62DB-4E85-97DD-0B84B9F505CB.webp',
+        'image/compress/23687D23-FF63-4735-807B-BE49ECCAAC44.webp',
+        'image/compress/27831F2A-34BB-461F-A866-89A0F8943345.webp',
+        'image/compress/2919380E-967A-4CE7-9DEE-9B6D13C9821D.webp',
+        'image/compress/11111111.webp','image/compress/64619039-8A50-4BF1-BBEE-7C78480EFF37.webp',
+        'image/compress/165849463_797807610852464_6408012920781809324_n.webp',
+        'image/compress/173969791_809637686336123_8605031118397524654_n.webp',
+        'image/compress/192688507_839588333341058_2996060440068174326_n.webp',
     ];
-    
-function createRow(direction) {
-    const row = document.createElement('div');
-    row.className = `marquee-row ${direction}`;
-    
-    // 1. 取得照片清單並打亂（這是我們剛才加的隨機功能）
-    let list = [...photoUrls, ...photoUrls];
-    list.sort(() => Math.random() - 0.5); 
-    
-    // 2. 如果是往右跑的一排 (right)，就把陣列順序倒轉 (reverse)
-    // 這樣就會變成：上面從 car1 排到 car12，下面從 car12 排到 car1
-    if (direction === 'right') {
-        list.reverse();
+
+    function createRow(direction) {
+        const row = document.createElement('div');
+        row.className = `marquee-row ${direction}`;
+        let list = [...photoUrls, ...photoUrls];
+        list.sort(() => Math.random() - 0.5);
+        if (direction === 'right') list.reverse();
+        list.forEach(url => {
+            const img = document.createElement('img');
+            img.src = url;
+            img.className = 'bg-photo-item';
+            img.alt = '高雄外匯車／進口車展示照片｜耀笙國際汽車';
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            row.appendChild(img);
+        });
+        return row;
     }
-    
-    list.forEach(url => {
-        const img = document.createElement('img');
-        img.src = url;
-        img.className = 'bg-photo-item';
-        img.alt = '高雄外匯車／進口車展示照片｜耀笙國際汽車';
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        row.appendChild(img);
-    });
-    return row;
-}
     bgWall.appendChild(createRow('left'));
     bgWall.appendChild(createRow('right'));
 
-    // 導航列滾動效果
     function handleNavScroll() {
         const navbar = document.getElementById('navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('nav-scrolled');
-        } else {
-            navbar.classList.remove('nav-scrolled');
-        }
+        if (window.scrollY > 50) navbar.classList.add('nav-scrolled');
+        else navbar.classList.remove('nav-scrolled');
     }
 
-    // Reveal 動畫
     function reveal() {
-        var reveals = document.querySelectorAll(".reveal");
-        for (var i = 0; i < reveals.length; i++) {
-            var windowHeight = window.innerHeight;
-            var elementTop = reveals[i].getBoundingClientRect().top;
-            if (elementTop < windowHeight - 50) {
-                reveals[i].classList.add("active");
-            }
-        }
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
+        });
     }
 
     function toggleMobileMenu() {
@@ -2112,85 +709,41 @@ function createRow(direction) {
         document.body.style.overflow = '';
     }
 
-    window.addEventListener('scroll', function() {
-        handleNavScroll();
-        reveal();
-        updateActiveNav();
-    });
-    window.addEventListener('load', function() {
-        initCarousel();
-        reveal();
-        updateActiveNav();
-    });
-
-    // Active nav link on scroll
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-links a');
 
     function updateActiveNav() {
         var current = '';
         sections.forEach(function(section) {
-                 var top = section.offsetTop - 120;
+            var top = section.offsetTop - 120;
             var bottom = top + section.offsetHeight;
-            if (window.scrollY >= top && window.scrollY < bottom) {
-                current = section.getAttribute('id');
-            }
+            if (window.scrollY >= top && window.scrollY < bottom) current = section.getAttribute('id');
         });
         navLinks.forEach(function(link) {
             link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + current) {
-                link.classList.add('active');
-            }
+            if (link.getAttribute('href') === '#' + current) link.classList.add('active');
         });
     }
 
-    // 車輛輪播
-    var carouselIndex = 0;
-    var carouselItems = [];
-    var autoPlayTimer = null;
-
+    var carouselIndex = 0, carouselItems = [], autoPlayTimer = null;
     function initCarousel() {
         carouselItems = document.querySelectorAll('.carousel-item');
-        if (carouselItems.length > 0) {
-            showSlide(0);
-            startAutoPlay();
-        }
+        if (carouselItems.length > 0) { showSlide(0); startAutoPlay(); }
     }
-
     function showSlide(index) {
-        carouselItems.forEach(function(item, i) {
-            item.classList.toggle('active', i === index);
-        });
-        var dots = document.querySelectorAll('.carousel-dot');
-        dots.forEach(function(dot, i) {
-            dot.classList.toggle('active', i === index);
-        });
+        carouselItems.forEach(function(item, i) { item.classList.toggle('active', i === index); });
         carouselIndex = index;
     }
-
     function moveCarousel(dir) {
         var total = carouselItems.length;
-        var next = (carouselIndex + dir + total) % total;
-        showSlide(next);
+        showSlide((carouselIndex + dir + total) % total);
         resetAutoPlay();
     }
+    function startAutoPlay() { autoPlayTimer = setInterval(function() { moveCarousel(1); }, 4000); }
+    function resetAutoPlay() { clearInterval(autoPlayTimer); startAutoPlay(); }
 
-    function goToSlide(index) {
-        showSlide(index);
-        resetAutoPlay();
-    }
-
-    function startAutoPlay() {
-        autoPlayTimer = setInterval(function() {
-            moveCarousel(1);
-        }, 4000);
-    }
-
-    function resetAutoPlay() {
-        clearInterval(autoPlayTimer);
-        startAutoPlay();
-    }
-
+    window.addEventListener('scroll', function() { handleNavScroll(); reveal(); updateActiveNav(); });
+    window.addEventListener('load', function() { initCarousel(); reveal(); updateActiveNav(); });
 </script>
 </body>
 </html>
