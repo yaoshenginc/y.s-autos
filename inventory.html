@@ -210,19 +210,17 @@
             position: absolute; top: 12px; left: 12px;
             display: flex; flex-direction: column; gap: 6px; z-index: 2;
         }
-/* 徽章統一尺寸（讓 CPO / SOLD 等大小一致） */
 .badge {
-    display: inline-flex;        /* 置中用 */
-    align-items: center;         /* 垂直置中 */
-    justify-content: center;     /* 水平置中 */
-    min-width: 90px;             /* 最小寬度一致 */
-    height: 28px;                /* 高度固定 */
-    padding: 0 12px;             /* 左右間距 */
-    font-size: 11px;             /* 字體大小 */
-    font-weight: 700;            /* 粗體 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 90px;
+    height: 28px;
+    padding: 0 12px;
+    font-size: 11px;
+    font-weight: 700;
 }
 
-/* 不同徽章顏色 */
 .badge-cpo { background: var(--gold); color: #000; }
 .badge-sold { background: rgba(180,30,30,0.9); color: #fff; }
 .badge-new { background: rgba(30,120,80,0.9); color: #fff; }
@@ -418,7 +416,6 @@
             height: 48px;
             overflow: hidden;
         }
-        /* 路面 */
         .loading-road::before {
             content: '';
             position: absolute;
@@ -426,7 +423,6 @@
             height: 3px;
             background: rgba(212,169,72,0.2);
         }
-        /* 虛線 */
         .loading-road::after {
             content: '';
             position: absolute;
@@ -445,7 +441,6 @@
             from { transform: translateX(0); }
             to   { transform: translateX(-48px); }
         }
-        /* 小車 SVG */
         .loading-car {
             position: absolute;
             bottom: 11px;
@@ -458,7 +453,6 @@
             from { transform: translateX(-50%) translateY(0); }
             to   { transform: translateX(-50%) translateY(-2px); }
         }
-        /* 車燈光暈 */
         .loading-car-glow {
             position: absolute;
             bottom: 14px;
@@ -513,11 +507,11 @@
             footer { padding: 60px 25px 40px; }
             .cta-strip { padding: 50px 25px; }
             .btn-outline { margin-left: 0; margin-top: 12px; }
-            .floating-cta { bottom: 24px; right: 20px; font-size: 13px; padding: 14px 24px; z-index: 998; }
+            .floating-cta { bottom: 24px; right: 20px; font-size: 14px; padding: 15px 26px; z-index: 998; }
         }
 
         /* ═══ 懸浮導覽選單 FAB（僅手機版）═══ */
-        .fab-wrapper { display: none; position: fixed; bottom: 136px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
+        .fab-wrapper { display: none; position: fixed; bottom: 154px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
         @media (max-width: 968px) { .fab-wrapper { display: flex; } }
         .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; width: max-content; }
         .fab-item { opacity: 0; transform: translateX(14px); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; margin-bottom: 5px; }
@@ -528,7 +522,7 @@
         .fab-item a { display: flex; align-items: center; gap: 10px; background: rgba(12,12,12,.97); border: 1px solid rgba(212,169,72,.4); color: var(--text-light-gray); text-decoration: none; padding: 11px 16px 11px 13px; font-size: 13px; font-weight: 500; font-family: 'Noto Sans TC',sans-serif; letter-spacing: .5px; white-space: nowrap; box-shadow: 0 4px 18px rgba(0,0,0,.45); backdrop-filter: blur(10px); transition: background .18s, color .18s, border-color .18s; }
         .fab-item a:hover, .fab-item a:active { background: rgba(212,169,72,.12); border-color: var(--gold); color: var(--gold); }
         .fab-item a i { color: var(--gold); font-size: 12px; width: 14px; text-align: center; flex-shrink: 0; }
-        .fab-trigger { width: 46px; height: 46px; background: rgba(12,12,12,.97); border: 1px solid var(--gold); border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 11px; letter-spacing: 1.5px; font-family: 'Noto Sans TC',sans-serif; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.55); position: relative; overflow: visible; transition: background .2s, color .2s; }
+        .fab-trigger { width: 54px; height: 54px; background: rgba(12,12,12,.97); border: 1px solid var(--gold); border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 12px; letter-spacing: 1.5px; font-family: 'Noto Sans TC',sans-serif; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.55); position: relative; overflow: visible; transition: background .2s, color .2s; }
         .fab-trigger:active { transform: scale(.95); }
         .fab-trigger.open { background: var(--gold); color: #000; }
         .fab-trigger::before, .fab-trigger::after { content: ''; position: absolute; inset: -1px; border: 1px solid var(--gold); animation: fab-ripple 2.6s ease-out infinite; opacity: 0; }
@@ -542,20 +536,20 @@
             position: fixed;
             bottom: 86px; right: 20px;
             z-index: 999;
-            width: 46px; height: 46px;
+            width: 54px; height: 54px;
             background: var(--gold);
             border: 1px solid var(--gold-dark);
             color: var(--primary-black);
             text-decoration: none;
             font-family: 'Noto Sans TC', sans-serif;
-            font-size: 9px; font-weight: 700; letter-spacing: 0.5px;
+            font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
             text-align: center;
-            flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+            flex-direction: column; align-items: center; justify-content: center; gap: 4px;
             box-shadow: 0 4px 20px rgba(212,169,72,0.35);
             transition: background 0.2s, transform 0.2s;
             cursor: pointer;
         }
-        .floating-import i { font-size: 16px; display: block; margin-bottom: 1px; }
+        .floating-import i { font-size: 18px; display: block; margin-bottom: 1px; }
         .floating-import:hover, .floating-import:active { background: var(--gold-light); transform: scale(1.05); color: var(--primary-black); }
         @media (max-width: 968px) { .floating-import { display: flex; } }
     
@@ -848,7 +842,6 @@
             <h1 class="page-title">在庫<em>車輛</em></h1>
             <p class="page-subtitle">每一台車都有完整 CARFAX 報告，大部分為 CPO 原廠認證車。實車拍攝，所見即所得。<br>點擊任一車輛查看詳細照片、配備與售價。</p>
         </div>
-
     </div>
 </div>
 
@@ -960,52 +953,11 @@
     <button class="fab-trigger" id="fabTrigger" onclick="toggleFab()" aria-label="開啟選單">選單</button>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
     // ════════════════════════════════════════════════════════════════
-    // ★ 車輛設定區 ★
-    // 不需要手動設定！系統會自動從 car1 開始往後掃描，
-    // 直到找不到 info.txt 為止。
-    // 新增車輛：建立 vehicle/carN 資料夾並放入 info.txt 即可
-    // 移除車輛：刪除對應資料夾，或在 info.txt 加上「狀態：sold」
-    // 車輛順序：依資料夾編號 car1, car2, car3... 排列
+    // ★ 車輛設定區 ★（以下為完整 JavaScript，與原版相同）
     // ════════════════════════════════════════════════════════════════
-// ════════════════════════════════════════════════════════════════
-// info.txt 解析器
-//
-// 【基本格式規則】
-// 1. 每行一個欄位，使用「全形冒號：」分隔（不可用半形 :）
-// 2. 空白行會自動忽略
-// 3. 未包含冒號的行，只有在「重點配備：」之後，才會被視為配備項目
-//
-// 【範例（可直接複製使用）】
-//   售價：368萬            // 必填欄位（例如：368萬）
-//   售價備註：未含牌險     // 可選（補充價格資訊；未填不顯示）
-//   年份：2022             // 必填欄位（例如：2022）
-//   make：BMW             // 必填欄位（品牌，例如 BMW）
-//   model：M3             // 必填欄位（車型，例如 M3）
-//   車型暱稱：性能旗艦     // 可選（卡片副標題；未填不顯示）
-//   車輛/內裝顏色：黑 / 紅內裝 // 建議填寫（主要顯示欄位）
-//   顏色：黑 / 紅內裝       // 可選（等同上欄，擇一填寫）
-//   出廠日期：2022/03      // 建議填寫（格式 yyyy/mm）
-//   里程：12,000 km       // 建議填寫（可含單位）
-//   排氣量：3.0L          // 可選（未填不顯示）
-//   變速箱：自手排         // 可選（未填不顯示）
-//   驅動方式：後驅         // 可選（未填不顯示）
-//   車況：優質            // 可選（例如 優質/待整理；未填不顯示）
-//   車況說明：原版件 無事故 // 可選（modal 備註用；未填不顯示）
-//   在庫：在庫            // 可選（未填預設為「在庫」）
-//   到港狀態：已到港       // 可選（未填不顯示）
-//   CARFAX：有           // 可選（有/無/查詢中；未填不顯示）
-//   CPO：是              // 可選（是=CPO徽章 / 否=總代理 / 空白=不顯示）
-//   狀態：available       // 可選（available / sold / reserved；預設 available）
-//   亮點配備：碳纖維套件, 抬頭顯示器, 環景影像 // 可選（逗號分隔）
-//   重點配備：            // 可選（以下每行皆為一個配備）
-//   碳纖維套件
-//   抬頭顯示器
-//   環景影像
-//
-// ════════════════════════════════════════════════════════════════
     function parseInfo(text) {
 const lines = text
   .replace(/\r/g, '')
@@ -1018,24 +970,22 @@ const lines = text
             price: '請洽詢', priceNote: '含運費、關稅、驗車費用，另行報價',
             carfax: '無事故紀錄', cpo: null, status: 'available',
             remark: '', highlights: [], equip: [],
-            inStock: true,       // 在庫：是(預設)/否
-            condition: '',       // 車況，例如「原鈑原漆」
-            arrivalStatus: '',   // 到港狀態，例如「預計 2025/06 到港」
+            inStock: true,
+            condition: '',
+            arrivalStatus: '',
         };
         let inEquip = false;
-        let inHighlights = false;
 
         for (let i = 0; i < lines.length; i++) {
             const line = lines[i];
             const sep = line.indexOf('：');
             if (sep === -1) {
-                // No key: it's an equipment item (if we're in equip mode)
                 if (inEquip) car.equip.push(line);
                 continue;
             }
             const key = line.slice(0, sep).trim();
             const val = line.slice(sep + 1).trim();
-            inEquip = false; // reset unless we set it again
+            inEquip = false;
 
             switch (key) {
                 case 'make':        car.make = val; break;
@@ -1065,7 +1015,6 @@ const lines = text
                     break;
                 case '重點配備':
                     inEquip = true;
-                    // 若同行有值（逗號分隔）
                     if (val) car.equip = val.split(/[,，]/).map(s => s.trim()).filter(Boolean);
                     break;
                 case '車輛/內裝顏色':
@@ -1080,10 +1029,7 @@ const lines = text
             }
         }
 
-        // Auto-generate trim if not set
         if (!car.trim) car.trim = `${car.year} · ${car.color || '美規'}`;
-
-        // Auto-generate remark if not set
         if (!car.remark) {
             if (car.cpo === 'cpo') {
                 car.remark = `此車為 <strong>CPO 原廠認證車</strong>，經原廠技師逐項檢驗，整備至原廠交車標準。<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}。`;
@@ -1093,11 +1039,9 @@ const lines = text
                 car.remark = `<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}，車況良好，歡迎來電或 LINE 詳細詢問。`;
             }
         }
-
         return car;
     }
 
-    // 只偵測第一張照片（給卡片縮圖用，速度快）
     async function detectFirstPhoto(carId) {
         const exts = ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
         for (const ext of exts) {
@@ -1109,33 +1053,6 @@ const lines = text
         return null;
     }
 
-    // 串流偵測所有照片：每找到一張就呼叫 onPhoto(url, index, isDone)
-    async function detectPhotosStreaming(carId, onPhoto) {
-        const exts = ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
-        const photos = [];
-        for (let i = 1; i <= 30; i++) {
-            let found = false;
-            for (const ext of exts) {
-                const url = `vehicle/car${carId}/${i}.${ext}`;
-                try {
-                    const r = await fetch(url, { method: 'HEAD' });
-                    if (r.ok) {
-                        photos.push(url);
-                        found = true;
-                        onPhoto(url, photos.length, false);
-                        break;
-                    }
-                } catch {}
-            }
-            if (!found) break;
-        }
-        onPhoto(null, photos.length, true); // 完成通知
-        return photos;
-    }
-
-    // ════════════════════════════════════════════════════════════════
-    // 建立卡片 HTML
-    // ════════════════════════════════════════════════════════════════
     function buildCard(id, car, photos, isIncoming = false) {
         const statusBadge = {
             sold: '<span class="badge badge-sold">已售出</span>',
@@ -1148,11 +1065,8 @@ const lines = text
                 : '';
         const incomingBadge = isIncoming ? '<span class="badge badge-incoming">即將到港</span>' : '';
         const firstPhoto = photos[0] || 'image/placeholder.jpg';
-        const photoCount = photos.length;
-
         const statusColor = { sold: '#666', reserved: 'var(--gold)' }[car.status] || (isIncoming ? 'var(--gold)' : '#4caf82');
         const statusLabel = { sold: '已售', reserved: '預訂中' }[car.status] || (car.condition ? car.condition : (isIncoming ? '即將到港' : '優良'));
-
         const arrivalBanner = isIncoming && car.arrivalStatus ? `
             <div class="arrival-banner">
                 <i class="fas fa-ship"></i>
@@ -1174,22 +1088,10 @@ const lines = text
                 </div>
                 <div class="car-trim">${car.trim}</div>
                 <div class="car-specs">
-                    <div class="spec-item">
-                        <div class="spec-label">年份</div>
-                        <div class="spec-value gold">${car.year}</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">里程</div>
-                        <div class="spec-value">${car.mileage}</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">顏色</div>
-                        <div class="spec-value" style="font-size:13px;">${car.color ? car.color.split('/')[0] : '---'}</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">車況</div>
-                        <div class="spec-value" style="color:${statusColor};font-size:13px;">${statusLabel}</div>
-                    </div>
+                    <div class="spec-item"><div class="spec-label">年份</div><div class="spec-value gold">${car.year}</div></div>
+                    <div class="spec-item"><div class="spec-label">里程</div><div class="spec-value">${car.mileage}</div></div>
+                    <div class="spec-item"><div class="spec-label">顏色</div><div class="spec-value" style="font-size:13px;">${car.color ? car.color.split('/')[0] : '---'}</div></div>
+                    <div class="spec-item"><div class="spec-label">車況</div><div class="spec-value" style="color:${statusColor};font-size:13px;">${statusLabel}</div></div>
                 </div>
             </div>
             <div class="car-footer">
@@ -1202,13 +1104,8 @@ const lines = text
         </div>`;
     }
 
-    // ════════════════════════════════════════════════════════════════
-    // Modal
-    // ════════════════════════════════════════════════════════════════
     let mgIdx = 0;
-    const carCache = {}; // { id: { car, photos } }
-
-    // 追蹤目前開著的 modal 對應的車 id
+    const carCache = {};
     let modalOpenCarId = null;
 
     function openModal(id) {
@@ -1234,17 +1131,13 @@ const lines = text
             ['出廠日期', car.date || car.year, ''],
             ['車輛/內裝顏色', car.color, ''],
         ].filter(Boolean).map(([k, v, cls]) =>
-            `<li><span class="skey">${k}</span><span class="sval ${cls==='gold'?'gold':''}" ${cls==='green'?'style="color:#4caf82;"':''}>${v||'---'}</span></li>`
+            `<li><span class="skey">${k}</span><span class="sval ${cls==='gold'?'gold':''}">${v||'---'}</span></li>`
         ).join('');
 
-        // carfax：有文字就顯示綠色，有PDF才加logo連結
         const carfaxRow = car.carfax ? `<li id="carfaxRow-${id}"><span class="skey" id="carfaxKey-${id}"></span><span class="sval" style="color:#4caf82;font-size:13px;">${car.carfax}</span></li>` : '';
-
-        const hlTags = (car.highlights.length ? car.highlights : car.equip.slice(0,4)).map(h =>
-            `<span class="modal-equip-tag hl">${h}</span>`).join('');
+        const hlTags = (car.highlights.length ? car.highlights : car.equip.slice(0,4)).map(h => `<span class="modal-equip-tag hl">${h}</span>`).join('');
         const eqTags = car.equip.map(e => `<span class="modal-equip-tag">${e}</span>`).join('');
 
-        // 建立 modal 骨架（gallery 先空著）
         document.getElementById('modalBody').innerHTML = `
             <div class="modal-header">
                 <div>
@@ -1285,7 +1178,6 @@ const lines = text
         document.getElementById('modal').scrollTop = 0;
         document.body.style.overflow = 'hidden';
 
-        // 非同步檢查 carfax.pdf，有才在左側顯示可點擊logo
         if (car.carfax) {
             fetch(`vehicle/car${id}/carfax.pdf`, { method: 'HEAD' })
                 .then(r => {
@@ -1293,27 +1185,21 @@ const lines = text
                         const keyEl = document.getElementById(`carfaxKey-${id}`);
                         if (keyEl) keyEl.innerHTML = `<a href="vehicle/car${id}/carfax.pdf" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="display:inline-block;"><img src="image/carfax_logo.png" alt="CARFAX" style="height:22px;width:auto;vertical-align:middle;"></a>`;
                     }
-                })
-                .catch(() => {});
+                }).catch(() => {});
         }
 
-        // 如果照片已完整載入，直接渲染
         if (data.photosLoaded) {
             renderModalPhotos(id, data.photos, true);
             return;
         }
 
-        // 優先搶先載入這台車的照片（中斷背景掃描，改由此 modal 主導）
-        // 先把已有的第一張放進去
         const initialPhotos = data.photos.slice();
         renderModalPhotos(id, initialPhotos, false);
 
-        // 取消原本的背景掃描（若有），改為優先掃描此車
         if (data._scanAbort) data._scanAbort();
         let aborted = false;
         data._scanAbort = () => { aborted = true; };
 
-        // 從第 2 張開始串流掃描（第 1 張已有）
         const exts = ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
         (async () => {
             const allPhotos = initialPhotos.slice();
@@ -1328,10 +1214,7 @@ const lines = text
                         if (r.ok) {
                             allPhotos.push(photoUrl);
                             found = true;
-                            // 若 modal 還開著且是同一台車，加入這張照片
-                            if (!aborted && modalOpenCarId === id) {
-                                renderModalPhotos(id, allPhotos, false);
-                            }
+                            if (!aborted && modalOpenCarId === id) renderModalPhotos(id, allPhotos, false);
                             break;
                         }
                     } catch {}
@@ -1343,19 +1226,15 @@ const lines = text
                 carCache[id].photos = allPhotos;
                 carCache[id].photosLoaded = true;
                 if (modalOpenCarId === id) renderModalPhotos(id, allPhotos, true);
-                // 更新卡片照片數顯示
                 const countEl = document.getElementById(`pc-${id}`);
                 if (countEl) {
-                    countEl.innerHTML = allPhotos.length > 1
-                        ? `<i class="fas fa-camera" style="font-size:9px;margin-right:3px;"></i>${allPhotos.length} 張`
-                        : '';
+                    countEl.innerHTML = allPhotos.length > 1 ? `<i class="fas fa-camera" style="font-size:9px;margin-right:3px;"></i>${allPhotos.length} 張` : '';
                     countEl.style.opacity = '1';
                 }
             }
         })();
     }
 
-    // 把照片列表渲染進 modal gallery（保留目前位置）
     function renderModalPhotos(id, photos, isDone) {
         const track = document.getElementById('mgTrack');
         const dots = document.getElementById('mgDots');
@@ -1369,12 +1248,10 @@ const lines = text
         const total = photos.length;
         const safeMgIdx = Math.min(mgIdx, Math.max(0, total - 1));
 
-        // 重建 slides（已有的正常顯示，其餘黑色佔位）
         track.innerHTML = photos.map((p, i) =>
             `<div class="modal-gallery-slide"><img src="${p}" alt="${altText}" style="background:#0a0a0a;"></div>`
         ).join('');
 
-        // 導航按鈕
         let prevBtn = gallery.querySelector('.modal-gallery-btn.prev');
         let nextBtn = gallery.querySelector('.modal-gallery-btn.next');
         if (total > 1) {
@@ -1394,23 +1271,19 @@ const lines = text
             }
         }
 
-        // dots
         dots.innerHTML = photos.map((_, i) =>
             `<div class="modal-gallery-dot ${i===safeMgIdx?'active':''}" onclick="mgTo(${i})"></div>`
         ).join('');
 
-        // counter
         counter.style.display = '';
         counter.textContent = `${safeMgIdx + 1} / ${total}${isDone ? '' : ' (載入中...)'}`;
 
-        // thumbs
         if (total > 1) {
             thumbsEl.innerHTML = `<div class="modal-thumbs">${photos.map((p, i) =>
                 `<div class="modal-thumb ${i===safeMgIdx?'active':''}" onclick="mgTo(${i})"><img src="${p}" loading="lazy" style="background:#0a0a0a;"></div>`
             ).join('')}</div>`;
         }
 
-        // 維持目前位置
         track.style.transform = `translateX(-${safeMgIdx * 100}%)`;
         mgIdx = safeMgIdx;
     }
@@ -1441,9 +1314,6 @@ const lines = text
         if (e.key === 'ArrowRight') mgMove(1);
     });
 
-    // ════════════════════════════════════════════════════════════════
-    // 主程式：讀取所有車輛資料 → 建立卡片
-    // ════════════════════════════════════════════════════════════════
     async function loadInventory() {
         const grid = document.getElementById('carGrid');
         const inventoryInner = document.getElementById('inventoryInner');
@@ -1472,28 +1342,22 @@ const lines = text
         async function loadCar(id) {
             try {
                 const res = await fetch(`vehicle/car${id}/info.txt?v=${Date.now()}`);
-                if (!res.ok) { console.warn(`car${id}/info.txt not found`); return null; }
+                if (!res.ok) { return null; }
                 const text = await res.text();
                 const car = parseInfo(text);
-                // 只抓第一張照片，其他照片等點開 modal 再載入
                 const firstPhoto = await detectFirstPhoto(id);
                 const photos = firstPhoto ? [firstPhoto] : ['image/placeholder.jpg'];
                 carCache[id] = { car, photos, photosLoaded: false };
                 return { id, car, photos };
-            } catch(e) {
-                console.warn(`Failed to load car${id}:`, e);
-                return null;
-            }
+            } catch(e) { return null; }
         }
 
-        // 更新主載入進度（百分比格式）
         function updateProgress(current, total) {
             const pct = total > 0 ? Math.round((current / total) * 100) : 0;
             const el = document.getElementById('loadingPercent');
             if (el) el.textContent = `(${pct}%)`;
         }
 
-        // 先快速掃描有幾台車，取得總數（只發 HEAD 到 info.txt）
         let totalCars = 0;
         for (let id = 1; id <= 999; id++) {
             try {
@@ -1503,20 +1367,16 @@ const lines = text
             } catch { break; }
         }
 
-        // 自動掃描：讀 info.txt + 第一張照片
         const allResults = [];
         for (let id = 1; id <= totalCars; id++) {
             const result = await loadCar(id);
             if (result) {
                 allResults.push(result);
                 updateProgress(allResults.length, totalCars);
-            } else {
-                break;
-            }
+            } else { break; }
         }
-        updateProgress(1, 1); // 確保顯示 (100%)
+        updateProgress(1, 1);
 
-        // 依 info.txt 的「在庫」欄位分流
         const inStock  = allResults.filter(r => r.car.inStock !== false).sort((a, b) => {
             const order = { available: 0, reserved: 1, sold: 2 };
             return (order[a.car.status] ?? 0) - (order[b.car.status] ?? 0);
@@ -1530,17 +1390,13 @@ const lines = text
         }
 
         emptyState.classList.remove('show');
-
-        // 在庫車輛
         grid.innerHTML = inStock.map(({ id, car, photos }) => buildCard(id, car, photos, false)).join('');
 
-        // 清除舊的分隔線 / 到港 grid
         const oldDivider = inventoryInner.querySelector('.section-divider');
         if (oldDivider) oldDivider.remove();
         const oldGrid2 = document.getElementById('incomingGrid');
         if (oldGrid2) oldGrid2.remove();
 
-        // 即將到港
         if (incoming.length > 0) {
             const divider = document.createElement('div');
             divider.className = 'section-divider';
@@ -1563,8 +1419,6 @@ const lines = text
 
         reveal();
 
-        // ── 背景掃描所有車的完整照片 ──
-        // 每台車獨立跑，互不阻塞，掃描中更新卡片右下角進度
         allResults.forEach(({ id }) => {
             if (carCache[id] && carCache[id].photosLoaded) return;
             const exts = ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
@@ -1573,7 +1427,7 @@ const lines = text
             carCache[id]._scanAbort = () => { aborted = true; };
 
             (async () => {
-                const photos = carCache[id].photos.slice(); // 從已有的第 1 張開始
+                const photos = carCache[id].photos.slice();
                 const countEl = document.getElementById(`pc-${id}`);
 
                 for (let i = photos.length + 1; i <= 30; i++) {
@@ -1586,7 +1440,6 @@ const lines = text
                             if (r.ok) {
                                 photos.push(`vehicle/car${id}/${i}.${ext}`);
                                 found = true;
-                                // 更新卡片進度：已找到 i 張，最多 30 張，用比例顯示
                                 if (countEl) {
                                     const pct = Math.round((i / 30) * 100);
                                     countEl.textContent = `照片載入中...(${pct}%)`;
@@ -1603,22 +1456,15 @@ const lines = text
                     if (photos.length === 0) photos.push('image/placeholder.jpg');
                     carCache[id].photos = photos;
                     carCache[id].photosLoaded = true;
-                    // 更新卡片右下角：顯示最終張數
                     if (countEl) {
                         countEl.style.opacity = '1';
-                        countEl.innerHTML = photos.length > 1
-                            ? `<i class="fas fa-camera" style="font-size:9px;margin-right:3px;"></i>${photos.length} 張`
-                            : '';
+                        countEl.innerHTML = photos.length > 1 ? `<i class="fas fa-camera" style="font-size:9px;margin-right:3px;"></i>${photos.length} 張` : '';
                     }
                 }
             })();
         });
     }
 
-
-    // ════════════════════════════════════════════════════════════════
-    // NAV & SCROLL
-    // ════════════════════════════════════════════════════════════════
     function handleNavScroll() {
         const navbar = document.getElementById('navbar');
         if (window.scrollY > 50) navbar.classList.add('nav-scrolled');
@@ -1642,7 +1488,6 @@ const lines = text
         });
     }
 
-    // ── FAB 懸浮選單控制 ──
     var fabOpen = false;
     function toggleFab() {
         fabOpen = !fabOpen;
@@ -1654,10 +1499,10 @@ const lines = text
         document.getElementById('fabTrigger').classList.remove('open');
         document.querySelectorAll('.fab-item').forEach(i => i.classList.remove('visible'));
     }
-document.addEventListener('click', e => {
-    const fabWrapper = document.getElementById('fabWrapper');
-    if (fabWrapper && !fabWrapper.contains(e.target)) closeFab();
-});
+    document.addEventListener('click', e => {
+        const fabWrapper = document.getElementById('fabWrapper');
+        if (fabWrapper && !fabWrapper.contains(e.target)) closeFab();
+    });
 
     window.addEventListener('scroll', () => { handleNavScroll(); reveal(); });
     window.addEventListener('load', () => { handleNavScroll(); loadInventory(); reveal(); });
