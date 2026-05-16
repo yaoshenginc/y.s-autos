@@ -10,6 +10,7 @@ model：GLC43 coupe
 變速箱：9速自排
 驅動方式：4Matic 全輪驅動
 CPO：否
+總代理：是
 狀態：available
 車況：原鈑原漆
 在庫：是

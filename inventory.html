@@ -226,6 +226,7 @@
 .badge-new { background: rgba(30,120,80,0.9); color: #fff; }
 .badge-reserved { background: rgba(100,80,20,0.9); color: var(--gold-light); border: 1px solid var(--gold); }
 .badge-agent { background: rgba(30,60,120,0.92); color: #a8c8ff; border: 1px solid rgba(120,170,255,0.6); }
+.badge-import { background: #10243f; color: var(--gold-light); border: 1px solid var(--gold); box-shadow: 0 4px 14px rgba(0,0,0,0.35); }
 
         /* Photo count */
         .photo-count {
@@ -1022,8 +1023,12 @@ const lines = text
                 case '車況說明':    car.remark = val; break;
                 case 'CPO':
                     if (val === '是') car.cpo = 'cpo';
-                    else if (['總代理', '代理', 'agent'].includes(val)) car.cpo = 'agent';
                     else car.cpo = null;
+                    break;
+                case '總代理':
+                    if (val === '是') car.source = 'agent';
+                    else if (val === '否') car.source = 'import';
+                    else car.source = null;
                     break;
                 case '狀態':        car.status = val; break;
                 case 'CARFAX':      car.carfax = val; break;
@@ -1047,13 +1052,13 @@ const lines = text
         }
 
         if (!car.trim) car.trim = `${car.year} · ${car.color || '美規'}`;
-        if (!car.cpo && /總代理/.test(`${car.trim || ''} ${car.remark || ''}`)) {
-            car.cpo = 'agent';
+        if (!car.source) {
+            car.source = /總代理/.test(`${car.trim || ''} ${car.remark || ''}`) ? 'agent' : 'import';
         }
         if (!car.remark) {
             if (car.cpo === 'cpo') {
                 car.remark = `此車為 <strong>CPO 原廠認證車</strong>，經原廠技師逐項檢驗，整備至原廠交車標準。<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}。`;
-            } else if (car.cpo === 'agent') {
+            } else if (car.source === 'agent') {
                 car.remark = `此車為 <strong>總代理車輛</strong>，由原廠授權總代理引進，品質有保障。<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}。`;
             } else {
                 car.remark = `<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}，車況良好，歡迎來電或 LINE 詳細詢問。`;
@@ -1080,9 +1085,10 @@ const lines = text
         }[car.status] || '';
         const cpoBadge = car.cpo === 'cpo'
             ? '<span class="badge badge-cpo"><i class="fas fa-certificate"></i>CPO原廠認證</span>'
-            : car.cpo === 'agent'
-                ? '<span class="badge badge-agent"><i class="fas fa-shield-alt"></i>總代理</span>'
-                : '';
+            : '';
+        const sourceBadge = car.source === 'agent'
+            ? '<span class="badge badge-agent"><i class="fas fa-shield-alt"></i>總代理</span>'
+            : '<span class="badge badge-import"><i class="fas fa-ship"></i>外匯車</span>';
         const incomingBadge = isIncoming ? '<span class="badge badge-incoming">即將到港</span>' : '';
         const firstPhoto = photos[0] || 'image/placeholder.jpg';
         const statusColor = { sold: '#666', reserved: 'var(--gold)' }[car.status] || (isIncoming ? 'var(--gold)' : '#4caf82');
@@ -1097,7 +1103,7 @@ const lines = text
         <div class="car-card reveal${isIncoming ? ' car-incoming' : ''}" data-car="${id}" onclick="openModal(${id})" style="animation-delay:${(id-1)*0.05}s">
             <div class="car-photo">
                 <img src="${firstPhoto}" alt="${car.make} ${car.model}" loading="lazy">
-                <div class="car-badges">${cpoBadge}${incomingBadge}${statusBadge}</div>
+                <div class="car-badges">${cpoBadge}${sourceBadge}${incomingBadge}${statusBadge}</div>
                 <div class="photo-count" id="pc-${id}" style="opacity:0.7;font-size:9px;letter-spacing:0.5px;">照片載入中...</div>
             </div>
             ${arrivalBanner}
@@ -1139,7 +1145,10 @@ const lines = text
             sold: '<span class="badge badge-sold" style="font-size:11px;padding:5px 12px;">已售出</span>',
             reserved: '<span class="badge badge-reserved" style="font-size:11px;padding:5px 12px;">已預訂</span>',
         }[car.status] || '';
-        const cpoBadge = car.cpo ? '<span class="badge badge-cpo" style="font-size:11px;padding:5px 12px;">CPO 原廠認證</span>' : '';
+        const cpoBadge = car.cpo === 'cpo' ? '<span class="badge badge-cpo" style="font-size:11px;padding:5px 12px;">CPO 原廠認證</span>' : '';
+        const sourceBadge = car.source === 'agent'
+            ? '<span class="badge badge-agent" style="font-size:11px;padding:5px 12px;">總代理</span>'
+            : '<span class="badge badge-import" style="font-size:11px;padding:5px 12px;">外匯車</span>';
         const pStyle = car.status === 'sold' ? 'color:#666;text-decoration:line-through;' : '';
 
         const specRows = [
@@ -1164,7 +1173,7 @@ const lines = text
                     <div class="modal-make">${car.make}</div>
                     <div class="modal-model">${car.model}</div>
                     <div class="modal-trim">${car.trim}</div>
-                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">${cpoBadge}${statusBadge}</div>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">${cpoBadge}${sourceBadge}${statusBadge}</div>
                 </div>
                 <div class="modal-price-wrap">
                     <div class="modal-price" style="${pStyle}">${car.price}</div>
