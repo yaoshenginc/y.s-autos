@@ -1022,7 +1022,7 @@ const lines = text
                 case '車況說明':    car.remark = val; break;
                 case 'CPO':
                     if (val === '是') car.cpo = 'cpo';
-                    else if (val === '否') car.cpo = 'agent';
+                    else if (['總代理', '代理', 'agent'].includes(val)) car.cpo = 'agent';
                     else car.cpo = null;
                     break;
                 case '狀態':        car.status = val; break;
@@ -1047,6 +1047,9 @@ const lines = text
         }
 
         if (!car.trim) car.trim = `${car.year} · ${car.color || '美規'}`;
+        if (!car.cpo && /總代理/.test(`${car.trim || ''} ${car.remark || ''}`)) {
+            car.cpo = 'agent';
+        }
         if (!car.remark) {
             if (car.cpo === 'cpo') {
                 car.remark = `此車為 <strong>CPO 原廠認證車</strong>，經原廠技師逐項檢驗，整備至原廠交車標準。<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}。`;
