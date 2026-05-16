@@ -311,7 +311,7 @@
         .floating-cta:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(212,169,72,0.6); }
 
         /* ── FAB ── */
-        .fab-wrapper { display: none; position: fixed; bottom: 198px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
+        .fab-wrapper { display: none; position: fixed; bottom: 164px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
         .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; width: max-content; }
         .fab-item { opacity: 0; transform: translateX(14px); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; margin-bottom: 5px; width: 100%; }
         .fab-item.visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
@@ -331,11 +331,6 @@
 
         .floating-inventory { display: none; position: fixed; bottom: 96px; right: 20px; z-index: 999; width: 54px; height: 54px; background: var(--gold); border: 1px solid var(--gold-dark); color: var(--primary-black); text-decoration: none; font-family: 'Noto Sans TC',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; flex-direction: column; align-items: center; justify-content: center; gap: 3px; box-shadow: 0 4px 20px rgba(212,169,72,0.4); transition: background .2s, transform .2s; }
         .floating-inventory i { font-size: 17px; }
-        /* 高價收購懸浮按鈕（手機版）*/
-        .floating-buyback { display: none; position: fixed; bottom: 134px; right: 20px; z-index: 999; width: 46px; height: 46px; background: var(--gold); border: 1px solid var(--gold-dark); color: var(--primary-black); text-decoration: none; font-family: 'Noto Sans TC',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 4px 20px rgba(212,169,72,0.4); transition: background .2s, transform .2s; }
-        .floating-buyback i { font-size: 15px; }
-        .floating-buyback:hover, .floating-buyback:active { background: var(--gold-light); color: var(--primary-black); transform: scale(1.05); }
-        @media (max-width: 968px) { .floating-buyback { display: flex; } }
         .floating-inventory:hover, .floating-inventory:active { background: var(--gold-light); color: var(--primary-black); transform: scale(1.05); }
 
         /* ── MOBILE ── */
@@ -888,7 +883,6 @@
 </div>
 
 <a href="https://ys-autos.com/inventory" class="floating-inventory" aria-label="在庫車輛"><i class="fas fa-car"></i>在庫車輛</a>
-<a href="https://ys-autos.com/buyback" class="floating-buyback" aria-label="高價收購"><i class="fas fa-dollar-sign"></i>高價收購</a>
 <a href="#quote-form" class="floating-cta">📋 免費預約估價</a>
 
 <script>
