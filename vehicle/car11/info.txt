@@ -10,6 +10,7 @@ model：Cayenne Coupe GTS
 變速箱：8速手自排
 驅動方式：四輪傳動
 CPO：否
+總代理：是
 狀態：available
 車況：原鈑原漆
 在庫：是
