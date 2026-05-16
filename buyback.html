@@ -312,13 +312,14 @@
 
         /* ── FAB ── */
         .fab-wrapper { display: none; position: fixed; bottom: 164px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
-        .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; width: max-content; }
+        .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; width: 168px; }
         .fab-item { opacity: 0; transform: translateX(14px); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; margin-bottom: 5px; width: 100%; }
         .fab-item.visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
-        .fab-item a { display: flex; align-items: center; gap: 10px; width: 100%; background: rgba(12,12,12,.97); border: 1px solid rgba(212,169,72,.4); color: var(--text-light-gray); text-decoration: none; padding: 11px 16px 11px 13px; font-size: 13px; font-weight: 500; font-family: 'Noto Sans TC',sans-serif; letter-spacing: .5px; white-space: nowrap; box-shadow: 0 4px 18px rgba(0,0,0,.45); backdrop-filter: blur(10px); transition: background .18s, color .18s, border-color .18s; }
-        .fab-item:nth-child(6){transition-delay:.03s} .fab-item:nth-child(5){transition-delay:.07s}
-        .fab-item:nth-child(4){transition-delay:.11s} .fab-item:nth-child(3){transition-delay:.15s}
-        .fab-item:nth-child(2){transition-delay:.19s} .fab-item:nth-child(1){transition-delay:.23s}
+        .fab-item a { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 42px; background: rgba(12,12,12,.97); border: 1px solid rgba(212,169,72,.4); color: var(--text-light-gray); text-decoration: none; padding: 11px 16px 11px 13px; font-size: 13px; font-weight: 500; font-family: 'Noto Sans TC',sans-serif; letter-spacing: .5px; white-space: nowrap; box-shadow: 0 4px 18px rgba(0,0,0,.45); backdrop-filter: blur(10px); transition: background .18s, color .18s, border-color .18s; box-sizing: border-box; }
+        .fab-item:nth-child(7){transition-delay:.03s} .fab-item:nth-child(6){transition-delay:.07s}
+        .fab-item:nth-child(5){transition-delay:.11s} .fab-item:nth-child(4){transition-delay:.15s}
+        .fab-item:nth-child(3){transition-delay:.19s} .fab-item:nth-child(2){transition-delay:.23s}
+        .fab-item:nth-child(1){transition-delay:.27s}
         .fab-item a:hover, .fab-item a:active { background: rgba(212,169,72,.12); border-color: var(--gold); color: var(--gold); }
         .fab-item a i { color: var(--gold); font-size: 12px; width: 14px; text-align: center; flex-shrink: 0; }
         .fab-trigger { width: 54px; height: 54px; background: rgba(12,12,12,.97); border: 1px solid var(--gold); border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 12px; letter-spacing: 1.5px; font-family: 'Noto Sans TC',sans-serif; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.55); position: relative; overflow: visible; transition: background .2s, color .2s; }
@@ -872,6 +873,7 @@
 <!-- 懸浮導覽（手機版）-->
 <div class="fab-wrapper" id="fabWrapper">
     <div class="fab-menu" id="fabMenu">
+        <div class="fab-item"><a href="https://ys-autos.com/"><i class="fas fa-home"></i>首頁</a></div>
         <div class="fab-item"><a href="https://ys-autos.com/import-cars"><i class="fas fa-ship"></i>外匯車介紹</a></div>
         <div class="fab-item"><a href="https://ys-autos.com/#guarantee"><i class="fas fa-shield-alt"></i>安心保證</a></div>
         <div class="fab-item"><a href="https://ys-autos.com/#after-sales"><i class="fas fa-user-gear"></i>一條龍服務</a></div>
