@@ -311,17 +311,17 @@
         .floating-cta:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(212,169,72,0.6); }
 
         /* ── FAB ── */
-        .fab-wrapper { display: none; position: fixed; bottom: 140px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
-        .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; }
-        .fab-item { opacity: 0; transform: translateX(14px); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; margin-bottom: 5px; }
+        .fab-wrapper { display: none; position: fixed; bottom: 198px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
+        .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; width: max-content; }
+        .fab-item { opacity: 0; transform: translateX(14px); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; margin-bottom: 5px; width: 100%; }
         .fab-item.visible { opacity: 1; transform: translateX(0); pointer-events: auto; }
+        .fab-item a { display: flex; align-items: center; gap: 10px; width: 100%; background: rgba(12,12,12,.97); border: 1px solid rgba(212,169,72,.4); color: var(--text-light-gray); text-decoration: none; padding: 11px 16px 11px 13px; font-size: 13px; font-weight: 500; font-family: 'Noto Sans TC',sans-serif; letter-spacing: .5px; white-space: nowrap; box-shadow: 0 4px 18px rgba(0,0,0,.45); backdrop-filter: blur(10px); transition: background .18s, color .18s, border-color .18s; }
         .fab-item:nth-child(6){transition-delay:.03s} .fab-item:nth-child(5){transition-delay:.07s}
         .fab-item:nth-child(4){transition-delay:.11s} .fab-item:nth-child(3){transition-delay:.15s}
         .fab-item:nth-child(2){transition-delay:.19s} .fab-item:nth-child(1){transition-delay:.23s}
-        .fab-item a { display: flex; align-items: center; gap: 10px; background: rgba(12,12,12,.97); border: 1px solid rgba(212,169,72,.4); color: var(--text-light-gray); text-decoration: none; padding: 11px 16px 11px 13px; font-size: 13px; font-weight: 500; font-family: 'Noto Sans TC',sans-serif; letter-spacing: .5px; white-space: nowrap; box-shadow: 0 4px 18px rgba(0,0,0,.45); backdrop-filter: blur(10px); transition: background .18s, color .18s, border-color .18s; }
         .fab-item a:hover, .fab-item a:active { background: rgba(212,169,72,.12); border-color: var(--gold); color: var(--gold); }
         .fab-item a i { color: var(--gold); font-size: 12px; width: 14px; text-align: center; flex-shrink: 0; }
-        .fab-trigger { width: 46px; height: 46px; background: rgba(12,12,12,.97); border: 1px solid var(--gold); border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 11px; letter-spacing: 1.5px; font-family: 'Noto Sans TC',sans-serif; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.55); position: relative; overflow: visible; transition: background .2s, color .2s; }
+        .fab-trigger { width: 54px; height: 54px; background: rgba(12,12,12,.97); border: 1px solid var(--gold); border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 12px; letter-spacing: 1.5px; font-family: 'Noto Sans TC',sans-serif; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.55); position: relative; overflow: visible; transition: background .2s, color .2s; }
         .fab-trigger:active { transform: scale(.95); }
         .fab-trigger.open { background: var(--gold); color: #000; }
         .fab-trigger::before, .fab-trigger::after { content: ''; position: absolute; inset: -1px; border: 1px solid var(--gold); animation: fab-ripple 2.6s ease-out infinite; opacity: 0; }
@@ -329,8 +329,13 @@
         .fab-trigger.open::before, .fab-trigger.open::after { display: none; }
         @keyframes fab-ripple { 0%{transform:scale(1);opacity:.65} 100%{transform:scale(2);opacity:0} }
 
-        .floating-inventory { display: none; position: fixed; bottom: 88px; right: 20px; z-index: 999; width: 46px; height: 46px; background: var(--gold); border: 1px solid var(--gold-dark); color: var(--primary-black); text-decoration: none; font-family: 'Noto Sans TC',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 4px 20px rgba(212,169,72,0.4); transition: background .2s, transform .2s; }
-        .floating-inventory i { font-size: 15px; }
+        .floating-inventory { display: none; position: fixed; bottom: 96px; right: 20px; z-index: 999; width: 54px; height: 54px; background: var(--gold); border: 1px solid var(--gold-dark); color: var(--primary-black); text-decoration: none; font-family: 'Noto Sans TC',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; flex-direction: column; align-items: center; justify-content: center; gap: 3px; box-shadow: 0 4px 20px rgba(212,169,72,0.4); transition: background .2s, transform .2s; }
+        .floating-inventory i { font-size: 17px; }
+        /* 高價收購懸浮按鈕（手機版）*/
+        .floating-buyback { display: none; position: fixed; bottom: 134px; right: 20px; z-index: 999; width: 46px; height: 46px; background: var(--gold); border: 1px solid var(--gold-dark); color: var(--primary-black); text-decoration: none; font-family: 'Noto Sans TC',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 4px 20px rgba(212,169,72,0.4); transition: background .2s, transform .2s; }
+        .floating-buyback i { font-size: 15px; }
+        .floating-buyback:hover, .floating-buyback:active { background: var(--gold-light); color: var(--primary-black); transform: scale(1.05); }
+        @media (max-width: 968px) { .floating-buyback { display: flex; } }
         .floating-inventory:hover, .floating-inventory:active { background: var(--gold-light); color: var(--primary-black); transform: scale(1.05); }
 
         /* ── MOBILE ── */
@@ -359,7 +364,7 @@
             .types-grid { grid-template-columns: 1fr; }
             .footer-content { grid-template-columns: 1fr; gap: 40px; }
             footer { padding: 60px 25px 40px; }
-            .floating-cta { bottom: 24px; right: 20px; font-size: 13px; padding: 14px 24px; z-index: 998; }
+            .floating-cta { bottom: 24px; right: 20px; font-size: 14px; padding: 15px 26px; z-index: 998; }
             .fab-wrapper { display: flex; }
             .floating-inventory { display: flex; }
             .hero-form-header { padding: 22px 20px 0; }
@@ -442,7 +447,7 @@
             <div class="hero-promises">
                 <div class="hero-promise-item"><i class="fas fa-check-circle"></i><span>鑑定專業精準</span></div>
                 <div class="hero-promise-item"><i class="fas fa-check-circle"></i><span>當場出價，不讓您空等</span></div>
-                <div class="hero-promise-item"><i class="fas fa-check-circle"></i><span>程序透明，款項快速入帳</span></div>
+                <div class="hero-promise-item"><i class="fas fa-check-circle"></i><span>程序透明，帳款快速入帳</span></div>
                 <div class="hero-promise-item"><i class="fas fa-check-circle"></i><span>到府收購，無須麻煩</span></div>
                 <div class="hero-promise-item"><i class="fas fa-check-circle"></i><span>流程簡單，輕鬆賣車</span></div>
             </div>
@@ -660,17 +665,22 @@
                 <div class="step-desc">來電或加LINE，提供車型、年份、里程等基本資訊，我們預先評估給您心理準備</div>
             </div>
             <div class="process-step">
-                <div class="step-circle"><span class="step-num">2</span>🔍</div>
-                <div class="step-title">現場鑑定</div>
-                <div class="step-desc">現場由我們專業進行全面鑑定，包含車況、事故紀錄、市場行情，仔細和顧客說明</div>
+                <div class="step-circle"><span class="step-num">2</span>🚗</div>
+                <div class="step-title">到府收購</div>
+                <div class="step-desc">不想跑車行？我們直接到府！鑑定、報價、過戶手續全程由我們包辦，顧客只需確認金額即可</div>
             </div>
             <div class="process-step">
-                <div class="step-circle"><span class="step-num">3</span>💰</div>
+                <div class="step-circle"><span class="step-num">3</span>🔍</div>
+                <div class="step-title">現場鑑定</div>
+                <div class="step-desc">攜車至高雄仁武展示中心，由專業技師進行全面鑑定，包含車況、事故紀錄、市場行情</div>
+            </div>
+            <div class="process-step">
+                <div class="step-circle"><span class="step-num">4</span>💰</div>
                 <div class="step-title">當場出價</div>
                 <div class="step-desc">鑑定完成後當場給出收購報價，過程完全透明，無任何隱藏費用，不接受可以直接離開</div>
             </div>
             <div class="process-step">
-                <div class="step-circle"><span class="step-num">4</span>✅</div>
+                <div class="step-circle"><span class="step-num">5</span>✅</div>
                 <div class="step-title">完成過戶</div>
                 <div class="step-desc">雙方同意後協助辦理過戶手續，帳款快速入帳，整個流程乾淨俐落</div>
             </div>
@@ -731,7 +741,7 @@
         <div class="reason-card reveal" data-num="01">
             <span class="reason-icon">🎓</span>
             <h3>純血汽車科系背景</h3>
-            <p>屏科大車輛工程系畢業，不是野路子出身。我們看車的眼光，和只靠年份里程判斷的業者完全不同，能給出更合理的估值。</p>
+            <p>我們看車的眼光，和只靠年份里程判斷的業者完全不同，能給出更合理的估值。</p>
         </div>
         <div class="reason-card reveal" data-num="02">
             <span class="reason-icon">🏭</span>
@@ -797,8 +807,8 @@
             </div>
         </div>
         <div class="not-buy reveal">
-            <h4>⚠️ 嚴重車況我們都能幫您協助處理</h4>
-            <p>重大結構損壞、泡水車、火燒車、車體嚴重鏽蝕、無法發動或行駛的車輛。若有疑問歡迎直接詢問，我們會給您專業的建議。</p>
+            <h4>⚠️ 以下情況恕無法收購</h4>
+            <p>重大結構損壞、泡水車、火燒車、車體嚴重鏽蝕、無法發動或行駛、產權糾紛或貸款未清償的車輛。若有疑問歡迎直接詢問，我們會如實告知。</p>
         </div>
     </div>
 </section>
@@ -878,6 +888,7 @@
 </div>
 
 <a href="https://ys-autos.com/inventory" class="floating-inventory" aria-label="在庫車輛"><i class="fas fa-car"></i>在庫車輛</a>
+<a href="https://ys-autos.com/buyback" class="floating-buyback" aria-label="高價收購"><i class="fas fa-dollar-sign"></i>高價收購</a>
 <a href="#quote-form" class="floating-cta">📋 免費預約估價</a>
 
 <script>
@@ -1461,7 +1472,7 @@
         const submitText = document.getElementById('submitText');
         btn.classList.add('loading'); submitText.textContent = '送出中…';
 
-        const reasons = [...document.querySelectorAll('.chip.selected')].map(c => c.dataset.val).join(', ') || '未填寫';
+        const reasons = [...document.querySelectorAll('.chip.selected')].map(c => c.dataset.val).join(', ') || '';
         const formData = new FormData();
         formData.append('姓名', name.value);
         formData.append('電話', phone.value);
@@ -1476,7 +1487,7 @@
         formData.append('來源', 'buyback.html');
 
         try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbzERdYLfEBy9uCbdqC9g7Tr07rlJYzO6F1rlLRL9DKoJX_veWCGLS1b0zHyYUhyuZCY/exec', {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbx-b1SqzJ8VZUQ9xmQRdyluQL1kD9yu_fzxJ-jcWwXl8uxaXFe2SgEMSArj2cz-j38x/exec', {
                 method: 'POST', body: formData
             });
             if (response.ok) {
