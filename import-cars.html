@@ -640,6 +640,12 @@
 
         .floating-cta { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: var(--primary-black); padding: 18px 35px; text-decoration: none; font-weight: 700; border-radius: 50px; box-shadow: 0 10px 30px rgba(212,169,72,0.4); z-index: 999; transition: 0.3s; font-size: 14px; }
         .floating-cta:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(212,169,72,0.6); }
+        .floating-cta-outline { position: fixed; bottom: 110px; right: 30px; background: rgba(12,12,12,.97); color: var(--gold); border: 1px solid var(--gold); border-radius: 0; width: 70px; height: 70px; text-decoration: none; font-weight: 700; font-size: 12px; font-family: 'Noto Sans TC', sans-serif; letter-spacing: 1px; z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 20px rgba(0,0,0,.55); transition: background .2s, color .2s; overflow: visible; }
+        .floating-cta-outline i { font-size: 22px; }
+        .floating-cta-outline::before, .floating-cta-outline::after { content: ''; position: absolute; inset: -1px; border: 1px solid var(--gold); animation: fab-ripple 2.6s ease-out infinite; opacity: 0; pointer-events: none; }
+        .floating-cta-outline::after { animation-delay: 1.3s; }
+        .floating-cta-outline:hover { background: rgba(212,169,72,0.1); }
+        .floating-cta-outline:active { transform: scale(.95); }
 
         /* ═══════════════════════ CPO VS MANHEIM ═══════════════════════ */
         .cpo-vs-manheim-section {
@@ -897,10 +903,11 @@
         }
     
         /* ═══ 懸浮導覽選單 FAB（僅手機版）═══ */
-        .fab-wrapper { display: none; position: fixed; bottom: 136px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
+        .fab-wrapper { display: none; position: fixed; bottom: 222px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
         @media (max-width: 968px) {
             .fab-wrapper { display: flex; }
             .floating-cta { bottom: 24px; right: 20px; font-size: 13px; padding: 14px 24px; z-index: 998; }
+            .floating-cta-outline { display: none; }
             .img-slider .slider-btn { display: none; }
             .img-slider { cursor: grab; }
             .img-slider:active { cursor: grabbing; }
@@ -914,7 +921,7 @@
         .fab-item a { display: flex; align-items: center; gap: 10px; background: rgba(12,12,12,.97); border: 1px solid rgba(212,169,72,.4); color: var(--text-light-gray); text-decoration: none; padding: 11px 16px 11px 13px; font-size: 13px; font-weight: 500; font-family: 'Noto Sans TC',sans-serif; letter-spacing: .5px; white-space: nowrap; box-shadow: 0 4px 18px rgba(0,0,0,.45); backdrop-filter: blur(10px); transition: background .18s, color .18s, border-color .18s; }
         .fab-item a:hover, .fab-item a:active { background: rgba(212,169,72,.12); border-color: var(--gold); color: var(--gold); }
         .fab-item a i { color: var(--gold); font-size: 12px; width: 14px; text-align: center; flex-shrink: 0; }
-        .fab-trigger { width: 46px; height: 46px; background: rgba(12,12,12,.97); border: 1px solid var(--gold); border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 11px; letter-spacing: 1.5px; font-family: 'Noto Sans TC',sans-serif; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.55); position: relative; overflow: visible; transition: background .2s, color .2s; }
+        .fab-trigger { width: 54px; height: 54px; background: rgba(12,12,12,.97); border: 1px solid var(--gold); border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 12px; letter-spacing: 1.5px; font-family: 'Noto Sans TC',sans-serif; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.55); position: relative; overflow: visible; transition: background .2s, color .2s; }
         .fab-trigger:active { transform: scale(.95); }
         .fab-trigger.open { background: var(--gold); color: #000; }
         .fab-trigger::before, .fab-trigger::after { content: ''; position: absolute; inset: -1px; border: 1px solid var(--gold); animation: fab-ripple 2.6s ease-out infinite; opacity: 0; }
@@ -926,24 +933,29 @@
         .floating-inventory {
             display: none;
             position: fixed;
-            bottom: 86px; right: 20px;
+            bottom: 154px; right: 20px;
             z-index: 999;
-            width: 46px; height: 46px;
+            width: 54px; height: 54px;
             background: var(--gold);
             border: 1px solid var(--gold-dark);
             color: var(--primary-black);
             text-decoration: none;
             font-family: 'Noto Sans TC', sans-serif;
-            font-size: 10px; font-weight: 700; letter-spacing: 1px;
+            font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
             text-align: center;
             flex-direction: column; align-items: center; justify-content: center; gap: 3px;
-            box-shadow: 0 4px 20px rgba(212,169,72,0.35);
+            box-shadow: 0 4px 20px rgba(212,169,72,0.4);
             transition: background 0.2s, transform 0.2s;
             cursor: pointer;
         }
-        .floating-inventory i { font-size: 16px; display: block; margin-bottom: 1px; }
+        .floating-inventory i { font-size: 18px; display: block; margin-bottom: 1px; }
         .floating-inventory:hover, .floating-inventory:active { background: var(--gold-light); transform: scale(1.05); color: var(--primary-black); }
         @media (max-width: 968px) { .floating-inventory { display: flex; } }
+
+        .floating-buyback { display: none; position: fixed; bottom: 86px; right: 20px; z-index: 999; width: 54px; height: 54px; background: var(--gold); border: 1px solid var(--gold-dark); color: var(--primary-black); text-decoration: none; font-family: 'Noto Sans TC',sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; flex-direction: column; align-items: center; justify-content: center; gap: 3px; box-shadow: 0 4px 20px rgba(212,169,72,0.4); transition: background .2s, transform .2s; }
+        .floating-buyback i { font-size: 18px; }
+        .floating-buyback:hover, .floating-buyback:active { background: var(--gold-light); color: var(--primary-black); transform: scale(1.05); }
+        @media (max-width: 968px) { .floating-buyback { display: flex; } }
 .versus-list li .v-check {
     color: var(--gold) !important;
     -webkit-text-fill-color: var(--gold) !important;
@@ -1640,6 +1652,9 @@
     在庫車輛
 </a>
 
+<a href="https://ys-autos.com/buyback" class="floating-buyback" aria-label="高價收購"><i class="fas fa-dollar-sign"></i>高價收購</a>
+
+<a href="https://ys-autos.com/buyback" class="floating-cta-outline"><i class="fas fa-dollar-sign"></i>高價收購</a>
 <a href="tel:0979226338" class="floating-cta">立即來電預約</a>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
