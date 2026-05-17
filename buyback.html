@@ -436,7 +436,6 @@
             .win-container { grid-template-columns: 1fr; gap: 40px; }
             .reasons-grid { grid-template-columns: 1fr; gap: 20px; }
             .types-grid { grid-template-columns: 1fr; }
-            .seo-info-grid { grid-template-columns: 1fr; gap: 20px; }
             .footer-content { grid-template-columns: 1fr; gap: 40px; }
             footer { padding: 60px 25px 40px; }
             .floating-cta { bottom: 24px; right: 20px; font-size: 14px; padding: 15px 26px; z-index: 998; }
@@ -449,17 +448,6 @@
         }
 
         .sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
-
-        /* ── LOCAL SEO ── */
-        .local-seo-section { background: var(--primary-black); }
-        .seo-info-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .seo-info-card { background: var(--secondary-black); border: 1px solid rgba(212,169,72,0.12); padding: 40px; transition: 0.3s; }
-        .seo-info-card:hover { border-color: rgba(212,169,72,0.35); transform: translateY(-6px); }
-        .seo-info-card h3 { font-size: 20px; color: var(--gold); margin-bottom: 15px; }
-        .seo-info-card p { font-size: 14px; color: var(--text-gray); line-height: 1.9; }
-
-        /* ── TRUST ── */
-        .trust-section { background: var(--secondary-black); }
     </style>
 </head>
 <body>
@@ -515,13 +503,13 @@
         <div class="hero-left" style="animation: fadeInLeft 1s ease-out;">
             <span class="hero-tag">Car Buyback Service</span>
             <h1 class="hero-title">
-                <span class="outline">高雄收車推薦</span>
-                <span class="accent">中古車高價收購</span>
-                <span>免費估價</span>
+                <span class="outline">您的愛車</span>
+                <span class="accent">值得最好</span>
+                <span>的價格</span>
             </h1>
             <p class="hero-desc">
                 <strong>不低估、不拖延、不複雜</strong><br>
-                耀笙國際汽車位於高雄仁武，提供中古車收購、到府收車與免費估價服務。依品牌、年份、里程、車況與市場行情評估，讓每一台車都賣出合理價格。
+                我們給出業界最合理的收購價，讓每一台車都賣出應有的價值。
             </p>
             <div class="hero-promises">
                 <div class="hero-promise-item"><i class="fas fa-check-circle"></i><span>鑑定專業精準</span></div>
@@ -696,32 +684,6 @@
 </section>
 
 
-<!-- ── LOCAL SEO ── -->
-<section class="local-seo-section">
-  <div class="section-center" style="margin-bottom: 60px;">
-    <span class="section-tag reveal">Kaohsiung Car Buyback</span>
-    <h2 class="section-title reveal">高雄收車與中古車估價服務</h2>
-    <p class="section-desc reveal">
-      耀笙國際汽車位於高雄仁武，提供高雄、仁武、鳳山、左營、楠梓、岡山與屏東地區中古車收購服務。
-      不論您想換車、急需現金、移民出國，或只是想知道目前車輛行情，都可以先提供品牌、年份、里程與車況，我們會協助初步評估。
-    </p>
-  </div>
-  <div class="seo-info-grid">
-    <div class="seo-info-card reveal">
-      <h3>中古車收購價格怎麼評估？</h3>
-      <p>收購價格會依照品牌、年份、里程、車況、事故紀錄、保養紀錄、配備完整度與市場需求判斷。耀笙以實際行情與車況為基準，不用話術壓價，也不強迫成交。</p>
-    </div>
-    <div class="seo-info-card reveal">
-      <h3>高雄哪些地區可以收車？</h3>
-      <p>主要服務高雄仁武、鳳山、左營、楠梓、岡山、鳥松、大寮、三民、鼓山與屏東地區。可到店估價，也可先線上填寫資料，視情況安排到府收購。</p>
-    </div>
-    <div class="seo-info-card reveal">
-      <h3>適合賣車的常見情況</h3>
-      <p>包含想換新車、舊車閒置、急需資金、出國移民、家中多一台車、貸款壓力調整，或想先了解目前市場行情，都可以免費預約估價。</p>
-    </div>
-  </div>
-</section>
-
 <!-- ── WHO SHOULD SELL ── -->
 <section class="who-section">
     <div class="section-center" style="margin-bottom: 70px;">
@@ -876,22 +838,6 @@
     </div>
 </section>
 
-
-<!-- ── TRUST PROOF ── -->
-<section class="trust-section">
-  <div class="section-center">
-    <span class="section-tag reveal">Customer Trust</span>
-    <h2 class="section-title reveal">真實口碑與成交信任</h2>
-    <p class="section-desc reveal">
-      耀笙國際汽車長期經營高雄中古車買賣與外匯車服務，重視透明報價、車況說明與售後責任。
-      Google 評價維持 5.0 滿分，收購與銷售服務都依照同一套誠實原則執行。
-    </p>
-    <div style="margin-top: 30px;">
-      <a href="https://www.google.com/maps/place/%E8%80%80%E7%AC%99%E5%9C%8B%E9%9A%9B%E6%B1%BD%E8%BB%8A" target="_blank" rel="noopener noreferrer" class="btn-primary">查看 Google 評價</a>
-      <a href="https://ys-autos.com/prove" class="btn-secondary" style="margin-left: 12px;">查看成交見證</a>
-    </div>
-  </div>
-</section>
 
 <!-- ── WHAT WE BUY ── -->
 <section class="types-section">
