@@ -1,4 +1,4 @@
-售價：118萬
+售價：已售出
 年份：2021
 make：Mercedes-Benz
 model：GLA180
@@ -11,7 +11,7 @@ model：GLA180
 驅動方式：前輪驅動
 CPO：否
 總代理：是
-狀態：available
+狀態：sold
 車況：原鈑原漆
 在庫：是
 到港狀態：
