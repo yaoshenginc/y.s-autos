@@ -1,4 +1,4 @@
-售價：188萬
+售價：已售出
 年份：2020
 make：Mercedes-Benz
 model：GLC43 coupe
@@ -11,7 +11,7 @@ model：GLC43 coupe
 驅動方式：4Matic 全輪驅動
 CPO：否
 總代理：是
-狀態：available
+狀態：sold
 車況：原鈑原漆
 在庫：是
 到港狀態：
