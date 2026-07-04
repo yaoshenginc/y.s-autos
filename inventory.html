@@ -1089,7 +1089,7 @@ const lines = text
     function buildCard(id, car, photos, isIncoming = false) {
         const statusBadge = {
             sold: '<span class="badge badge-sold">已售出</span>',
-            reserved: '<span class="badge badge-reserved">已預訂</span>',
+            reserved: '<span class="badge badge-reserved">已收訂</span>',
         }[car.status] || '';
         const cpoBadge = car.cpo === 'cpo'
             ? '<span class="badge badge-cpo"><i class="fas fa-certificate"></i>CPO原廠認證</span>'
@@ -1159,7 +1159,7 @@ const lines = text
 
         const statusBadge = {
             sold: '<span class="badge badge-sold" style="font-size:11px;padding:5px 12px;">已售出</span>',
-            reserved: '<span class="badge badge-reserved" style="font-size:11px;padding:5px 12px;">已預訂</span>',
+            reserved: '<span class="badge badge-reserved" style="font-size:11px;padding:5px 12px;">已收訂</span>',
         }[car.status] || '';
         const cpoBadge = car.cpo === 'cpo' ? '<span class="badge badge-cpo" style="font-size:11px;padding:5px 12px;">CPO 原廠認證</span>' : '';
         const sourceBadge = car.source === 'agent'
