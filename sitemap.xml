@@ -3,35 +3,35 @@
 
   <url>
     <loc>https://ys-autos.com/</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://ys-autos.com/import-cars</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://ys-autos.com/inventory</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://ys-autos.com/prove</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ys-autos.com/buyback</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
