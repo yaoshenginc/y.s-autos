@@ -698,65 +698,61 @@
     });
 
     const bgWall = document.getElementById('bgWall');
-    const photoUrls = [
-        'image/compress/1247.webp','image/compress/4085.webp','image/compress/4393.webp',
-        'image/compress/5647.webp','image/compress/6060.webp','image/compress/6293.webp',
-        'image/compress/6320.webp','image/compress/8223.webp','image/compress/8945.webp',
-        'image/compress/63201.webp','image/compress/0E990A8A-610E-4206-ADBC-EA89586EB682.webp',
-        'image/compress/0F42780B-37E6-460B-93AA-306A67AE0EC3.webp',
-        'image/compress/4A3EC415-2174-409F-ABDC-DBF5549079AB.webp',
-        'image/compress/4D9BDF4F-C525-4FE8-B198-0C2BFF60C11E.webp',
-        'image/compress/5C4CFBF0-D7C1-469D-A64B-7895B1E17EFD.webp',
-        'image/compress/5DB981E9-41D5-4457-88CE-3C81049AD6C755.webp',
-        'image/compress/5FD8288F-BF56-4254-8612-10BB2F2F9BFF.webp',
-        'image/compress/5FFF5953-BB4D-4275-AD9F-CFAB712F3F19.webp',
-        'image/compress/8C1FBCC8-F6AE-484E-A1CE-EAE7C63DF0B2.webp',
-        'image/compress/9B70A754-05C1-4020-8202-131CF6C5279955.webp',
-        'image/compress/9B8276BE-A425-47DA-BE16-2CF1C908BE6C.webp',
-        'image/compress/9F61D3C9-9883-4E8A-8A38-5BF01ECCC2CD.webp',
-        'image/compress/14C92520-15BC-4B4D-A679-B8BA46E5E0EF.webp',
-        'image/compress/40F7BDCC-C304-417B-8CA0-F555E9989DDF.webp',
-        'image/compress/87F09F81-910D-4B62-A898-03344F449152.webp',
-        'image/compress/88DE7D11-7395-466E-8A68-02ECD408E758.webp',
-        'image/compress/330.webp','image/compress/344DE7C3-4043-42D0-AFFA-F690A3F62B8D.webp',
-        'image/compress/441F81FE-E421-4090-B296-45A6E5926069.webp',
-        'image/compress/717FFF45-78A0-486A-AE06-8C8EE3D4DDB5.webp',
-        'image/compress/856E8BB7-353B-4E2D-8BEA-84119906D413.webp',
-        'image/compress/944AE69B-723D-4111-B9E2-650E305B1ABA.webp',
-        'image/compress/953A739E-0AFD-49F9-8C21-6CF118495CE0.webp',
-        'image/compress/1491.webp','image/compress/01972A3C-ACD4-4809-93DE-75D316FEAC80.webp',
-        'image/compress/2481EF1C-2CEE-4D48-8F3C-0ABA02755E60.webp',
-        'image/compress/7602AAAF-59C4-470E-856C-5E7E56DD3400.webp',
-        'image/compress/8065.webp','image/compress/8432B507-E534-4606-A6BB-B06F1FCC57C655.webp',
-        'image/compress/8745F88C-62DB-4E85-97DD-0B84B9F505CB.webp',
-        'image/compress/23687D23-FF63-4735-807B-BE49ECCAAC44.webp',
-        'image/compress/27831F2A-34BB-461F-A866-89A0F8943345.webp',
-        'image/compress/2919380E-967A-4CE7-9DEE-9B6D13C9821D.webp',
-        'image/compress/11111111.webp','image/compress/64619039-8A50-4BF1-BBEE-7C78480EFF37.webp',
-        'image/compress/165849463_797807610852464_6408012920781809324_n.webp',
-        'image/compress/173969791_809637686336123_8605031118397524654_n.webp',
-        'image/compress/192688507_839588333341058_2996060440068174326_n.webp',
-    ];
+    const HERO_IMAGE_API_URL = 'https://api.github.com/repos/yaoshenginc/y.s-autos/contents/image?ref=main';
+    const HERO_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif'];
+    const HERO_EXCLUDED_IMAGE_NAMES = ['autocheck_logo.png', 'carfax_logo.png', 'cpo_logo.png', 'favicon.png', 'logo.png', 'manheim_logo.png'];
 
-    function createRow(direction) {
+    function isHeroImage(file) {
+        if (!file || file.type !== 'file') return false;
+        const lowerName = file.name.toLowerCase();
+        return !HERO_EXCLUDED_IMAGE_NAMES.includes(lowerName) && HERO_IMAGE_EXTENSIONS.some(ext => lowerName.endsWith(ext));
+    }
+
+    function naturalSortHeroImages(a, b) {
+        return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
+    }
+
+    function shuffleImages(list) {
+        return [...list].sort(() => Math.random() - 0.5);
+    }
+
+    function createRow(direction, photoUrls) {
         const row = document.createElement('div');
         row.className = `marquee-row ${direction}`;
-        let list = [...photoUrls, ...photoUrls];
-        list.sort(() => Math.random() - 0.5);
+        let list = shuffleImages([...photoUrls, ...photoUrls]);
         if (direction === 'right') list.reverse();
         list.forEach(url => {
             const img = document.createElement('img');
             img.src = url;
             img.className = 'bg-photo-item';
-            img.alt = '高雄外匯車／進口車展示照片｜耀笙國際汽車';
+            img.alt = '耀笙國際成交車輛照片';
             img.loading = 'lazy';
             img.decoding = 'async';
             row.appendChild(img);
         });
         return row;
     }
-    bgWall.appendChild(createRow('left'));
-    bgWall.appendChild(createRow('right'));
+    async function loadHeroImages() {
+        try {
+            const response = await fetch(HERO_IMAGE_API_URL, { headers: { Accept: 'application/vnd.github+json' } });
+            if (!response.ok) throw new Error(`GitHub API ${response.status}`);
+
+            const photoUrls = (await response.json())
+                .filter(isHeroImage)
+                .sort(naturalSortHeroImages)
+                .map(file => file.download_url);
+
+            if (!photoUrls.length) return;
+
+            bgWall.innerHTML = '';
+            bgWall.appendChild(createRow('left', photoUrls));
+            bgWall.appendChild(createRow('right', photoUrls));
+        } catch (error) {
+            console.error('Unable to load hero images:', error);
+        }
+    }
+
+    loadHeroImages();
 
     function handleNavScroll() {
         const navbar = document.getElementById('navbar');
