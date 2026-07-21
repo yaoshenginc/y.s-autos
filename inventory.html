@@ -15,21 +15,21 @@
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="canonical" href="https://ys-autos.com/inventory">
 
-<link rel="icon" href="https://ys-autos.com/image/favicon.png" sizes="144x144">
-<link rel="apple-touch-icon" href="https://ys-autos.com/image/favicon.png">
+<link rel="icon" href="https://ys-autos.com/favicon.png" sizes="144x144">
+<link rel="apple-touch-icon" href="https://ys-autos.com/favicon.png">
 
 <meta property="og:locale" content="zh_TW">
 <meta property="og:type" content="website">
     <meta property="og:site_name" content="耀笙國際汽車">
 <meta property="og:title" content="在庫車輛｜耀笙國際汽車｜高雄外匯車・CPO原廠認證車">
 <meta property="og:description" content="查看耀笙國際汽車目前在庫車輛，專營高雄外匯車、CPO原廠認證車、進口車買賣，車況透明、實車展示。">
-<meta property="og:image" content="https://ys-autos.com/image/logo.png">
+<meta property="og:image" content="https://ys-autos.com/logo.png">
 <meta property="og:url" content="https://ys-autos.com/inventory">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="在庫車輛｜耀笙國際汽車｜高雄外匯車・CPO原廠認證車">
 <meta name="twitter:description" content="查看耀笙國際汽車目前在庫車輛，專營高雄外匯車、CPO原廠認證車、進口車買賣，車況透明、實車展示。">
-<meta name="twitter:image" content="https://ys-autos.com/image/logo.png">
+<meta name="twitter:image" content="https://ys-autos.com/logo.png">
 
 <title>在庫車輛｜耀笙國際汽車｜高雄外匯車・CPO原廠認證車</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -725,8 +725,8 @@
       "name": "耀笙國際汽車",
       "alternateName": "耀笙國際汽車 Y.S. AUTOS",
       "url": "https://ys-autos.com/",
-      "logo": "https://ys-autos.com/image/logo.png",
-      "image": "https://ys-autos.com/image/logo.png",
+      "logo": "https://ys-autos.com/logo.png",
+      "image": "https://ys-autos.com/logo.png",
       "telephone": "+886-7-7352855",
       "address": {
         "@type": "PostalAddress",
@@ -803,7 +803,7 @@
     <div class="nav-container">
         <div class="nav-left">
             <a href="https://ys-autos.com/" class="logo">
-                <img src="https://ys-autos.com/image/logo.png" alt="Y.S. AUTOS Logo" class="logo-img">
+                <img src="https://ys-autos.com/logo.png" alt="Y.S. AUTOS Logo" class="logo-img">
                 <div class="logo-text">
                     <div class="zh">耀笙國際汽車</div>
                     <div class="en">Y.S. AUTOS</div>
@@ -1065,11 +1065,11 @@ const lines = text
         }
         if (!car.remark) {
             if (car.cpo === 'cpo') {
-                car.remark = `此車為 <strong>CPO 原廠認證車</strong>，經原廠技師逐項檢驗，整備至原廠交車標準。<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}。`;
+                car.remark = `此車為 <strong>CPO 原廠認證車</strong>，經原廠技師逐項檢驗，整備至原廠交車標準。<img src="carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}。`;
             } else if (car.source === 'agent') {
-                car.remark = `此車為 <strong>總代理車輛</strong>，由原廠授權總代理引進，品質有保障。<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}。`;
+                car.remark = `此車為 <strong>總代理車輛</strong>，由原廠授權總代理引進，品質有保障。<img src="carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}。`;
             } else {
-                car.remark = `<img src="image/carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}，車況良好，歡迎來電或 LINE 詳細詢問。`;
+                car.remark = `<img src="carfax_logo.png" alt="CARFAX" style="height:14px;width:auto;vertical-align:middle;margin:0 3px;"> 報告顯示${car.carfax}，車況良好，歡迎來電或 LINE 詳細詢問。`;
             }
         }
         return car;
@@ -1228,7 +1228,7 @@ const lines = text
                 .then(r => {
                     if (r.ok) {
                         const keyEl = document.getElementById(`carfaxKey-${id}`);
-                        if (keyEl) keyEl.innerHTML = `<a href="vehicle/car${id}/carfax.pdf" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="display:inline-block;"><img src="image/carfax_logo.png" alt="CARFAX" style="height:22px;width:auto;vertical-align:middle;"></a>`;
+                        if (keyEl) keyEl.innerHTML = `<a href="vehicle/car${id}/carfax.pdf" target="_blank" onclick="event.stopPropagation()" title="查看 CARFAX 報告" style="display:inline-block;"><img src="carfax_logo.png" alt="CARFAX" style="height:22px;width:auto;vertical-align:middle;"></a>`;
                     }
                 }).catch(() => {});
         }
