@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://ys-autos.com/image/logo.png" width="180" alt="耀笙國際汽車 Logo">
+  <img src="https://ys-autos.com/logo.png" width="180" alt="耀笙國際汽車 Logo">
 </p>
 
 # 耀笙國際汽車官方網站
