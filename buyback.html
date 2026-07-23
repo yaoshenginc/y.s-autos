@@ -622,8 +622,8 @@
 
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label class="form-label">車身顏色</label>
-                                    <select class="form-input form-select" id="f_color" name="顏色">
+                                    <label class="form-label">車身顏色 <span class="req">*</span></label>
+                                    <select class="form-input form-select" id="f_color" name="顏色" required>
                                         <option value="">請選擇顏色</option>
                                         <option value="黑">黑</option>
                                         <option value="白">白</option>
@@ -1513,9 +1513,10 @@
         const phone = document.getElementById('f_phone');
         const brand = document.getElementById('f_brand');
         const model = document.getElementById('f_model');
+        const color = document.getElementById('f_color');
         let valid = true;
 
-        [name, phone, brand, model].forEach(el => {
+        [name, phone, brand, model, color].forEach(el => {
             el.classList.remove('form-error');
             const next = el.nextElementSibling;
             if (next && next.classList.contains('error-msg')) next.remove();
@@ -1534,6 +1535,7 @@
         }
         if (!brand.value) markError(brand, '請選擇車輛品牌');
         if (!model.value) markError(model, '請選擇車款');
+        if (!color.value) markError(color, '請選擇顏色');
         if (!valid) return;
 
         const btn = document.getElementById('submitBtn');
