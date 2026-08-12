@@ -4,7 +4,7 @@
 
 make：Mercedes-Benz                                                             // 品牌（英文）
 
-model：AMG GLC43 Coupe 4MATIC                                                   // 車款名稱
+model：AMG GLC43 Coupe                                                   // 車款名稱
 
 車型暱稱：正24年 · 白/黑 · 總代理超低里程                                     // 卡片副標題，不填會自動產生「年份 · 顏色」
 
