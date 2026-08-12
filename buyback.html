@@ -1525,7 +1525,18 @@
         chip.addEventListener('click', () => chip.classList.toggle('selected'));
     });
 
-    document.getElementById('estimateForm').addEventListener('submit', async function(e) {
+    const estimateForm = document.getElementById('estimateForm');
+
+    estimateForm.addEventListener('focusin', function() {
+        if (typeof window.trackMetaEvent === 'function') {
+            window.trackMetaEvent('InitiateCheckout', {
+                content_name: 'Buyback estimate form',
+                page_path: window.location.pathname
+            });
+        }
+    }, { once: true });
+
+    estimateForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         const name  = document.getElementById('f_name');
         const phone = document.getElementById('f_phone');
@@ -1581,6 +1592,15 @@
             if (response.ok) {
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({ event: 'buyback_form_submit' });
+                if (typeof window.trackMetaEvent === 'function') {
+                    window.trackMetaEvent('Lead', {
+                        content_name: 'Buyback estimate form',
+                        content_category: 'vehicle_buyback',
+                        vehicle_make: brand.value,
+                        vehicle_model: model.value,
+                        page_path: window.location.pathname
+                    });
+                }
                 document.getElementById('quoteForm').style.display = 'none';
                 document.getElementById('formSuccess').style.display = 'block';
             } else {
@@ -1600,5 +1620,6 @@
     @keyframes fadeInRight { from{opacity:0;transform:translateX(40px)}  to{opacity:1;transform:translateX(0)} }
 </style>
 
+<script src="scripts/meta-events.js"></script>
 </body>
 </html>

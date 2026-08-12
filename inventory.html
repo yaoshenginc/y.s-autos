@@ -1172,6 +1172,26 @@ const lines = text
         const data = carCache[id];
         if (!data) return;
         const { car } = data;
+        if (typeof window.trackMetaEvent === 'function') {
+            const priceValue = Number(String(car.price || '').replace(/[^\d]/g, ''));
+            const viewContentParams = {
+                content_ids: [`car-${id}`],
+                content_name: [car.year, car.make, car.model, car.trim].filter(Boolean).join(' '),
+                content_type: 'vehicle',
+                content_category: car.source || 'inventory',
+                vehicle_id: `car-${id}`,
+                vehicle_make: car.make,
+                vehicle_model: car.model,
+                vehicle_year: car.year,
+                vehicle_status: car.status || 'available',
+                page_path: window.location.pathname
+            };
+            if (Number.isFinite(priceValue) && priceValue > 0) {
+                viewContentParams.value = priceValue;
+                viewContentParams.currency = 'TWD';
+            }
+            window.trackMetaEvent('ViewContent', viewContentParams);
+        }
         mgIdx = 0;
         modalOpenCarId = id;
 
@@ -1582,5 +1602,6 @@ const lines = text
     window.addEventListener('scroll', () => { handleNavScroll(); reveal(); });
     window.addEventListener('load', () => { handleNavScroll(); loadInventory(); reveal(); });
     </script>
+<script src="scripts/meta-events.js"></script>
 </body>
 </html>
