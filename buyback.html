@@ -1573,9 +1573,12 @@
 
         const reasons = [...document.querySelectorAll('.chip.selected')].map(c => c.dataset.val).join(', ') || '';
         const formData = new FormData();
+        const lineValue = document.getElementById('f_line').value || '';
         formData.append('姓名', name.value);
         formData.append('電話', phone.value);
-        formData.append('LINE_ID', document.getElementById('f_line').value || '');
+        formData.append('LINE_ID', lineValue);
+        formData.append('LINE ID', lineValue);
+        formData.append('聯絡方式', lineValue);
         formData.append('品牌', brand.value);
         formData.append('車款', model.value);
         formData.append('年份', document.getElementById('f_year').value || '');
