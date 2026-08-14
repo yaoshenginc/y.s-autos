@@ -288,7 +288,7 @@
         .sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
 
         /* ═══ FAB 懸浮導覽選單（手機版）═══ */
-        .fab-wrapper { display: none; position: fixed; bottom: 222px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; }
+        .fab-wrapper { display: none; position: fixed; bottom: 222px; right: 20px; z-index: 1000; flex-direction: column; align-items: flex-end; pointer-events: none; }
         @media (max-width: 968px) { .fab-wrapper { display: flex; } }
         .fab-menu { display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 8px; pointer-events: none; }
         .fab-item { opacity: 0; transform: translateX(14px); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; margin-bottom: 5px; }
@@ -299,7 +299,7 @@
         .fab-item a { display: flex; align-items: center; gap: 10px; background: rgba(12,12,12,.97); border: 1px solid rgba(212,169,72,.4); color: var(--text-light-gray); text-decoration: none; padding: 11px 16px 11px 13px; font-size: 13px; font-weight: 500; font-family: 'Noto Sans TC',sans-serif; letter-spacing: .5px; white-space: nowrap; box-shadow: 0 4px 18px rgba(0,0,0,.45); backdrop-filter: blur(10px); transition: background .18s, color .18s, border-color .18s; }
         .fab-item a:hover, .fab-item a:active { background: rgba(212,169,72,.12); border-color: var(--gold); color: var(--gold); }
         .fab-item a i { color: var(--gold); font-size: 12px; width: 14px; text-align: center; flex-shrink: 0; }
-        .fab-trigger { width: 54px; height: 54px; background: rgba(12,12,12,.97); border: 1px solid var(--gold); border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 12px; letter-spacing: 1.5px; font-family: 'Noto Sans TC',sans-serif; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.55); position: relative; overflow: visible; transition: background .2s, color .2s; }
+        .fab-trigger { width: 54px; height: 54px; background: rgba(12,12,12,.97); border: 1px solid var(--gold); border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 12px; letter-spacing: 1.5px; font-family: 'Noto Sans TC',sans-serif; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.55); position: relative; overflow: visible; transition: background .2s, color .2s; pointer-events: auto; }
         .fab-trigger:active { transform: scale(.95); }
         .fab-trigger.open { background: var(--gold); color: #000; }
         .fab-trigger::before, .fab-trigger::after { content: ''; position: absolute; inset: -1px; border: 1px solid var(--gold); animation: fab-ripple 2.6s ease-out infinite; opacity: 0; }
