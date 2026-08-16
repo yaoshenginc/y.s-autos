@@ -1,0 +1,46 @@
+name: Sync crawler-readable inventory
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'vehicle/car*/info.txt'
+      - 'scripts/generate-inventory-static.mjs'
+      - '.github/workflows/generate-inventory-static.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-crawler-readable-inventory
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Generate static inventory data
+        run: node scripts/generate-inventory-static.mjs
+
+      - name: Commit generated inventory when changed
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add inventory.html inventory.json vehicle/inventory.txt
+          if git diff --cached --quiet; then
+            echo "No generated inventory changes."
+            exit 0
+          fi
+          git commit -m "Sync crawler-readable inventory"
+          git push
