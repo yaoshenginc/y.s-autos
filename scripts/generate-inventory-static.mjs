@@ -91,6 +91,28 @@ function numericPriceTwd(price) {
   return plain ? Number(plain[0].replaceAll(',', '')) : null;
 }
 
+function firstPhotoUrl(id) {
+  const carDir = path.join(VEHICLE_DIR, id);
+  const exts = ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
+  const files = fs.existsSync(carDir) ? fs.readdirSync(carDir) : [];
+  for (const ext of exts) {
+    const file = files.find(name => name.toLowerCase() === `1.${ext}`.toLowerCase());
+    if (file) {
+      return `https://ys-autos.com/vehicle/${id}/${file}`;
+    }
+  }
+  return 'https://ys-autos.com/logo.png';
+}
+
+function plainDescription(car) {
+  return [
+    car.remark,
+    car.highlights.length ? `亮點配備：${car.highlights.join('、')}` : '',
+    car.condition ? `車況：${car.condition}` : '',
+    car.mileage ? `里程：${car.mileage}` : ''
+  ].filter(Boolean).join(' ');
+}
+
 function loadCars() {
   if (!fs.existsSync(VEHICLE_DIR)) throw new Error('vehicle directory not found');
   return fs.readdirSync(VEHICLE_DIR, { withFileTypes: true })
@@ -132,21 +154,43 @@ function staticSection(cars) {
     numberOfItems: cars.length,
     itemListElement: cars.map((c, i) => {
       const price = numericPriceTwd(c.price);
+      const offer = price ? {
+        '@type': 'Offer',
+        url: `https://ys-autos.com/inventory#${c.id}`,
+        price,
+        priceCurrency: 'TWD',
+        itemCondition: 'https://schema.org/UsedCondition',
+        availability: c.inStock && c.status === 'available' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+        shippingDetails: {
+          '@type': 'OfferShippingDetails',
+          shippingDestination: {
+            '@type': 'DefinedRegion',
+            addressCountry: 'TW'
+          },
+          shippingRate: {
+            '@type': 'MonetaryAmount',
+            value: 0,
+            currency: 'TWD'
+          }
+        },
+        hasMerchantReturnPolicy: {
+          '@type': 'MerchantReturnPolicy',
+          applicableCountry: 'TW',
+          returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted'
+        }
+      } : undefined;
       const vehicle = {
         '@type': 'Vehicle',
         name: [c.year, c.make, c.model, c.trim].filter(Boolean).join(' '),
         url: `https://ys-autos.com/inventory#${c.id}`,
+        image: firstPhotoUrl(c.id),
+        description: plainDescription(c) || undefined,
         vehicleModelDate: c.year || undefined,
         model: c.model || undefined,
         color: c.color || undefined,
         mileageFromOdometer: c.mileage ? { '@type': 'QuantitativeValue', value: c.mileage } : undefined,
         brand: c.make ? { '@type': 'Brand', name: c.make } : undefined,
-        offers: {
-          '@type': 'Offer',
-          priceCurrency: 'TWD',
-          availability: c.inStock && c.status === 'available' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-          ...(price ? { price } : {})
-        }
+        offers: offer
       };
       return { '@type': 'ListItem', position: i + 1, item: vehicle };
     })
