@@ -147,14 +147,21 @@ function staticSection(cars) {
         </article>`;
   }).join('\n');
 
+  // Vehicle is a Product subtype. Only emit Product/Vehicle structured data when a
+  // genuine numeric price exists; otherwise Google requires offers, review, or
+  // aggregateRating. Unpriced/incoming cars remain in the static HTML and machine-
+  // readable inventory files below without inventing a price or rating.
+  const pricedCars = cars
+    .map(c => ({ car: c, price: numericPriceTwd(c.price) }))
+    .filter(({ price }) => Number.isFinite(price) && price > 0);
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: '耀笙國際汽車目前在庫車輛',
-    numberOfItems: cars.length,
-    itemListElement: cars.map((c, i) => {
-      const price = numericPriceTwd(c.price);
-      const offer = price ? {
+    name: '耀笙國際汽車已標價車輛',
+    numberOfItems: pricedCars.length,
+    itemListElement: pricedCars.map(({ car: c, price }, i) => {
+      const offer = {
         '@type': 'Offer',
         url: `https://ys-autos.com/inventory#${c.id}`,
         price,
@@ -178,7 +185,7 @@ function staticSection(cars) {
           applicableCountry: 'TW',
           returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted'
         }
-      } : undefined;
+      };
       const vehicle = {
         '@type': 'Vehicle',
         name: [c.year, c.make, c.model, c.trim].filter(Boolean).join(' '),
