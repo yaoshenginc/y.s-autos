@@ -2,8 +2,8 @@
   "dealer": "耀笙國際汽車",
   "url": "https://ys-autos.com/inventory",
   "total": 9,
-  "inStock": 8,
-  "incoming": 1,
+  "inStock": 7,
+  "incoming": 2,
   "vehicles": [
     {
       "id": "car1",
@@ -410,14 +410,14 @@
       "drive": "4Matic 四輪驅動",
       "color": "白/黑",
       "date": "2023/04",
-      "price": "請洽詢",
+      "price": "148萬",
       "priceNote": "",
       "carfax": "",
       "cpo": false,
       "source": "外匯車",
       "status": "available",
       "condition": "",
-      "inStock": true,
+      "inStock": false,
       "arrivalStatus": "",
       "remark": "正23年韓規 Mercedes-Benz CLA250 4Matic，僅跑 18,000 公里，白色車身搭配黑色內裝，超低里程。搭載 2.0L 直列四缸渦輪引擎、7G-DCT 7速雙離合器變速箱及 4Matic 四輪驅動，配備 AMG Line 外觀套件、全景天窗、MBUX 多媒體系統、盲點偵測、自動停車輔助及無線充電等實用配備，兼具跑格外型與日常實用性，歡迎預約賞車。",
       "highlights": [
