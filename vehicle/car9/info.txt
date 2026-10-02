@@ -24,7 +24,7 @@ model：Sienna Hybrid AWD                                                       
 
 狀態：available                                                                  // available（正常販售）/ sold（已售出）/ reserved（已預訂）
 
-車況：                                                                   // 顯示在卡片「車況」欄
+車況：原鈑原漆                                                                   // 顯示在卡片「車況」欄
 
 CPO：                                                                            // 留空不顯示{CPO}標籤
 
