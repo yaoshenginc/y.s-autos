@@ -2,8 +2,8 @@
   "dealer": "耀笙國際汽車",
   "url": "https://ys-autos.com/inventory",
   "total": 9,
-  "inStock": 8,
-  "incoming": 1,
+  "inStock": 9,
+  "incoming": 0,
   "vehicles": [
     {
       "id": "car1",
@@ -345,14 +345,14 @@
       "drive": "後輪驅動",
       "color": "白/黑",
       "date": "2022/03",
-      "price": "請洽詢",
+      "price": "152萬",
       "priceNote": "",
       "carfax": "",
       "cpo": false,
       "source": "外匯車",
       "status": "available",
       "condition": "全車原鈑",
-      "inStock": false,
+      "inStock": true,
       "arrivalStatus": "",
       "remark": "韓規 22 年 BMW 320i Touring M Sport，僅跑 33,500 公里，全車原鈑、超低里程。搭載 5AT 自動輔助駕駛、Harman Kardon 音響、抬頭顯示器、全景天窗及 M Sport 套件，兼具操控、科技與旅行車的大空間實用性，歡迎預約賞車。",
       "highlights": [
