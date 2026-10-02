@@ -20,7 +20,7 @@ model：GLC300 Coupe                                                            
 
 總代理：否                                                                      // 填「是」顯示總代理標籤；填「否」顯示外匯車標籤
 
-狀態：available                                                                 // available（正常販售）/ sold（已售出）/ reserved（已預訂）
+狀態：reserved                                                                 // available（正常販售）/ sold（已售出）/ reserved（已預訂）
 
 車況：優良                                                                       // 顯示在卡片「車況」欄
 
