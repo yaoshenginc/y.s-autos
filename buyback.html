@@ -1527,6 +1527,28 @@
 
     const estimateForm = document.getElementById('estimateForm');
 
+    function clearFieldError(el) {
+        el.classList.remove('form-error');
+        el.parentNode.querySelectorAll('.error-msg').forEach(msg => msg.remove());
+    }
+
+    function clearCorrectedErrors(e) {
+        const field = e.target;
+        if (field.id === 'f_phone' || field.id === 'f_line') {
+            const phone = document.getElementById('f_phone');
+            const lineId = document.getElementById('f_line');
+            // 電話或 LINE ID 擇一填寫後，同時清除兩欄的聯絡方式錯誤。
+            if (phone.value.trim() || lineId.value.trim()) {
+                [phone, lineId].forEach(clearFieldError);
+            }
+        } else if (['f_name', 'f_brand', 'f_model', 'f_color'].includes(field.id) && field.value.trim()) {
+            clearFieldError(field);
+        }
+    }
+
+    estimateForm.addEventListener('input', clearCorrectedErrors);
+    estimateForm.addEventListener('change', clearCorrectedErrors);
+
     estimateForm.addEventListener('focusin', function() {
         if (typeof window.trackMetaEvent === 'function') {
             window.trackMetaEvent('InitiateCheckout', {
@@ -1540,16 +1562,13 @@
         e.preventDefault();
         const name  = document.getElementById('f_name');
         const phone = document.getElementById('f_phone');
+        const lineId = document.getElementById('f_line');
         const brand = document.getElementById('f_brand');
         const model = document.getElementById('f_model');
         const color = document.getElementById('f_color');
         let valid = true;
 
-        [name, phone, brand, model, color].forEach(el => {
-            el.classList.remove('form-error');
-            const next = el.nextElementSibling;
-            if (next && next.classList.contains('error-msg')) next.remove();
-        });
+        [name, phone, lineId, brand, model, color].forEach(clearFieldError);
         function markError(el, msg) {
             el.classList.add('form-error');
             const span = document.createElement('span');
@@ -1557,7 +1576,6 @@
             el.parentNode.appendChild(span); valid = false;
         }
         if (!name.value.trim())  markError(name,  '請填寫姓名');
-        const lineId = document.getElementById('f_line');
         if (!phone.value.trim() && !lineId.value.trim()) {
             markError(phone, '請填寫電話或 LINE ID');
             markError(lineId, '');
