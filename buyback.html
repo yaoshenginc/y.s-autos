@@ -1583,8 +1583,14 @@
         formData.append('車款', model.value);
         formData.append('年份', document.getElementById('f_year').value || '');
         formData.append('里程', document.getElementById('f_km').value || '');
-        formData.append('顏色', document.getElementById('f_color').value || '');
-        formData.append('備註', document.getElementById('f_note').value || '');
+        // 相容舊版 Apps Script：目前後端寫入/通知模板尚未正確處理「顏色」欄位。
+        // 保留獨立顏色欄位，並在既有「備註」中備援呈現，避免車色資訊遺失。
+        const colorValue = color.value.trim();
+        const originalNote = document.getElementById('f_note').value.trim();
+        const noteWithColor = '【車身顏色：' + colorValue + '】' + (originalNote ? ' ' + originalNote : '');
+        formData.append('顏色', colorValue);
+        formData.append('車身顏色', colorValue);
+        formData.append('備註', noteWithColor);
         formData.append('出售原因', reasons);
         formData.append('來源', 'buyback.html');
 
